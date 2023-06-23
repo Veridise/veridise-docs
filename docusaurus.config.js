@@ -108,7 +108,6 @@ const config = {
         items: [
           {
             type: 'docsVersion',
-            sidebarId: 'saasSidebar',
             docsPluginId: 'saas',
             position: 'left',
             label: 'SaaS',
@@ -116,7 +115,6 @@ const config = {
           {
             // TODO: replace with dropdown when versions are available.
             type: 'docsVersion',
-            //sidebarId: 'orcaSidebar',
             docsPluginId: 'orca',
             position: 'left',
             label: 'OrCa',
@@ -124,7 +122,6 @@ const config = {
           {
             // TODO: replace with dropdown when versions are available.
             type: 'docsVersion',
-            //sidebarId: 'vanguardSidebar',
             docsPluginId: 'vanguard',
             position: 'left',
             label: 'Vanguard',
