@@ -127,6 +127,16 @@ const config = {
             label: 'Vanguard',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
+	  {
+	    type: 'docsVersionDropdown',
+	    docsPluginId: 'orca',
+	    position: 'right'
+	  },
+	  {
+	    type: 'docsVersionDropdown',
+	    docsPluginId: 'vanguard',
+	    position: 'right'
+	  },
           {
             href: 'https://github.com/Veridise',
             label: 'GitHub',
