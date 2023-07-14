@@ -92,6 +92,15 @@ const config = {
         lastVersion: 'current',
       }
     ],
+    [
+      require.resolve('docusaurus-lunr-search'),
+      {
+	// Do not index pages with routes like /orca/internal/dev-guide etc.
+	excludeRoutes: [
+	  "**/internal/*",
+	]
+      }
+    ]
   ],
 
   themeConfig:
