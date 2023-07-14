@@ -28,3 +28,21 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Dark mode support for docusaurus-lunr-search */
+
+html[data-theme='dark'] .algolia-docsearch-suggestion--category-header,
+html[data-theme='dark'] .algolia-docsearch-suggestion--wrapper,
+html[data-theme='dark'] .algolia-docsearch-footer
+{
+    background: var(--ifm-background-color);
+    color: var(--ifm-font-color-base);
+}
+
+html[data-theme='dark'] .algolia-docsearch-suggestion--title {
+    color: var(--ifm-font-color-base);
+}
+
+html[data-theme='dark'] .ds-cursor .algolia-docsearch-suggestion--wrapper {
+    background: var(--ifm-background-surface-color);
+}
