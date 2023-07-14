@@ -1,41 +1,77 @@
-# Website
+# Veridise Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This repository hosts the documenstation site to be used for all Veridise
+tools. The website is built using [Docusaurus 2](https://docusaurus.io/).
 
-### Installation
+## Prerequisites
 
-```
-$ npm ci
-```
+Ensure you have a supported LTS version of Node.js (like v18 or v20).
 
-### Local Development
-
-```
-$ npm run start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
+## Building the site for development
 
 ```
-$ npm run build
+npm ci
+npm run start
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+The second command starts a local development server and opens up a browser
+window. Most changes are reflected live without having to restart the
+server. Some changes will require you to restart the server, usually when you
+cut new versions, rename folders, or modify React code.
 
-### Deployment
+## Cutting a new version of documentation
 
-Using SSH:
+By default, the documentation in unversioned folders like `orca` is considered
+bleeding-edge documentation and is assigned a "Next" version. Suppose you want
+to cut a new version of OrCa documentation, like version `1.0`. In this case,
+you can run the following command.
 
 ```
-$ USE_SSH=true npm run deploy
+npm run docusaurus docs:version:orca 1.0
 ```
 
-Not using SSH:
+This will create an `orca_versioned_docs` folder and inside of it, we will have
+a list of folders, each corresponding to a distinct version of `orca`. Note that
+you may need to restart your dev server in order to see changes reflected.
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
+Then you should be able to browse http://localhost:3000/orca/1.0/.
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+**Note**: you should avoid having to modify versioned docs as best as you
+can. Use the unversioned docs folders to add new information.
+
+## Adding documentation
+
+This is as simple as writing a markdown file directly in one the tools folders
+(such as `orca`). The unversioned docs folders are usually reserved for the
+"Next" version of OrCa. This is where all bleeding edge documentation typically
+goes into. When tool releases are cut, you will also revise documentation and
+cut a release of it.
+
+Note that "Next" version of docs **do not** have to be exposed publically. For
+details, refer to Docusaurus documentation [here](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#includeCurrentVersion).
+
+## Ordering items on sidebar
+
+### Using the file system
+
+By default, Docusaurus will list your documents in lexicographical order. This
+means if the `orca` folder has two documents `A.md` and `Z.md`, then Docusaurus
+will display "A" on top of "Z".
+
+If you would like "Z" to appear before "A", you can prefix the files with a
+number, like `01-Z.md` and `02-A.md`.
+
+### Using the sidebars JSON
+
+You may have noticed there is a "versioned sidebars" folder lingering
+around. This folder contains a bunch of JSON files where *you* get to choose how
+to explicitly order documents. For details, refer to the official
+[Docusaurus documentation](https://docusaurus.io/docs/sidebar/items).
+
+### Subsections in sidebar
+
+Sometimes a single document is too small to fit dozens of sections worth of
+stuff inside. In this case, you can make a folder with any title you want, then
+add extra markdown files inside. A sidebar item will be automatically generated
+and it will have an expansion icon.
+
