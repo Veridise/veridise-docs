@@ -40,7 +40,16 @@ Run `pip3.9 install -r requirements.txt` for the following packages:
 * `mod` (for Cairo/Starknet arithmetic support in V)
 * `cairo-lang`
 
-<details><summary>Error message</summary> <pre> <p>In file included from src/curve.c:1: <br />  src/curve.h:4:10: fatal error: 'gmp.h' file not found <br />  #include "gmp.h" <br />      ^~~~~~~ <br />  1 error generated. <br />  error: command '/usr/bin/clang' failed with exit code 1</p> </pre> </details>
+<details><summary>Error message</summary> 
+<code>
+In file included from src/curve.c:1: 
+  src/curve.h:4:10: fatal error: 'gmp.h' file not found
+    #include "gmp.h"
+          ^~~~~~~ 
+    1 error generated.
+    error: command '/usr/bin/clang' failed with exit code 1
+</code>
+</details>
 
 If you get the above error message, run the following command and then reinstall `cairo-lang`:
 
