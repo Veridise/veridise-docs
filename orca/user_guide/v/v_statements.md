@@ -37,7 +37,7 @@ The target refers to the recipient `entity` (i.e., a smart contract) as well as 
 
 ```solidity
 entity.transaction
-``**
+```
 
 ### Entity
 

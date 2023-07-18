@@ -32,6 +32,6 @@ inv: reverted(b.deposit(amt), amt = 0)
 
 Invariants are really just syntactic sugar for temporal properties. The formal definition of invariants as temporal properties are as follows:
 
-* ```finished(target, con)``` becomes ```[]!finished(target, !con)```;
-* ```finished(target, pre |=> post)``` becomes ```[]!finished(target, old(pre) && !post)```;
-* ```reverted(target, con)``` becomes ```[]!finished(target, old(con))```;
+* `finished(target, con)` becomes `[]!finished(target, !con)`;
+* `finished(target, pre |=> post)` becomes `[]!finished(target, old(pre) && !post)`;
+* `reverted(target, con)` becomes `[]!finished(target, old(con))`;

@@ -64,6 +64,6 @@ Deployment sequences consist of both deployment instructions and transaction ins
 vars: Token t, address owner
 init: finished(t = Token(), sender = owner);
       finished(t.mint(owner, 5000), sender = owner) 
-``**
+```
 
 **IMPORTANT**: No other temporal operators besides `;` can be used to construct deployment sequences!

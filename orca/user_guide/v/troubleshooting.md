@@ -51,7 +51,7 @@ This specification is *not* violated by the call `f.bar(-5,10)` even though the 
 
 A good way to understand the semantics of the `revert` invariant is to understand its semantics as a temporal specification:
 
-* ```reverted(target, con)``` becomes ```[]!finished(target, old(con))```
+* `reverted(target, con)` becomes `[]!finished(target, old(con))`
 
 ## Variable Shadowing
 

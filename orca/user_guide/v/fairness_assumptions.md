@@ -25,6 +25,6 @@ becomes the following temporal specification
 
 ```
 spec: prop1 ==> prop2
-``**
+```
 
 **NOTE**: While these are technically equivalent, OrCa may sometimes behave differently on these two specifications as OrCa uses special reasoning to take advantage of known assumptions given in Fairness sections.

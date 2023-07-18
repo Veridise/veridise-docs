@@ -6,7 +6,7 @@ Variables are declared in a special section and are scoped for the entire specif
 
 ```solidity
 vars: uint256 a, bool b, ContractName c
-``**
+```
 
 Note that we can also declare variables of smart contract type, where the type is given by the smart contract name.
 
