@@ -1,4 +1,6 @@
-import Details from '@theme/MDXComponents/Details';
+---
+sidebar_position: 3
+---
 
 # Debug Detectors
 
@@ -39,8 +41,8 @@ It is invoked using the argument: `--detector=fnPrinter`.
 vanguard_driver --detector=fnPrinter divide.circom
 ```
 
-<Details>
-<summary mdxType="summary">Full Report</summary>
+<details>
+<summary>Full Report</summary>
 
 ```txt
 ----Preprocessing sources----
@@ -89,7 +91,7 @@ Found Function: Divide_0_build
 Found Function: Divide_0_run
 Done!
 ```
-</Details>
+</details>
 
 ## IR Validator (`irValidator`)
 

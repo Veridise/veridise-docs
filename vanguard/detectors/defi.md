@@ -1,4 +1,6 @@
-import Details from '@theme/MDXComponents/Details';
+---
+sidebar_position: 1
+---
 
 # DeFi Domain Detectors
 
@@ -49,14 +51,14 @@ In the `Wallet` contract above, the contract is vulnerable to a reentrancy attac
 In the call to `msg.sender.call(value: ball)("")`, the attacker can maliciously call withdraw again before clearBalance is called.
 Thus, they can empty the wallet of all of its funds.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 vanguard_driver --detector=reentrancy reentrancy.sol
 ```
 
-```txt title="Report"
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: reentrancy
 ========================
@@ -76,7 +78,7 @@ Potential Reentrancy Attack launched from Wallet.withdraw
       * Reachable via: Wallet.withdraw -> Wallet.clearBalance
 --------------------------------------------------------------------------------
 ```
-</Details>
+</details>
 
 ## Divide Before Multiply (`divide-before-multiply`)
 
@@ -100,14 +102,14 @@ contract DivideBeforeMultiplyVulnerable {
 
 In the `convert` function above, values of `x` between 1 and 4 will result in a return value of `0` since the division occurs first. However, if the multiplication came first (`x * 1000 / 5`, or `x * 200`), values of `x` between 1 and 4 will result in values between 200 and 800.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 vanguard_driver --detector=divide-before-multiply divide_before_multiply.sol
 ```
 
-```txt title="Report"
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: divide-before-multiply
 ==============================================
@@ -118,7 +120,7 @@ Divide Before Multiply vulnerability found in DivideBeforeMultiplyVulnerable.con
   * DivideBeforeMultiplyVulnerable.convert contains a multiplication operation that uses the result of division
 --------------------------------------------------------------------------------
 ```
-</Details>
+</details>
 
 ## Unchecked Return (`unchecked-return`)
 
@@ -155,14 +157,14 @@ The `unchecked_send` function is designed to reroute the `msg.value` from the se
 However, if the `send` function fails, the money will not be sent to `dst` and instead be added to the contract's own balance.
 The `checked_send` function demonstrates the correct behavior, where the return value of `send` should be checked and the transaction reverted if it fails.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 vanguard_driver --detector=unchecked-return unchecked.sol
 ```
 
-```txt
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: unchecked-return
 ========================================
@@ -174,7 +176,7 @@ Unchecked return value found in UncheckedReturnContract.unchecked_send:
 --------------------------------------------------------------------------------
 ```
 
-</Details>
+</details>
 
 ## Flashloan (`flashloan`)
 
@@ -216,15 +218,15 @@ contract TaintedFlashloan {
 In this example, the transfer amount in `sendMoney()` is computed based on the balance the sender has of `token` (in `taintVariable()`).
 The sender could manipulate this amount by calling `taintVariable()` after acquiring a flashloan of `token`, allowing the sender to later drain the contract of all its funds via `sendMoney()`.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 npm install @openzeppelin/contracts
 vanguard_driver --detector=flashloan flashloan.sol -I node_modules/
 ```
 
-```txt
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: flashloan
 =================================
@@ -242,7 +244,7 @@ Flashloan vulnerability found in TaintedFlashloan.sendMoney
 --------------------------------------------------------------------------------
 ```
 
-</Details>
+</details>
 
 ## Debug Summarizer (`debug-summary`)
 
@@ -257,8 +259,8 @@ npm install @openzeppelin/contracts
 vanguard_driver --detector=debug-summary flashloan.sol -I node_modules/
 ```
 
-<Details>
-<summary mdxType="summary">Full Report</summary>
+<details>
+<summary>Full Report</summary>
 
 ```txt
 ----VANGUARD REPORT----
@@ -300,4 +302,4 @@ Writing SARIF report to /tmp/nix-shell.w5vTY6/tmpeiwgzh58/sarif.json
     - taintedVariable
 --------------------------------------------------------------------------------
 ```
-</Details>
+</details>

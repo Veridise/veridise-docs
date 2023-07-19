@@ -1,4 +1,6 @@
-import Details from '@theme/MDXComponents/Details';
+---
+sidebar_position: 2
+---
 
 # ZK Domain Detectors
 
@@ -31,14 +33,14 @@ In this example, out is assigned `a + 1`, but is constrained on `b + 1`.
 This means that out is dataflow dependent on input `a` but constraint dependent on input `b`.
 This discrepancy in dataflow and constraint dependencies means there is a mismatch in the overall dataflow and constraint graphs in the circuit, which likely deviates from the developer’s intentions.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 vanguard_driver --detector=df-constr-diff constraint_diff.circom
 ```
 
-```txt
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: df-constr-diff
 ========================
@@ -64,7 +66,7 @@ call.fr_add --- call.fr_add
  ---
 ```
 
-</Details>
+</details>
 
 ## Non-Deterministic Dataflow (`df-nondet`)
 
@@ -92,14 +94,14 @@ component main = Invert();
 
 In this example, `out` is conditionally assigned based on the value of `in`. The developer’s intent is for `out = 1/in` if `in` is not 0, and `out = 0` otherwise. However, this constraint is not specified, so if `in = 0`, any value of `out` could be provided without violating `in*out === 0`. So, if `in = 0`, `out = 0` is expected by the developer, but the assignment of `in = 0, out = 99` would also satisfy the constraints.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 vanguard_driver --detector=df-nondet nondet.circom
 ```
 
-```txt
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: df-nondet
 ========================
@@ -111,7 +113,7 @@ A potential NDD in Invert is caused by:
 --------------------------------------------------------------------------------
 ```
 
-</Details>
+</details>
 
 ## Unconstrained Outputs (`uc-outputs`)
 
@@ -142,14 +144,14 @@ component main = UCO_Bug();
 
 In this example, `out2` is assigned to input `a`, but is not constrained by the input `a`, which is flagged as a UCO bug.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 vanguard_driver --detector=uc-outputs uco_bug.circom
 ```
 
-```txt
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: uc-outputs
 =============================================
@@ -161,7 +163,7 @@ A potential under-constrained output signal in UCO_Bug is caused by:
 --------------------------------------------------------------------------------
 ```
 
-</Details>
+</details>
 
 ## Unconstrained Subcomponent Output (`uc-subcomp`)
 
@@ -227,18 +229,18 @@ The developer uses a subcomponent `LessThan` to test of `n` is less than `m`, bu
 So, the output could be 1 or 0, meaning that n may or may not be less than m.
 A value assignment of `n = 100`, `m = 1`, `o = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `n < m`, the developer can expect `o < n` and `o < m`).
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```shell
+```shell title=Command
 vanguard_driver --detector=uc-subcomp uc_subcomp_bug.circom
 ```
 
-```txt
+```txt title=Output
 TODO after uc-subcomp refactor.
 ```
 
-</Details>
+</details>
 
 ## Divide By Zero (`zk-divide-by-zero`)
 
@@ -268,14 +270,14 @@ component main = Divide();
 
 In this example, the constraints of the circuit can be satisfied by the following assignment: `in1 = 0, in2 = 0, out = 5`. However, this clearly deviates from the developer’s intention, which was for `out` to be set to `in1 / in2`.
 
-<Details>
-<summary mdxType="summary">Vanguard Command and Output</summary>
+<details>
+<summary>Vanguard Command and Output</summary>
 
-```sh
+```shell title=Command
 vanguard_driver --detector=zk-divide-by-zero divide.circom
 ```
 
-```txt
+```txt title=Output
 ----VANGUARD REPORT----
 Running detector: zk-divide-by-zero
 ========================
@@ -287,4 +289,4 @@ A potential DBZ in Divide is caused by:
 --------------------------------------------------------------------------------
 ```
 
-</Details>
+</details>
