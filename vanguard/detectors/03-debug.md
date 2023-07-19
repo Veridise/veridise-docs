@@ -8,13 +8,15 @@ These detectors are used for general debugging and gathering statistics about co
 
 ### Summary and Usage
 
-The Statistics Generator creates a Vanguard report summarizing high-level statistics
+The Statistics Generator creates a Vanguard report summarizing high-level statistics about the compiled program.
+it is invoked using the argument: `--detector=statGen`.
 
 ### Example
 
 ```sh
 ./vanguard_driver.py --detector=statGen divide.circom
 ```
+
 ```txt
 ----VANGUARD REPORT----
 Running detector: statGen
@@ -28,7 +30,8 @@ Statistics:
 
 ### Summary and Usage
 
-The Function Printer is a debugging tool used to output the names of all functions present in the provided code. It is invoked using the argument: `--detector=fnPrinter`.
+The Function Printer is a debugging tool used to output the names of all functions present in the provided code.
+It is invoked using the argument: `--detector=fnPrinter`.
 
 ### Example
 
@@ -38,6 +41,7 @@ The Function Printer is a debugging tool used to output the names of all functio
 
 <Details>
 <summary mdxType="summary">Full Report</summary>
+
 ```txt
 ----Preprocessing sources----
 Running circom...

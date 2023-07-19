@@ -49,20 +49,14 @@ In the `Wallet` contract above, the contract is vulnerable to a reentrancy attac
 In the call to `msg.sender.call(value: ball)("")`, the attacker can maliciously call withdraw again before clearBalance is called.
 Thus, they can empty the wallet of all of its funds.
 
-Vanguard's Reentrancy detector makes a report like the following when testing `reentrancy.sol`:
+<Details>
+<summary mdxType="summary">Vanguard Command and Output</summary>
 
 ```shell
 ./vanguard_driver.py --detector=reentrancy reentrancy.sol
 ```
 
-```txt title="Full Report"
-----Preprocessing sources----
-Running pyul...
-Completed pyul
-Running Solidity summarizer...
-Completed Solidity summarizer, summary at /tmp/nix-shell.yY7rfa/tmp6vdgq6rr/summary.json.
-----Running Vanguard with reentrancy detector----
-Completed Vanguard.
+```txt title="Report"
 ----VANGUARD REPORT----
 Running detector: reentrancy
 ========================
@@ -82,6 +76,7 @@ Potential Reentrancy Attack launched from Wallet.withdraw
       * Reachable via: Wallet.withdraw -> Wallet.clearBalance
 --------------------------------------------------------------------------------
 ```
+</Details>
 
 ## Divide Before Multiply (`divide-before-multiply`)
 
@@ -89,10 +84,41 @@ Potential Reentrancy Attack launched from Wallet.withdraw
 
 The Divide Before Multiply (DBM) detector identifies rounding errors that may be introduced by integer divisions that may occur before integer multiplications (as multiply-before-divide may have no remainder, whereas divide-before-multiply may) in blockchain applications.
 Applications that contain divide-before-multiply computations are potentially vulnerable to rounding errors that could result in incorrect or erroneous transactions.
-
+The DBM detector is invoked using the argument: `--detector=divide-before-multiply`.
 
 ### Example and Explanation
 
+```solidity title=divide_before_multiply.sol
+pragma solidity ^0.8.10;
+
+contract DivideBeforeMultiplyVulnerable {
+    function convert(uint x) public view returns (uint) {
+        return (x / 5) * 1000;
+    }
+}
+```
+
+In the `convert` function above, values of `x` between 1 and 4 will result in a return value of `0` since the division occurs first. However, if the multiplication came first (`x * 1000 / 5`, or `x * 200`), values of `x` between 1 and 4 will result in values between 200 and 800.
+
+<Details>
+<summary mdxType="summary">Vanguard Command and Output</summary>
+
+```shell
+./vanguard_driver.py --detector=divide-before-multiply divide_before_multiply.sol
+```
+
+```txt title="Report"
+----VANGUARD REPORT----
+Running detector: divide-before-multiply
+==============================================
+ 1 Divide Before Multiply vulnerability found
+==============================================
+Divide Before Multiply vulnerability found in DivideBeforeMultiplyVulnerable.convert:
+--------------------------------------------------------------------------------
+  * DivideBeforeMultiplyVulnerable.convert contains a multiplication operation that uses the result of division
+--------------------------------------------------------------------------------
+```
+</Details>
 
 ## Unchecked Return (`unchecked-return`)
 
@@ -102,6 +128,53 @@ The UncheckedReturn detector finds function return values that are never used in
 The Unchecked Return detector is invoked using the argument: `--detector=unchecked-return`.
 
 ### Example and Explanation
+
+```solidity unchecked.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.10;
+
+contract UncheckedReturnContract {
+
+    event Success(string);
+
+    function unchecked_send(address payable dst) public payable {
+        dst.send(msg.value);
+        emit Success("Sent the money to dst");
+    }
+
+    function checked_send(address payable dst) public payable returns (uint) {
+        if (dst.send(msg.value)) {
+            emit Success("Sent the money to dst");
+        }
+        revert("Could not send the money!");
+    }
+}
+```
+
+The `unchecked_send` function is designed to reroute the `msg.value` from the sender to the `dst` address.
+However, if the `send` function fails, the money will not be sent to `dst` and instead be added to the contract's own balance.
+The `checked_send` function demonstrates the correct behavior, where the return value of `send` should be checked and the transaction reverted if it fails.
+
+<Details>
+<summary mdxType="summary">Vanguard Command and Output</summary>
+
+```shell
+./vanguard_driver.py --detector=unchecked-return unchecked.sol
+```
+
+```txt
+----VANGUARD REPORT----
+Running detector: unchecked-return
+========================================
+ 1 Unchecked Return vulnerability found
+========================================
+Unchecked return value found in UncheckedReturnContract.unchecked_send:
+--------------------------------------------------------------------------------
+  * The return value of a call to an unspecified location is never used
+--------------------------------------------------------------------------------
+```
+
+</Details>
 
 ## Flashloan (`flashloan`)
 
@@ -113,46 +186,63 @@ This detector is invoked using the argument: `--detector=flashloan`.
 ### Example and Explanation
 
 ```solidity title="flashloan.sol"
-contract PuppetPool is ReentrancyGuard {
+pragma solidity ^0.8.10;
 
-    using Address for address payable;
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-    mapping(address => uint256) public deposits;
-    address public immutable uniswapPair;
-    IERC20 public immutable token;
+contract TaintedFlashloan {
+    IERC20 token;
+    uint256 taintedVariable;
 
-    constructor (address tokenAddress, address uniswapPairAddress) {
-        token = IERC20(tokenAddress);
-        uniswapPair = uniswapPairAddress;
+    function taintVariable() public {
+        taintedVariable = 1 + token.balanceOf(msg.sender);
     }
 
-    // Allows borrowing `borrowAmount` of tokens by first depositing two times their value in ETH
-    function borrow(uint256 borrowAmount) public payable nonReentrant {
-        uint256 depositRequired = calculateDepositRequired(borrowAmount);
-
-        require(msg.value >= depositRequired, "Not depositing enough collateral");
-
-        if (msg.value > depositRequired) {
-            payable(msg.sender).sendValue(msg.value - depositRequired);
-        }
-
-        deposits[msg.sender] = deposits[msg.sender] + depositRequired;
-
-        // Fails if the pool doesn't have enough tokens in liquidity
-        bool res = token.transfer(msg.sender, borrowAmount);
-        require(res, "Transfer failed");
+    function getTaintedVariable() public view returns (uint256) {
+        return taintedVariable;
     }
 
-    function calculateDepositRequired(uint256 amount) public view returns (uint256) {
-        return amount * _computeOraclePrice() * 2 / 10 ** 18;
+    function getAmount() public view returns (uint256) {
+        return getTaintedVariable();
     }
 
-    function _computeOraclePrice() private view returns (uint256) {
-        // calculates the price of the token in wei according to Uniswap pair
-        return address(uniswapPair).balance * (10 ** 18) / token.balanceOf(uniswapPair);
+    function sendMoney() public {
+        token.transfer(msg.sender, getAmount());
     }
+
 }
 ```
+
+In this example, the transfer amount in `sendMoney()` is computed based on the balance the sender has of `token` (in `taintVariable()`).
+The sender could manipulate this amount by calling `taintVariable()` after acquiring a flashloan of `token`, allowing the sender to later drain the contract of all its funds via `sendMoney()`.
+
+<Details>
+<summary mdxType="summary">Vanguard Command and Output</summary>
+
+```shell
+npm install @openzeppelin/contracts
+./vanguard_driver.py --detector=flashloan flashloan.sol -I node_modules/
+```
+
+```txt
+----VANGUARD REPORT----
+Running detector: flashloan
+=================================
+ 1 Flashloan vulnerability found
+=================================
+Flashloan vulnerability found in TaintedFlashloan.sendMoney
+--------------------------------------------------------------------------------
+  * The result of a call to tainted contract variable taintedVariable influences the amount of currency transferred in IERC20.transfer
+
+  * Tainted Value Trace:
+    - TaintedFlashloan.sendMoney -> TaintedFlashloan.getAmount -> TaintedFlashloan.getTaintedVariable
+
+  * Taint Source Description:
+    - taintedVariable was tainted by the result of a call to IERC20.balanceOf in TaintedFlashloan.taintVariable
+--------------------------------------------------------------------------------
+```
+
+</Details>
 
 ## Debug Summarizer (`debug-summary`)
 
@@ -163,7 +253,8 @@ The Debug Summarizer is used to generate a report about the construction of a gi
 ### Example
 
 ```sh
-./vanguard_driver.py --detector=debug-summary reentrancy.sol
+npm install @openzeppelin/contracts
+./vanguard_driver.py --detector=debug-summary flashloan.sol -I node_modules/
 ```
 
 <Details>
@@ -172,7 +263,7 @@ The Debug Summarizer is used to generate a report about the construction of a gi
 ```txt
 ----VANGUARD REPORT----
 Running detector: debug-summary
-Writing SARIF report to /tmp/nix-shell.w5vTY6/tmp6my8w735/sarif.json
+Writing SARIF report to /tmp/nix-shell.w5vTY6/tmpeiwgzh58/sarif.json
 ==
 
 ==
@@ -180,21 +271,33 @@ Writing SARIF report to /tmp/nix-shell.w5vTY6/tmp6my8w735/sarif.json
 --------------------------------------------------------------------------------
   Total Contracts: 1
   Total Libraries: 0
-  Total Interfaces: 0
-  Total Functions: 4
+  Total Interfaces: 1
+  Total Functions: 10
 
-  * Wallet
+  * IERC20
+    application code: false
+    functions:
+    - IERC20.totalSupply
+    - IERC20.balanceOf
+    - IERC20.transfer
+    - IERC20.allowance
+    - IERC20.approve
+    - IERC20.transferFrom
+    variables:
+  * TaintedFlashloan
     application code: true
     functions:
-    - Wallet.deposit
-    - Wallet.withdraw
-      * Internal call to possible targets Wallet.deposit, Wallet.withdraw, Wallet.clearBalance, Wallet.getBalance
-      * Internal call to Wallet.clearBalance
-    - Wallet.clearBalance
-    - Wallet.getBalance
+    - TaintedFlashloan.taintVariable
+      * External call to IERC20.balanceOf
+    - TaintedFlashloan.getTaintedVariable
+    - TaintedFlashloan.getAmount
+      * Internal call to TaintedFlashloan.getTaintedVariable
+    - TaintedFlashloan.sendMoney
+      * Internal call to TaintedFlashloan.getAmount
+      * External call to IERC20.transfer
     variables:
-    - balances
+    - token
+    - taintedVariable
 --------------------------------------------------------------------------------
-Done!
 ```
 </Details>
