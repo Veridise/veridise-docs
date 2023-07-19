@@ -90,6 +90,7 @@ const config = {
         routeBasePath: 'orca',
         sidebarPath: require.resolve('./sidebars.js'),
         lastVersion: 'current',
+        exclude: ['**/internal/**'],
       }
     ],
     [
