@@ -53,7 +53,7 @@ Thus, they can empty the wallet of all of its funds.
 <summary mdxType="summary">Vanguard Command and Output</summary>
 
 ```shell
-./vanguard_driver.py --detector=reentrancy reentrancy.sol
+vanguard_driver --detector=reentrancy reentrancy.sol
 ```
 
 ```txt title="Report"
@@ -104,7 +104,7 @@ In the `convert` function above, values of `x` between 1 and 4 will result in a 
 <summary mdxType="summary">Vanguard Command and Output</summary>
 
 ```shell
-./vanguard_driver.py --detector=divide-before-multiply divide_before_multiply.sol
+vanguard_driver --detector=divide-before-multiply divide_before_multiply.sol
 ```
 
 ```txt title="Report"
@@ -159,7 +159,7 @@ The `checked_send` function demonstrates the correct behavior, where the return 
 <summary mdxType="summary">Vanguard Command and Output</summary>
 
 ```shell
-./vanguard_driver.py --detector=unchecked-return unchecked.sol
+vanguard_driver --detector=unchecked-return unchecked.sol
 ```
 
 ```txt
@@ -221,7 +221,7 @@ The sender could manipulate this amount by calling `taintVariable()` after acqui
 
 ```shell
 npm install @openzeppelin/contracts
-./vanguard_driver.py --detector=flashloan flashloan.sol -I node_modules/
+vanguard_driver --detector=flashloan flashloan.sol -I node_modules/
 ```
 
 ```txt
@@ -254,7 +254,7 @@ The Debug Summarizer is used to generate a report about the construction of a gi
 
 ```sh
 npm install @openzeppelin/contracts
-./vanguard_driver.py --detector=debug-summary flashloan.sol -I node_modules/
+vanguard_driver --detector=debug-summary flashloan.sol -I node_modules/
 ```
 
 <Details>

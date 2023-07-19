@@ -14,7 +14,7 @@ it is invoked using the argument: `--detector=statGen`.
 ### Example
 
 ```sh
-./vanguard_driver.py --detector=statGen divide.circom
+vanguard_driver --detector=statGen divide.circom
 ```
 
 ```txt
@@ -36,7 +36,7 @@ It is invoked using the argument: `--detector=fnPrinter`.
 ### Example
 
 ```sh
-./vanguard_driver.py --detector=fnPrinter divide.circom
+vanguard_driver --detector=fnPrinter divide.circom
 ```
 
 <Details>
@@ -101,7 +101,7 @@ It is invoked using the argument: `--detector=irValidator`.
 ### Example
 
 ```sh
-./vanguard_driver.py --detector=fnPrinter divide.circom
+vanguard_driver --detector=fnPrinter divide.circom
 ```
 
 ```txt
