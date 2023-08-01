@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: saas-docs
+  labels:
+    app: saas-docs
+spec:
+  selector:
+    matchLabels:
+      app: saas-docs
+  template:
+    metadata:
+      labels:
+        app: saas-docs
+    spec:
+      containers:
+        - name: docs
+          # image tag will be overwritten by overlays
+          image: veridise/docs:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
