@@ -46,6 +46,7 @@ jobs:
         uses: azure/setup-kubectl@v3.1
 
       - name: Deploy
-        run: kubectl apply -k deployment/kubernetes/overlays/dev/
+        run: kubectl apply -k deployment/kubernetes/overlays/dev/ &&
+          kubectl rollout restart deployment saas-docs -n saas-docs
 
         
