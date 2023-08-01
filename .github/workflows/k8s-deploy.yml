@@ -53,6 +53,6 @@ jobs:
         uses: azure/setup-kubectl@v3.1
 
       - name: Deploy
-        uses: kubectl apply -k deployment/kubernetes/overlays/dev/
+        run: kubectl apply -k deployment/kubernetes/overlays/dev/
 
         
