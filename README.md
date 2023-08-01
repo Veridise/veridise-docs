@@ -102,5 +102,5 @@ docker run -d -p 3000:8080 veridise/docs:latest
 
 ## Deployment environments
 
-When changes are pushed to main branch, the docs changes are auto-deployed to the dev cluster.
+When changes are merged to main branch, the docs deployment is auto-updated in the dev cluster.
 The endpoint to access it is: https://docs.veridise.tools
