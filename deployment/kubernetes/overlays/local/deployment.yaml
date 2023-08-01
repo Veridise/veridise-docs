@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: saas-docs
+spec:
+  template:
+    spec:
+      containers:
+        - name: docs
+          imagePullPolicy: IfNotPresent
