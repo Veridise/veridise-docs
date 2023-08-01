@@ -3,7 +3,6 @@ on:
   push:
     branches: 
       - main
-      - sas-191-dev-deployment
 
 env: 
   IMAGE_TAG: git-latest
