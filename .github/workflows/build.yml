@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # timeout-minutes: 5
     env: 
       IMAGE_TAG: git-latest
     steps:
