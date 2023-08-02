@@ -47,5 +47,3 @@ jobs:
       - name: Deploy
         run: kubectl apply -k deployment/kubernetes/overlays/dev/ &&
           kubectl rollout restart deployment saas-docs -n saas-docs
-
-        
