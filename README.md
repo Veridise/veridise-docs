@@ -100,3 +100,7 @@ to run the docker image locally, you will need to expose port 8080 like so.
 docker run -d -p 3000:8080 veridise/docs:latest
 ```
 
+## Deployment environments
+
+When changes are merged to main branch, the docs deployment is auto-updated in the dev cluster.
+The endpoint to access it is: https://docs.veridise.tools

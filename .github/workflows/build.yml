@@ -1,12 +1,15 @@
-name: Build
+name: Test Build
 on:
   push:
-    branches: [ main ]
-  pull_request:
+    branches-ignore:    
+      - main
+    paths-ignore:
+      - "deployment/**"
+      - ".github/**"
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ["self-hosted", "kubernetes", "dev"]
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v3
@@ -18,5 +21,4 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
-
-      # TODO: deploy if pushing to main branch or some preview branch
+        
