@@ -13,6 +13,15 @@ spec:
       labels:
         app: saas-docs
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: workload
+                    operator: In
+                    values:
+                      - generic
       containers:
         - name: docs
           # image tag will be overwritten by overlays
