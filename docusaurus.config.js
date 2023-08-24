@@ -99,6 +99,7 @@ const config = {
 	// Do not index pages with routes like /orca/internal/dev-guide etc.
 	excludeRoutes: [
 	  "**/internal/*",
+	  "vanguard/*"
 	]
       }
     ]
