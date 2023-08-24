@@ -203,7 +203,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Veridise, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Veridise, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
