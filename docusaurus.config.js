@@ -147,11 +147,6 @@ const config = {
 	    docsPluginId: 'vanguard',
 	    position: 'right'
 	  },
-          {
-            href: 'https://github.com/Veridise',
-            label: 'GitHub',
-            position: 'right',
-          },
         ],
       },
       footer: {
@@ -195,10 +190,6 @@ const config = {
               {
                 label: 'Blog',
                 href: 'https://veridise.medium.com/',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/Veridise',
               },
             ],
           },
