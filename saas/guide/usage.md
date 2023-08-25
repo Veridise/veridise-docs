@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 After gaining access to SaaS, you will be able to use Veridise tools available for your organization. 
@@ -11,7 +11,10 @@ After gaining access to SaaS, you will be able to use Veridise tools available f
 A project is an associated set of source files such as (but may not always be) a github repository that a user wishes to analyze. 
 The user can upload multiple versions of her source code, and run any of the available tools with a single version as input.
 
-To create a project, click the `New Project` button and provide name for your new project.
+To create a project, click the `New Project` button and provide:
+* A name for your new project.
+* The deployment system you want to use for your source code deployment, if you have any specific choice.  This option may be configured/replaced in a following step.
+* The path to the deployment system script. This option may be configured/replaced in a following step.
 
 ![image](../screenshots/project-page.png)
 ![image](../screenshots/new-project.png)
@@ -26,8 +29,6 @@ Create a zip archive containing tour source code. When uploading your archive, y
 You may also provide an include path and/or a specs path, if available in your archive.
 An include path, is a path containing required dependencies your your source code, such as node modules.
 More information for VSpecs that may be included in specs path can be found [here](../../orca/user_guide/v/contract_initialization).
-
-**TODO: setup dedicated doc page for VSpec and link it ? **
 
 ![image](../screenshots/upload-version.png)
 
@@ -50,6 +51,12 @@ According to your selection in the previous step, you are able to select any too
 ![image](../screenshots/tool.png)
 
 Next steps include further configuration options, according to the selected tool.
+
+For example, the following image displays the common OrCa settings, which include the selection of the deployment system and path. These were initially configured when creating a project, but here we can overwrite the initial selection. 
+
+![image](../screenshots/orca-configuration.png)
+
+
 For more information on configuring any of our tools go the tool's documentation page ( [OrCa](../../orca/getting_started/running_orca_through_saas#orca-configuration) and [Vanguard](../../vanguard) )
 
 Finally, review your choices, optionally select a task name, and submit your task for execution.
