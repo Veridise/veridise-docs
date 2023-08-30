@@ -8,7 +8,9 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        TODO: description for SaaS
+        Veridise Security-as-a-Service (SaaS) is the platform that allows organizations to self-audit their smart contracts by providing instant access to Veridise security analysis tools.
+        User provide the source code of their application, and invoke the Veridise security analysis tools that audit the application and report back the discovered vulnerabilities.
+        For a quick start guide, see <a href="docs/intro">here</a>, while detailed documentation can be found <a href="/saas">here</a>
       </>
     ),
   },
@@ -17,7 +19,8 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        TODO: description for OrCa
+        OrCa is the Veridise Oracle-guided Smart-Contract fuzzing tool, which discovers bugs in DeFi applications by generating and running thousands of (pseudo-)random inputs against the target application.
+        You can find more information <a href="orca">here</a>.
       </>
     ),
   },
@@ -26,13 +29,14 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        TODO: description for Vanguard
+        Vanguard is the Veridise Smart-Contract static-analysis tool, which discovers bugs in DeFi applications and ZK-circuits by searching for well known security vulnerabilities and anti-patterns.
+        You can find more information <a href="vanguard">here</a>.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   // TODO: logos for projects
   // <Svg className={styles.featureSvg} role="img" />
 

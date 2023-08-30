@@ -4,44 +4,25 @@ sidebar_position: 1
 
 # Tutorial Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's review how you can access the **Veridise SaaS** in less than 5 minutes.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Start by visiting the [SaaS home page](https://saas.veridise.com) and sending an onboarding request (details [here](/saas/guide/on_boarding)).
+Wait until you receive a welcoming email from Veridise, then simply revisit the [SaaS home page](https://saas.veridise.com).
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### Create your project
 
-### What you'll need
+Goto the `Projects` menu, select `New Project`, and specify the details of your project.
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## Start a new self-auditing task
 
-## Generate a new site
+Select `New Task` on the menu, and perform the following:
+  - upload a new version of your project's source code, 
+  - select the Veridise tools to use for your self-audit, 
+  - provide configuration options for each tool
+  - submit you new self-auduting Task.
 
-Generate a new Docusaurus site using the **classic template**.
+## Review the results
 
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Visit the Veridise SaaS `Task Results` page, select your self-auditing task, and review the results. It is this simple!
