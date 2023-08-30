@@ -70,6 +70,16 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'vanguard',
+        path: 'vanguard',
+        routeBasePath: 'vanguard',
+        sidebarPath: require.resolve('./sidebars.js'),
+        lastVersion: 'current',
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'orca',
         path: 'orca',
         routeBasePath: 'orca',
