@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Veridise Docs',
+  title: 'Veridise Saas Documentation',
   tagline: 'Learn how to use Veridise tools',
   favicon: 'img/favicon.ico',
 
@@ -15,11 +15,6 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Veridise', // Usually your GitHub org/user name.
-  projectName: '', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -75,16 +70,6 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'vanguard',
-        path: 'vanguard',
-        routeBasePath: 'vanguard',
-        sidebarPath: require.resolve('./sidebars.js'),
-        lastVersion: 'current',
-      }
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
         id: 'orca',
         path: 'orca',
         routeBasePath: 'orca',
@@ -99,6 +84,7 @@ const config = {
 	// Do not index pages with routes like /orca/internal/dev-guide etc.
 	excludeRoutes: [
 	  "**/internal/*",
+	  "vanguard/*"
 	]
       }
     ]
@@ -107,10 +93,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+	respectPrefersColorScheme: true
+      },
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Veridise Documentation',
+        title: 'Veridise SaaS Documentation',
         logo: {
           alt: 'Veridise Logo',
           src: 'img/veridise-logo-round-blue.svg',
@@ -129,29 +118,12 @@ const config = {
             position: 'left',
             label: 'OrCa',
           },
-          {
-            // TODO: replace with dropdown when versions are available.
-            type: 'docsVersion',
-            docsPluginId: 'vanguard',
-            position: 'left',
-            label: 'Vanguard',
-          },
           // {to: '/blog', label: 'Blog', position: 'left'},
 	  {
 	    type: 'docsVersionDropdown',
 	    docsPluginId: 'orca',
 	    position: 'right'
 	  },
-	  {
-	    type: 'docsVersionDropdown',
-	    docsPluginId: 'vanguard',
-	    position: 'right'
-	  },
-          {
-            href: 'https://github.com/Veridise',
-            label: 'GitHub',
-            position: 'right',
-          },
         ],
       },
       footer: {
@@ -196,14 +168,10 @@ const config = {
                 label: 'Blog',
                 href: 'https://veridise.medium.com/',
               },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/Veridise',
-              },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Veridise, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Veridise, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
