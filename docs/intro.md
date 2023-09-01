@@ -8,8 +8,11 @@ Let's review how you can access the **Veridise SaaS** in less than 5 minutes.
 
 ## Getting Started
 
-Start by visiting the [SaaS home page](https://saas.veridise.com) and sending an onboarding request (details [here](/saas/guide/on_boarding)).
-Wait until you receive a welcoming email from Veridise, then simply revisit the [SaaS home page](https://saas.veridise.com).
+1. Follow the [On-boarding Guide](../saas/guide/on_boarding) to set up an
+   account on the [SaaS](https://saas.veridise.com).
+2. Wait until you receive a welcoming email from Veridise.
+3. Click on the link in the welcome email to confirm the creation of your
+   account, and then revisit the [SaaS home page](https://saas.veridise.com).
 
 ### Create your project
 
