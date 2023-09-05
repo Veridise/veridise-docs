@@ -37,5 +37,6 @@ This section discusses requirements and restrictions on Hardhat projects that ma
 This section lists known issues for fuzzing Hardhat projects with OrCa.
 Workarounds are also listed wherever applicable.
 
-1. The `fsevents` node library required by Hardhat projects is not compatible with Linux systems.
-    * TODO include workaround here
+1. The `FSEvents` node library required by Hardhat projects on MacOS is not compatible with Linux systems. If your Linux system is attempting to install `FSEvents` during `npm ci`, perform the following steps to fix the issue.
+    * Delete `package-lock.json` from your project directory.
+    * Remove the `FSEvents` dependency from `package.json`.
