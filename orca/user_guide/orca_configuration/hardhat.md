@@ -4,18 +4,15 @@ This page outlines how to fuzz Hardhat projects using OrCa.
 
 ## The Basics
 
-Before attempting to fuzz your Hardhat project, please ensure that your code compiles and can be deployed without error.
+Before attempting to fuzz your Hardhat project using OrCa, please ensure that your code compiles and can be deployed without error.
+To do so, perform the following commands on your Hardhat project locally and ensure that they pass.
 
-Follow these steps in order to fuzz your Hardhat project locally. When using OrCa through our SaaS platform, these steps will be performed automatically when the "Hardhat" option is chosen.
+1. Run `npm ci` in the project directory, ensuring that the `node_modules` folder is created with all required dependencies.
+2. Run `npx hardhat compile`
+3. Run `npx hardhat node`
+4. Run `npx hardhat run --network localhost <path_to_deploy_script.js>`
 
-1. Run `npm install hardhat` in the project directory, ensuring that the `node_modules` folder is created with all required dependencies.
-2. Add the following options to the OrCa `config.json` file:
-    * Set `"deployment_system"` to `"hardhat"`
-    * Set `"include_path"` to `"node_modules"`
-    * Set `"deployment_script_path"` to the path to your deploy script, e.g. `"scripts/deploy.js"`
-    * Set `"src_path"` to the path to your solidity source files, e.g. `"contracts"`
-3. Run `python3.9 orca.py <path_to_config.json>
-
+If the above commands all pass, your project is ready to be fuzzed with OrCa.
 
 ## Additional Requirements
 
