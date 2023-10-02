@@ -6,7 +6,7 @@ slug: backend-changelog
 ---
 # Software Changes
 
-## v1.0.0-rc1 - 2023-09-26
+## v1.0.0-rc2 - 2023-10-02
 ### Added
 - About endpoint for admin users
 - Add `deployment_folder_path` configuration option on Project and OrCa task
@@ -29,7 +29,9 @@ slug: backend-changelog
 - Use ssh instead of https to add release_helpers submodule
 
 ### Fixed
+- Create k8s namespace for user specific organization during onboarding.
 - Fix OrCa Foundry issue
 - Fix issue where the backend only provided the last of multiple version archive specs to OrCa
 - Performance improvement for admin/tasks endpoint
+- Send notification email after user onboarding.
 
