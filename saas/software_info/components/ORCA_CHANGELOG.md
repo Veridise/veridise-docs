@@ -31,14 +31,14 @@ slug: orca-changelog
 ### Changed
 - Added a return type to rand_int().
 - Added more detailed types in src/utils/deployment_transaction_handler.py.
-- Changed EthTransaction where cid and caddr are changed to Optional types </br> because there are instances where both fields are instantiated as None.
+- Changed EthTransaction where cid and caddr are changed to Optional types because there are instances where both fields are instantiated as None.
 - Changed files to conform to isort specifications.
 - Changed spacing in the all of the .py files in src/utils.
-- Fixed a type mismatch in _get_eth_values() in deployment_transaction_handler.py </br> where the types_list was initialized as a list but its value was updated to a dict in a loop.
-- Fixed the type mismatch in rand_char() in random.py where choose_rand() was taking </br> a string as an input instead of a list.
+- Fixed a type mismatch in _get_eth_values() in deployment_transaction_handler.py where the types_list was initialized as a list but its value was updated to a dict in a loop.
+- Fixed the type mismatch in rand_char() in random.py where choose_rand() was taking a string as an input instead of a list.
 - Make deployment script path relative to the project's path
 - OrCa is now more flexible regarding paths
-- Renamed variable names in choose_rand() and shuffle() in random.py </br> from "l" to "list" because of ambiguous naming.
+- Renamed variable names in choose_rand() and shuffle() in random.py from "l" to "list" because of ambiguous naming.
 - Slightly modified the counterexample(s) printout
 - Style updates on src/blockchains/*.py.
 - Style updates on src/corpus/*.py.
