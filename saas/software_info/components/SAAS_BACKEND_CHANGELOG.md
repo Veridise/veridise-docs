@@ -6,7 +6,7 @@ slug: backend-changelog
 ---
 # Software Changes
 
-## v1.0.0-rc2 - 2023-10-02
+## v1.0.0-rc3 - 2023-10-02
 ### Added
 - About endpoint for admin users
 - Add `deployment_folder_path` configuration option on Project and OrCa task
