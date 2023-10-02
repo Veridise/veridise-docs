@@ -4,5 +4,6 @@ kind: Kustomization
 namespace: saas-docs
 
 resources:
+  - configuration.yaml
   - service.yaml
   - deployment.yaml
