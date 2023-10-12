@@ -5,10 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
-## v1.0.0-rc4 - 2023-10-11
+## v1.0.0-rc5 - 2023-10-12
 ### Changed
 - Component SaaS Backend upgraded to version *v1.0.0-rc3*.
-- Component SaaS Frontend upgraded to version *v1.0.0-rc1*.
+- Component SaaS Frontend upgraded to version *v1.0.0-rc2*.
 - Component OrCa upgraded to version *v1.0.0-rc2*.
 - Component Vanguard upgraded to version *v0.1.0-rc1*.
 

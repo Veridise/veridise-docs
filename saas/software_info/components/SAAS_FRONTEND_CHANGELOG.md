@@ -6,7 +6,7 @@ slug: frontend-changelog
 ---
 # Software Changes
 
-## v1.0.0-rc1 - 2023-10-02
+## v1.0.0-rc2 - 2023-10-12
 ### Added
 - Ability to select all text in a task log
 - About page
@@ -21,6 +21,7 @@ slug: frontend-changelog
 - Fork parameters in task summary
 - Foundry deployments are now available in OrCa
 - Line numbers and wrapping in specification previews in the Task Details page
+- New task status badge for tools that can prove absence of issues
 - Pagination in task results table
 - Release workflows
 - Task debug toggle for support users
