@@ -34,6 +34,16 @@ const FeatureList = [
       </>
     ),
   },
+  {
+    title: 'Picus',
+    // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        Picus is a Veridise tool to prove that a ZK-circuit is not underconstrained, or find a counterexample if it is underconstrained.
+        You can find more information <a href="picus">here</a>.
+      </>
+    ),
+  },
 ];
 
 function Feature({ Svg, title, description }) {
