@@ -80,6 +80,16 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'zkvanguard',
+        path: 'zkvanguard',
+        routeBasePath: 'zkvanguard',
+        sidebarPath: require.resolve('./sidebars.js'),
+        lastVersion: 'current',
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'orca',
         path: 'orca',
         routeBasePath: 'orca',
@@ -128,12 +138,36 @@ const config = {
             position: 'left',
             label: 'OrCa',
           },
+	  {
+	    // TODO: replace with dropdown when versions are available.
+	    type: 'docsVersion',
+	    docsPluginId: 'vanguard',
+	    position: 'left',
+	    label: 'Vanguard',
+	  },
+	  {
+	    // TODO: replace with dropdown when versions are available.
+	    type: 'docsVersion',
+	    docsPluginId: 'zkvanguard',
+	    position: 'left',
+	    label: 'ZK Vanguard',
+	  },
           // {to: '/blog', label: 'Blog', position: 'left'},
 	  {
 	    type: 'docsVersionDropdown',
 	    docsPluginId: 'orca',
 	    position: 'right'
 	  },
+	  {
+	    type: 'docsVersionDropdown',
+	    docsPluginId: 'vanguard',
+	    position: 'right'
+	  },
+	  {
+	    type: 'docsVersionDropdown',
+	    docsPluginId: 'zkvanguard',
+	    position: 'right'
+	  }
         ],
       },
       footer: {
