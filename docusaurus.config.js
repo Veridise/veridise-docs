@@ -99,6 +99,16 @@ const config = {
       }
     ],
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'picus',
+        path: 'picus',
+        routeBasePath: 'picus',
+        sidebarPath: require.resolve('./sidebars.js'),
+        lastVersion: 'current',
+      }
+    ],
+    [
       require.resolve('docusaurus-lunr-search'),
       {
 	// Do not index pages with routes like /orca/internal/dev-guide etc.
