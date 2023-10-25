@@ -85,6 +85,7 @@ const config = {
         routeBasePath: 'zkvanguard',
         sidebarPath: require.resolve('./sidebars.js'),
         lastVersion: 'current',
+        sidebarCollapsed: false,
       }
     ],
     [
