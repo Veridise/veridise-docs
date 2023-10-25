@@ -9,7 +9,7 @@ description: Finds under-constrained input signals.
 ## Summary and Usage
 
 The Under-constrained Input (UCI) detector finds under-constrained input vulnerabilities in ZK circuit code.
-The UCI detector looks to see if an input into a component is used in any constraint---if not, then a malicious actor may be able to create new valid proofs by taking an existing proof and simply changing changing a public input that is under-constrained.
+The UCI detector looks to see if an input into a component is used in any constraint---if not, then a malicious actor may be able to create new valid proofs by taking an existing proof and simply changing a public input that is unconstrained.
 
 ### SaaS Usage
 
