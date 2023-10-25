@@ -13,7 +13,7 @@ This may indicate some computation or safety checks are being erroneously omitte
 
 ### SaaS Usage
 
-The NDW detector is invoked by selecting "Unused subcomponents" (`unused-subcmps`) in the Detector selection during the tool configuration step.
+The USC detector is invoked by selecting "Unused subcomponents" (`unused-subcmps`) in the Detector selection during the tool configuration step.
 
 ### Command-line Usage
 
