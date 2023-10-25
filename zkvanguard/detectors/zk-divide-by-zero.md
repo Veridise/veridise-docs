@@ -17,7 +17,7 @@ The NDW detector is invoked by selecting "Divide by zero" (`zk-divide-by-zero`) 
 
 ### Command-line Usage
 
-The NDW detector is invoked with the argument: `--detector zk-divide-by-zero`.
+The DBZ detector is invoked with the argument: `--detector zk-divide-by-zero`.
 
 ## Explanation and Example
 
