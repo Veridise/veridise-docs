@@ -48,5 +48,5 @@ jobs:
     needs: docker-build
     uses: ./.github/workflows/k8s-deploy.yml
     with:
-        environment: ${{ needs.vars.outputs.deploy_env }}
+        environment: ${{ needs.docker-build.outputs.deploy_env }}
      
