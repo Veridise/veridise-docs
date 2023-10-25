@@ -35,13 +35,14 @@ template UCI_Bug() {
 component main = UCI_Bug();
 ```
 
-In this example, `outp` is assigned to and constrained by input `inp1`, but is not constrained by the input `a`, which is flagged as a UCI bug.
+In this example, `outp` is assigned to and constrained by input `inp1`.
+However, no constraints are placed on `inp2`, which is flagged as a UCI bug.
 
 <details>
 <summary>ZK Vanguard Command-line Example</summary>
 
 ```shell title=Command
-vanguard_driver --detector=uc-outputs uco_bug.circom
+vanguard_driver --detector uc-inputs uci_example.circom
 ```
 
 </details>

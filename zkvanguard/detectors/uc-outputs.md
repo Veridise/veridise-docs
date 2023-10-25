@@ -9,7 +9,7 @@ description: Finds under-constrained output signals.
 ## Summary and Usage
 
 The Under-Constrained Output (UCO) detector finds under-constrained output vulnerabilities in ZK circuit code.
-The UCO detector looks to see if a used output from a component is constrained either by an input value or a single constant value---if neither is true, then the output is not constrained and can result in a vulnerability, as a malicious actor may be able to create valid proofs for bogus statements when outputs are under-constrained.
+The UCO detector looks to see if a used output from a component is constrained either by an input value or a single constant value; if neither is true, then the output is not constrained and can result in a vulnerability, as a malicious actor may be able to create valid proofs for bogus statements when outputs are under-constrained.
 
 ### SaaS Usage
 

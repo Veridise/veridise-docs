@@ -42,8 +42,7 @@ as a Graphviz file.
 The Graphviz file can be rendered into an image or PDF using the `DOT` rendering tool, which is documented [on the Graphviz website](https://graphviz.org/doc/info/command.html).
 
 ```shell title="Example DOT rendering command"
-dot -Tpdf output/artifacts/constraint-dataflow-graph.dot > graph.pdf
-open graph.pdf
+dot -Tsvg output/artifacts/constraint-dataflow-graph.dot > graph.svg
 ```
 
 
