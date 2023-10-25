@@ -15,6 +15,13 @@ A CDG graph is a powerful debugging tool that allows auditors to understand how 
 
 ## Usage Instructions
 
+:::tip
+
+The larger and more complex a circuit, the larger and more complex the CDG will become.
+We recommend using the CDG generator on circuits with small numbers of signals and subcomponents, otherwise the graph will soon become difficult to navigate!
+
+:::
+
 ### SaaS Usage
 When using the CDG generator on SaaS, add "Dump CDG" (`dump-cdg`) to the Detector selection during the tool configuration step.
 
