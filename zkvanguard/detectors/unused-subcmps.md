@@ -17,7 +17,7 @@ The USC detector is invoked by selecting "Unused subcomponents" (`unused-subcmps
 
 ### Command-line Usage
 
-The NDW detector is invoked with the argument: `--detector unused-subcmps`.
+The USC detector is invoked with the argument: `--detector unused-subcmps`.
 
 ## Example and Explanation
 
