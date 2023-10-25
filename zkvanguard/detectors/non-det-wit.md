@@ -7,7 +7,8 @@ sidebar_position: 2
 
 ## Summary and Usage
 
-The Non-Deterministic Dataflow (NDD) detector warns the user about non-deterministic dataflow in their ZK circuit, which occurs when dataflow is dependent on conditional branches. Conditional assignments are difficult to properly constrain and likely to lead to unconstrained values, which can lead to significant security risks as unconstrained values could allow for the construction of bogus proofs.
+The Non-Deterministic Witness (NDW) detector warns the user about non-deterministic witness code in their ZK circuit, which occurs when dataflow is dependent on conditional branches or conditional assignments.
+Conditional assignments are difficult to properly constrain and likely to lead to unconstrained values, which can lead to significant security risks as unconstrained values could allow for the construction of bogus proofs.
 The NDD detector is invoked with the argument: `--detector non-det-wit`.
 
 ## Explanation and Example
