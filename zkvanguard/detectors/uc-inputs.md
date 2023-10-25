@@ -70,6 +70,6 @@ Running detector: uc-inputs
 While attackers may be able to exploit under-constrained inputs, some proof systems introduce a "magic constraint"
 to automatically constrain otherwise unconstrained inputs (see [this discussion on Groth16 malleability](https://geometry.xyz/notebook/groth16-malleability) for a more in-depth discussion).
 These magic constraints prevent attackers from manipulating public, not-explicitly-constrained inputs to create new valid proofs.
-So, the potential severity of an under-constrained input bug is lower than other bugs found by ZK Vanguard, but it is still good to be aware
+So, the potential severity of an unconstrained input bug is lower than other bugs found by ZK Vanguard, but it is still good to be aware
 of potential vulnerabilities that may arise when building circuits for proof systems that may or may not introduce such constraints automatically
 (which can be difficult to assertain).
