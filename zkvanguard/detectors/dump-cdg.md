@@ -1,18 +1,19 @@
 ---
 sidebar_position: 1
 title: dump-cdg
+description: Generates a circuit's Constraint-Dataflow Graph (CDG).
 ---
 
 # Constraint-Dataflow Graph Generator (`dump-cdg`)
 
-## Summary and Usage
+## Summary
+
 The Constraint-Dataflow Graph Generator is not a bug detector, but rather an analysis pass that generates Constraint-Dataflow Graph (CDG) of a ZK circuit.
 The CDG generator creates a [Graphviz](https://graphviz.org/) graph that shows how data flows through the circuit and how different signals are connected through constraints.
 The CDG graph also displays other structural information about a circuit, such as how subcomponent inputs and outputs are connected within a component and what signals are dependent on conditional statements.
 A CDG graph is a powerful debugging tool that allows auditors to understand how signals are (or are not) connected to one another and find discrepancies that lead to major vulnerabilities.
 
 ## Usage Instructions
-
 
 ### SaaS Usage
 When using the CDG generator on SaaS, add "Dump CDG" (`dump-cdg`) to the Detector selection during the tool configuration step.

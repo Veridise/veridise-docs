@@ -1,17 +1,25 @@
 ---
 sidebar_position: 4
 title: uc-outputs
+description: Finds under-constrained output signals.
 ---
 
-## Under-Constrained Outputs (`uc-outputs`)
+# Under-Constrained Outputs (`uc-outputs`)
 
-### Summary and Usage
+## Summary and Usage
 
 The Under-Constrained Output (UCO) detector finds under-constrained output vulnerabilities in ZK circuit code.
-The UCO detector looks to see if a used output from a component is constrained either by an input value or a single constant value---if neither is true, then the output is not constrained and can result in a vulnerability, as a malicious actor may be able to create valid proofs for bogus statements when outputs are unconstrained.
-The UCO detector can be invoked when running ZK Vanguard on the command-line with the argument `--detector uc-outputs` or by adding "Under-constrained outputs" (`uc-outputs`) to the Detectors selection on ZK Vanguard's Configuration Step on Veridise's SaaS platform.
+The UCO detector looks to see if a used output from a component is constrained either by an input value or a single constant value---if neither is true, then the output is not constrained and can result in a vulnerability, as a malicious actor may be able to create valid proofs for bogus statements when outputs are under-constrained.
 
-### Example and Explanation
+### SaaS Usage
+
+The NDW detector is invoked by selecting "Under-constrained outputs" (`uc-outputs`) in the Detector selection during the tool configuration step.
+
+### Command-line Usage
+
+The NDW detector is invoked with the argument: `--detector uc-outputs`.
+
+## Example and Explanation
 
 ```circom title="uco_example.circom" showLineNumbers
 pragma circom 2.0.0;
@@ -32,13 +40,18 @@ The constraint `outp * (outp - 1) === 0` may be satisfied by the assignment `out
 attacker to forge arbtrary proofs of the form `{inp = <any value>, outp = <0 or 1>}`.
 
 <details>
-<summary>Vanguard Command and Output</summary>
+<summary>ZK Vanguard Command-line Example</summary>
 
 ```shell title=Shell Command
 vanguard_driver --detector uc-outputs uco_example.circom
 ```
 
-```txt title=Output
+</details>
+
+<details open>
+<summary>ZK Vanguard Output</summary>
+
+```txt
 ----Preprocessing sources----
 Running circom...
 Done running circom
