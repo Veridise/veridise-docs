@@ -4,7 +4,7 @@ title: uc-inputs
 description: Finds under-constrained input signals.
 ---
 
-# Under-Constrained Inputs (`uc-inputs`)
+# Unconstrained Inputs (`uc-inputs`)
 
 ## Summary and Usage
 
