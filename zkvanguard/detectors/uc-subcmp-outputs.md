@@ -1,13 +1,14 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
+title: uc-subcmp-outputs
 ---
 
-## Unconstrained Subcomponent Output (`uc-subcomp`)
+## Unconstrained Subcomponent Output (`uc-subcmp-outputs`)
 
 ### Summary and Usage
 The Unconstrained Component Output detector examines subcomponents used by ZK circuit components to determine if any outputs are unused or used but not referenced in any of the containing component’s constraints.
 A malicious actor could exploit these missing constraints to create valid proofs for unintended statements and incur serious consequences.
-It is invoked using the argument: `--detector=uc-subcomp`.
+It is invoked using the argument: `--detector=uc-subcmp-outputs`.
 
 ### Example and Explanation
 

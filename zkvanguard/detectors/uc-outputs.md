@@ -1,5 +1,6 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
+title: uc-outputs
 ---
 
 ## Under-Constrained Outputs (`uc-outputs`)
@@ -12,7 +13,7 @@ The UCO detector can be invoked when running ZK Vanguard on the command-line wit
 
 ### Example and Explanation
 
-```circom title="uco_bug.circom"
+```circom title="uco_example.circom" showLineNumbers
 pragma circom 2.0.0;
 
 template LowestBitIsOne() {
@@ -34,7 +35,7 @@ attacker to forge arbtrary proofs of the form `{inp = <any value>, outp = <0 or 
 <summary>Vanguard Command and Output</summary>
 
 ```shell title=Shell Command
-vanguard_driver --detector=uc-outputs uco_bug.circom
+vanguard_driver --detector uc-outputs uco_example.circom
 ```
 
 ```txt title=Output
@@ -46,7 +47,7 @@ Running detector: uc-outputs
 ============================================================================
  Vanguard's unconstrained output signal detector found the following issue:
 ============================================================================
-[CRITICAL] In template LowestBitIsOne in uco_bug.circom:3, Vanguard found an output signal that is unconstrained:
+[CRITICAL] In template LowestBitIsOne in uco_example.circom:3, Vanguard found an output signal that is unconstrained:
   * Signal outp
 ```
 

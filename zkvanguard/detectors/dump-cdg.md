@@ -13,23 +13,14 @@ Such discrepancies can result in significant security risks, as malicious actors
 
 ### Usage Instructions
 
-#### Command-line Usage
-The CDG generator is invoked on the command-line with the argument `--detector dump-cdg -o <desired output directory>`.
-The CDG generator will then create a file `<desired output directory>/artifacts/constraint-dataflow-graph.dot`, which contains the CDG
-as a GraphViz file
-
-#### SaaS Usage
-When using the CDG generator on SaaS, add "Dump CDG" (`dump-cdg`).
-
-## Example Usage
-
-```circom title="cdg_example.circom"
+```circom title="dump_cdg_example.circom" showLineNumbers
 pragma circom 2.0.0;
 
 template Increment() {
   signal input a;
   signal input b;
   signal output out;
+
   out <-- a + 1;
   out === b + 1;
 }
@@ -37,9 +28,27 @@ template Increment() {
 component main = Increment();
 ```
 
-In this example, out is assigned `a + 1`, but is constrained on `b + 1`.
-This means that out is dataflow dependent on input `a` but constraint dependent on input `b`.
-This discrepancy in dataflow and constraint dependencies means there is a mismatch in the overall dataflow and constraint graphs in the circuit, which likely deviates from the developer’s intentions.
+In this example, output signal `out` is assigned `a + 1`, but is constrained on `b + 1`.
+This means that `out` is dataflow dependent on input `a` but constraint dependent on input `b`.
+In the CDG, we should therefore see a constraint signal
+
+#### Command-line Usage
+The CDG generator is invoked on the command-line with the argument `--detector dump-cdg -o <desired output directory>`.
+The CDG generator will then create a file `<desired output directory>/artifacts/constraint-dataflow-graph.dot`, which contains the CDG
+as a GraphViz file
+
+#### SaaS Usage
+When using the CDG generator on SaaS, add "Dump CDG" (`dump-cdg`) to the Detector selection during the tool configuration step:
+
+![image](../screenshots/dump-cdg-selection.png)
+
+![image](../screenshots/dump-cdg-task-complete.png)
+
+![image](../screenshots/constraint-dataflow-graph.svg)
+
+## Example Usage
+
+
 
 <details>
 <summary>ZK Vanguard Command-line and Output</summary>

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 title: zk-divide-by-zero
 ---
 
@@ -9,7 +9,7 @@ title: zk-divide-by-zero
 
 The Divide By Zero (DBZ) detector is used to identify potential divide-by-zero errors in ZK circuits.
 Divide-by-zero errors can lead to significant security risks, as malicious actors may be able to create valid proofs for bogus statements.
-The DBZ detector is invoked by providing Vanguard with the argument: `--detector=zk-divide-by-zero`.
+The DBZ detector is invoked by providing Vanguard with the argument: `--detector zk-divide-by-zero`.
 
 ## Explanation and Example
 
