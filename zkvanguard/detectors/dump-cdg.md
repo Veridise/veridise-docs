@@ -8,7 +8,7 @@ description: Generates a circuit's Constraint-Dataflow Graph (CDG).
 
 ## Summary
 
-The Constraint-Dataflow Graph Generator is not a bug detector, but rather an analysis pass that generates Constraint-Dataflow Graph (CDG) of a ZK circuit.
+The Constraint-Dataflow Graph Generator is not a bug detector, but rather an analysis pass that generates the Constraint-Dataflow Graph (CDG) of a ZK circuit.
 The CDG generator creates a [Graphviz](https://graphviz.org/) graph that shows how data flows through the circuit and how different signals are connected through constraints.
 The CDG graph also displays other structural information about a circuit, such as how subcomponent inputs and outputs are connected within a component and what signals are dependent on conditional statements.
 A CDG graph is a powerful debugging tool that allows auditors to understand how signals are (or are not) connected to one another and find discrepancies that lead to major vulnerabilities.
