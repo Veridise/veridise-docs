@@ -1,4 +1,4 @@
-name: Deploy dev
+name: Build image and deploy
 on:
   push:
     branches: 
@@ -15,6 +15,8 @@ jobs:
   docker-build:
     runs-on: ["self-hosted", "kubernetes", "dev"]
     timeout-minutes: 30
+    outputs:
+        deploy_env: ${{ env.DEPLOY_ENV }}
     
     steps:
       - uses: actions/checkout@v3
@@ -46,5 +48,5 @@ jobs:
     needs: docker-build
     uses: ./.github/workflows/k8s-deploy.yml
     with:
-        environment: ${{ env.DEPLOY_ENV }}
+        environment: ${{ needs.vars.outputs.deploy_env }}
      
