@@ -13,7 +13,7 @@ The UCI detector looks to see if an input into a component is used in any constr
 
 ### SaaS Usage
 
-The NDW detector is invoked by selecting "Under-constrained inputs" (`uc-inputs`) in the Detector selection during the tool configuration step.
+The UCI detector is invoked by selecting "Under-constrained inputs" (`uc-inputs`) in the Detector selection during the tool configuration step.
 
 ### Command-line Usage
 
