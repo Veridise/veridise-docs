@@ -163,6 +163,13 @@ const config = {
 	    position: 'left',
 	    label: 'ZK Vanguard',
 	  },
+	  {
+	    // TODO: replace with dropdown when versions are available.
+	    type: 'docsVersion',
+	    docsPluginId: 'picus',
+	    position: 'left',
+	    label: 'Picus',
+	  },
           // {to: '/blog', label: 'Blog', position: 'left'},
 	  {
 	    type: 'docsVersionDropdown',
@@ -177,6 +184,11 @@ const config = {
 	  {
 	    type: 'docsVersionDropdown',
 	    docsPluginId: 'zkvanguard',
+	    position: 'right'
+	  },
+	  {
+	    type: 'docsVersionDropdown',
+	    docsPluginId: 'picus',
 	    position: 'right'
 	  }
         ],
