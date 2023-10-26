@@ -13,7 +13,7 @@ The UCO detector looks to see if a used output from a component is constrained e
 
 ### SaaS Usage
 
-The NDW detector is invoked by selecting "Under-constrained outputs" (`uc-outputs`) in the Detector selection during the tool configuration step.
+The UCO detector is invoked by selecting "Under-constrained outputs" (`uc-outputs`) in the Detector selection during the tool configuration step.
 
 ### Command-line Usage
 
