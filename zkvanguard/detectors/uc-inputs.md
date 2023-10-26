@@ -15,9 +15,9 @@ The UCI detector looks to see if an input into a component is used in any constr
 
 The UCI detector is invoked by selecting "Under-constrained inputs" (`uc-inputs`) in the Detector selection during the tool configuration step.
 
-### Command-line Usage
+<!-- ### Command-line Usage
 
-The UCI detector is invoked with the argument: `--detector uc-inputs`.
+The UCI detector is invoked with the argument: `--detector uc-inputs`. -->
 
 ## Example and Explanation
 
@@ -38,14 +38,14 @@ component main = UCI_Bug();
 In this example, `outp` is assigned to and constrained by input `inp1`.
 However, no constraints are placed on `inp2`, which is flagged as a UCI bug.
 
-<details>
+<!-- <details>
 <summary>ZK Vanguard Command-line Example</summary>
 
 ```shell title=Command
 vanguard_driver --detector uc-inputs uci_example.circom
 ```
 
-</details>
+</details> -->
 
 <details open>
 <summary>ZK Vanguard Output</summary>

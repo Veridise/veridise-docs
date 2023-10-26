@@ -15,9 +15,9 @@ Conditional assignments are difficult to properly constrain and likely to lead t
 
 The NDW detector is invoked by selecting "Nondeterministic dataflow" (`non-det-wit`) in the Detector selection during the tool configuration step.
 
-### Command-line Usage
+<!-- ### Command-line Usage
 
-The NDW detector is invoked with the argument: `--detector non-det-wit`.
+The NDW detector is invoked with the argument: `--detector non-det-wit`. -->
 
 ## Example and Explanation
 
@@ -41,14 +41,14 @@ So, if `in = 0`, `out = 0` is expected by the developer, but the assignment of `
 
 ## Usage Example
 
-<details>
+<!-- <details>
 <summary>ZK Vanguard Command-line Example</summary>
 
 ```shell title=Command
 vanguard_driver --detector non-det-wit nondet_example.circom
 ```
 
-</details>
+</details> -->
 
 <details open>
 <summary>ZK Vanguard Output</summary>

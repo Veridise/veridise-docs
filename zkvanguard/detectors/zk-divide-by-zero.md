@@ -15,9 +15,9 @@ Divide-by-zero errors can lead to significant security risks, as malicious actor
 
 The NDW detector is invoked by selecting "Divide by zero" (`zk-divide-by-zero`) in the Detector selection during the tool configuration step.
 
-### Command-line Usage
+<!-- ### Command-line Usage
 
-The DBZ detector is invoked with the argument: `--detector zk-divide-by-zero`.
+The DBZ detector is invoked with the argument: `--detector zk-divide-by-zero`. -->
 
 ## Explanation and Example
 
@@ -39,7 +39,7 @@ component main = Divide();
 
 In this example, the constraints of the circuit can be satisfied by the following assignment: `in1 = 0, in2 = 0, out = 5`. However, this clearly deviates from the developer’s intention, which was for `out` to be set to `in1 / in2`.
 
-<details>
+<!-- <details>
 <summary>ZK Vanguard Command-line Example</summary>
 
 ```shell
@@ -47,7 +47,7 @@ vanguard_driver --detector zk-divide-by-zero divide.circom
 ```
 
 
-</details>
+</details> -->
 
 <details open>
 <summary>ZK Vanguard Output</summary>

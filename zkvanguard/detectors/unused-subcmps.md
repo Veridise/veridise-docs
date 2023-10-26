@@ -15,9 +15,9 @@ This may indicate some computation or safety checks are being erroneously omitte
 
 The USC detector is invoked by selecting "Unused subcomponents" (`unused-subcmps`) in the Detector selection during the tool configuration step.
 
-### Command-line Usage
+<!-- ### Command-line Usage
 
-The USC detector is invoked with the argument: `--detector unused-subcmps`.
+The USC detector is invoked with the argument: `--detector unused-subcmps`. -->
 
 ## Example and Explanation
 
@@ -86,14 +86,14 @@ In this example, the developer intended for the `MultiDiff` component to return 
 The developer means to use an array of `LessThan` subcomponent to test if `inp_small[i]` is less than `inp_large[i]` for all i in range `0..N`, but never actually initializes the subcomponent `lt[0]` and never checks the condition for `i = 0`.
 A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `inp_small[0] < inp_large[0]`, the developer can expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`).
 
-<details>
+<!-- <details>
 <summary>ZK Vanguard Command-line Example</summary>
 
 ```shell title=Command
 vanguard_driver --detector uc-subcmp-outputs uc_subcmp_output_bug.circom
 ```
 
-</details>
+</details> -->
 
 <details open>
 <summary>ZK Vanguard Output</summary>

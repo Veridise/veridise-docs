@@ -1,10 +1,10 @@
 ---
 sidebar_position: 5
 title: uc-subcmp-outputs
-description: Finds under-constrained subcomponent output signals.
+description: Finds unconstrained subcomponent output signals.
 ---
 
-# Under-Constrained Subcomponent Output (`uc-subcmp-outputs`)
+# Unconstrained Subcomponent Output (`uc-subcmp-outputs`)
 
 ## Summary and Usage
 
@@ -15,9 +15,9 @@ A malicious actor could exploit these missing constraints to create valid proofs
 
 The USCO detector is invoked by selecting "Under-constrained subcomponent outputs" (`uc-subcmp-outputs`) in the Detector selection during the tool configuration step.
 
-### Command-line Usage
+<!-- ### Command-line Usage
 
-The USCO detector is invoked with the argument: `--detector uc-subcmp-outputs`.
+The USCO detector is invoked with the argument: `--detector uc-subcmp-outputs`. -->
 
 ## Example and Explanation
 
@@ -84,14 +84,14 @@ The developer uses a subcomponent `LessThan` to test if `n` is less than `m`, bu
 So, the output could be 1 or 0, meaning that n may or may not be less than m.
 A value assignment of `n = 100`, `m = 1`, `o = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `n < m`, the developer can expect `o < n` and `o < m`).
 
-<details>
+<!-- <details>
 <summary>ZK Vanguard Command-line Example</summary>
 
 ```shell title=Command
 vanguard_driver --detector uc-subcmp-outputs uc_subcmp_output_bug.circom
 ```
 
-</details>
+</details> -->
 
 <details open>
 <summary>ZK Vanguard Output</summary>

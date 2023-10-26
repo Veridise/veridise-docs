@@ -42,7 +42,7 @@ After running the task, the SaaS platform will automatically convert ZK Vanguard
 </details>
 
 
-### Command-line Usage
+<!-- ### Command-line Usage
 The CDG generator is invoked on the command-line with the argument `--detector dump-cdg -o <desired output directory>`.
 The CDG generator will then create a file `<desired output directory>/artifacts/constraint-dataflow-graph.dot`, which contains the CDG
 as a Graphviz file.
@@ -50,7 +50,7 @@ The Graphviz file can be rendered into an image or PDF using the `DOT` rendering
 
 ```shell title="Example DOT rendering command"
 dot -Tsvg output/artifacts/constraint-dataflow-graph.dot > graph.svg
-```
+``` -->
 
 
 ## Example Usage
@@ -76,7 +76,7 @@ This means that `out` is dataflow dependent on input `a` but constraint dependen
 In the CDG, we should therefore see an undirected constraint edge between `out` and `b`, but a dataflow edge from `a` to `out`.
 
 
-<details>
+<!-- <details>
 <summary>ZK Vanguard Command-line and Log Output</summary>
 
 ```shell title=Command
@@ -95,7 +95,7 @@ Running detector: dump-cdg
 
 ```
 
-</details>
+</details> -->
 
 
 <details open>
