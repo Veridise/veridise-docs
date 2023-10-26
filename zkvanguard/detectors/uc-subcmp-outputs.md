@@ -8,7 +8,7 @@ description: Finds under-constrained subcomponent output signals.
 
 ## Summary and Usage
 
-The Under-Constrained Component Output (USCO) detector examines subcomponents used by ZK circuit components to determine if any outputs are unused or used but not referenced in any of the containing component’s constraints.
+The Unconstrained Component Output (USCO) detector examines subcomponents used by ZK circuit components to determine if any outputs are unused or used but not referenced in any of the containing component’s constraints.
 A malicious actor could exploit these missing constraints to create valid proofs for unintended statements and incur serious consequences.
 
 ### SaaS Usage
