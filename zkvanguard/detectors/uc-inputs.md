@@ -17,7 +17,7 @@ The UCI detector is invoked by selecting "Under-constrained inputs" (`uc-inputs`
 
 ### Command-line Usage
 
-The NDW detector is invoked with the argument: `--detector uc-inputs`.
+The UCI detector is invoked with the argument: `--detector uc-inputs`.
 
 ## Example and Explanation
 
