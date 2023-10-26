@@ -13,7 +13,7 @@ A malicious actor could exploit these missing constraints to create valid proofs
 
 ### SaaS Usage
 
-The NDW detector is invoked by selecting "Under-constrained subcomponent outputs" (`uc-subcmp-outputs`) in the Detector selection during the tool configuration step.
+The USCO detector is invoked by selecting "Under-constrained subcomponent outputs" (`uc-subcmp-outputs`) in the Detector selection during the tool configuration step.
 
 ### Command-line Usage
 
