@@ -6,7 +6,7 @@ slug: backend-changelog
 ---
 # Software Changes
 
-## v1.1.0-rc1 - 2023-10-26
+## v1.1.0-rc2 - 2023-10-26
 ### Added
 - Allow upload task artifact via callback from task execution: Update db and upload to s3
 - Access control on language and blockchain
