@@ -17,7 +17,7 @@ The UCO detector is invoked by selecting "Under-constrained outputs" (`uc-output
 
 ### Command-line Usage
 
-The NDW detector is invoked with the argument: `--detector uc-outputs`.
+The UCO detector is invoked with the argument: `--detector uc-outputs`.
 
 ## Example and Explanation
 
