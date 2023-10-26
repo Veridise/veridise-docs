@@ -6,7 +6,7 @@ slug: frontend-changelog
 ---
 # Software Changes
 
-## v1.1.0-rc1 - 2023-10-26
+## v1.1.0-rc2 - 2023-10-26
 ### Added
 - Ability to preview and download artifacts produced by tasks
 - Admins can now filter tasks by organization and creator
