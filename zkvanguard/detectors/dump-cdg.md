@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: dump-cdg
+title: Constraint-Dataflow Graph Generator
 description: Generates a circuit's Constraint-Dataflow Graph (CDG).
 ---
 

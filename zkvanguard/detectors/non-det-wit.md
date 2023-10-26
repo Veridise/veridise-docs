@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: non-det-wit
+title: Non-Deterministic Witness
 description: Detects non-deterministic witness computations.
 ---
 

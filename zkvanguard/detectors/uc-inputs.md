@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: uc-inputs
+title: Unconstrained Inputs
 description: Finds under-constrained input signals.
 ---
 

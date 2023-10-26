@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: uc-subcmp-outputs
+title: Unconstrained Subcomponent Output
 description: Finds unconstrained subcomponent output signals.
 ---
 
