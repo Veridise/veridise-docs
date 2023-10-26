@@ -5,7 +5,7 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
-## v1.1.0-rc4 - 2023-10-26
+## v1.1.0 - 2023-10-26
 ### Changed
 - Component SaaS Backend upgraded to version *v1.1.0*.
 - Component SaaS Frontend upgraded to version *v1.1.0*.
