@@ -6,7 +6,7 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
-## v0.2.0-rc1 - 2023-10-25
+## v0.2.0 - 2023-10-26
 ### Added
 - dump-cdg: Detector to print the graph representation of the circuit
 - unused-subcmps: Detector to find unused (i.e., dead) subcomponents
@@ -39,6 +39,9 @@ slug: vanguard-changelog
   - Fix bug where storage array push/pop would not be detected as storage writes.
 - reentrancy: correctly flag writes to storage pointers
 - unchecked-return:
+  - Fixes bug where a call to a non-void function could be considered a void function
+  - When there are multiple possible targets for a function call report all non-void possible targets rather than just the first
+- unchecked-return:
   - Consider writing to a memory variable as a valid check
 - use-before-def:
   - Consider writing to a memory variable as a use
@@ -46,7 +49,7 @@ slug: vanguard-changelog
 - Fix a bug causing fallback/receive functions to be ignored.
 - Fix a memory leak in taint analysis-based detectors, which includes most detectors currently available
 - Fix handling of string storage reads/writes
-- Fix issue VAN 709.
+- Fix false negative in uc-output detector.
 - Fix memory leaks that could occur when running multiple detectors.
 - Fixed false positive issue in uc subcomponent output detector.
 - Fixed several crashes in the Solidity frontend
