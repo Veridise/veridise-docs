@@ -17,7 +17,7 @@ The USCO detector is invoked by selecting "Under-constrained subcomponent output
 
 ### Command-line Usage
 
-The NDW detector is invoked with the argument: `--detector uc-subcmp-outputs`.
+The USCO detector is invoked with the argument: `--detector uc-subcmp-outputs`.
 
 ## Example and Explanation
 
