@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: unused-subcmps
+title: Unused Subcomponents
 description: Finds unused subcomponents in subcomponent arrays.
 ---
 

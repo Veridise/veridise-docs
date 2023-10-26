@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: uc-outputs
+title: Under-Constrained Outputs
 description: Finds under-constrained output signals.
 ---
 

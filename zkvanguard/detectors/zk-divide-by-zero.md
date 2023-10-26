@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: zk-divide-by-zero
+title: Divide By Zero
 description: Finds potential divide-by-zero errors.
 ---
 
