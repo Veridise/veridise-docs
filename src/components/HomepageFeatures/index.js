@@ -14,16 +14,17 @@ const FeatureList = [
       </>
     ),
   },
-  {
-    title: 'OrCa',
-    // Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        OrCa is the Veridise Oracle-guided Smart-Contract fuzzing tool, which discovers bugs in DeFi applications by generating and running thousands of (pseudo-)random inputs against the target application.
-        You can find more information <a href="orca">here</a>.
-      </>
-    ),
-  },
+  // TODO
+  /* {
+   *   title: 'OrCa',
+   *   // Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+   *   description: (
+   *     <>
+   *       OrCa is the Veridise Oracle-guided Smart-Contract fuzzing tool, which discovers bugs in DeFi applications by generating and running thousands of (pseudo-)random inputs against the target application.
+   *       You can find more information <a href="orca">here</a>.
+   *     </>
+   *   ),
+   * }, */
   {
     title: 'Vanguard',
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
