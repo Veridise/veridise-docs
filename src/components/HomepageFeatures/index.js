@@ -9,8 +9,7 @@ const FeatureList = [
     description: (
       <>
         Veridise Security-as-a-Service (SaaS) is the platform that allows organizations to self-audit their smart contracts by providing instant access to Veridise security analysis tools.
-        User provide the source code of their application, and invoke the Veridise security analysis tools that audit the application and report back the discovered vulnerabilities.
-        For a quick start guide, see <a href="docs/intro">here</a>, while detailed documentation can be found <a href="/saas">here</a>
+        Users provide the source code of their application, and invoke the Veridise security analysis tools that audit the application and report back the discovered vulnerabilities.
       </>
     ),
   },
@@ -31,7 +30,6 @@ const FeatureList = [
     description: (
       <>
         Vanguard is the Veridise Smart-Contract static-analysis tool, which discovers bugs in DeFi applications and ZK-circuits by searching for well known security vulnerabilities and anti-patterns.
-        You can find more information <a href="vanguard">here</a>.
       </>
     ),
   },
@@ -41,7 +39,6 @@ const FeatureList = [
     description: (
       <>
         Picus is a Veridise tool to prove that a ZK-circuit is not underconstrained, or find a counterexample if it is underconstrained.
-        You can find more information <a href="picus">here</a>.
       </>
     ),
   },
