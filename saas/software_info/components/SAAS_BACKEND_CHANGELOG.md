@@ -6,8 +6,17 @@ slug: backend-changelog
 ---
 # Software Changes
 
-## v1.0.0 - 2023-10-19
+## v1.1.0 - 2023-10-26
+### Added
+- Allow execution of ZK Vanguard
+- Allow execution of Picus
+- Store task artifacts, which are then available to the user
 
+### Changed
+- Improve user onboarding process
+- Improve access control by introducing more restrictions
+
+## v1.0.0 - 2023-10-19
 ### Initial release
 - Allow execution and monitoring of the following Veridise tools:
     - OrCa fuzzing tool, supporting Foundry and Hardhat deployment systems

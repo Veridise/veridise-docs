@@ -6,6 +6,15 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v1.1.0 - 2023-10-26
+### Added
+- Ability to preview and download artifacts produced by tasks
+- Incorporate Picus tool
+- Incorporate zk-Vanguard tool 
+
+### Fixed
+- Bug involving `Task Results` button
+
 ## v1.0.0 - 2023-10-19
 ### Initial release
 - User interface for allowing execution and monitoring of the following Veridise tools:
