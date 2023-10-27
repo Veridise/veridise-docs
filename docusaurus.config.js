@@ -34,6 +34,10 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+	  exclude: [
+	    "orca/*",
+	    "vanguard/*"
+	  ]
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -70,33 +74,12 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'vanguard',
-        path: 'vanguard',
-        routeBasePath: 'vanguard',
-        sidebarPath: require.resolve('./sidebars.js'),
-        lastVersion: 'current',
-      }
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
         id: 'zkvanguard',
         path: 'zkvanguard',
         routeBasePath: 'zkvanguard',
         sidebarPath: require.resolve('./sidebars.js'),
         lastVersion: 'current',
-        sidebarCollapsed: false,
-      }
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'orca',
-        path: 'orca',
-        routeBasePath: 'orca',
-        sidebarPath: require.resolve('./sidebars.js'),
-        lastVersion: 'current',
-        exclude: ['**/internal/**'],
+        sidebarCollapsed: false
       }
     ],
     [
@@ -115,6 +98,7 @@ const config = {
 	// Do not index pages with routes like /orca/internal/dev-guide etc.
 	excludeRoutes: [
 	  "**/internal/*",
+	  "orca/*",
 	  "vanguard/*"
 	]
       }
@@ -142,20 +126,6 @@ const config = {
             position: 'left',
             label: 'SaaS',
           },
-          {
-            // TODO: replace with dropdown when versions are available.
-            type: 'docsVersion',
-            docsPluginId: 'orca',
-            position: 'left',
-            label: 'OrCa',
-          },
-	  {
-	    // TODO: replace with dropdown when versions are available.
-	    type: 'docsVersion',
-	    docsPluginId: 'vanguard',
-	    position: 'left',
-	    label: 'Vanguard',
-	  },
 	  {
 	    // TODO: replace with dropdown when versions are available.
 	    type: 'docsVersion',
