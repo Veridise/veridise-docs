@@ -28,7 +28,10 @@ Select your target project and go to the `Versions` tab. Click the `+` button to
 Create a zip archive containing tour source code. When uploading your archive, you have to select the path of the source code. Use the drag and drop feature from the directory listing on the right side of the screen.
 You may also provide an include path and/or a specs path, if available in your archive.
 An include path, is a path containing required dependencies your your source code, such as node modules.
+<!-- TODO -->
+<!--
 More information for VSpecs that may be included in specs path can be found [here](../../orca/user_guide/v/contract_initialization).
+-->
 
 ![image](../screenshots/upload-version.png)
 
@@ -57,7 +60,11 @@ For example, the following image displays the common OrCa settings, which includ
 ![image](../screenshots/orca-configuration.png)
 
 
-For more information on configuring any of our tools go the tool's documentation page ( [OrCa](../../orca/getting_started/running_orca_through_saas#orca-configuration) and [Vanguard](../../vanguard) )
+For more information on configuring any of our tools please visit the corresponding tool's documentation page
+<!-- 
+( [OrCa](../../orca/getting_started/running_orca_through_saas#orca-configuration) and [Vanguard](../../vanguard) )
+-->
+.
 
 Finally, review your choices, optionally select a task name, and submit your task for execution.
 
