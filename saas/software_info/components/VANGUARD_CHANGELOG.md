@@ -6,6 +6,16 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v0.2.1-rc1 - 2023-10-27
+### Changed
+- Added size limit for dump-cdg
+
+### Fixed
+- unchecked-return:
+  - Fixes bug where a call to a non-void function could be considered a void function
+  - When there are multiple possible targets for a function call report all non-void possible targets rather than just the first
+- Remove circom compiler error color codes for better rendering in SaaS
+
 ## v0.2.0 - 2023-10-26
 ### Added
 - dump-cdg: Detector to print the graph representation of the circuit
