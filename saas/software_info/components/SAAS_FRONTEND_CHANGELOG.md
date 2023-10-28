@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v1.1.1 - 2023-10-28
+### Changed
+- Improved error reporting
+
+### Fixed
+- Fix issue with log presentation when websocket connection is terminated in the middle of an in-progress task
+
 ## v1.1.0 - 2023-10-26
 ### Added
 - Ability to preview and download artifacts produced by tasks

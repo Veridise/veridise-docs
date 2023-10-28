@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v1.1.1 - 2023-10-28
+### Changed
+- Improved error reporting
+
+### Fixed
+- Fix issue with out of order task logs
+
 ## v1.1.0 - 2023-10-26
 ### Added
 - Allow execution of ZK Vanguard
