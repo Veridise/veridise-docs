@@ -3,9 +3,7 @@ title: Onboarding process
 sidebar_position: 1
 ---
 
-**TODO: Update with production link**
-
-To start using our tools visit the [SaaS page](https://saas.internal.veridise.tools/).
+To start using our tools visit the [SaaS page](https://saas.veridise.com/).
 When you access the platform, you will be redirected to our SSO. 
 
 ### Registration 
@@ -22,8 +20,6 @@ In the case of local user registration, you will also have to verify your email 
 
 
 ### Access Request 
-
-**TODO: work on the access request for existing organization**
 
 As soon as you are logged in to our platform you will have to request access to the SaaS platform. 
 When the administrators of SaaS approve your request, you will receive an email that you are ready to use the platform.
