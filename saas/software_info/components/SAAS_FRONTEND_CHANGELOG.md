@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v1.1.2-rc1 - 2023-10-31
+### Changed
+- Updated [V] Specification grammar
+
+### Fixed
+- Fixed bug where users on Windows were unable to upload version archives
+
 ## v1.1.1 - 2023-10-28
 ### Changed
 - Improved error reporting
