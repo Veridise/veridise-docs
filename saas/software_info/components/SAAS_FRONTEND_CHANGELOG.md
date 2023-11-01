@@ -6,7 +6,7 @@ slug: frontend-changelog
 ---
 # Software Changes
 
-## v1.1.2-rc1 - 2023-10-31
+## v1.1.2 - 2023-10-31
 ### Changed
 - Updated [V] Specification grammar
 

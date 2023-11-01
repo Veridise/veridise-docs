@@ -6,7 +6,7 @@ slug: picus-changelog
 ---
 # Software Changes
 
-## v1.0.1-rc1 - 2023-10-31
+## v1.0.1 - 2023-11-01
 ### Fixed
 - Fixed the format of accounting logging in the --json mode.
 

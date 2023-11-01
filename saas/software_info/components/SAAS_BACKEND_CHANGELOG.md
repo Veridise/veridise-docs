@@ -6,7 +6,7 @@ slug: backend-changelog
 ---
 # Software Changes
 
-## v1.1.2-rc1 - 2023-11-01
+## v1.1.2 - 2023-11-01
 ### Added
 - Add health check endpoint
 
