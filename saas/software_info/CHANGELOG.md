@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v1.2.3 - 2023-11-02
+### Changed
+- Component Picus upgraded to version *v1.0.2*.
+
 ## v1.2.2 - 2023-11-01
 ### Changed
 - Component SaaS Backend upgraded to version *v1.1.3*.
