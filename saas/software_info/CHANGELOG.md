@@ -13,6 +13,10 @@ slug: changelog
 ### Changed
 - Component SaaS Backend upgraded to version *v1.1.3*.
 
+## v1.2.2 - 2023-11-01
+### Changed
+- Component SaaS Backend upgraded to version *v1.1.3*.
+
 ## v1.2.1 - 2023-11-01
 ### Changed
 - Component SaaS Backend upgraded to version *v1.1.2*.
