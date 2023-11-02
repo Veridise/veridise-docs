@@ -6,7 +6,7 @@ slug: picus-changelog
 ---
 # Software Changes
 
-## v1.0.2-rc1 - 2023-11-02
+## v1.0.2 - 2023-11-02
 ### Fixed
 - Fixed ANSI codes not stripped away correctly
 
