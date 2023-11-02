@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v1.1.3 - 2023-11-01
+### Changed
+- Allow better management of database pool
+
 ## v1.1.2 - 2023-11-01
 ### Added
 - Add health check endpoint
