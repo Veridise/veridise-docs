@@ -1,0 +1,5 @@
+# Exclude everything except for the src folder and root-level JS files
+/*
+!/*.js
+!/src/
+
