@@ -34,7 +34,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          exclude: ["orca/*", "vanguard/*"],
+          exclude: [],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -71,6 +71,28 @@ const config = {
     [
       "@docusaurus/plugin-content-docs",
       {
+        id: "orca",
+        path: "orca",
+        routeBasePath: "orca",
+        sidebarPath: require.resolve("./sidebars.js"),
+        lastVersion: "current",
+        exclude: ["**/internal/**"],
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "vanguard",
+        path: "vanguard",
+        routeBasePath: "vanguard",
+        sidebarPath: require.resolve("./sidebars.js"),
+        lastVersion: "current",
+        sidebarCollapsed: false,
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
         id: "zkvanguard",
         path: "zkvanguard",
         routeBasePath: "zkvanguard",
@@ -93,7 +115,7 @@ const config = {
       require.resolve("docusaurus-lunr-search"),
       {
         // Do not index pages with routes like /orca/internal/dev-guide etc.
-        excludeRoutes: ["**/internal/*", "orca/*", "vanguard/*"],
+        excludeRoutes: ["**/internal/*"],
       },
     ],
   ],
@@ -119,6 +141,20 @@ const config = {
             docsPluginId: "saas",
             position: "left",
             label: "SaaS",
+          },
+          {
+            // TODO: replace with dropdown when versions are available.
+            type: "docsVersion",
+            docsPluginId: "orca",
+            position: "left",
+            label: "OrCa",
+          },
+          {
+            // TODO: replace with dropdown when versions are available.
+            type: "docsVersion",
+            docsPluginId: "vanguard",
+            position: "left",
+            label: "Vanguard",
           },
           {
             // TODO: replace with dropdown when versions are available.
@@ -213,5 +249,3 @@ const config = {
 };
 
 module.exports = config;
-
-// vim: set expandtab shiftwidth=2 softtabstop=2 :
