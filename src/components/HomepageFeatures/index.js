@@ -1,15 +1,19 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
+import React from "react";
+import clsx from "clsx";
+import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: 'SaaS',
+    title: "SaaS",
     // Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Veridise Security-as-a-Service (SaaS) is the platform that allows organizations to self-audit their smart contracts by providing instant access to Veridise security analysis tools.
-        Users provide the source code of their application, and invoke the Veridise security analysis tools that audit the application and report back the discovered vulnerabilities.
+        Veridise Security-as-a-Service (SaaS) is the platform that allows
+        organizations to self-audit their smart contracts by providing instant
+        access to Veridise security analysis tools. Users provide the source
+        code of their application, and invoke the Veridise security analysis
+        tools that audit the application and report back the discovered
+        vulnerabilities.
       </>
     ),
   },
@@ -25,20 +29,23 @@ const FeatureList = [
    *   ),
    * }, */
   {
-    title: 'Vanguard',
+    title: "Vanguard",
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Vanguard is the Veridise Smart-Contract static-analysis tool, which discovers bugs in DeFi applications and ZK-circuits by searching for well known security vulnerabilities and anti-patterns.
+        Vanguard is the Veridise Smart-Contract static-analysis tool, which
+        discovers bugs in DeFi applications and ZK-circuits by searching for
+        well known security vulnerabilities and anti-patterns.
       </>
     ),
   },
   {
-    title: 'Picus',
+    title: "Picus",
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Picus is a Veridise tool to prove that a ZK-circuit is not underconstrained, or find a counterexample if it is underconstrained.
+        Picus is a Veridise tool to prove that a ZK-circuit is not
+        underconstrained, or find a counterexample if it is underconstrained.
       </>
     ),
   },
@@ -49,9 +56,8 @@ function Feature({ Svg, title, description }) {
   // <Svg className={styles.featureSvg} role="img" />
 
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-      </div>
+    <div className={clsx("col col--4")}>
+      <div className="text--center"></div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
         <p>{description}</p>
