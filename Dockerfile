@@ -10,4 +10,4 @@ RUN npm run build
 FROM nginxinc/nginx-unprivileged:stable-alpine
 
 WORKDIR /home/node/app
-COPY --chown=node:node --from=builder /home/node/app/build /usr/share/nginx/html/
+COPY --chown=nginx:nginx --from=builder /home/node/app/build /usr/share/nginx/html/
