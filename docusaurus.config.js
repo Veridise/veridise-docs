@@ -110,7 +110,8 @@ const config = {
         title: "Veridise SaaS Documentation",
         logo: {
           alt: "Veridise Logo",
-          src: "img/veridise-logo-round-blue.svg",
+          src: "img/veridise-logo-square-light.png",
+          srcDark: "img/veridise-logo-square-dark.png",
         },
         items: [
           {
