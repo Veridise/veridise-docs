@@ -10,6 +10,7 @@ Ensure you have a supported LTS version of Node.js (like v18 or v20).
 ## Building the site for development
 
 ```
+nix-shell
 npm ci
 npm run start
 ```
