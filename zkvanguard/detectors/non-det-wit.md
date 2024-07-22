@@ -23,7 +23,8 @@ The NDW detector is invoked by selecting "Non-deterministic dataflow"
 ## Example and Explanation
 
 The following circuit is designed to determine whether the input `in` is 0 or not.
-If `in = 0`, `out = 1`, and for any other value `in != 0`, `out = 0`.
+If `in = 0`, then `out = 1`.
+For any other value of `in` where `in != 0`, then `out = 0`.
 
 ```circom title="non_det_wit_bug.circom" showLineNumbers
 pragma circom 2.0.0;
@@ -51,13 +52,14 @@ With this conditional assignment, it follows thaat the value of `-in*inv` should
 Therefore, the computation and assignment of `out <== -in*inv + 1` should be
 1 if `in` is 0, and 0 if `in` is non zero.
 
-However, this code has a bug: there is no constraint that requires `out` to be a binary
-value, because this property is a consequence of `inv` being the inverse of `in`, which
+However, this code has a bug: there is no constraint that requires `out` to be a boolean
+value (i.e., 0 or 1).
+`out` being boolean a consequence of `inv` being the inverse of `in`, which
 is _not_ a constraint in this circuit due to the use of the conditional assignment
 used to create `inv`.
 This allows a malicious actor to set `inv` to be any value independent of `in` as
 long as the `out <== -in*inv +1` constraint is satisfied.
-The witness assignment of `in = 1`, `inv = -1 mod p`, and `out = 2` would therefore
+The witness assignment of `in = 1`, `inv = -1 (mod p)`, and `out = 2` would therefore
 satisfy the circuit's constraints, but violates the intended output of the circuit,
 which is that if `in = 1`, `out` should be `0`.
 
