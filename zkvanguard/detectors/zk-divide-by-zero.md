@@ -11,12 +11,12 @@ description: Finds potential divide-by-zero errors.
 The Divide By Zero (DBZ) detector is used to identify potential divide-by-zero errors in ZK circuits.
 Divide-by-zero errors can lead to significant security risks, as malicious actors may be able to create valid proofs for bogus statements.
 
-### SaaS Usage
+### Usage
 
-The NDW detector is invoked by selecting "Divide by zero (ZK)"
+The DBZ detector is invoked by selecting "Divide by zero (ZK)"
 (`zk-divide-by-zero`) in the Detector selection during the tool configuration step.
 
-## Explanation and Example
+## Example and Explanation
 
 The DBZ detector detects patterns of the following form:
 
