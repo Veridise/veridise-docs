@@ -22,40 +22,118 @@ The NDW detector is invoked by selecting "Non-deterministic dataflow"
 
 ## Example and Explanation
 
+The following circuit is designed to determine whether the input `in` is 0 or not.
+If `in = 0`, `out = 1`, and for any other value `in != 0`, `out = 0`.
+
 ```circom title="non_det_wit_bug.circom" showLineNumbers
 pragma circom 2.0.0;
 
-template Invert() {
+template IsZero() {
   signal input in;
   signal output out;
 
-  out <-- in != 0 ? 1 / in : 0;
+  signal inv;
 
-  in*out === 0;
+  // highlight-next-line
+  inv <-- in!=0 ? 1/in : 0; // conditional expression in inv assignment
+
+  out <== -in*inv +1;
 }
 
-component main = Invert();
+component main = IsZero();
 ```
 
-In this example, `out` is conditionally assigned based on the value of `in`. The developer’s intent is for `out = 1/in` if `in` is not 0, and `out = 0` otherwise. However, this constraint is not specified, so if `in = 0`, any value of `out` could be provided without violating `in*out === 0`.
-So, if `in = 0`, `out = 0` is expected by the developer, but the assignment of `in = 0, out = 99` would also satisfy the constraints.
+To implement this functionality, the circuit first computes the inverse `inv`
+of the input `in`, but uses a conditional assignment such that `inv` will be 0
+if `in` is 0, with `inv = 1/in` otherwise (line 9).
+With this conditional assignment, it follows thaat the value of `-in*inv` should be
+-1 (mod p) if `in` is non-zero, and 0 otherwise.
+Therefore, the computation and assignment of `out <== -in*inv + 1` should be
+1 if `in` is 0, and 0 if `in` is non zero.
+
+However, this code has a bug: there is no constraint that requires `out` to be a binary
+value, because this property is a consequence of `inv` being the inverse of `in`, which
+is _not_ a constraint in this circuit due to the use of the conditional assignment
+used to create `inv`.
+This allows a malicious actor to set `inv` to be any value independent of `in` as
+long as the `out <== -in*inv +1` constraint is satisfied.
+The witness assignment of `in = 1`, `inv = -1 mod p`, and `out = 2` would therefore
+satisfy the circuit's constraints, but violates the intended output of the circuit,
+which is that if `in = 1`, `out` should be `0`.
+
+This example demonstrates that conditional assignments often require additional and
+more nuanced constraints than normal unconditional assignments may require.
+These challenges are why the NDW detector can be a useful tool in flagging conditional
+logic for further scrutiny.
+
+:::note
+
+This example is adapted from the `IsZero` circuit provided by [circomlib][circomlib].
+However, unlike our above example, the version in circomlib (found in [comparators.circom][iszero-snippet]) is properly constrained:
+
+```circom title="IsZero circuit from circomlib. The constraint missing from our example above is highlighted." showLineNumbers
+template IsZero() {
+  signal input in;
+  signal output out;
+
+
+  signal inv;
+
+
+  inv <-- in!=0 ? 1/in : 0;
+
+
+  out <== -in*inv +1;
+  // highlight-next-line
+  in*out === 0;
+}
+```
+
+The addition of the `in*out === 0` constraint on line 13 fixes the issue pointed out in
+our example, as it forces one of `in` and `out` to be 0.
+:::
 
 ## Usage Example
+
+Running the above example circuit in ZK Vanguard using the `non-det-wit` detector yields
+the following output text log:
 
 <details open>
 <summary>ZK Vanguard Output</summary>
 
-```txt
+```txt showLineNumbers
 ----Running Vanguard with non-det-wit detector----
 Running detector: non-det-wit
-[Critical] Found signal in component that are used in conditional expressions Invert @ ./non_det_wit_bug.circom:3
+// highlight-next-line
+[Critical] Found signal in component that are used in conditional expressions IsZero @ non_det_wit_bug.circom:3
 Reported By: vanguard:non-det-wit
-Location: Invert @ ./non_det_wit_bug.circom:3
+Location: IsZero @ non_det_wit_bug.circom:3
 Confidence: 0.99
 More Info: placeholder
 Details:
-Found signal in component that are used in conditional expressions Invert @ ./non_det_wit_bug.circom:3
-  * Signal  in in expression Invert @ ./non_det_wit_bug.circom:7
+// highlight-start
+Found signal in component that are used in conditional expressions IsZero @ non_det_wit_bug.circom:3
+  * Signal  in in expression IsZero @ non_det_wit_bug.circom:9
+// highlight-end
 ```
 
 </details>
+
+Line 3 tells us that the NDW detector has found a signal that is used in a conditional expression.
+Lines 9--10 tell us that the input signal `in` is being used in a conditional expression on
+line 9, which is the assignment `inv <-- in!=0 ? 1/in : 0`.
+This finding tells us we need to confirm that `inv` and `in` are sufficiently constrained
+given the conditional assignment.
+
+[circomlib]: https://github.com/iden3/circomlib
+[iszero-snippet]: https://github.com/iden3/circomlib/blob/cff5ab6288b55ef23602221694a6a38a0239dcc0/circuits/comparators.circom#L24-L34
+
+## Limitations
+
+The NDW detector flags conditional expressions and the signals used in those conditional expressions,
+but is unable to determine if the conditional expressions are properly constrained or not,
+as this requires knowledge of what the design goal of the circuit is.
+For example, the NDW detector would still report the same issue for circomlib's `IsZero` circuit, even
+though it is properly constrained.
+Therefore, for each finding reported by NDW, some manual analysis is required to determine if the
+conditional logic leads to a true bug or not.

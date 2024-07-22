@@ -22,12 +22,20 @@ The USCO detector is invoked by selecting "Unconstrained subcomponent output"
 
 ## Example and Explanation
 
+The following example circom file contains the implementation of the `Diff` component,
+which is designed to compute a positive difference between two inputs, `m` and `n`.
+As the goal is to compute a positive and non-zero difference, the circuit is designed
+to constraint `m > n`. A very similar example is presented in the discussion of
+the [unconstrained subcomponent inputs](./uc-subcmp-inputs.md) detector, but the
+implementation of the `Diff` detector differs slightly.
+
 <details open>
-<summary>Circom Example</summary>
+<summary><b>uc_subcmp_output_bug.circom</b></summary>
 
-```circom title="uc_subcmp_output_bug.circom"
-pragma circom 2.0.0;
+```circom showLineNumbers
+pragma circom 2.1.8;
 
+// Inlined from circomlib/circuits/bitify.circom
 template Num2Bits(n) {
   signal input in;
   signal output out[n];
@@ -44,6 +52,7 @@ template Num2Bits(n) {
   lc1 === in;
 }
 
+// Inlined from circomlib/circuits/comparators.circom
 template LessThan(n) {
   assert(n <= 252);
   signal input in[2];
@@ -80,8 +89,7 @@ component main = Diff();
 
 </details>
 
-In this example, the developer intended for the `Diff` component to return a
-difference between `m` and `n` without underflow, with `n` being smaller than `m`.
+
 The developer uses a subcomponent `LessThan` to test if `n` is less than `m`,
 but the output of the `LessThan` component `lt` (`lt.out`) is never given a constraint; it is just assigned to `x`.
 So, the output could be 1 or 0, meaning that `n` may or may not be less than `m`.
@@ -91,20 +99,39 @@ will therefore satisfy the circuit’s constraints, yet provides an output value
 outside the range that the developer intended (as if `n < m`, the developer
 can expect `o < n` and `o < m`).
 
+## Usage Example
+
+Running the UCSO detector yields the following text output log:
+
 <details open>
 <summary>ZK Vanguard Output</summary>
 
 ```txt
 ----Running Vanguard with uc-subcmp-outputs detector----
 Running detector: uc-subcmp-outputs
+// highlight-next-line
 [Critical] Unconstrained subcomponent output signal in component Diff @ ./uc_subcmp_output_bug.circom:34
 Reported By: vanguard:uc-subcmp-outputs
 Location: Diff @ ./uc_subcmp_output_bug.circom:34
 Confidence: 0.99
 More Info: placeholder
 Details:
+// highlight-start
 Unconstrained subcomponent output signal in component Diff @ ./uc_subcmp_output_bug.circom:34
   * Signal  lt.out
+// highlight-end
 ```
 
 </details>
+
+Line 3 tells us that one of the subcomponent output signals within `Diff` (defined on line 36) is unconstrained.
+Lines 9--10 tell us that the unconstrained subcomponent output signal is the `lt.out` signal.
+
+## Limitations
+
+This detector may incur false positives for certain subcomponents that provide optional output
+values. For example, the `Num2Bits` component can be used to check that its input is only `n` bits in
+length without actually using the output signals.
+This detector may also incur false negatives for checking the correctness of constraints;
+the USCO detector can only determine if a subcomponent output is constrained at all, and not
+if the constraint is semantically correct.

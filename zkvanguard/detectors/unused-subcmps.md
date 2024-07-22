@@ -20,12 +20,25 @@ The USC detector is invoked by selecting "Unused subcomponents"
 
 ## Example and Explanation
 
+In the following example, similar the two examples in the [unconstrained subcomponent inputs](./uc-subcmp-inputs.md) and
+[unconstrained subcomponent outputs](./uc-subcmp-outputs.md) detectors, the developer is
+computing the positive difference between inputs. However, unlike the previous
+two examples, the `MultiDiff` circuit is computing the pairwise difference between
+elements in the `inp_large` and `inp_small` array, with the differences being output
+in the `outp` array. Since the circuit is designed to output a positive difference,
+each pair of elements in the input is constrained such that:
+
+$$
+\forall_{i \in [0, n)}\, \text{inp\_large[i]} > \text{inp\_small[i]}
+$$
+
 <details open>
 <summary>Circom Example</summary>
 
-```circom title="unused_subcmps_bug.circom"
-pragma circom 2.0.0;
+```circom title="unused_subcmps_bug.circom" showLineNumbers
+pragma circom 2.1.8;
 
+// Inlined from circomlib/circuits/bitify.circom
 template Num2Bits(n) {
   signal input in;
   signal output out[n];
@@ -42,6 +55,7 @@ template Num2Bits(n) {
   lc1 === in;
 }
 
+// Inlined from circomlib/circuits/comparators.circom
 template LessThan(n) {
   assert(n <= 252);
   signal input in[2];
@@ -81,34 +95,45 @@ component main = MultiDiff(3);
 
 </details>
 
-In this example, the developer intended for the `MultiDiff` component to return a difference between all elements of `inp_large` and `inp_small` without underflow, with `inp_small[0..N]` being smaller than `inp_large[0..N]`.
-The developer means to use an array of `LessThan` subcomponent to test if `inp_small[i]` is less than `inp_large[i]` for all i in range `0..N`, but never actually initializes the subcomponent `lt[0]` and never checks the condition for `i = 0`.
+To enforce this property, the developer means to use an array of `LessThan` subcomponent to test if `inp_small[i]` is less than `inp_large[i]` for all i in range $[0,n)$, but never initializes the subcomponent `lt[0]` and therefore never checks the condition for `i = 0`.
 A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `inp_small[0] < inp_large[0]`, the developer can expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`).
 
+## Usage Example
+
+Running the USC detector yields the following text output log:
 
 <details open>
 <summary>ZK Vanguard Output</summary>
 
-```txt
+```txt showLineNumbers
 ----Running Vanguard with unused-subcmps detector----
 Running detector: unused-subcmps
-[Warning] Unused subcomponent in component MultiDiff @ ./unused_subcmps_bug.circom:34
+// highlight-next-line
+[Warning] Unused subcomponent in component MultiDiff @ unused_subcmps_bug.circom:36
 Reported By: vanguard:unused-subcmps
-Location: MultiDiff @ ./unused_subcmps_bug.circom:34
+Location: MultiDiff @ unused_subcmps_bug.circom:36
 Confidence: 1
 More Info: placeholder
 Details:
-In template MultiDiff @ ./unused_subcmps_bug.circom:34
-  * Subcomponent lt[0] (type: LessThan @ ./unused_subcmps_bug.circom:19 )
+// highlight-start
+In template MultiDiff @ unused_subcmps_bug.circom:36
+  * Subcomponent lt[0] (type: LessThan @ unused_subcmps_bug.circom:21 )
+// highlight-end
 ```
 
 </details>
 
-## Severity Considerations
+Line 3 tells us that there is an unused subcomponent within the `MultiDiff` component (which is defined on line 36 of unused_subcmps_bug.circom).
+Lines 9--10 tell us that the unused subcomponent is the first element of the `lt` array (`lt[0]`), which is an unused subcomponent of type `LessThan`.
 
-The USC detector only emits a warning because many correct circuits may leave subcomponents unused for correct circuits. Consider the following example:
+## Limitations
 
-```circom title=sum.circom
+The USC detector only emits a warning because many correct circuits may leave subcomponents unused for correct circuits.
+Consider the following example circuit, which is designed to compute the sum of all `n` inputs:
+
+```circom title="sum.circom" showLineNumbers
+pragma circom 2.1.8;
+
 template Add() {
   signal input a;
   signal input b;
@@ -123,8 +148,9 @@ template Sum(n) {
 
   component adds[n];
   var last = inp[0];
+  // highlight-next-line
   for (var i = 1; i < n; i++) {
-    // adds[0] is dead
+    // adds[0] will not be initialized in this loop
     adds[i] = Add();
     adds[i].a <== last;
     adds[i].b <== inp[i];
@@ -138,17 +164,4 @@ component main = Sum(3);
 ```
 
 Even though `adds[0]` is unused, the sum is still computed correctly (as for `n` numbers, only `n-1` additions must be performed).
-The USC detector will still output a warning for this case, however, which can be viewed as a false positive:
-
-```txt title="ZK Vanguard Output for sum.circom"
-----Running Vanguard with unused-subcmps detector----
-Running detector: unused-subcmps
-[Warning] Unused subcomponent in component Sum @ ./sum.circom:9
-Reported By: vanguard:unused-subcmps
-Location: Sum @ ./sum.circom:9
-Confidence: 1
-More Info: placeholder
-Details:
-In template Sum @ ./sum.circom:9
-  * Subcomponent adds[0] (type: Add @ ./sum.circom:1 )
-```
+The USC detector will still output a warning for this case, however, which is a false positive.

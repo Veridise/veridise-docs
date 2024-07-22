@@ -21,12 +21,21 @@ The USCI detector is invoked by selecting "Unconstrained subcomponent input"
 
 ## Example and Explanation
 
+The following example circom file contains the implementation of the `Diff` component,
+which is designed to compute a positive difference between two inputs, `m` and `n`.
+As the goal is to compute a positive and non-zero difference, the circuit is designed
+to constraint `m > n`.
+A very similar example is presented in the discussion of
+the [unconstrained subcomponent outputs](./uc-subcmp-outputs.md) detector, but the
+implementation of the `Diff` detector differs slightly.
+
 <details open>
-<summary>Circom Example</summary>
+<summary><b>uc_subcmp_input_bug.circom</b></summary>
 
-```circom title="uc_subcmp_input_bug.circom"
-pragma circom 2.0.0;
+```circom showLineNumbers
+pragma circom 2.1.8;
 
+// Inlined from circomlib/circuits/bitify.circom
 template Num2Bits(n) {
   signal input in;
   signal output out[n];
@@ -43,6 +52,7 @@ template Num2Bits(n) {
   lc1 === in;
 }
 
+// Inlined from circomlib/circuits/comparators.circom
 template LessThan(n) {
   assert(n <= 252);
   signal input in[2];
@@ -78,10 +88,8 @@ component main = Diff();
 
 </details>
 
-In this example, the developer intended for the `Diff` component to return a
-difference between `m` and `n` without underflow, with `n` being smaller than `m`.
-The developer uses a subcomponent `LessThan` to test if `n` is less than `m`,
-but the first input of the `LessThan` component `lt` (`lt.in[0]`) is never given a constraint; it is just assigned to be `n`.
+To constrain `m` to be greater than `n`, the developer uses a subcomponent `LessThan` to test if `n` is less than `m`.
+However, the first input of the `LessThan` component `lt` (`lt.in[0]`) is never given a constraint; it is just assigned to be `n`.
 So, the input could be any value (i.e., not constrained to `n`), as long as it is less than `m`.
 
 With this missing constraint, `n` is no longer constrained to be less than `m`.
@@ -91,20 +99,38 @@ will therefore satisfy the circuit’s constraints, yet provides an output value
 outside the range that the developer intended (as if `n < m`, the developer
 can expect `o < n` and `o < m`).
 
+## Usage Example
+
 <details open>
 <summary>ZK Vanguard Output</summary>
 
-```txt
+Running the UCSI detector yields the following text output log:
+
+```txt showLineNumbers
 ----Running Vanguard with uc-subcmp-inputs detector----
 Running detector: uc-subcmp-inputs
-[Critical] Unconstrained subcomponent input signal in component Diff @ ./uc_subcmp_input_bug.circom:34
+// highlight-next-line
+[Critical] Unconstrained subcomponent input signal in component Diff @ uc_submp_input_bug.circom:36
 Reported By: vanguard:uc-subcmp-inputs
-Location: Diff @ ./uc_subcmp_input_bug.circom:34
+Location: Diff @ uc_submp_input_bug.circom:36
 Confidence: 0.99
 More Info: placeholder
 Details:
-Unconstrained subcomponent input signal in component Diff @ ./uc_subcmp_input_bug.circom:34
+// highlight-start
+Unconstrained subcomponent input signal in component Diff @ uc_submp_input_bug.circom:36
   * Signal  lt.in[0]
+// highlight-end
 ```
 
 </details>
+
+Line 3 tells us that one of the subcomponent input signals within `Diff` (defined on line 36) is unconstrained.
+Lines 9--10 tell us that the unconstrained subcomponent input signal is the `lt.in[0]` signal.
+
+## Limitations
+
+This detector may incur false negatives if, e.g., a subcomponent input is constrained, but is
+constrained to the wrong value.
+
+[num2bits]: https://github.com/iden3/circomlib/blob/cff5ab6288b55ef23602221694a6a38a0239dcc0/circuits/bitify.circom#L25-L39
+[lessthan]: https://github.com/iden3/circomlib/blob/cff5ab6288b55ef23602221694a6a38a0239dcc0/circuits/comparators.circom#L89-L99
