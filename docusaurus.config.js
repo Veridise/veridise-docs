@@ -3,8 +3,8 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const math = require("remark-math");
+const katex = require("rehype-katex");
 const dashes = require("./src/remark/dashes");
 
 /** @type {import('@docusaurus/types').Config} */
@@ -33,11 +33,11 @@ const config = {
   // https://docusaurus-archive-october-2023.netlify.app/docs/2.3.1/markdown-features/math-equations
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
       integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
     },
   ],
 
@@ -50,7 +50,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           exclude: [],
           remarkPlugins: [math, dashes],
-          rehypePlugins: [katex]
+          rehypePlugins: [katex],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -119,7 +119,7 @@ const config = {
         lastVersion: "current",
         sidebarCollapsed: false,
         remarkPlugins: [math, dashes],
-        rehypePlugins: [katex]
+        rehypePlugins: [katex],
       },
     ],
     [

@@ -33,9 +33,9 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Vanguard is the Veridise static-analysis tool, which
-        discovers bugs in DeFi applications and ZK-circuits by searching for
-        well known security vulnerabilities and anti-patterns.
+        Vanguard is the Veridise static-analysis tool, which discovers bugs in
+        DeFi applications and ZK-circuits by searching for well known security
+        vulnerabilities and anti-patterns.
       </>
     ),
   },
