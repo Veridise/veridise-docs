@@ -8,7 +8,7 @@ sidebar_position: 1
 ## What is ZK Vanguard?
 
 ZK Vanguard is a static analysis tool used to discover common vulnerabilities in zero-knowledge (ZK) circuits.
-ZK Vanguard currently supports detecting bugs in zk circuits written in [circom](https://docs.circom.io/).
+ZK Vanguard currently supports detecting bugs in ZK circuits written in [circom](https://docs.circom.io/).
 
 ## General Usage Instructions
 
@@ -23,7 +23,3 @@ To use ZK Vanguard on SaaS, when creating a new task on Veridise's SaaS platform
 You'll then be able to select ZK Vanguard from among the available tools:
 
 ![image](./screenshots/zkvanguard-tool-selection.png)
-
-<!-- ### Command-line Usage
-
-For detailed usage instructions of ZK Vanguard on the command line, please refer to the [README in the ZK Vanguard repo](https://github.com/Veridise/Vanguard#readme). -->
