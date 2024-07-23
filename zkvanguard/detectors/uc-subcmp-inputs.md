@@ -27,7 +27,7 @@ As the goal is to compute a positive and non-zero difference, the circuit is des
 to constraint `m > n`.
 A very similar example is presented in the discussion of
 the [unconstrained subcomponent outputs](./uc-subcmp-outputs.md) detector, but the
-implementation of the `Diff` detector differs slightly.
+implementation of the `Diff` component differs slightly.
 
 <details open>
 <summary><b>uc_subcmp_input_bug.circom</b></summary>
