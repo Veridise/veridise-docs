@@ -119,11 +119,8 @@ downgrade secrets (e.g., if a circuit contains a custom hashing implementation t
 is properly non-invertable), as it cannot determine if a series of computations
 properly downgrades a secret.
 - This detector also cannot quantify the amount of information leaked from a computation.
-For example, the PIL detector will report that a check that a private key is not zero using the
-`IsZero` component from circuit will report that the private input has been leaked, even though
-only a single bit of information about the input has been leaked (i.e., that the secret is not 0).
-Since whether this level of information is acceptable to leak is dependent on the application,
-this determination must be determined by the user.
+For example, the `IsZero` component in the above circuit will leak one bit of information related to the private input (i.e., that the secret is nonzero).
+The PIL detector will report that the private input is leaked without indicating how much of it is, or whether the amount leaked has any security impact.
 
 :::note
 
