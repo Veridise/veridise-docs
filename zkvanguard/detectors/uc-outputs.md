@@ -1,18 +1,18 @@
 ---
 sidebar_position: 4
-title: Under-Constrained Outputs
-description: Finds under-constrained output signals.
+title: Underconstrained Outputs
+description: Finds underconstrained output signals.
 ---
 
-# Under-Constrained Outputs (`uc-outputs`)
+# Underconstrained Outputs (`uc-outputs`)
 
 ## Summary and Usage
 
-The Under-Constrained Output (UCO) detector finds under-constrained output vulnerabilities in ZK circuit code.
+The Underconstrained Output (UCO) detector finds underconstrained output vulnerabilities in ZK circuit code.
 The UCO detector looks to see if a used output from a component is
 constrained either by an input value or a single constant value;
 if neither is true, then the output is not constrained and can result in a vulnerability,
-as a malicious actor may be able to create valid proofs for bogus statements when outputs are under-constrained.
+as a malicious actor may be able to create valid proofs for bogus statements when outputs are underconstrained.
 
 ### Usage
 
@@ -68,8 +68,8 @@ In template LowestBitIsOne @ uc_outputs_bug.circom:3
 // highlight-end
 ```
 
-Line 3 tells us there is an under-constrained output signal in the `LowestBitIsOne` template (defined in uc_outputs_bug.circom starting on line 3).
-Lines 9--10 tell us that `outp` is the under-constrained output signal.
+Line 3 tells us there is an underconstrained output signal in the `LowestBitIsOne` template (defined in uc_outputs_bug.circom starting on line 3).
+Lines 9--10 tell us that `outp` is the underconstrained output signal.
 
 </details>
 
