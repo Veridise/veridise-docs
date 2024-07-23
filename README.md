@@ -6,10 +6,13 @@ tools. The website is built using [Docusaurus 2](https://docusaurus.io/).
 ## Prerequisites
 
 Ensure you have a supported LTS version of Node.js (like v18 or v20).
+Alternatively, install Nix, as this repository provides a Nix shell definition
+that will install the correct version of Node.js and other dependencies
 
 ## Building the site for development
 
 ```
+nix-shell # optional, if using Nix
 npm ci
 npm run start
 ```

@@ -1,75 +1,109 @@
 ---
 sidebar_position: 3
 title: Unconstrained Inputs
-description: Finds under-constrained input signals.
+description: Finds unconstrained input signals.
 ---
 
 # Unconstrained Inputs (`uc-inputs`)
 
 ## Summary and Usage
 
-The Unconstrained Input (UCI) detector finds under-constrained input vulnerabilities in ZK circuit code.
-The UCI detector looks to see if an input into a component is used in any constraint---if not, then a malicious actor may be able to create new valid proofs by taking an existing proof and simply changing a public input that is unconstrained.
+The Unconstrained Input (UCI) detector finds unconstrained input vulnerabilities in ZK circuit code.
+The UCI detector looks to see if an input into a component is used in any constraint---if not,
+then a malicious actor may be able to create new valid proofs by taking an
+existing proof and simply changing a public input that is unconstrained.
 
-### SaaS Usage
+### Usage
 
-The UCI detector is invoked by selecting "Under-constrained inputs" (`uc-inputs`) in the Detector selection during the tool configuration step.
-
-<!-- ### Command-line Usage
-
-The UCI detector is invoked with the argument: `--detector uc-inputs`. -->
+The UCI detector is invoked by selecting "Unconstrained inputs" (`uc-inputs`)
+in the Detector selection during the tool configuration step.
 
 ## Example and Explanation
 
-```circom title="uci_example.circom" showLineNumbers
-pragma circom 2.0.0;
+The following example circuit is designed to compute a crytographic commitment
+to performing a specific public operation.
+This commitment is based on a public operation, represented by the public
+input signal `operation` (in practice, this could be a hash of a smart contract
+function and arguments) combined with a private input `private_key` only known
+by the committer.
+This commitment can be therefore used to prove the committer's specific intent to
+perform the specified operation, as the commitment can be easily verified externally, but
+can only be forged if the private key of the committer is compromised.
 
-template UCI_Bug() {
-  signal input inp1;
-  signal input inp2;
-  signal output outp;
 
-  outp <== inp1;
+```circom title="uc_inputs_bug.circom" showLineNumbers
+pragma circom 2.1.8;
+
+include "node_modules/circomlib/circuits/poseidon.circom";
+
+template OpCommitment() {
+  signal input operation;
+  signal input private_key;
+  signal output commitment;
+
+  component hash = Poseidon(1);
+  // highlight-start
+  hash.inputs[0] <== private_key;
+  commitment <== hash.out;
+  // highlight-end
 }
 
-component main = UCI_Bug();
+component main {public [operation]} = OpCommitment();
 ```
 
-In this example, `outp` is assigned to and constrained by input `inp1`.
-However, no constraints are placed on `inp2`, which is flagged as a UCI bug.
+The circuit uses the [Poseidon hash function](https://www.poseidon-hash.info/) to compute the `commitment`.
+However, the `operation` is not used in the computation of the `commitment` hash; it
+is not used in any constraints in the circuit at all.
+Since the `operation` is not used in the computation of the commitment, the
+commitment is only tied to the `private_key` of the committer.
+A malicious actor could therefore theoretically take the existing proof, change
+the public `commitment` input, and submit the existing proof with the new public
+input and prove the commitment to an unintented operation.
 
-<!-- <details>
-<summary>ZK Vanguard Command-line Example</summary>
+## Usage Example
 
-```shell title=Command
-vanguard_driver --detector uc-inputs uci_example.circom
-```
-
-</details> -->
+Running the UCI detector yields the following text output log:
 
 <details open>
 <summary>ZK Vanguard Output</summary>
 
-```txt
-----Preprocessing sources----
-Running circom...
-Done running circom
+```txt showLineNumbers
 ----Running Vanguard with uc-inputs detector----
 Running detector: uc-inputs
-===========================================================================
- Vanguard's unconstrained input signal detector found the following issue:
-===========================================================================
-[MEDIUM] In template UCI_Bug in uci_example.circom:3, Vanguard found an input signal that is unconstrained:
-  * Signal inp2
+// highlight-next-line
+[Medium] Unconstrained input signal in component OpCommitment @ uc_inputs_bug.circom:5
+Reported By: vanguard:uc-inputs
+Location: OpCommitment @ uc_inputs_bug.circom:5
+Confidence: 0.99
+More Info: placeholder
+Details:
+// highlight-start
+Unconstrained input signal in component OpCommitment @ uc_inputs_bug.circom:5
+  * Signal  operation
+// highlight-end
 ```
 
 </details>
 
-## Severity and Solutions
+Line 3 of the log tells us that one of the input signals of `OpCommitment` (defined on line 5 of `uc_inputs_bug.circom`) is unconstrained.
+Lines 9--10 of the log tell us that the unconstrained input signal is the `operation` signal.
 
-While attackers may be able to exploit under-constrained inputs, some proof systems introduce a "magic constraint"
+## Limitations
+
+While attackers may be able to exploit unconstrained input signals, some proof systems introduce a "magic constraint"
 to automatically constrain otherwise unconstrained inputs (see [this discussion on Groth16 malleability](https://geometry.xyz/notebook/groth16-malleability) for a more in-depth discussion).
 These magic constraints prevent attackers from manipulating public, not-explicitly-constrained inputs to create new valid proofs.
-So, the potential severity of an unconstrained input bug is lower than other bugs found by ZK Vanguard, but it is still good to be aware
-of potential vulnerabilities that may arise when building circuits for proof systems that may or may not introduce such constraints automatically
-(which can be difficult to assertain).
+So, the potential severity of an unconstrained input signal is lower than other findings found by ZK Vanguard, as they may often
+be false positives due to these magic constraints.
+
+## Assessing Severity
+
+Input signals may be left unconstrained intentionally in cases where (1) magic constraints are known to be
+generated and (2) a specific constraint about a value is not required, but the value should be tied to
+the proof (e.g., a proof must use a nonce that is checked for uniqueness in a smart contract).
+
+However, it is still good to be aware of potential vulnerabilities that may
+arise when building circuits for proof systems that may or may not introduce such constraints automatically
+(which can be difficult to assertain). Furthermore, unconstrained inputs may be
+indicating of other semantic bugs, such as forgetting to include an input as
+part of a hash computation.
