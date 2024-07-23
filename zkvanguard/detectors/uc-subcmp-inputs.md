@@ -124,8 +124,8 @@ Unconstrained subcomponent input signal in component Diff @ uc_submp_input_bug.c
 
 </details>
 
-Line 3 tells us that one of the subcomponent input signals within `Diff` (defined on line 36) is unconstrained.
-Lines 9--10 tell us that the unconstrained subcomponent input signal is the `lt.in[0]` signal.
+Line 3 of the above log tells us that one of the subcomponent input signals within `Diff` (defined on line 36 of `uc_submp_input_bug.circom`) is unconstrained.
+Lines 9--10 of the log tell us that the unconstrained subcomponent input signal is the `lt.in[0]` signal.
 
 ## Limitations
 

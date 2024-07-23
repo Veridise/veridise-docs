@@ -123,8 +123,10 @@ In template MultiDiff @ unused_subcmps_bug.circom:36
 
 </details>
 
-Line 3 tells us that there is an unused subcomponent within the `MultiDiff` component (which is defined on line 36 of unused_subcmps_bug.circom).
-Lines 9--10 tell us that the unused subcomponent is the first element of the `lt` array (`lt[0]`), which is an unused subcomponent of type `LessThan`.
+Line 3 of the above log tells us that there is an unused subcomponent
+within the `MultiDiff` component (which is defined on line 36 of `unused_subcmps_bug.circom`).
+Lines 9--10 of the log tell us that the unused subcomponent is the
+first element of the `lt` array (`lt[0]`), which is an unused subcomponent of type `LessThan`.
 
 ## Limitations
 
@@ -163,7 +165,8 @@ template Sum(n) {
 component main = Sum(3);
 ```
 
-Even though `adds[0]` is unused, the sum is still computed correctly (as for `n` numbers, only `n-1` additions must be performed).
+Even though `adds[0]` is unused, the sum is still computed correctly
+(as for `n` numbers, only `n-1` additions must be performed).
 The USC detector will still output a warning for this case, however, which is a false positive.
 
 ## Assessing Severity

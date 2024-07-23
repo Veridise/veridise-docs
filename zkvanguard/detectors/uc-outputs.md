@@ -68,8 +68,8 @@ In template LowestBitIsOne @ uc_outputs_bug.circom:3
 // highlight-end
 ```
 
-Line 3 tells us there is an underconstrained output signal in the `LowestBitIsOne` template (defined in uc_outputs_bug.circom starting on line 3).
-Lines 9--10 tell us that `outp` is the underconstrained output signal.
+Line 3 of the above log tells us there is an underconstrained output signal in the `LowestBitIsOne` template (defined in `uc_outputs_bug.circom` starting on line 3).
+Lines 9--10 of the log tell us that `outp` is the underconstrained output signal.
 
 </details>
 
@@ -85,3 +85,4 @@ constrained by _an_ input, but should be constrained by multiple inputs.
 
 It is generally rare for output signals to not be a function of input signals
 or constants, so findings from this detector often indicate severe issues where key computations and constraints have been accidentally omitted.
+These findings are therefore

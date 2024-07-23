@@ -80,10 +80,10 @@ Found signal in component that are used as divisors and could cause a division b
 
 </details>
 
-Line 3 tells us that there is a division operation that uses a signal as a
-divisor in the `Divide` component (defined on line 3 in divode_bug.circom).
-Lines 9--10 then tell us that signal is `divisor` and that the possible divide-by-zero error
-occurs on line 7 in divide_bug.circom.
+Line 3 of the above log tells us that there is a division operation that uses a signal as a
+divisor in the `Divide` component (defined on line 3 in `divode_bug.circom`).
+Lines 9--10 of the log then tell us that signal is `divisor` and that the possible divide-by-zero error
+occurs on line 7 in `divide_bug.circom`.
 
 ## Limitations
 

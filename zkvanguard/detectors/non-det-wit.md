@@ -121,9 +121,9 @@ Found signal in component that are used in conditional expressions IsZero @ non_
 
 </details>
 
-Line 3 tells us that the NDW detector has found a signal that is used in a conditional expression.
-Lines 9--10 tell us that the input signal `in` is being used in a conditional expression on
-line 9, which is the assignment `inv <-- in!=0 ? 1/in : 0`.
+Line 3 of the above log tells us that the NDW detector has found a signal that is used in a conditional expression.
+Lines 9--10 of the above log tell us that the input signal `in` is being used in a conditional expression on
+line 9 of `non_det_wit_bug.circom`, which is the assignment `inv <-- in!=0 ? 1/in : 0`.
 This finding tells us we need to confirm that `inv` and `in` are sufficiently constrained
 given the conditional assignment.
 

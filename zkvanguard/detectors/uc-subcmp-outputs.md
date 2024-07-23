@@ -110,22 +110,22 @@ Running the UCSO detector yields the following text output log:
 ----Running Vanguard with uc-subcmp-outputs detector----
 Running detector: uc-subcmp-outputs
 // highlight-next-line
-[Critical] Unconstrained subcomponent output signal in component Diff @ ./uc_subcmp_output_bug.circom:34
+[Critical] Unconstrained subcomponent output signal in component Diff @ uc_subcmp_output_bug.circom:36
 Reported By: vanguard:uc-subcmp-outputs
-Location: Diff @ ./uc_subcmp_output_bug.circom:34
+Location: Diff @ uc_subcmp_output_bug.circom:36
 Confidence: 0.99
 More Info: placeholder
 Details:
 // highlight-start
-Unconstrained subcomponent output signal in component Diff @ ./uc_subcmp_output_bug.circom:34
+Unconstrained subcomponent output signal in component Diff @ uc_subcmp_output_bug.circom:36
   * Signal  lt.out
 // highlight-end
 ```
 
 </details>
 
-Line 3 tells us that one of the subcomponent output signals within `Diff` (defined on line 36) is unconstrained.
-Lines 9--10 tell us that the unconstrained subcomponent output signal is the `lt.out` signal.
+Line 3 of the above log tells us that one of the subcomponent output signals within `Diff` (defined on line 36 of `uc_subcmp_output_bug.circom`) is unconstrained.
+Lines 9--10 of the log tell us that the unconstrained subcomponent output signal is the `lt.out` signal.
 
 ## Limitations
 

@@ -85,8 +85,8 @@ Unconstrained input signal in component OpCommitment @ uc_inputs_bug.circom:5
 
 </details>
 
-Line 3 tells us that one of the input signals of `OpCommitment` (defined on line 5) is unconstrained.
-Lines 9--10 tell us that the unconstrained input signal is the `operation` signal.
+Line 3 of the log tells us that one of the input signals of `OpCommitment` (defined on line 5 of `uc_inputs_bug.circom`) is unconstrained.
+Lines 9--10 of the log tell us that the unconstrained input signal is the `operation` signal.
 
 ## Limitations
 
