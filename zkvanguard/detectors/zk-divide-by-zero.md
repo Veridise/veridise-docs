@@ -91,3 +91,8 @@ This detector does not evaluate the possible values of expressions used in divis
 flagging all division operations as possible divide-by-zero concerns. This means that
 divisor expressions that are explicitly constrained to be non-zero will incur false
 positives.
+
+## Assessing Severity
+
+If it is manually determined that the divisor of a division operation may be zero, the circuit may contain
+a critical vulnerability, as unexpected signal values may be used to generate a valid proof.

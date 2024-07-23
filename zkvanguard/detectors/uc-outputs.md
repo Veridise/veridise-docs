@@ -75,8 +75,13 @@ Lines 9--10 tell us that `outp` is the under-constrained output signal.
 
 ## Limitations
 
-This detector may incur false positives if the output signal is designed to be
+- This detector may incur false positives if the output signal is designed to be
 constant constrained, but that constant is computed within the circuit (e.g.,
 the output signal is a hash of a constant value).
-This detector also will fail to detect issues where, e.g., an output signal is
+- This detector will fail to detect issues where, e.g., an output signal is
 constrained by _an_ input, but should be constrained by multiple inputs.
+
+## Assessing Severity
+
+It is generally rare for output signals to not be a function of input signals
+or constants, so findings from this detector often indicate severe issues where key computations and constraints have been accidentally omitted.

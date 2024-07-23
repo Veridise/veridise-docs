@@ -129,9 +129,14 @@ Lines 9--10 tell us that the unconstrained subcomponent output signal is the `lt
 
 ## Limitations
 
-This detector may incur false positives for certain subcomponents that provide optional output
+- This detector may incur false positives for certain subcomponents that provide optional output
 values. For example, the `Num2Bits` component can be used to check that its input is only `n` bits in
 length without actually using the output signals.
-This detector may also incur false negatives for checking the correctness of constraints;
+- This detector may incur false negatives for checking the correctness of constraints;
 the USCO detector can only determine if a subcomponent output is constrained at all, and not
 if the constraint is semantically correct.
+
+## Assessing Severity
+
+Oftentimes, an unconstrained subcomponent output is indicative of a constraint being accidentally omitted,
+which may lead to critical issues. Once an unconstraint subcomponent output is identified, the user should determine how the subcomponent output should be handled by the containing component; only if the usage of the output is optional can the finding be dismissed as benign.

@@ -51,6 +51,7 @@ template OpCommitment() {
 component main {public [operation]} = OpCommitment();
 ```
 
+The circuit uses the [Poseidon hash function](https://www.poseidon-hash.info/) to compute the `commitment`.
 However, the `operation` is not used in the computation of the `commitment` hash; it
 is not used in any constraints in the circuit at all.
 Since the `operation` is not used in the computation of the commitment, the
@@ -94,6 +95,12 @@ to automatically constrain otherwise unconstrained inputs (see [this discussion 
 These magic constraints prevent attackers from manipulating public, not-explicitly-constrained inputs to create new valid proofs.
 So, the potential severity of an unconstrained input signal is lower than other findings found by ZK Vanguard, as they may often
 be false positives due to these magic constraints.
+
+## Assessing Severity
+
+Input signals may be left unconstrained intentionally in cases where (1) magic constraints are known to be
+generated and (2) a specific constraint about a value is not required, but the value should be tied to
+the proof (e.g., a proof must use a nonce that is checked for uniqueness in a smart contract).
 
 However, it is still good to be aware of potential vulnerabilities that may
 arise when building circuits for proof systems that may or may not introduce such constraints automatically

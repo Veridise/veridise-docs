@@ -165,3 +165,9 @@ component main = Sum(3);
 
 Even though `adds[0]` is unused, the sum is still computed correctly (as for `n` numbers, only `n-1` additions must be performed).
 The USC detector will still output a warning for this case, however, which is a false positive.
+
+## Assessing Severity
+
+Unused subcomponents, if unintentional, are indicative of severe computational errors or constraint
+generation errors that may allow malicious actors to create valid proofs for bogus statements.
+Manual analysis should be performed to determine if the subcomponent is correctly left unused.

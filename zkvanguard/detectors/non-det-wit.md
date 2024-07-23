@@ -137,5 +137,11 @@ but is unable to determine if the conditional expressions are properly constrain
 as this requires knowledge of what the design goal of the circuit is.
 For example, the NDW detector would still report the same issue for circomlib's `IsZero` circuit, even
 though it is properly constrained.
-Therefore, for each finding reported by NDW, some manual analysis is required to determine if the
-conditional logic leads to a true bug or not.
+
+## Assesing Severity
+
+The severity of a non-deterministic witness computation depends heavily on whether
+or not the involved signals have been properly constrained according to the design
+of the circuit. Assuming that the finding is not a false positive, then the consequences
+can be severe, as the verifier may accept a proof with signal assignments outside of what is
+intended, allowing malicious users to prove invalid statements.

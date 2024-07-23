@@ -114,10 +114,30 @@ Lines 9--16 then inform us that the `private_key` signal is leaked in two ways:
 
 ## Limitations
 
-The PIL detector may generate false positives for computation that does properly
+- This detector may generate false positives for computation that does properly
 downgrade secrets (e.g., if a circuit contains a custom hashing implementation that
 is properly non-invertable), as it cannot determine if a series of computations
 properly downgrades a secret.
-Note that the PIL detector has knowledge of the circomlib hashing implementations
+- This detector also cannot quantify the amount of information leaked from a computation.
+For example, the PIL detector will report that a check that a private key is not zero using the
+`IsZero` component from circuit will report that the private input has been leaked, even though
+only a single bit of information about the input has been leaked (i.e., that the secret is not 0).
+Since whether this level of information is acceptable to leak is dependent on the application,
+this determination must be determined by the user.
+
+:::note
+
+The PIL detector has knowledge of the circomlib hashing implementations
 and will not flag private inputs that are hashed via those templates as leakages, as
 the circomlib implementations have been throughly analyzed.
+
+:::
+
+## Assessing Severity
+
+Once a finding has been determined to not be a false positive, the severity of the finding is
+determined by the amount of information leaked. If the entire secret input is leaked, then the finding
+is critical, as it exposes private inputs in the clear. However, if minimal information about secret inputs
+is leaked (e.g., that the input is not zero, as mentioned above), the finding may only merit a warning
+or be considered benign. This determination is dependent on the type of the secret
+involved and the type of information leaked from the secret.

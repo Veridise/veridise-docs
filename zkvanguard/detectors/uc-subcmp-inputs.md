@@ -132,5 +132,7 @@ Lines 9--10 tell us that the unconstrained subcomponent input signal is the `lt.
 This detector may incur false negatives if, e.g., a subcomponent input is constrained, but is
 constrained to the wrong value.
 
-[num2bits]: https://github.com/iden3/circomlib/blob/cff5ab6288b55ef23602221694a6a38a0239dcc0/circuits/bitify.circom#L25-L39
-[lessthan]: https://github.com/iden3/circomlib/blob/cff5ab6288b55ef23602221694a6a38a0239dcc0/circuits/comparators.circom#L89-L99
+## Assessing Severity
+
+Unconstrained internal signals, such as unconstrained subcomponent inputs, can lead to underconstrained output signals (see the [Underconstrained Outputs](./uc-outputs.md)), as they can be the missing constraint that decouples output and input signals in constraints.
+These findings are therefore often quite severe.
