@@ -26,7 +26,7 @@ This commitment is based on a public operation, represented by the public
 input signal `operation` (in practice, this could be a hash of a smart contract
 function and arguments) combined with a private input `private_key` only known
 by the committer.
-This commitment can be therefore used to prove of the committer's specific intent to
+This commitment can be therefore used to prove the committer's specific intent to
 perform the specified operation, as the commitment can be easily verified externally, but
 can only be forged if the private key of the committer is compromised.
 
