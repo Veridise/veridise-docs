@@ -7,8 +7,8 @@ const plugin = (options) => {
   const transformer = async (ast) => {
     visit(ast, "text", (node) => {
       // Replace em-dashes first so we don't end up with en-dash+hyphen combos.
-      node.value = node.value.replace("---", "\u2014"); // em-dash in unicode
-      node.value = node.value.replace("--", "\u2013"); // en-dash in unicode
+      node.value = node.value.replaceAll("---", "\u2014"); // em-dash in unicode
+      node.value = node.value.replaceAll("--", "\u2013"); // en-dash in unicode
     });
   };
   return transformer;
