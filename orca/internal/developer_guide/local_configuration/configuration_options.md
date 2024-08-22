@@ -39,9 +39,3 @@ The following is a full list of the configuration options available to OrCa and 
 | `specs_path` | `string` | `specs` | Relative path from configuration file to folder containing [V] specifications |
 | `src_path` | `string` | `src` | Relative path from configuration file to folder containing source code |
 | `timeout` | `int` | `600` | Maximum number of seconds for fuzzer to run for |
-
-## Hints
-
-TODO: Write me!
- 
-
