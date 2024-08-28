@@ -14,7 +14,7 @@ While conventional LTL operates over program states, [V] operates over specific 
 
 ## Specification and Invariant
 
-Either `spec` or `inv` has to be provided within the [V] specification, not both. Otherwise, OrCa will complain that the [V] specification is malformed according to the [V] grammar.
+Exactly one of the `spec` or the `inv` section must be present in each [V] specification. Users should create new `.spec` files for each specification, as [V] does not support multiple specifications in a single file.
 
 #### `inv` vs `spec` Section
 
@@ -25,33 +25,8 @@ inv: []!finished(target, constraint)
 ```
 
 ```solidity
-spec: reverted(target, constraint)
+spec: constraint
 ```
-
-## Reverted Invariants
-
-As explained in [the invariant specification section](invariant_specifications.md), reverted invariants provide **sufficient** conditions for a reversion. Thus, a violation of a revert invariant is a case when the recert constraint holds but the function call does not revert. However, a function call where the constraint is falsified and the function call reverts is *not* considered a violation. To better understand this, consider the following solidity function that we can presume is part of the `Foo` contract.
-
-```solidity
-function bar(int x, int y) public {
-  require(x > 0);
-  require(y > 0);
-  emit Event(x,y);
-}
-```
-
-Suppose we have the following revert invariant:
-
-```
-vars: Foo f
-inv: reverted(f.bar(x,y), x == 10)
-```
-
-This specification is *not* violated by the call `f.bar(-5,10)` even though the call to `f.bar` still reverts and the constraint is not satisfied. Similarly, `f.bar(5,10)` does not violated the specification, even though the call to `f.bar` reverts and the constraint is not satisfied. 
-
-A good way to understand the semantics of the `revert` invariant is to understand its semantics as a temporal specification:
-
-* `reverted(target, con)` becomes `[]!finished(target, old(con))`
 
 ## Variable Shadowing
 
