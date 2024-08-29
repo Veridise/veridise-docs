@@ -24,4 +24,4 @@ For example, with a contract `c`, a target of `c.*` would specify that the invar
 
 ### Temporal Equivalents
 
-All invariant specifications can be expressed by equivalent (but ). Specifically, the invariant `con over target` could be equivalently written as `[]!finished(target, !con)` (replacing `target` with `*` for invariants with no specified target).
+All invariant specifications can be expressed as equivalent (but possibly more verbose) temporal properties. Specifically, the invariant `con over target` could be equivalently written as `[]!finished(target, !con)` (replacing `target` with `*` for invariants with no specified target).
