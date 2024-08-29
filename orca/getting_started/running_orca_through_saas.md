@@ -228,11 +228,11 @@ This is probably the most complicated step in the process. This involves a four 
 3. After the contracts deploy, state information is dumped from the local node
 4. Mappings from Ethereum addresses to the contract at that address are created
 
-This should all be transparent to the users, but is a place of active development. Please bring errors here to the help-saas channel. 
+This should all be transparent to the users, but is a place of active development. Please bring errors here to the help-saas channel.
 
 #### Deployment parsing; ABI Extraction; Configuration creation
 
-These steps are all simple data collection from various compilation and deployment artifacts to construct input to OrCa. 
+These steps are all simple data collection from various compilation and deployment artifacts to construct input to OrCa.
 
 #### Run OrCa Fuzzer
 
@@ -262,4 +262,10 @@ This spec says that calls to increment should always not finish (so, never finis
 
 ![image](img/counterexample_results.png)
 
-The relevant information...
+At the top here, we see a representation of the [V] spec that was provided. If multiple [V] specs were run, each one will be represented with the counterexample found.
+
+Below that you will see your counterexample. The `vars` field gives the names for variables used counterexample.
+
+The counterexample itself is a minimum number of steps required to recreate something that violates your spec. In this case, it's a simple one. We said increment() calls should never complete, and increment() always ends.
+
+For more complex specs, there will be a list of the minimum number of steps required to create a violation. This can be arbitrarily large, but will be consistently reproducable given the steps.
