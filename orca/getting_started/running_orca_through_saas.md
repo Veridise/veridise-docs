@@ -205,7 +205,11 @@ You can select multiple VSpecs and they will be each tested against the project 
 
 #### Task Review
 
+<<<<<<< HEAD
 You'll see another review page. Look it over and click `Launch Task`. You can give an optional task name here, if you do not add one, the name for the task will be the run ID created by SaaS.
+=======
+You'll see another review page. Look it over and click `Launch Task`. You can give an optional task name here, if you do not add one, the name for the task will be the numerical run id.
+>>>>>>> 62c7ee2 (Another run on the OrCa documentation.)
 
 ![image](img/another_review_page.png)
 
@@ -228,11 +232,19 @@ This is probably the most complicated step in the process. This involves a four 
 3. After the contracts deploy, state information is dumped from the local node
 4. Mappings from Ethereum addresses to the contract at that address are created
 
+<<<<<<< HEAD
 This should all be transparent to the users, but is a place of active development. Please bring errors here to the help-saas channel.
 
 #### Deployment parsing; ABI Extraction; Configuration creation
 
 These steps are all simple data collection from various compilation and deployment artifacts to construct input to OrCa.
+=======
+This should all be transparent to the users, but is a place of active development. Please bring errors here to the help-saas channel. 
+
+#### Deployment parsing; ABI Extraction; Configuration creation
+
+These steps are all simple data collection from various compilation and deployment artifacts to construct input to OrCa. 
+>>>>>>> 62c7ee2 (Another run on the OrCa documentation.)
 
 #### Run OrCa Fuzzer
 
@@ -262,6 +274,7 @@ This spec says that calls to increment should always not finish (so, never finis
 
 ![image](img/counterexample_results.png)
 
+<<<<<<< HEAD
 At the top here, we see a representation of the [V] spec that was provided. If multiple [V] specs were run, each one will be represented with the counterexample found.
 
 Below that you will see your counterexample. The `vars` field gives the names for variables used counterexample.
@@ -269,3 +282,6 @@ Below that you will see your counterexample. The `vars` field gives the names fo
 The counterexample itself is a minimum number of steps required to recreate something that violates your spec. In this case, it's a simple one. We said increment() calls should never complete, and increment() always ends.
 
 For more complex specs, there will be a list of the minimum number of steps required to create a violation. This can be arbitrarily large, but will be consistently reproducable given the steps.
+=======
+The relevant information...
+>>>>>>> 62c7ee2 (Another run on the OrCa documentation.)
