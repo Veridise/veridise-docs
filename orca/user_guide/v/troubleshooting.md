@@ -21,10 +21,12 @@ Exactly one of the `spec` or the `inv` section must be present in each [V] speci
 The `inv` section should only contain non-temporal properties, while the `spec` section should only contain temporal properties. For instance, the following represent examples of malformed `inv` and `spec` sections:
 
 ```solidity
+# NOT ALLOWED -- invariants cannot include statements or temporal operators
 inv: []!finished(target, constraint)
 ```
 
 ```solidity
+# NOT ALLOWED -- specs must describe a transaction sequence with statements and temporal operators
 spec: constraint
 ```
 
