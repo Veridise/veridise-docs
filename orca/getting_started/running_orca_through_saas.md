@@ -205,11 +205,7 @@ You can select multiple VSpecs and they will be each tested against the project 
 
 #### Task Review
 
-<<<<<<< HEAD
 You'll see another review page. Look it over and click `Launch Task`. You can give an optional task name here, if you do not add one, the name for the task will be the run ID created by SaaS.
-=======
-You'll see another review page. Look it over and click `Launch Task`. You can give an optional task name here, if you do not add one, the name for the task will be the numerical run id.
->>>>>>> 62c7ee2 (Another run on the OrCa documentation.)
 
 ![image](img/another_review_page.png)
 
@@ -275,6 +271,7 @@ This spec says that calls to increment should always not finish (so, never finis
 ![image](img/counterexample_results.png)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 At the top here, we see a representation of the [V] spec that was provided. If multiple [V] specs were run, each one will be represented with the counterexample found.
 
 Below that you will see your counterexample. The `vars` field gives the names for variables used counterexample.
@@ -285,3 +282,6 @@ For more complex specs, there will be a list of the minimum number of steps requ
 =======
 The relevant information...
 >>>>>>> 62c7ee2 (Another run on the OrCa documentation.)
+=======
+The relevant information...
+>>>>>>> 61b1e79 (Another run on the OrCa documentation.)
