@@ -5,6 +5,136 @@ title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
+## v0.3.0 - 2024-08-30
+
+### Added
+- DeFi Vanguard:
+    - Added support for identifying static calls to precompiled contracts
+    - Added source location information to contract and function declarations
+    - Added support for immutable variables
+- ZK Vanguard:
+    - Added ZK private input leakage detector
+    - Added support for analyzing circom-level functions
+- Shared Infrastructure:
+    - Added support for build caching to speed up runs in SaaS
+- dump-intracontract-callgraph:
+    - New detector that creates graphs of the internal function calls within each contract
+- dump-currency-value-flow-graph:
+    - New detector that generates visualizations of native currency & ERC20 token value flow within a contract
+- frontrunning:
+    - New detector that reports if there are potential frontrunning vulnerabilities
+- manual-inspection detector:
+    - New detector that will flag locations that should be manually reviewed for security vulnerabilities.
+    - Added rule for centralization risks, as indicated by (msg.sender == X) for some storage variable X
+    - Added rule for detecting low-level calls that do not check the target is a smart contract
+    - Added new detector that reports critical patterns that need to be verified
+    - Added rule that flags use of ECDSA.recover, abi.encodePacked, hash functions, and block.number
+    - Added rule that flags use of unsafe ERC20 functions transfer and approve
+- report-access-control:
+    - New detector that infers and reports privileged roles (as storage variables) in a smart contract.
+- use-before-def:
+    - Added filtering of stack variable alerts for known safe patterns, such as for-loops and simple summations, in order to reduce false positives
+    - Added support for storage structs
+    - Added filtering to avoid reporting storage variables if they are initialized by an obvious initialization function, reducing false positives
+- zk-proof-replay:
+    - New detector that reports potential proof replay vulnerabilities when making calls to auto-generated on-chain ZK proof verifier contracts.
+- zk-public-inputs-valid:
+    - New detector that reports unvalidated public input that are passed to an on-chain ZK proof verifier.
+- locked-funds:
+    - New detector that reports contracts that may lock native currency and ERC20 tokens.
+
+### Changed
+- ZK Vanguard:
+    - Improved overall ZK detector performance and accuracy by optimizing ZK-specific analyses
+    - Circom output is now cached
+    - Signal locations now show the path of the file where they are declared
+- Shared Infrastructure:
+    - Added an option to emit file paths in diagnostics as paths relative to a given root directory
+    - Made the order of reported issues more deterministic
+    - Minor formatting adjustments
+    - The default text output format has been updated
+    - Updated how issues are sorted
+- flashloan:
+    - Update reporting to use external call names to improve clarity for external calls with multiple potential targets
+- reentrancy:
+    - Changed the format of the alerts to be more concise and more informative.
+    - Reentry points are now displayed using the ABI name of the called (external) function instead of listing all possible call targets.
+    - The detector no longer reports reentry points that can only be reached through functions with modifiers named "nonReentrant".
+    - The source code location information of each state modification is now displayed.
+- unchecked-return:
+    - Reduced false positives when handling the return values of some functions that include in line assembly
+    - Improved reporting for unchecked external calls
+    - Reduced false negatives by improving handling of external calls
+    - Improved runtime performance
+    - Improved the format of the vulnerability report
+- use-before-def:
+    - To avoid duplicating alerts, vulnerabilities across different contracts that involve the same variable are now grouped in the same alert
+    - Deduplicated inherited initializer functions from report (only report each initializer implementation once)
+    - Changed the detector to classify vulnerable stack variables separately from vulnerable memory variables
+    - Removed support for memory variable vulnerabilities
+    - Improved efficiency of storage variable analysis
+    - Reduced potential false negatives
+    - Refactored detector to significantly reduce memory consumption
+    - Improved runtime performance
+    - Improved the format of the vulnerability report
+- wit-constr-diff:
+    - Improved the clarify of the detector reporting
+
+### Fixed
+
+- DeFi Vanguard:
+    - Fixed a bug causing code in library functions to not be correctly considered as reads, writes, calls, or reverts.
+    - Fixed a crash that occurs with overridden receive/fallback functions in some edge cases
+    - Fixed names of internal library functions not being displayed correctly
+    - Fixed some issues where detectors may fail to flag vulnerable calls to internal library functions
+    - Fixed inherited functions being loaded incorrectly when there are multiple superclasses/interfaces declaring the same function
+    - Fixed a bug causing superclass constructor code to not be analyzed in some situations involving multiple inheritance
+    - Fixed inherited constructors not being loaded or analyzed correctly
+    - Fixed a bug where some constructor declarations are not recognized correctly
+    - Fixed overridden virtual fallback and receive functions not being recognized correctly
+    - Fixed some bugs involving recognition of checked arithmetic operations
+    - Fixed a crash that occurs when a string literal is used as an argument to a low level call
+    - Fixed a crash that occurs when using an array of structs in a function
+    - Fixed some crashes involving inline assembly
+    - Fixed a crash involving a tuple assignment that could occur in specific cases
+    - Fixed a bug causing top-level functions to be loaded as contract methods
+    - Fixed crashes that occur when mappings are indexed with calldata strings
+    - Fixed crashes in divide-before-multiply, use-before-def, and flashloan on certain projects
+    - Fixed function parameters not being recognized correctly
+- ZK Vanguard:
+    - Fixed crash when loading Circom sources
+    - Fixed crash that can occur during circuit constraint analysis
+    - Fixed assertion failure in caused by frontend optimizations
+    - Fixed detection of constants loaded from an array parameter of a template
+    - Resolved ZK detector crashes and inaccuracies caused by issues in ZK-specific analyses
+- Shared Infrastructure:
+    - Fixed crash that can occur when reporting issues
+    - Fixed some subtle bugs causing detectors to fail for unknown reasons
+    - Minor runtime performance improvements
+- reentrancy:
+    - Fixed external calls in constructors being considered as reentry points
+    - Fixed false positive when storage write occurs in fallback/receive
+    - Fixed .send/.transfer being considered as reentry points
+- uc-outputs:
+    - Fixed crash that occurred during analyses of a small number of projects
+- unchecked-return:
+    - Fixed bug where all call targets could be printed for external calls with unknown selector
+    - Fixed a bug where passing gas, value, or call address of an external call didn't count as a use.
+    - Fixed unchecked return values in internal library functions not being reported
+- unused-subcmps:
+    - Fixed inaccuracies caused by frontend changes
+- use-before-def:
+    - Fixed bug where calling a function that always reverts wasn't considered as a revert, leading to false positives
+    - Fixed uninitialized stack and memory variables in internal library functions not being reported
+    - Fixed a bug that caused some some alerts to be missed in large projects
+- wit-constr-diff:
+    - Fixed errors in analysis that incurred false positives and false negatives
+- zk-divide-by-zero:
+    - Improved analysis by addressing uncovered division operations
+
+### Removed
+- ZK Vanguard:
+    - Removed dump-cdg detector
 
 ## v0.2.1 - 2023-10-27
 ### Changed
