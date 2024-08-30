@@ -151,7 +151,7 @@ const config = {
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: "Veridise SaaS Documentation",
+        title: "Veridise AuditHub Documentation",
         logo: {
           alt: "Veridise Logo",
           src: "img/veridise-logo-square-light.png",
@@ -162,7 +162,7 @@ const config = {
             type: "docsVersion",
             docsPluginId: "saas",
             position: "left",
-            label: "SaaS",
+            label: "AuditHub",
           },
           {
             // TODO: replace with dropdown when versions are available.
