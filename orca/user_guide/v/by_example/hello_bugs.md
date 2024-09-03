@@ -1,6 +1,6 @@
 To start off, we'll take a look at using [V] to find a bug in a Solidity ERC20 contract. Throughout this guide, we'll use the contract [MyVToken.sol](TODO) as our running example. The actual tool we use to find the bugs discussed in this guide is called OrCa. You can learn more about OrCa [here](TODO), and read about how to use OrCa through the SaaS platform [here](TODO).
 
-## Our Example Bug and Spec
+## Our Bug: Burnt to a Crisp
 
 For now, we'll take a look specifically at the `burn` transaction in `MyVToken`:
 
@@ -41,3 +41,5 @@ The second line contains the `spec` section, which includes linear temporal logi
 Now let's discuss our particular condition -- `old(token.balanceOf(acc)) < token.balanceOf(acc)`. This condition is defined over both the variable `token` declared in the `vars` section and the parameters of the transaction `acc` and `amt` (though `amt` is not used). By default, expressions in [V] conditions are evaluated _after_ executing the transaction, so the expression `token.balanceOf(acc)` references the balance for account `acc` _after_ running `burn`. On the left side of the equation, the same expression is wrapped in `old`, which forces [V] to evaluate the expression _before_ the transaction executes. This means that the condition is true when `token.balanceOf(acc)` is strictly smaller before executing the transaction -- in other words, when `burn` *increases* the balance for the account. Finally, taking the condition in the context of our greater formula `[]!finished(token.burn(acc, amt), C)`, we can describe the property in English as "It is never the case that `burn` increases the balance of `acc` when successfully executing `token.burn(acc, amt)`".
 
 As we saw in the implementation of `burn` for `MyVToken`, this property is false! This is because we can choose `token` to represent an instance of the `MyVToken` contract with, say, a `_balances` mapping where `_balances[0x1234] = 0`. We can also choose to pass parameters `acc = 0x1234` and `amt = 10` to `burn`. This would cause `_balances[0x1234]` to overflow due to the unsafe subtraction, thus violating our spec. In this case, there are multiple choices for values for `token`, `acc`, and `amt` that would show our property to be false, but our use of the operators `[]!` means that we need only find one such example to prove that the property does not hold.
+
+In the [next section](by_example/intro_to_ltl.md), we discuss how to use LTL formulae to describe more complex properties in [V].
