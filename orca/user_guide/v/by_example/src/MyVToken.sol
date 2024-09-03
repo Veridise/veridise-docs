@@ -272,7 +272,9 @@ contract MyVToken is IERC20 {
         );
         require(spender != address(0), "ERC20: approve to the zero address");
 
-        _allowances[tokenOwner][spender] = amount;
+        // NOTE: should be `tokenOwner` instead of `owner`
+        // (`owner` refers to the owner of the contract)
+        _allowances[owner][spender] = amount;
         emit Approval(tokenOwner, spender, amount);
     }
 
