@@ -81,7 +81,7 @@ Now that we understand these two new operators, let's take a look at our new spe
 ```solidity
 []!(finished(token.approve(tOwner, acc, amt), acc = spender && amt = allowed) &&
     X(!finished(token.transferFrom(from, to, amt), from = spender) U
-       reverted(token.transferFrom(from, to, amt), from = spender, amt <= allowed)))
+       reverted(token.transferFrom(from, to, amt), from = spender && amt <= allowed)))
 ```
 
 This spec has the same `finished` and `reverted` statements from our previous spec, which are now the first and third statements here respectively. However, we no longer require the `transferFrom` to take place immedately after the `approve`. Instead, we say that starting from the next step after `approve`,the formula `!finished(token.transferFrom(from, to, amt), from = spender)` must hold _until_ our revert statement holds. Remember, the entire forumla is surrounded by `[]!`, so any sequence satisfying this inner formula consitutes a counterexample (and thus a bug in our smart contracts). Thus, our new spec is violated by any sequence where (a) an `approve` transaction succeeds, (b) eventually, a `transferFrom` transaction reverts where `from` is the approved sender and `amt` is no more than the approved amount, and (c) no transactions in between the two were successfully-completing `transferFrom` calls where `from` was that same spender.
