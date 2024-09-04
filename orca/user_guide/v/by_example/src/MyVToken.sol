@@ -18,7 +18,11 @@ contract MyVToken is IERC20 {
 
     constructor() {
         owner = msg.sender;
-        _mint(msg.sender, 100);
+
+        // NOTE: Need to add amount to the total supply!
+        // Can do this by calling mint instead of updating _balances directly
+        /* mint(msg.sender, 100); */
+        _balances[msg.sender] += 100;
     }
 
     function totalSupply() public view virtual override returns (uint256) {
@@ -235,6 +239,8 @@ contract MyVToken is IERC20 {
         require(account != address(0), "ERC20: burn from the zero address");
 
         _beforeTokenTransfer(account, address(0), amount);
+
+        _totalSupply -= amount;
 
         uint256 accountBalance = _balances[account];
         // NOTE: The following overflow check should be added!
