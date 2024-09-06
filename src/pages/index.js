@@ -19,7 +19,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/intro"
           >
-            Get Started with SaaS - 5min ⏱️
+            Get Started with AuditHub - 5min ⏱️
           </Link>
         </div>
       </div>
