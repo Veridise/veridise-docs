@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-sidebar_label: SaaS Frontend
+sidebar_label: AuditHub Frontend
 title: Software Changes
 slug: frontend-changelog
 ---

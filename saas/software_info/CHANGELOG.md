@@ -1,19 +1,22 @@
 ---
 sidebar_position: 1
-sidebar_label: AuditHub Info
+sidebar_label: SaaS Info
 title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.0.1-rc4 - 2024-09-10
+### Changed
+Component SaaS Backend upgraded to version *v2.0.1-rc1*.
+Component SaaS Frontend upgraded to version *v2.0.1-rc1*.
 
 ## v2.0.0 - 2024-08-30
 ### Changed
-- Component OrCa upgraded to version *v2.0.0*.
-- Component Picus upgraded to version *v1.0.3*.
-- Component SaaS Backend upgraded to version *v2.0.0*.
-- Component SaaS Frontend upgraded to version *v2.0.0*.
-- Component SaaS Tool Helper upgraded to version *v1.2.0*.
-- Component Vanguard upgraded to version *v0.3.0*.
+Component OrCa upgraded to version *v2.0.0*.
+Component Picus upgraded to version *v1.0.3*.
+Component SaaS Backend upgraded to version *v2.0.0*.
+Component SaaS Frontend upgraded to version *v2.0.0*.
+Component Vanguard upgraded to version *v0.3.0*.
 
 ## v1.2.3 - 2023-11-02
 ### Changed

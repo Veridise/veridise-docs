@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
-sidebar_label: SaaS Backend
+sidebar_label: AuditHub Backend
 title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
 
-## v2.0.0 - 2024-08-30
+## v2.0.0 - 30-08-2024
 ### Added
 - New Project Definition endpoints
 - New workflow-style task execution, with visibility into each step
@@ -14,7 +14,6 @@ slug: backend-changelog
 - Endpoints to all managing findings across tools, marking them as true or false positives one at a time or in bulk
 - Collaborative commenting supporting endpoints
 - Fork networks support when running the OrCa fuzzer
-
 ## v1.1.3 - 2023-11-01
 ### Changed
 - Allow better management of database pool
