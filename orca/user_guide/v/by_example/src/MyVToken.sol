@@ -35,6 +35,12 @@ contract MyVToken is IERC20 {
         return _balances[account];
     }
 
+    function transferPowerOf10(address to, uint8 exp) public returns (bool) {
+        uint8 base = 10;
+        uint8 amount = base ** exp;
+        return transfer(to, amount);
+    }
+
     /**
      * @dev See {IERC20-transfer}.
      *
@@ -348,4 +354,46 @@ contract MyVToken is IERC20 {
         address to,
         uint256 amount
     ) internal virtual {}
+
+    function get_vrs(
+        bytes memory signature
+    ) internal pure returns (uint8 v, bytes32 r, bytes32 s) {
+        assembly {
+            // Place first word on the stack at r.
+            r := mload(add(signature, 0x20))
+
+            // Place second word on the stack at s.
+            s := mload(add(signature, 0x40))
+
+            // Place final byte on the stack at v.
+            v := byte(0, mload(add(signature, 0x60)))
+        }
+
+        return (v, r, s);
+    }
+
+    function toBytes(address addr) public pure returns (bytes memory) {
+        return abi.encodePacked(addr);
+    }
+
+    // Simple hashing function (uses keccak only)
+    function hashMsg(bytes memory my_msg) public pure returns (bytes32) {
+        return keccak256(my_msg);
+    }
+
+    function transferCheckSignature(
+        address from,
+        bytes memory signature,
+        address to,
+        uint256 amount
+    ) public {
+        // Require that the signer was the `from` address
+        (uint8 v, bytes32 r, bytes32 s) = get_vrs(signature);
+        address signer = ecrecover(hashMsg(toBytes(to)), v, r, s);
+        require(signer != address(0));
+        require(signer == from);
+
+        // NOTE: Should transfer from the `from` address, not message sender!
+        transfer(to, amount);
+    }
 }
