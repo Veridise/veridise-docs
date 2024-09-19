@@ -55,7 +55,7 @@ This is the transaction to execute on the given recipient entity. It consists of
 
 At a high level, a constraint is a [V] boolean expressions. In general, [V] expressions are operations composed of blockchain variables, smart contract variables, pure or view functions, specification variables, argument aliases, and [V** utility variables and functions.
 
-**NOTE**: If no constraint is necessary, simply leaving off the constraint section is identical to having the constraint `true`.
+**NOTE**: If no constraint is necessary, simply leaving off the constraint section is identical to having the constraint `True`.
 
 ### Blockchain Variables
 
@@ -66,17 +66,18 @@ To allow the specification of properties across different blockchains and langua
 | `nulladdr`  | Evaluates to the null account |
 | `sender`    | Specifies the account that invoked the transaction |
 | `value`     | Specifies the amount of native tokens attached by the sender to the transaction’s message |
+| `timestamp` | Specifies the timestamp of the blockchain at the invoked transaction |
 
 ### [V] Utility Variables and Functions
 
 [V] has a series of utility variables and functions used to facilitate the property specification:
 
-|   Utility                   | Description |
-| :-------------------------- | :---------- |
-| `ret`                       | The return value of the given transaction |
-| `balance(account)`          | Returns `account`’s balance in native tokens |
-| `old(expr)`                 | Evaluates `expr` just before the transaction executes |
-| `fsum(target, cond, expr)`  | Accumulates the sum of `expr` across all transactions to `target` that successfully execute where `cond` holds. Note that this creates a nested scope where the blockchain variables, utility variables and utility functions refer to the specified target transaction |
+|   Utility                       | Description |
+| :------------------------------ | :---------- |
+| `ret`                           | The return value of the given transaction |
+| `balance(account)`              | Returns `account`’s balance in native tokens |
+| `old(expr)`                     | Evaluates `expr` just before the transaction executes |
+| `fsum{target when cond}(expr)`  | Accumulates the sum of `expr` across all transactions to `target` that successfully execute where `cond` holds. Note that this creates a nested scope where the blockchain variables, utility variables and utility functions refer to the specified target transaction |
 
 ### Arithmetic Operators
 

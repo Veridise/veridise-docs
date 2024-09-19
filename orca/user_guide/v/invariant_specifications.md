@@ -1,37 +1,27 @@
 # Invariant Specifications
 
-Invariant specifications enable a user to check properties that should always hold. Invariant specifications are declared in the invariant section of the [V] specification which is marked by the `inv` tag (short for "invariant"). The invariant section itself contains a single [V] statement, and thus the form of a [V] invariant section is as follows:
+Invariant specifications enable a user to check properties that should always hold. Invariants are declared in a special section of the [V] specification, marked by the `inv` tag (short for "invariant"). The invariant section itself contains a single [V] expression, written as follows:
 
 ```solidity
-inv: action(target, constraint)
+inv: constraint
 ```
 
-**IMPORTANT**: Currently, only the `finished` and `reverted` actions are accepted as invariants.
+Semantically, an invariant specification is violated whenever the constraint is violated after executing _any_ transaction.
 
-## Finished Invariants
 
-Finished invariants allow a user to specify properties that should always hold after a given function (or set of functions) complete successfully. 
+### Specifying a Target
 
-For example, suppose we would like to say that it is always the case that a user's balance in a `Bank` contract should always increase if they deposit. This is expressed as an invariant as follows:
+In some cases, users may wish to specify an invariant over a single contract or single transaction. This can be done with the following syntax:
 
 ```solidity
-vars: Bank b
-inv: finished(b.deposit, b.balanceOf(sender) > old(b.balanceOf(sender)))
+inv: constraint over target
 ```
 
-## Reverted Invariants
+Here, `over` is a keyword that separates the target from the invariant constraint. This restricted invariant specification is violated whenever the constraint is violated after executing any transaction that matches `target`.
 
-Reverted invariants allow a user to specify *suffficient* conditions for a transaction to revert. For example, we can specify that attempting to deposit 0 into a `Bank` contract should always revert as follows:
+For example, with a contract `c`, a target of `c.*` would specify that the invariant should hold after executing any transaction within `c`. A target of `c.foo(x)` would specify that the condition need only hold after any execution of the `foo(x)` transaction. Note that the transaction parameter `x` could then be referenced by the constraint. 
 
-```solidity
-vars: Bank b
-inv: reverted(b.deposit(amt), amt = 0)
-```
 
-## Temporal Equivalents
+### Temporal Equivalents
 
-Invariants are really just syntactic sugar for temporal properties. The formal definition of invariants as temporal properties are as follows:
-
-* `finished(target, con)` becomes `[]!finished(target, !con)`;
-* `finished(target, pre |=> post)` becomes `[]!finished(target, old(pre) && !post)`;
-* `reverted(target, con)` becomes `[]!finished(target, old(con))`;
+All invariant specifications can be expressed as equivalent (but possibly more verbose) temporal properties. Specifically, the invariant `con over target` could be equivalently written as `[]!finished(target, !con)` (replacing `target` with `*` for invariants with no specified target).
