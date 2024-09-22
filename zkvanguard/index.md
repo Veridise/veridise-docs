@@ -12,14 +12,13 @@ ZK Vanguard currently supports detecting bugs in ZK circuits written in [circom]
 
 ## General Usage Instructions
 
-### SaaS Usage
+### AuditHub Usage
 
-If you're not familiar with Veridise's Security-as-a-Service (SaaS) platform, first read the [SaaS guide](/saas/).
+If you're not familiar with Veridise's AuditHub platform, first read the [AuditHub guide](/saas/).
 
-To use ZK Vanguard on SaaS, when creating a new task on Veridise's SaaS platform, select "Ethereum" as the Platform and "Circom" as the Language:
-
-![image](./screenshots/zkvanguard-lang-selection.png)
-
-You'll then be able to select ZK Vanguard from among the available tools:
+To use ZK Vanguard on AuditHub, upload a project source archive that contains Circom circuit code.
+Audithub will automatically detect that the project contains ZK circuits and present Veridise's
+ZK tools for selection on the tool selection screen.
+To use ZK Vanguard, select it from the tool selection screen.
 
 ![image](./screenshots/zkvanguard-tool-selection.png)
