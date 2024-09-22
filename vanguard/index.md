@@ -19,5 +19,5 @@ You can get started with Vanguard by following [this guide](./getting-started.md
 * Supports Solidity versions 0.8.4 through 0.8.24.
 * Collects useful information such as call graphs, currency value flow, and
   access controls and emits them in tabular & visual form.
-* Findings reported by Vanguard can be triaged directly in the SaaS interface.
+* Findings reported by Vanguard can be triaged directly in the AuditHub interface.
 
