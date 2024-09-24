@@ -3,14 +3,14 @@ title: Running Vanguard
 sidebar_position: 2
 ---
 
-Vanguard must be run through the SaaS service.
-If you are not familiar with our platform, you may want to read the [SaaS guide
-first][saas-guide].
+Vanguard must be run through AuditHub.
+If you are not familiar with our platform, you may want to read the [AuditHub guide
+first][audithub-guide].
 
 ## Step 1: Project Setup
 
 If you have not set up your project before, you will need to do so by following
-the steps in the [SaaS guide][saas-guide].
+the steps in the [AuditHub guide][audithub-guide].
 You'll only need to do this one time.
 
 You should ensure the following parameters are set:
@@ -56,5 +56,5 @@ In the code viewer:
 
 For more information, see the page on the [issue triage interface][triage].
 
-[saas-guide]: ../saas
+[audithub-guide]: ../saas
 [triage]: ./triage.md
