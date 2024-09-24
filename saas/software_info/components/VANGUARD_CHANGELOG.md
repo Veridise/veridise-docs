@@ -5,8 +5,27 @@ title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
-## v0.3.0 - 2024-08-30
 
+## v0.3.1 - 2024-09-24
+### Added
+- ZK Vanguard
+  - Added subcomponent type information to finding descriptions
+- DeFi Vanguard
+  - Added a new cross contract reentrancy detector that reports state modifications in multiple contracts (not just the one being reentered into)
+  - Added a detector for dumping the intercontract callgraph, which involves external calls between different contracts
+
+### Changed
+
+- DeFi Vanguard
+  - Minor runtime performance improvements in some detectors
+
+### Fixed
+- ZK Vanguard
+  - Removed unnecessary directory paths from FIO output
+  - Fixed subcomponent metadata initialization.
+  - Fixed a bug that caused some reported files paths to be prefixed with "./"
+
+## v0.3.0 - 2024-08-30
 ### Added
 - DeFi Vanguard:
     - Added support for identifying static calls to precompiled contracts

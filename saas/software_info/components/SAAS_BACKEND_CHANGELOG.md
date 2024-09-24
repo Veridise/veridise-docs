@@ -1,10 +1,24 @@
 ---
 sidebar_position: 1
-sidebar_label: SaaS Backend
+sidebar_label: AuditHub Backend
 title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+
+## v2.1.0 - 2024-09-24
+### Changed
+- Task execution workflow optimizations
+
+### Fixed
+- Fix order of messages in Collaborative Commenting Threads
+
+## v2.0.1 - 2024-09-10
+### Added
+- New collaborative commenting endpoints
+
+### Fixed
+- Bug fixes
 
 ## v2.0.0 - 2024-08-30
 ### Added
