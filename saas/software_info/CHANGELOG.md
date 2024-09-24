@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-sidebar_label: SaaS Info
+sidebar_label: AuditHub Info
 title: Software Changes
 slug: changelog
 ---
