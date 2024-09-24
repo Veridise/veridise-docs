@@ -17,7 +17,7 @@ ZK Vanguard currently supports detecting bugs in ZK circuits written in [circom]
 If you're not familiar with Veridise's AuditHub platform, first read the [AuditHub guide](/saas/).
 
 To use ZK Vanguard on AuditHub, upload a project source archive that contains Circom circuit code.
-Audithub will automatically detect that the project contains ZK circuits and present Veridise's
+AuditHub will automatically detect that the project contains ZK circuits and present Veridise's
 ZK tools for selection on the tool selection screen.
 To use ZK Vanguard, select it from the tool selection screen.
 
