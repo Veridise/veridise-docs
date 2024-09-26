@@ -5,6 +5,9 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.1 - 2024-09-26
+### Fixed
+- Bug fixes on task output retrieval from the logging service
 
 ## v2.1.0 - 2024-09-24
 ### Changed
