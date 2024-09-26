@@ -5,6 +5,11 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.1.1 - 2024-09-26
+### Changed
+- Component SaaS Backend upgraded to version *v2.1.1*.
+- Component SaaS Frontend upgraded to version *v2.0.4*.
+
 ## v2.1.0 - 2024-09-24
 ### Changed
 - Component SaaS Backend upgraded to version *v2.1.0*.
@@ -62,3 +67,4 @@ slug: changelog
 - Component SaaS Frontend set to version *v1.0.0*.
 - Component OrCa set to version *v1.0.0*.
 - Component Vanguard set to version *v0.1.0*.
+

@@ -5,6 +5,14 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.0.4 - 2024-09-26
+### Added
+- Syntax highlighting for Leo / Aleo programs
+
+### Fixed
+- Editor used dark mode instead of user's preferred theme
+- Finding preview in "Apply bulk action" dialog used the wrong theme
+- Timeout limit in OrCa was not applied
 
 ## v2.0.3 - 2024-09-24
 ### Added
