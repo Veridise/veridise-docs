@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.1.2 - 2024-09-27
+### Fixed
+- Fix working directory on vanguard execution
+
 ## v2.1.1 - 2024-09-26
 ### Changed
 - Component SaaS Backend upgraded to version *v2.1.1*.
