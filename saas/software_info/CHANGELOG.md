@@ -6,7 +6,7 @@ slug: changelog
 ---
 # Software Changes
 ## v2.1.2 - 2024-09-27
-### Fixed
+### Changed
 - Component SaaS Backend upgraded to version *v2.1.2*.
 
 ## v2.1.1 - 2024-09-26
