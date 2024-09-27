@@ -5,6 +5,10 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.2 - 2024-09-27
+### Fixed
+- Fix working directory on vanguard execution
+
 ## v2.1.1 - 2024-09-26
 ### Fixed
 - Bug fixes on task output retrieval from the logging service
