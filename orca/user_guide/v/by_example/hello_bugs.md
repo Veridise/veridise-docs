@@ -1,4 +1,4 @@
-To start off, we'll take a look at using [V] to find a bug in a Solidity ERC20 contract. Throughout this guide, we'll use the contract [MyVToken.sol](TODO) as our running example. The actual tool we use to find the bugs discussed in this guide is called OrCa. You can learn more about OrCa [here](TODO), and read about how to use OrCa through the SaaS platform [here](TODO).
+To start off, we'll take a look at using [V] to find a bug in a Solidity ERC20 contract. Throughout this guide, we'll use the contract [MyVToken.sol](src/MyVToken.sol) as our running example. The actual tool we use to find the bugs discussed in this guide is called OrCa. You can learn more about OrCa [here](TODO), and read about how to use OrCa through the SaaS platform [here](TODO).
 
 ## Our Bug: Burnt to a Crisp
 
