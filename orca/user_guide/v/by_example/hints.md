@@ -1,7 +1,7 @@
 This section introduces the `hints` and `fair` sections as tools [V] developers can use in order to help guide
 the search for counterexamples against the input specification.
 
-## Our Bug: TODO something witty
+## Our Bug: "I'll need your John Hancock"
 
 For this bug, we'll focus on the `transferCheckSignature` transaction.
 
@@ -44,7 +44,7 @@ spec: []!finished(token.transferCheckSignature(from, sig, to, amt),
 
 ## Understanding the Spec
 
-At this point, the `vars` and `spec` sections are nothing new to us. The spec is saying that it should never be the case that `transferCheckSignature` finishes and the old balance for `from` is not exactly the new balance for `from` plus the transfered amount. Said another way, any successful call to `transferCheckSignature` should remove `amt` from the balance of `from`. Though this spec accurately describes a correctness property of `transferCheckSignature` that is violated by the bug we saw, finding such a counterexample in practice. That's because tools like [OrCa](TODO) perform enumerative search on the arguments of transactions, and the likelihood of randomly generating a valid signature is nearly zero.
+At this point, the `vars` and `spec` sections are nothing new to us. The spec is saying that it should never be the case that `transferCheckSignature` finishes and the old balance for `from` is not exactly the new balance for `from` plus the transfered amount. Said another way, any successful call to `transferCheckSignature` should remove `amt` from the balance of `from`. Though this spec accurately describes a correctness property of `transferCheckSignature` that is violated by the bug we saw, finding such a counterexample in practice. That's because tools like OrCa perform enumerative search on the arguments of transactions, and the likelihood of randomly generating a valid signature is nearly zero.
 
 This is where the `hints` section comes in. In order to give tools like OrCa additional information about transaction parameter values, [V] developers may include an optional `hints` section that assigns transaction parameters to specific values or sets of valid values. In our example, the hint specifies that the `sig` argument to any successful call to `transferCheckSignature` must be `ecdsa256_sign_bytes(from, token.toBytes(to))` -- an expression using a builtin [V] function `ecdsa256_sign_bytes`, a call to `MyVToken`'s function `toBytes`, and other transaction parameters. The builtin function `ecdsa256_sign_bytes` signs a hashed message using the private key of the address given in the first argument. When OrCa performs fuzzing on this spec, it will use the hint to restrict the values that it tests for the `sig` argument to only those that match this bytes signature. Thus, any test case generated where `amt > 0` will register as a counterexample, exposing the bug!
 

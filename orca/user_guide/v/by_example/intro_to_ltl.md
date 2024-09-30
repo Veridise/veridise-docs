@@ -1,6 +1,6 @@
-In the previous section, we constructed a specification that reasoned about a single transaction. In this section, we'll see how LTL formulae can be used to describe properties over sequences of multiple transaction. Again, the specs we construct will reason over the contract [MyVToken.sol](TODO).
+In the previous section, we constructed a specification that reasoned about a single transaction. In this section, we'll see how LTL (Linear Temporal Logic) formulae can be used to describe properties over sequences of multiple transaction. Again, the specs we construct will reason over the contract [MyVToken.sol](src/MyVToken.sol).
 
-## Our Bug: TODO something witty
+## Our Bug: Little Transfer Lapse
 
 In this example, we'll look at two transactions: `approve` and `transferFrom`:
 
@@ -40,7 +40,7 @@ function transferFrom(
 
 The purpose of `allowance` is to permit other users to spend on the behalf of the allowing party. However, as the comment in the code indicates, there is a bug in `approve` that prevents this functionality. Specifically, instead of updating the `allowance` mapping for `tokenOwner`, `approve` updates the allowance for the contract owner!
 
-To catch this bug, we'll create a "functional correctness" specification that describes the purpose of `approve`. We want to ensure that after calling `approve(tokenOwner, spender, amount)`, a call to `transferFrom(spender, otherAddress, otherAmount)` succeeds for any `otherAddress` and for any `otherAmount <= amount`. This property is expressed by the following [V] spec:
+To catch this bug, we'll create a functional correctness specification that describes the purpose of `approve`. We want to ensure that after calling `approve(tokenOwner, spender, amount)`, a call to `transferFrom(spender, otherAddress, otherAmount)` succeeds for any `otherAddress` and for any `otherAmount <= amount`. This property is expressed by the following [V] spec:
 
 ```solidity
 vars: MyVToken token, address spender, uint allowed
