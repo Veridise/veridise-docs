@@ -66,10 +66,12 @@ In addition to `ecdsa256_sign_bytes`, [V] provides several other useful built in
 
 The signature returned by `ecdsa256_sign_bytes` is a a bytes string, 65 bytes in length. An alternative `ecdsa256_sign` function can be used to get signatures as `(uint8, bytes32, bytes32)` tuples `(v,r,s)`.
 
-The function `elem_in_range(low, high)` returns a random element in the range `[low, high)`.
+The function `elem_in_range(low, high)` returns a random element in the range `[low, high)`. For input values that should always lie within a specific range, use a hint like this:
+```solidity
+hints: finished(c.foo(percent), percent := elem_in_range(0,101))
+```
 
-The function `user_address()` returns random user address.
-
-## The fairness section
-
-TODO
+The function `user_address()` returns random user address. For input addresses that should always be user addresses, use a hint like this:
+```solidity
+hints: finished(c.foo(addr), addr := user_address())
+```
