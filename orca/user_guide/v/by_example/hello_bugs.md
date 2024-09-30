@@ -42,4 +42,4 @@ Now let's discuss our particular condition -- `old(token.balanceOf(acc)) < token
 
 As we saw in the implementation of `burn` for `MyVToken`, this property is false! This is because we can choose `token` to represent an instance of the `MyVToken` contract with, say, a `_balances` mapping where `_balances[0x1234] = 0`. We can also choose to pass parameters `acc = 0x1234` and `amt = 10` to `burn`. This would cause `_balances[0x1234]` to overflow due to the unsafe subtraction, thus violating our spec. In this case, there are multiple choices for values for `token`, `acc`, and `amt` that would show our property to be false, but our use of the operators `[]!` means that we need only find one such example to prove that the property does not hold.
 
-In the [next section](by_example/intro_to_ltl.md), we discuss how to use LTL formulae to describe more complex properties in [V].
+In the [next section](intro_to_ltl.md), we discuss how to use LTL formulae to describe more complex properties in [V].

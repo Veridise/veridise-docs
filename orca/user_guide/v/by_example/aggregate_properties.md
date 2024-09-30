@@ -45,7 +45,7 @@ As you can see in the implementation of `MyVToken`, the constrcutor adds the tok
 The first new aspect of this spec you may notice is the target: `token.*`. [V] allows wildcards to be used in targets, both in the form shown here and in the form of a standalone wildcard `*`. Here, `token.*` refers to any transactions within `MyVToken` called on `token`. When there are multiple deployed contracts, the target `*` refers to any transaction over any deployed contract. In this spec, we could also use `*` as the target if we want to check the property across transactions over all deployed contracts.
 
 The second new feature showcased in this spec is the `fsum` macro. `fsum` is used to sum over expressions evaluated at multiple previous points in the transaction sequence. The first argument, enclosed in `{}` is a syntactic argument -- the `target` of the `fsum`. The second argument, enclosed in `()` is an expression to be evaluated at each previous blockchain state whose corresponding transaction matches the `target`. Specifically, the result of `fsum{target}(expr)` is the sum of all `expr` evaluated at each point along the preceding transaction sequence that matches the `target`. Framed another way, `fsum` can be thought of as applying a filter, map, and fold:
-1. First, filter the sequence of previous blockchain states (_including the current state_) based on the input `target`. Note that these are the states _after_ the `target` transaction was executed.
+1. First, filter the sequence of previous blockchain states (_including the current state_) based on the input `target`. Note that these are the states _after_ the `target` transaction was successfully executed.
 2. Next, map each blockchain state to the evaluation of `expr` over that state. `expr` may reference state variables, `public view` transactions, or transaction arguments.
 3. Finally, sum all resulting evaluations of `expr`.
 
@@ -55,7 +55,7 @@ Our example condition has two `fsum` calls. The first, `fsum{token.mint(acc, amt
 
 In some cases, users may wish to only include blockchain states in `fsum` results when certain conditions are met. For example, we may wish to express some condition involving the total number of coins minted to the zero address. To express this, we would need to apply `fsum` to all blockchain states resulting from `mint` where the `acc` parameter is 0. This can be done with a `when` clause within the target parameter of the `fsum`. With our example, the expression would take the form: `fsum{token.mint(acc, amt) when acc = 0}(amt)`.
 
-In general, `fsum{target when cond}(expr)` is evaluated in the same way as `fsum{target}(expr)`, execpt that it only evaluates `expr` over blockchain states that satisfy the condition `cond`. Note that transaction parameters _are_ considered in scope for `cond`.
+In general, `fsum{target when cond}(expr)` is evaluated in the same way as `fsum{target}(expr)`, except that it only evaluates `expr` over blockchain states that satisfy the condition `cond`. Note that transaction parameters _are_ considered in scope for `cond`.
 
 ## Shorthand: `inv`
 
@@ -80,7 +80,7 @@ The `forall` operator allows users to quantify conditions over lists in [V]. For
 forall{acc in stakers}(token.balance[acc] >= min_bal)
 ```
 
-Like `fsum`, `forall` takes a syntactic argument first in `{}` and an expression within `()`. In general, `forall{x in arr}(expr)` evaluates to true exactly when `expr` evaluates to true when `x` is bound to any value within `arr`.
+Like `fsum`, `forall` takes a syntactic argument first in `{}` and an expression within `()`. In general, `forall{x in arr}(expr)` evaluates to true exactly when `expr` evaluates to true when `x` is bound to any value within `arr`. To run without error, `forall` also requires that `arr` is an array.
 
 ### `state_fold`
 
