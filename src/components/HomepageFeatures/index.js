@@ -8,34 +8,38 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Veridise Security-as-a-Service (SaaS) is the platform that allows
-        organizations to self-audit their smart contracts by providing instant
-        access to Veridise security analysis tools. Users provide the source
-        code of their application, and invoke the Veridise security analysis
-        tools that audit the application and report back the discovered
+        Veridise <a href="saas">AuditHub</a> is an online platform that allows
+        organizations to self-audit their own code by providing instant access
+        to Veridise code review and security analysis tools. Users provide the
+        source code of their application, and they invoke the Veridise security
+        analysis tools that audit the application and report back the discovered
         vulnerabilities.
       </>
     ),
   },
-  // TODO
-  /* {
-   *   title: 'OrCa',
-   *   // Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-   *   description: (
-   *     <>
-   *       OrCa is the Veridise Oracle-guided Smart-Contract fuzzing tool, which discovers bugs in DeFi applications by generating and running thousands of (pseudo-)random inputs against the target application.
-   *       You can find more information <a href="orca">here</a>.
-   *     </>
-   *   ),
-   * }, */
+  {
+    title: "OrCa",
+    // Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    description: (
+      <>
+        <a href="orca">OrCa</a> is a smart contract fuzzing tool developed by
+        Veridise. Given a description of the intended behaviors of the
+        contract(s), OrCa can automatically discover bugs by generating and
+        running thousands of (pseudo-)random inputs against the target
+        application.
+      </>
+    ),
+  },
   {
     title: "Vanguard",
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Vanguard is the Veridise static-analysis tool, which discovers bugs in
-        DeFi applications and ZK-circuits by searching for well known security
-        vulnerabilities and anti-patterns.
+        Vanguard is a static analysis tool created by Veridise for discovering
+        bugs in&nbsp;
+        <a href="vanguard">DeFi applications</a> and&nbsp;
+        <a href="zkvanguard">ZK-circuits</a> by searching for well known
+        security vulnerabilities and anti-patterns.
       </>
     ),
   },
@@ -44,8 +48,9 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Picus is a Veridise tool to prove that a ZK-circuit is not
-        underconstrained, or find a counterexample if it is underconstrained.
+        <a href="picus">Picus</a> is a Veridise tool to prove that a ZK-circuit
+        is not underconstrained, or find a counterexample if it is
+        underconstrained.
       </>
     ),
   },
