@@ -223,7 +223,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/docs/intro",
+                to: "/saas/guide/on_boarding",
               },
             ],
           },

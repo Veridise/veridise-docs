@@ -17,7 +17,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro"
+            to="/saas/guide/on_boarding"
           >
             Get Started with AuditHub - 5min ⏱️
           </Link>
