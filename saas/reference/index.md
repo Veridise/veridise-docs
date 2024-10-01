@@ -7,6 +7,6 @@ available on each page together with the actions users can take.
 
 ### Who is this document for?
 
-The documentation in this section is intended for users of the SaaS platform who
+The documentation in this section is intended for users of AuditHub who
 would like to learn about the functionality in each page.
 

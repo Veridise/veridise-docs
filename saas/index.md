@@ -1,8 +1,8 @@
 ---
-title: Security-as-a-Service (SaaS) platform
+title: AuditHub
 sidebar_position: 1
 ---
 
-Our Security-as-a-Service platform allows instant access to Veridise security analysis tools.
+AuditHub allows instant access to Veridise code review and security analysis tools.
 
 Check our [User Guide](./guide/usage) to start using our tools.

@@ -3,7 +3,7 @@ title: Getting Started
 sidebar_position: 2
 ---
 
-After gaining access to SaaS, you will be able to use Veridise tools available for your organization. 
+After gaining access to AuditHub, you will be able to use Veridise tools available for your organization. 
 
 
 ### Select Project
@@ -83,4 +83,4 @@ Note that in this page you are also able to cancel the task execution, or copy t
 
 In the `Task Results` tab you are able to check the status of all tasks, and by selecting any of them you can go back to the task details page.
 
-![image](../screenshots/task-results.png) 
+![image](../screenshots/task-results.png)
