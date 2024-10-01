@@ -4,7 +4,16 @@
 
 ## Getting Started
 
-As a starting point, it is first useful to understand [V]’s building blocks. To do so, we would recommend that new users start with the following pages:
+First, we provide a guide for learning [V] by example:
+
+- [Hello, Bugs!](by_example/hello_bugs.md)
+- [Intro to LTL](by_example/intro_to_ltl.md)
+- [Aggregate Properties](by_example/aggregate_properties.md)
+- [Guiding the Search](by_example/hints.md)
+
+## Building Blocks of [V]
+
+The following pages describe how [V] works at a high-level, starting with the execution model the language assumes before describing the general structure of [V] specifications.
 
 - [Execution Model](execution_model.md)
 - [[V] Statements](v_statements.md)
