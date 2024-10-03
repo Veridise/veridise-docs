@@ -25,3 +25,9 @@ The following pages describe how [V] works at a high-level, starting with the ex
 
 - [Invariant Specifications](invariant_specifications.md)
 - [Temporal Specifications](temporal_specifications.md)
+
+## Complete Language
+
+For a more complete description of all language features in [V], see the following page(s):
+
+- [Language Description](language_description.md)
