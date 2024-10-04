@@ -1,4 +1,7 @@
-# [V] Language Description
+---
+title: "[V] Language Description"
+sidebar_position: 3
+---
 
 [V] is a declarative language for writing correctness specifications. Any [V] specification contains several distinct sections -- some required, some optional, and some that are mutually exclusive. This document describes these sections, detailing their purpose and syntax.
 
@@ -24,7 +27,7 @@ vars: <varType> <varName>, <varType> <varName>, ...
 
 The `vars` section contains all variable declarations for the specification. Most often, this include contract variable declarations of the form `ContractName varName`, but can also include other variables used in the spec.
 
-Any variable declared in the `vars` section is considered a free variable, meaning that the specification is does not hold if _any_ assignment to the variable falsifies the spec.
+Any variable declared in the `vars` section is considered a free variable, meaning that the specification does not hold if _any_ assignment to the variable falsifies the spec.
 
 Besides contract types, the following are accepted as variable types in the `vars` section:
 * `address`
@@ -121,13 +124,13 @@ There are two forms for the `inv` section:
 1. `inv: expr`
 2. `inv: expr over target`
 
-The invariant `expr over target` holds iff `expr` holds after issuing any transaction that matches `target`. Note that the first form `inv: expr` is equivalent to `inv: expr over *`. For example, to express an inariant over one specific contract `Contract`, use the following [V] specification:
+The invariant `expr over target` holds iff `expr` holds after issuing any transaction that matches `target`. Note that the first form `inv: expr` is equivalent to `inv: expr over *`. For example, to express an invariant over one specific contract `Contract`, use the following [V] specification:
 ```solidity
 vars: Contract c
 inv: <cond> over c.*
 ```
 
-Generally, the invariant section `inv: expr over target` is equivalent to the following `spec` section:
+The invariant section `inv: expr over target` is equivalent to the following `spec` section:
 ```solidity
 spec: []!finished(target, !expr)
 ```
@@ -178,4 +181,12 @@ hints: finished(c.foo(addr), addr := user_address())
 
 ## `fair` Section
 
-TODO
+The `fair` section allows users to specify a temporal property that should be assumed by OrCa. This section _must_ appear before the `spec` section in the specification: 
+```
+fair: prop1
+spec: prop2
+```
+
+For this example specification, OrCa will only report counterexamples that both (a) satisfy the fairness property `prop1` and (b) violate the correctness property `prop2`.[^2] See documentation on [fairness assumptions](fairness_assumptions.md) for more details on the `fair` section.
+
+[^2]: Currently, OrCa only uses the fairness property as a precondition for reporting counterexamples. Future versions of OrCa may direct the search to test only sequences that satisfy the fairness property.
