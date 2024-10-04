@@ -1,4 +1,7 @@
-# Overview
+---
+title: Overview
+sidebar_position: 1
+---
 
 [V] is a declarative specification language for communicating tests/properties with the Veridise infrastructure. It provides a language- and blockchain-agnostic method of specifying properties about smart contracts.
 

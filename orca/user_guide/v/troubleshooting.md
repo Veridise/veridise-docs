@@ -1,4 +1,7 @@
-# Troubleshooting
+---
+title: Troubleshooting
+sidebar_position: 10
+---
 
 ## [V] Statements Refer to Specific Moments in Time
 

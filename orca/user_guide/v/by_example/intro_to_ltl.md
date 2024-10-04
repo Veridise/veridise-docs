@@ -1,3 +1,8 @@
+---
+title: Intro to LTL
+sidebar_position: 2
+---
+
 In the previous section, we constructed a specification that reasoned about a single transaction. In this section, we'll see how LTL (Linear Temporal Logic) formulae can be used to describe properties over sequences of multiple transaction. Again, the specs we construct will reason over the contract [MyVToken.sol](src/MyVToken.sol).
 
 ## Our Bug: Little Transfer Lapse

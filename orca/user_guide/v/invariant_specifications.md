@@ -1,4 +1,7 @@
-# Invariant Specifications
+---
+title: Invariant Specifications
+sidebar_position: 7
+---
 
 Invariant specifications enable a user to check properties that should always hold. Invariants are declared in a special section of the [V] specification, marked by the `inv` tag (short for "invariant"). The invariant section itself contains a single [V] expression, written as follows:
 

@@ -1,4 +1,7 @@
-# Specification Variables
+---
+title: Specification Variables
+sidebar_position: 6
+---
 
 Specification variables are an essential part of the [V] Specification Language as they allow relationships across transactions to be expressed. Similar to free variables in SMT solvers, such variables range over the domain corresponding to their type, allowing them to take on any possible value in that domain. 
 

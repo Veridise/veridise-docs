@@ -1,3 +1,8 @@
+---
+title: Guiding the Search
+sidebar_position: 4
+---
+
 This section introduces the `hints` and `fair` sections as tools [V] developers can use in order to help guide
 the search for counterexamples against the input specification.
 
