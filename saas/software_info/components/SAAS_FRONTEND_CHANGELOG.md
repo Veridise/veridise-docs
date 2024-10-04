@@ -5,6 +5,24 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.0.5 - 2024-10-03
+### Added
+- Findings details discussion
+- Label in dropdown of all comments dialog
+- Syntax highlight support for Circom circuits
+
+### Changed
+- Return to message from preview after posting comment
+- Scroll to bottom after posting comment
+- Task names are no longer copied when resubmitting tasks
+- Vanguard UI always uses the caption of detectors instead of the code
+
+### Fixed
+- Latest versions not being displayed in "Provide Source" step of task wizard
+- Newly added organizations did not appear in organizations list immediately
+- Version download wouldn't proceed if download notification fails to send
+- Wrong ordering of messages in all comments dialog
+
 ## v2.0.4 - 2024-09-26
 ### Added
 - Syntax highlighting for Leo / Aleo programs

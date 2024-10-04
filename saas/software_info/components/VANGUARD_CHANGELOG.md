@@ -5,7 +5,21 @@ title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
+## v0.3.2 - 2024-10-03
+### Added
+- DeFi Vanguard:
+  - Preliminary support for solc `0.8.25` and `0.8.26`. `tload` and `tstore` opcodes are not supported yet.
 
+### Fixed
+- DeFi Vanguard:
+  - Fixed a bug where state updates in arrays were not identified
+  - Fixed frontend crash that occurs when a fixed length storage array has `2^32` or more elements.
+  - Fixed the variable of an array `.push` being recognized as unknown locations in common cases
+
+- ZK Vanguard:
+  - Fixed subcomponent-related bugs
+  - Fix file path diagnostics of circom files contained in "." being reported incorrectly when root directory is also "."
+  
 ## v0.3.1 - 2024-09-24
 ### Added
 - ZK Vanguard

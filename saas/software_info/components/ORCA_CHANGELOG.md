@@ -5,6 +5,15 @@ title: Software Changes
 slug: orca-changelog
 ---
 # Software Changes
+## v2.0.1 - 2024-10-03
+### Changed
+- Updated FIO compatibility to return multiple counterexamples.
+
+### Fixed
+- Added proper handling of sender and value in hints.
+- Fixed a typo in pretty print in V function call statements.
+- OrCa now crashes explicitly if no file with .spec extension is provided.
+- Updated reeentrancy detection to avoid false positive during specification checking.
 
 ## v2.0.0 - 2024-08-30
 ### Added

@@ -5,6 +5,16 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.3 - 2024-10-03
+### Added
+- Maintain a digest for each uploaded version. SHA256 for archives, git commit hash (SHA-1) for git repos.
+
+### Changed
+- Improve error reporting for task steps
+
+### Fixed
+- Set findings.json to default values, when not properly formatted by the workflow system or the tools
+
 ## v2.1.2 - 2024-09-27
 ### Fixed
 - Fix working directory on vanguard execution
