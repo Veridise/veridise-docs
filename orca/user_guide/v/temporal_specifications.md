@@ -18,6 +18,8 @@ Unlike logical operators, temporal operators specify properties over time. All b
 | Eventually | `<> a`  | `a` either holds now or at some point in the future |
 | Next       | `X a`   | `a` holds in the next state |
 | Sequence   | `a ; b` | `a` holds followed by `b` in the appropriate slot of the next transaction |
+| Until   | `a U b` | `b` holds at some point, and `a` holds at all previous points |
+| Release   | `a R b` | `b` holds up to and including the point where `a` begins to hold; if `a` never holds, `b` must hold at all points |
 
 ## Logical Operators
 

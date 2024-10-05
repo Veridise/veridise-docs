@@ -72,12 +72,11 @@ To allow the specification of properties across different blockchains and langua
 
 [V] has a series of utility variables and functions used to facilitate the property specification:
 
-|   Utility                       | Description |
-| :------------------------------ | :---------- |
-| `ret`                           | The return value of the given transaction |
-| `balance(account)`              | Returns `account`’s balance in native tokens |
-| `old(expr)`                     | Evaluates `expr` just before the transaction executes |
-| `fsum{target when cond}(expr)`  | Accumulates the sum of `expr` across all transactions to `target` that successfully execute where `cond` holds. Note that this creates a nested scope where the blockchain variables, utility variables and utility functions refer to the specified target transaction |
+|   Utility                   | Description |
+| :-------------------------- | :---------- |
+| `ret`                       | The return value of the given transaction |
+| `balance(account)`          | Returns `account`’s balance in native tokens |
+| `old(expr)`                 | Evaluates `expr` just before the transaction executes |
 
 ### Arithmetic Operators
 
@@ -127,4 +126,16 @@ To allow the specification of properties across different blockchains and langua
 | Index            | `c[i]`        | Accesses collection `c` at index `i` |
 | Member Variable  | `c.v`         | Accesses the member variable `v` contained in `c` |
 | Member Function  | `c.fn(args)`  | Calls the member function `fn` with the arguments `args` provided by `c` |
+
+### Iteration Operators
+
+[V] provides several operators for iterating over both array values and over previous blockchain states in the transaction sequence.
+
+|   Utility                                         | Description |
+| :------------------------------------------------ | :---------- |
+| `fsum{target when cond}(expr)`                    | Accumulates the sum of `expr` across all transactions to `target` that successfully execute where `cond` holds. Note that this creates a nested scope where the blockchain variables, utility variables and utility functions refer to the specified target transaction |
+| `fsum{target}(expr)`                              | Shorthand for `fsum` with `cond` set to `True`. |
+| `state_fold{target when cond}((x) -> expr, expr)` | A generalization of `fsum`. The first argument `(x) -> expr` is the accumulation function, which takes as input the previous accumulated value and outputs the new accumulated value (any identifier may be used in place of `x`). Transaction parameters from `target` are considered in scope for this expression. The second parameter `expr` is the initial accumulated value, and transaction parameters are _not_ in scope for this expression. Similar to `fsum`, the accumulator is only applied to transactions `target` that successfully execute where `cond` holds. |
+| `state_fold{target}((x) -> expr, expr)`           | Shorthand for `state_fold` with `cond` set to `True`. |
+| `forall{x in arr}(expr)`                         | Evaluates `expr` `\|arr\|` times, where `x` is bound to each element of `arr`, then evaluates to the conjunction of all results. `arr` must evaluate to an array. `expr` must always evaluate to a boolean value. |
 
