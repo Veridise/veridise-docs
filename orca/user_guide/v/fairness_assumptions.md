@@ -1,4 +1,7 @@
-# Fairness Assumptions
+---
+title: Fairness Assumptions
+sidebar_position: 8
+---
 
 Fairness assumptions allow a user to assume some (temporal) property holds. A fairness assumption is placed in the Fairness Section of the [V] specification which is marked by the `fair` tag (short for `fairness assumption`). The specification itself contains a logical combination of [V] statements as follows:
 

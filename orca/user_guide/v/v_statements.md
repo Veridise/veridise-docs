@@ -1,4 +1,7 @@
-# [V] Statements
+---
+title: "[V] Statements"
+sidebar_position: 5
+---
 
 [V] allows users to reference information about the execution of a transaction on the blockchain via so-called "[V] statements", which are formulated as follows:
 

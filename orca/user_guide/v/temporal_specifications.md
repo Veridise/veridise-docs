@@ -1,4 +1,8 @@
-# Temporal Specifications
+---
+title: Temporal Specifications
+sidebar_position: 5
+---
+
 
 Temporal specifications enable a user to check properties that should hold *over time*. Temporal specifications are declared in the temporal section of the [V] specification which is marked by the `spec` tag (short for `temporal specification`). The specification itself contains a logical combination of [V] statements as follows:
 

@@ -1,4 +1,7 @@
-# Execution Model
+---
+title: Execution Model
+sidebar_position: 4
+---
 
 [V] allows users to specify relationships between state at specific moments in time. It relies on the observation that it is essential for certain properties to hold between transactions. To capture this intuition, [V] models interactions with the blockchain as a linear sequence of atomic transactions as discussed below.
 

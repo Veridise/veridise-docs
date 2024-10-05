@@ -1,3 +1,8 @@
+---
+title: Aggregate Properties
+sidebar_position: 3
+---
+
 This section introduces a few new operators that can be used in the _conditions_ of [V] statements. These operators will allow you to express more complex properties in [V], including properties that reference _aggregate values_ across multiple transactions.
 
 ## Our Bug: Minty but not fresh
