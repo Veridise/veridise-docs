@@ -29,7 +29,7 @@ selection during the tool configuration step.
 The following ERC20 contract contains a function that will pay out rewards based on a
 user's balance.
 
-```solidity title=divide-before-multiply.sol showLineNumbers
+```solidity title=flashloan.sol showLineNumbers
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
