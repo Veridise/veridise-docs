@@ -5,6 +5,26 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.0.6 - 2024-10-10
+### Added
+- Digests in version details and the versions dropdown in the project viewer
+
+### Changed
+- Caption of editor tabs
+- Display of dates in task details page
+- Findings Table "Description" column label
+- Format timestamp to local time
+- Full timestamp in comments
+- Task Details page now displays info text of a task
+
+### Fixed
+- Findings panel crashed when processing actions applied to a deleted finding
+- Findings table was not paginated
+- solc version not rendering properly in task details
+- Fixing dialog where it keeps expanding
+- Filtering the task of the active finding would crash the findings panel
+- "Unknown" dates were being shown
+
 ## v2.0.5 - 2024-10-03
 ### Added
 - Findings details discussion

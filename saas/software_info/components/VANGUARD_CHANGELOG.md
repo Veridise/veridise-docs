@@ -5,6 +5,18 @@ title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
+## v0.3.3 - 2024-10-10
+### Changed
+- DeFi Vanguard:
+  - dump-callgraph: Added additional information about contracts, to be displayed in the visualization tool.
+  - divide-before-multiply:
+      - Fixed a bug where the detector would report the wrong line number for the relevant multiplication operations
+  - locked-funds:
+      - Improved Performance on complex protocols
+      - Eliminated false positives caused by interface/abstract contracts
+- ZK Vanguard:
+  - wit-constr-diff: Added filtering to avoid analysis of circomlib components.
+  
 ## v0.3.2 - 2024-10-03
 ### Added
 - DeFi Vanguard:

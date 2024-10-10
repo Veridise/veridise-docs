@@ -5,6 +5,10 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.4 - 2024-10-10
+### Fixed
+- Bug fixes on task step notifications
+
 ## v2.1.3 - 2024-10-03
 ### Added
 - Maintain a digest for each uploaded version. SHA256 for archives, git commit hash (SHA-1) for git repos.
