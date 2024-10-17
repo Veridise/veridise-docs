@@ -5,6 +5,17 @@ title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
+## v0.3.4 - 2024-10-17
+### Fixed
+- DeFi Vanguard
+  - Fixed a bug which caused Vanguard to crash in case of revert with error followed by external call.
+  - frontrunning:
+    - Fixed a bug in frontrunning detector that missed some reading functions.
+- ZK Vanguard:
+  - Fixed detector inaccuracies involving signal array elements.
+- Shared Infrastructure:
+  - Fixed line number diagnostics of individual statements missing the base/include directory in the file path.
+  
 ## v0.3.3 - 2024-10-10
 ### Changed
 - DeFi Vanguard:
