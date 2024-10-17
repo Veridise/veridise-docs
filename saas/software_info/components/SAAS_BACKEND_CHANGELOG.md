@@ -5,6 +5,11 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.5 - 2024-10-17
+### Fixed
+- Fix bug related to querying logging subsystem
+- Notify websocket client of authorization errors via websocket protocol
+
 ## v2.1.4 - 2024-10-10
 ### Fixed
 - Bug fixes on task step notifications

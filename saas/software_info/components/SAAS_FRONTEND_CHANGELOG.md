@@ -5,6 +5,20 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.0.7 - 2024-10-17
+### Changed
+- Confidence column in Findings Table is now hidden by default
+- Removed pagination of findings table
+- Tooltip and label of "Pure function fuzzing" checkbox
+
+### Fixed
+- Data from [V] Specs in the Project Viewer may have been stale
+- Deletion of versions was not working
+- Options in version selector were not always sorted by latest version
+- UI allowed findings to open while a task wasnt finished
+- Cursor positions not being "remembered" across tabs in editor
+- Line jump related bugs
+
 ## v2.0.6 - 2024-10-10
 ### Added
 - Digests in version details and the versions dropdown in the project viewer
