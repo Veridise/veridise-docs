@@ -79,7 +79,7 @@ In addition to `fsum`, there are two other advanced operators we'll discuss in t
 
 ### `forall`
 
-The `forall` operator allows users to quantify conditions over lists in [V]. For example, your smart contract may keep track of a list of stake holders, and you may wish to ensure that those stake holders maintain some minimum balance. Such a condition -- that all users in a list `stakers` have a balance of at least `min_bal` -- could be expressed as:
+The `forall` operator allows users to quantify conditions over arrays in [V]. For example, your smart contract may keep track of an array of stake holders, and you may wish to ensure that those stake holders maintain some minimum balance. Such a condition -- that all users in some array `stakers` have a balance of at least `min_bal` -- could be expressed as:
 
 ```solidity
 forall{acc in stakers}(token.balance[acc] >= min_bal)

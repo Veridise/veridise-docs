@@ -78,7 +78,7 @@ The boolean operators `||` ("or"), `&&` ("and"), and `!` ("not") have their usua
 
 In general, LTL formula are evaluated over infinite sequeces of events. In the context of blockchain applications, each of these events has an associated blockchain state. There are two ways that OrCa interprets a finite sequence of transactions as an infinite sequence of events to evaluate an LTL formula over:
 1. Each transaction is translated into two sequential events: one event where the transaction is started, and one where the transaction is completed (or reverted if the transaction errored). The associated blockchain state of the transaction started event is the state _before_ the transaction is issued, while the state for the completed/finished/reverted event is the state _after_ the transaction is issued.
-2. The event sequence is extended infinitely with null-events \epsilon such that any [V] statement `S` evaluates to false over any null-event \epsilon.
+2. The event sequence is extended infinitely with null-events $\epsilon$ such that any [V] statement `S` evaluates to false over any null-event $\epsilon$.
 
 ### [V] Statements
 
@@ -101,16 +101,24 @@ T :   I.I(I, ...)
 `F` represents the type of statement, `T` represents the target of the statement, and `E` represents the conditional expression. `I` represents any identifier. Conditional expressions must evaluate to a boolean value. [[V] statements](./v_statements.md) describes the expressions allowed for statement conditions in further detail.
 
 A [V] statement `F(T, E)` is evaluated over a particular point in the event sequence. Specifically, `F(T, E)` holds for a particular event iff the following conditions hold:
-1. The event type matches `F`.
-  a. `started` matches any transaction start event
-  b. `finished` matches any transaction completion event where the transaction was successfully executed
-  c. `reverted` matches any transaction completion event where the transaction was unsuccessfully executed (i.e. reverted)
-  d. `executed` matches any transaction completion event
-2. The pertinent transaction matches `T`.
-  a. `c.txn(...)` and `c.txn` match the transaction `txn` over the contract instance `c`
-  b. `c.*` matches any transaction over the contract instance `c`
-  c. `*` matches any transaction
-3. The condition `E` holds over the associated blockchain state.
+
+<ol type="1">
+  <li>The event type matches <code>F</code>.</li>
+  <ol type="a">
+    <li><code>started</code> matches any transaction start event</li>
+    <li><code>finished</code> matches any transaction completion event where the transaction was successfully executed</li>
+    <li><code>reverted</code> matches any transaction completion event where the transaction was unsuccessfully executed (i.e. reverted)</li>
+    <li><code>executed</code> matches any transaction completion event</li>
+  </ol>
+
+  <li>The pertinent transaction matches <code>T</code></li>
+  <ol type="a">
+    <li><code>c.txn(...)</code> and <code>c.txn</code> match the transaction <code>txn</code> over the contract instance <code>c</code></li>
+    <li><code>c.*</code> matches any transaction over the contract instance <code>c</code></li>
+    <li><code>*</code> matches any transaction</li>
+  </ol>
+  <li>The condition <code>E</code> holds over the associated blockchain state.</li>
+</ol>
 
 ## `inv` Section
 
