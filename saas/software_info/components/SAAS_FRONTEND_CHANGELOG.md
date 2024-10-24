@@ -5,6 +5,25 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.0.8 - 2024-10-24
+### Added
+- Error messages to steps in "Task Details" page.
+
+### Changed
+- Audithub branding
+- Colors generated from user IDs
+- Fetch threads in background when socket closed
+- Pending steps are now marked as "not executed" in cancelled tasks
+
+### Fixed
+- '"Timeout" field of OrCa configuration allowed invalid input'
+- Bug involving switching versions due to reusing a backend connection
+- Discussion indicator was not filtering by version
+- Findings panel expansion required a double-click
+- Incorrect data sent when creating tasks with old versions after editing project
+- Line jump was sometimes unreliable depending on time taken to set up tabs
+- Threads across all versions were shown instead of those of the current version
+
 ## v2.0.7 - 2024-10-17
 ### Changed
 - Confidence column in Findings Table is now hidden by default
