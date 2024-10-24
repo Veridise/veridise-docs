@@ -9,7 +9,7 @@ sidebar_position: 4
 
 ![image](img/execution-model.png)
 
-[V] models interactions with the blockchain over time as a linear series of atomic transactions. Information may only be queried either at the beginning or the end of a transaction but may not interrupt it. Further, since transactions are guaranteed to terminate, a transaction consists of two important events: started and executed. As the name implies, started indicates that some transaction is just about to start its execution. executed then indicates that a transaction has just terminated. The termination of a transaction may occur either because it has reverted or because it has finished without reverting. Note that these events correspond to the actions of [[V] statements](v_statements.md)_.
+[V] models interactions with the blockchain over time as a linear series of atomic transactions. Information may only be queried either at the beginning or the end of a transaction but may not interrupt it. Further, since transactions are guaranteed to terminate, a transaction consists of two important events: started and executed. As the name implies, started indicates that some transaction is just about to start its execution. executed then indicates that a transaction has just terminated. The termination of a transaction may occur either because it has reverted or because it has finished without reverting. Note that these events correspond to the actions of [[V] statements](v_statements.md).
 
 ## [V] Statement Evaluation
 
