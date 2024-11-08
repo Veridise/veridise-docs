@@ -5,6 +5,36 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.0.9 - 2024-11-08
+### Added
+- Picus v2
+
+### Changed
+- Digest methods are now shown in the Project Viewer
+- Digest methods are now shown in the version details page
+- New contract type "Picus". Projects containing these files may use Picus v2
+- Ordered folders and files by name, and folders set to always be above files
+- Picus v2 UI and form submission behavior
+- Version automatically selected when creating task from Project Viewer
+
+### Fixed
+- Crash when uploading versions from the project viewer
+- Edit project functionality not working after Project Contents changed
+- Ensure we are always running at the latest version of the frontend
+- Findings under FP set may not appear under the "Apply bulk action" dialog
+- Findings would always close after application of a bulk action
+- Line jump did not function when clicking link to file A, file B, then file A
+- Line jump issue when clicking the title of a discussion thread
+- Line jump issue when data takes a while to load
+- Review UI incorrectly summarizing project information
+- Task resubmission not working for Picus V2 tasks
+- Updates to organization specs were not immediately reflected in task wizard
+- Viewing a Picus v2 task would crash the task details page
+- Websocket did not reconnect when network errors occurred in Safari or Chrome
+
+### Removed
+- Green indicator
+
 ## v2.0.8 - 2024-10-24
 ### Added
 - Error messages to steps in "Task Details" page.
