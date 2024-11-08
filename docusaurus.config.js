@@ -134,6 +134,17 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "picus-v2",
+        path: "picus-v2",
+        routeBasePath: "picus-v2",
+        sidebarPath: require.resolve("./sidebars.js"),
+        lastVersion: "current",
+        remarkPlugins: [dashes],
+      },
+    ],
+    [
       require.resolve("docusaurus-lunr-search"),
       {
         // Do not index pages with routes like /orca/internal/dev-guide etc.
@@ -192,6 +203,14 @@ const config = {
             position: "left",
             label: "Picus",
           },
+
+          {
+            // TODO: replace with dropdown when versions are available.
+            type: "docsVersion",
+            docsPluginId: "picus-v2",
+            position: "left",
+            label: "Picus-v2",
+          },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
             type: "docsVersionDropdown",
@@ -211,6 +230,11 @@ const config = {
           {
             type: "docsVersionDropdown",
             docsPluginId: "picus",
+            position: "right",
+          },
+          {
+            type: "docsVersionDropdown",
+            docsPluginId: "picus-v2",
             position: "right",
           },
         ],
