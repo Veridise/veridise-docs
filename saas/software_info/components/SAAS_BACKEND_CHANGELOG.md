@@ -5,6 +5,13 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.7 - 2024-11-08
+### Added
+- Integrate Picus-v2
+
+### Changed
+- Generate task name with current timestamp in UTC if one is not provided
+
 ## v2.1.6 - 2024-10-24
 ### Added
 - Added endpoint to retrieve all threads of a version
