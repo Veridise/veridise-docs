@@ -1,7 +1,7 @@
 
 # Running Picus V2 Through AuditHub
 
-As a working example we will use Picus-v2 to prove the following Picus module is underconstrained. For a detailed description about the syntax and semantics of Picus circuit descriptions please see the following [document](../picus_constraint_language.md):
+As a working example we will use Picus-v2 to prove the following Picus module is underconstrained. For a detailed description about the syntax and semantics of Picus circuit descriptions please see the following [document](../picus_constraint_language/picus_constraint_language.md):
 
 ```lisp
 (prime-number 2013265921)
