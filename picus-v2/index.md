@@ -14,7 +14,7 @@ Picus V2, referred to as V2 in the rest of this document, is a successor to our 
 
 ## Getting Started 
 
-For instructions on how to get started with running Picus, checkout [the guide here](getting_started/running_picus_through_saas.md).
+For instructions on how to get started with running Picus, checkout [the guide here](getting_started/running_picusv2_through_saas.md).
 
 ## Picus Constraint Language 
 
