@@ -141,7 +141,8 @@ const config = {
         routeBasePath: "picus-v2",
         sidebarPath: require.resolve("./sidebars.js"),
         lastVersion: "current",
-        remarkPlugins: [dashes],
+        remarkPlugins: [math, dashes],
+        rehypePlugins: [katex],
       },
     ],
     [
