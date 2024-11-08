@@ -59,8 +59,8 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        <a href="picus-v2">Picus-V2</a> is a successor to Picus which proves that a ZK-circuit
-        is deterministic, or finds a counterexample if it is
+        <a href="picus-v2">Picus-V2</a> is a successor to Picus which proves
+        that a ZK-circuit is deterministic, or finds a counterexample if it is
         underconstrained.
       </>
     ),
