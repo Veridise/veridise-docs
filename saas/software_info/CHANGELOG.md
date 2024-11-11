@@ -5,6 +5,16 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.1.7 - 2024-11-08
+### Changed
+- Component SaaS Backend upgraded to version *v2.1.7*.
+- Component SaaS Frontend upgraded to version *v2.0.9*.
+
+## v2.1.6 - 2024-10-24
+### Changed
+- Component SaaS Backend upgraded to version *v2.1.6*.
+- Component SaaS Frontend upgraded to version *v2.0.8*.
+
 ## v2.1.5 - 2024-10-17
 ### Changed
 - Component SaaS Backend upgraded to version *v2.1.5*.
