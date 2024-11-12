@@ -5,6 +5,16 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.1.0 - 2024-11-12
+### Added
+- Extra visual indicator showing the currently selected finding in Findings Table
+
+### Changed
+- Labels in task filter, task selector, and finding thread discussions
+
+### Fixed
+- Switching versions would break commenting
+
 ## v2.0.9 - 2024-11-08
 ### Added
 - Picus v2
