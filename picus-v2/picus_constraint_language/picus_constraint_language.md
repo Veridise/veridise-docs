@@ -108,6 +108,8 @@ Here is an extended example with annotations
 
 ## Grammar
 
+Putting everything together, here is the grammar for the PCL.
+
 ```bnf
 <program> ::= <prime-declaration> <modules> | <prime-declaration> <modules> <fixed>
 
