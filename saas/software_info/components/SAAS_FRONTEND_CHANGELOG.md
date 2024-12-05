@@ -5,6 +5,25 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.1.1 - 2024-12-05
+### Added
+- Temporary line highlight after jumping to line
+
+### Changed
+- Onboard UI
+- Project Viewer closes discussions when the user changes versions
+- Project Viewer prompts user to discard message if they have an unsent message
+
+### Fixed
+- File browser falsely claimed it was loading data in projects without a version
+- File link clicking bug
+- Git SSH URLs were allowed when they shouldn't have been allowed
+- Issue with input element
+- Issue with opening and reopening file
+- Task did not disappear from task selector after deletion
+- Tasks table tasks filter may have reset after some inactivity
+- Thread indicators in code editor did not respond immediately to tab changes
+
 ## v2.1.0 - 2024-11-12
 ### Added
 - Extra visual indicator showing the currently selected finding in Findings Table

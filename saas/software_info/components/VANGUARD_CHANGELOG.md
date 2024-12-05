@@ -5,6 +5,15 @@ title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
+## v0.3.5 - 2024-12-05
+### Fixed
+- DeFi Vanguard:
+  - Fixes a bug for a case when a dynamic array of struct is present as a field in another struct
+  - Fixes a bug which caused Vanguard to crash in case of revert with error followed by external call
+- ZK Vanguard:
+  - Fix inaccuracy in loop analyses
+  - Added warnings and graceful handling for unsupported cases (instead of crashing)
+  
 ## v0.3.4 - 2024-10-17
 ### Fixed
 - DeFi Vanguard

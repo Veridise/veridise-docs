@@ -5,6 +5,15 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.8 - 2024-12-05
+### Fixed
+- Bug fixes on node dependency installation
+
+### Changed
+- Add step_code in Artifact model
+- Add short_name in StepDefinition model
+- Improved onboarding requests handling
+
 ## v2.1.7 - 2024-11-08
 ### Added
 - Integrate Picus-v2
