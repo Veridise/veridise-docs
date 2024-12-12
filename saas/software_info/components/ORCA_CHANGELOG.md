@@ -5,6 +5,13 @@ title: Software Changes
 slug: orca-changelog
 ---
 # Software Changes
+## v2.1.0 - 2024-12-12
+### Added
+- Added support for generating a metrics file to be displayed in AuditHub
+
+### Removed
+- Tracking for counterexamples found in [V] init section (since [V] init section is no longer supported)
+
 ## v2.0.1 - 2024-10-03
 ### Changed
 - Updated FIO compatibility to return multiple counterexamples.
