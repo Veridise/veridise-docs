@@ -5,6 +5,10 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+## v2.1.9 - 2024-12-12
+### Security
+- Update dependencies
+
 ## v2.1.8 - 2024-12-05
 ### Fixed
 - Bug fixes on node dependency installation
