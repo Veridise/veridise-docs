@@ -5,6 +5,14 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+## v2.1.2 - 2024-12-12
+### Added
+- Added Orca data visualization chart
+
+### Fixed
+- Clicking link in finding details only worked once
+- Threads and comments disappearing when changing versions
+
 ## v2.1.1 - 2024-12-05
 ### Added
 - Temporary line highlight after jumping to line
