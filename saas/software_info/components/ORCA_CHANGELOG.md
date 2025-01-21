@@ -5,6 +5,11 @@ title: Software Changes
 slug: orca-changelog
 ---
 # Software Changes
+
+## v2.1.1 - 2025-01-20
+### Fixed
+- Fixed a bug with state_fold/fsum V expressions where OrCa would crash.
+
 ## v2.1.0 - 2024-12-12
 ### Added
 - Added support for generating a metrics file to be displayed in AuditHub
@@ -85,6 +90,3 @@ slug: orca-changelog
 - Removed "add_constructor_for_nested_initializers" field from config and deleted code from codebase that uses it.
 - Removed 'contract_invariant' field from the configuration.
 - Several config fields were entirely unused in code and have been removed
-
-## v1.0.0 - 2023-09-29
-### Initial release

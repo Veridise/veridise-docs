@@ -5,6 +5,13 @@ title: Software Changes
 slug: backend-changelog
 ---
 # Software Changes
+
+## v2.2.0 - 2025-01-20
+### Added
+- Allow updating and deleting comments in collaboration threads
+- Support for email invitations
+- Support foundry and hardhat build system for Defi Vanguard
+
 ## v2.1.9 - 2024-12-12
 ### Security
 - Update dependencies
@@ -16,9 +23,7 @@ slug: backend-changelog
 ### Changed
 - Add step_code in Artifact model
 - Add short_name in StepDefinition model
-- Improved onboarding requests handling
-
-## v2.1.7 - 2024-11-08
+- Improved onboarding requests handling## v2.1.7 - 2024-11-08
 ### Added
 - Integrate Picus-v2
 
@@ -78,7 +83,7 @@ slug: backend-changelog
 - Endpoints to all managing findings across tools, marking them as true or false positives one at a time or in bulk
 - Collaborative commenting supporting endpoints
 - Fork networks support when running the OrCa fuzzer
-
+  
 ## v1.1.3 - 2023-11-01
 ### Changed
 - Allow better management of database pool

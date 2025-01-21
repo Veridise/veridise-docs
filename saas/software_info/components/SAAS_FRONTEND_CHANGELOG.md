@@ -5,7 +5,16 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
-## v2.1.2 - 2024-12-12
+
+## v2.1.3 - 2025-01-21
+### Added
+- Ability to invite users from the admin panel
+- Add "Ignore build system" option to DeFi Vanguard
+- Added the ability to edit and delete comments
+
+### Fixed
+- Frontend showing OrCa graph when task fails
+- OrCa was allowed in projects that configured build systems without deployment scripts.## v2.1.2 - 2024-12-12
 ### Added
 - Added Orca data visualization chart
 
@@ -41,7 +50,6 @@ slug: frontend-changelog
 
 ### Fixed
 - Switching versions would break commenting
-
 ## v2.0.9 - 2024-11-08
 ### Added
 - Picus v2
@@ -103,9 +111,7 @@ slug: frontend-changelog
 - Options in version selector were not always sorted by latest version
 - UI allowed findings to open while a task wasnt finished
 - Cursor positions not being "remembered" across tabs in editor
-- Line jump related bugs
-
-## v2.0.6 - 2024-10-10
+- Line jump related bugs## v2.0.6 - 2024-10-10
 ### Added
 - Digests in version details and the versions dropdown in the project viewer
 
@@ -123,9 +129,7 @@ slug: frontend-changelog
 - solc version not rendering properly in task details
 - Fixing dialog where it keeps expanding
 - Filtering the task of the active finding would crash the findings panel
-- "Unknown" dates were being shown
-
-## v2.0.5 - 2024-10-03
+- "Unknown" dates were being shown## v2.0.5 - 2024-10-03
 ### Added
 - Findings details discussion
 - Label in dropdown of all comments dialog
