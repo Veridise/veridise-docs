@@ -5,6 +5,26 @@ title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
+
+## v0.3.6 - 2025-01-20
+### Added
+  - DeFi Vanguard
+      - Added support for blobhash and blobbasefee EVM opcodes
+      - Added support for tload and tstore EVM opcodes
+      - Added experimental support for handling multiple solc versions within a project
+      - Added support for running Vanguard directly from the output of Hardhat or Foundry
+      - Added support for Solidity versions 0.8.27 and 0.8.28
+
+### Fixed
+  - DeFi Vanguard
+      - Fixed a crash occurring when a source file contains a top-level event definition
+      - Fixed a bug where external library functions that take as arguments storage pointers to nested mappings would have the wrong selectors
+      - Fixed several crashes that can occur when a source file has storage arrays that contain string literals
+      - Fixed a crash that occurs when a source file has inline assembly modifying a memory array
+
+### Changed
+  - DeFi Vanguard
+      - When the Vanguard frontend suffers from an internal crash, it now reports a more helpful message.
 ## v0.3.5 - 2024-12-05
 ### Fixed
 - DeFi Vanguard:
@@ -13,7 +33,6 @@ slug: vanguard-changelog
 - ZK Vanguard:
   - Fix inaccuracy in loop analyses
   - Added warnings and graceful handling for unsupported cases (instead of crashing)
-  
 ## v0.3.4 - 2024-10-17
 ### Fixed
 - DeFi Vanguard
@@ -24,7 +43,9 @@ slug: vanguard-changelog
   - Fixed detector inaccuracies involving signal array elements.
 - Shared Infrastructure:
   - Fixed line number diagnostics of individual statements missing the base/include directory in the file path.
-  
+
+
+
 ## v0.3.3 - 2024-10-10
 ### Changed
 - DeFi Vanguard:
@@ -36,7 +57,7 @@ slug: vanguard-changelog
       - Eliminated false positives caused by interface/abstract contracts
 - ZK Vanguard:
   - wit-constr-diff: Added filtering to avoid analysis of circomlib components.
-  
+
 ## v0.3.2 - 2024-10-03
 ### Added
 - DeFi Vanguard:
@@ -51,7 +72,7 @@ slug: vanguard-changelog
 - ZK Vanguard:
   - Fixed subcomponent-related bugs
   - Fix file path diagnostics of circom files contained in "." being reported incorrectly when root directory is also "."
-  
+
 ## v0.3.1 - 2024-09-24
 ### Added
 - ZK Vanguard
@@ -72,7 +93,9 @@ slug: vanguard-changelog
   - Fixed a bug that caused some reported files paths to be prefixed with "./"
 
 ## v0.3.0 - 2024-08-30
+
 ### Added
+
 - DeFi Vanguard:
     - Added support for identifying static calls to precompiled contracts
     - Added source location information to contract and function declarations
@@ -109,6 +132,7 @@ slug: vanguard-changelog
     - New detector that reports contracts that may lock native currency and ERC20 tokens.
 
 ### Changed
+
 - ZK Vanguard:
     - Improved overall ZK detector performance and accuracy by optimizing ZK-specific analyses
     - Circom output is now cached
@@ -198,9 +222,9 @@ slug: vanguard-changelog
     - Improved analysis by addressing uncovered division operations
 
 ### Removed
+
 - ZK Vanguard:
     - Removed dump-cdg detector
-
 ## v0.2.1 - 2023-10-27
 ### Changed
 - dump-cdg:

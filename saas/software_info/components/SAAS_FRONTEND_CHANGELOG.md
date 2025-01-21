@@ -5,6 +5,17 @@ title: Software Changes
 slug: frontend-changelog
 ---
 # Software Changes
+
+## v2.1.3 - 2025-01-21
+### Added
+- Ability to invite users from the admin panel
+- Add "Ignore build system" option to DeFi Vanguard
+- Added the ability to edit and delete comments
+
+### Fixed
+- Frontend showing OrCa graph when task fails
+- OrCa was allowed in projects that configured build systems without deployment scripts.
+
 ## v2.1.2 - 2024-12-12
 ### Added
 - Added Orca data visualization chart
