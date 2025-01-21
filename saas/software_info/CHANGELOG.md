@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
-sidebar_label: SaaS Info
+sidebar_label: AuditHub Info
 title: Software Changes
 slug: changelog
 ---
 # Software Changes
-## v2.4.0-rc5 - 2025-01-21
+## v2.4.0 - 2025-01-21
 ### Changed
 - Component OrCa upgraded to version *v2.1.1*.
 - Component SaaS Backend upgraded to version *v2.2.0*.
