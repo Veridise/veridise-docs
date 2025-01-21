@@ -134,7 +134,9 @@ slug: frontend-changelog
 - solc version not rendering properly in task details
 - Fixing dialog where it keeps expanding
 - Filtering the task of the active finding would crash the findings panel
-- "Unknown" dates were being shown## v2.0.5 - 2024-10-03
+- "Unknown" dates were being shown
+
+## v2.0.5 - 2024-10-03
 ### Added
 - Findings details discussion
 - Label in dropdown of all comments dialog
