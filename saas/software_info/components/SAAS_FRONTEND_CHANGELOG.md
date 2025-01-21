@@ -14,7 +14,9 @@ slug: frontend-changelog
 
 ### Fixed
 - Frontend showing OrCa graph when task fails
-- OrCa was allowed in projects that configured build systems without deployment scripts.## v2.1.2 - 2024-12-12
+- OrCa was allowed in projects that configured build systems without deployment scripts.
+
+## v2.1.2 - 2024-12-12
 ### Added
 - Added Orca data visualization chart
 

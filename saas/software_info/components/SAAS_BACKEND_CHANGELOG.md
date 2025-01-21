@@ -23,7 +23,9 @@ slug: backend-changelog
 ### Changed
 - Add step_code in Artifact model
 - Add short_name in StepDefinition model
-- Improved onboarding requests handling## v2.1.7 - 2024-11-08
+- Improved onboarding requests handling
+
+## v2.1.7 - 2024-11-08
 ### Added
 - Integrate Picus-v2
 

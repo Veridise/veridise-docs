@@ -14,83 +14,83 @@ slug: changelog
 
 ## v2.3.0 - 2024-12-12
 ### Changed
-Component OrCa upgraded to version *v2.1.0*.
-Component SaaS Backend upgraded to version *v2.1.9*.
+- Component OrCa upgraded to version *v2.1.0*.
+- Component SaaS Backend upgraded to version *v2.1.9*.
 
 ## v2.2.3 - 2024-12-12
 ### Changed
-Component SaaS Frontend upgraded to version *v2.1.2*.
+- Component SaaS Frontend upgraded to version *v2.1.2*.
 
 ## v2.2.2 - 2024-12-05
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.8*.
-Component SaaS Frontend upgraded to version *v2.1.1*.
-Component Vanguard upgraded to version *v0.3.5*.
+- Component SaaS Backend upgraded to version *v2.1.8*.
+- Component SaaS Frontend upgraded to version *v2.1.1*.
+- Component Vanguard upgraded to version *v0.3.5*.
 
 ## v2.2.0 - 2024-11-12
 ### Changed
-Component SaaS Frontend upgraded to version *v2.1.0*.
+- Component SaaS Frontend upgraded to version *v2.1.0*.
 
 ## v2.1.7 - 2024-11-08
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.7*.
-Component SaaS Frontend upgraded to version *v2.0.9*.
+- Component SaaS Backend upgraded to version *v2.1.7*.
+- Component SaaS Frontend upgraded to version *v2.0.9*.
 
 ## v2.1.6 - 2024-10-24
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.6*.
-Component SaaS Frontend upgraded to version *v2.0.8*.
+- Component SaaS Backend upgraded to version *v2.1.6*.
+- Component SaaS Frontend upgraded to version *v2.0.8*.
 
 ## v2.1.5 - 2024-10-17
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.5*.
-Component SaaS Frontend upgraded to version *v2.0.7*.
-Component Vanguard upgraded to version *v0.3.4*.
+- Component SaaS Backend upgraded to version *v2.1.5*.
+- Component SaaS Frontend upgraded to version *v2.0.7*.
+- Component Vanguard upgraded to version *v0.3.4*.
 
 ## v2.1.4 - 2024-10-10
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.4*.
-Component SaaS Frontend upgraded to version *v2.0.6*.
-Component Vanguard upgraded to version *v0.3.3*.
+- Component SaaS Backend upgraded to version *v2.1.4*.
+- Component SaaS Frontend upgraded to version *v2.0.6*.
+- Component Vanguard upgraded to version *v0.3.3*.
 
 ## v2.1.3 - 2024-10-03
 ### Changed
-Component OrCa upgraded to version *v2.0.1-rc1*.
-Component SaaS Backend upgraded to version *v2.1.3-rc1*.
-Component SaaS Frontend upgraded to version *v2.0.5-rc1*.
-Component Vanguard upgraded to version *v0.3.2*.
+- Component OrCa upgraded to version *v2.0.1-rc1*.
+- Component SaaS Backend upgraded to version *v2.1.3-rc1*.
+- Component SaaS Frontend upgraded to version *v2.0.5-rc1*.
+- Component Vanguard upgraded to version *v0.3.2*.
 
 ## v2.1.2 - 2024-09-27
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.2*.
+- Component SaaS Backend upgraded to version *v2.1.2*.
 
 ## v2.1.1 - 2024-09-26
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.1*.
-Component SaaS Frontend upgraded to version *v2.0.4*.
+- Component SaaS Backend upgraded to version *v2.1.1*.
+- Component SaaS Frontend upgraded to version *v2.0.4*.
 
 ## v2.1.0 - 2024-09-24
 ### Changed
-Component SaaS Backend upgraded to version *v2.1.0*.
-Component SaaS Frontend upgraded to version *v2.0.3*.
-Component Vanguard upgraded to version *v0.3.1*.
+- Component SaaS Backend upgraded to version *v2.1.0*.
+- Component SaaS Frontend upgraded to version *v2.0.3*.
+- Component Vanguard upgraded to version *v0.3.1*.
 
 ## v2.0.2 - 2024-09-11
 ### Changed
-Component SaaS Frontend upgraded to version *v2.0.2*.
+- Component SaaS Frontend upgraded to version *v2.0.2*.
 
 ## v2.0.1 - 2024-09-10
 ### Changed
-Component SaaS Backend upgraded to version *v2.0.1*.
-Component SaaS Frontend upgraded to version *v2.0.1*.
+- Component SaaS Backend upgraded to version *v2.0.1*.
+- Component SaaS Frontend upgraded to version *v2.0.1*.
 
 ## v2.0.0 - 2024-08-30
 ### Changed
-Component OrCa upgraded to version *v2.0.0*.
-Component Picus upgraded to version *v1.0.3*.
-Component SaaS Backend upgraded to version *v2.0.0*.
-Component SaaS Frontend upgraded to version *v2.0.0*.
-Component Vanguard upgraded to version *v0.3.0*.
+- Component OrCa upgraded to version *v2.0.0*.
+- Component Picus upgraded to version *v1.0.3*.
+- Component SaaS Backend upgraded to version *v2.0.0*.
+- Component SaaS Frontend upgraded to version *v2.0.0*.
+- Component Vanguard upgraded to version *v0.3.0*.
 
 ## v1.2.3 - 2023-11-02
 ### Changed
