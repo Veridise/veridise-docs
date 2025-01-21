@@ -52,6 +52,7 @@ slug: frontend-changelog
 
 ### Fixed
 - Switching versions would break commenting
+
 ## v2.0.9 - 2024-11-08
 ### Added
 - Picus v2
@@ -113,7 +114,9 @@ slug: frontend-changelog
 - Options in version selector were not always sorted by latest version
 - UI allowed findings to open while a task wasnt finished
 - Cursor positions not being "remembered" across tabs in editor
-- Line jump related bugs## v2.0.6 - 2024-10-10
+- Line jump related bugs
+
+## v2.0.6 - 2024-10-10
 ### Added
 - Digests in version details and the versions dropdown in the project viewer
 
