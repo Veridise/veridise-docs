@@ -15,15 +15,47 @@ You'll only need to do this one time.
 
 You should ensure the following parameters are set:
 
-| Step             | Parameter           | Instructions                                                                                                                                                                                                                          |
-|------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Project Root     | Project root        | Set to the folder containing the "root" of your project. Typically, this is the folder with `package.json`, `foundry.toml`, `hardhat.config.ts`, etc.                                                                                 |
-| Project Paths    | Source path         | Set to the base directory containing the smart contracts. For Hardhat projects, this will typically be the `contracts` folder of your code; for Foundry, it will be the project root.                                                 |
-| Project Paths    | Include path        | Leave blank unless the project uses dependencies not managed by Hardhat/Foundry. Hardhat dependencies are configured on the "Dependencies" step (see below). For Foundry, the git submodules will be fetched before running Vanguard. |
-| Project Contents | Solidity contracts  | Enable it.                                                                                                                                                                                                                            |
-| Dependencies     | Uses NPM-style deps | If a `package.json` is present, enable this setting and choose the appropriate package manager.                                                                                                                                       |
+| Step             | Parameter           | Instructions                                                                                                                                          |
+|------------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Project Root     | Project root        | Set to the folder containing the "root" of your project. Typically, this is the folder with `package.json`, `foundry.toml`, `hardhat.config.ts`, etc. |
+| Source Location  | Submodules          | Check the box "Repository includes submodules" if the project uses Foundry (if you forgot to check this, you need to upload a new version archive).   |
+| Project Contents | Solidity contracts  | Enable it.                                                                                                                                            |
+| Dependencies     | Uses NPM-style deps | If a `package.json` is present, enable this setting and choose the appropriate package manager.                                                       |
+| Build            | Uses build system   | Enable if you are using Hardhat (either one) or Foundry. See below section.                                                                           |
 
 The other parameters are not used by Vanguard and can be set to anything.
+
+### Build System Setup
+
+If your project uses Hardhat or Foundry, you should enable the `Uses build
+system` setting on the `Build` page.
+This will ensure that your project is compiled using its configured build
+system.
+In some cases, your project will not compile with the build system; you can
+either adjust your build system configuration or switch to manual Solidity
+compiler settings, as described below.
+
+:::note
+   Projects that use multiple versions of the Solidity compiler in the same
+   project are supported, but only experimentally.
+   Vanguard may report duplicate results or exhibit other strange behavior on
+   such projects.
+:::
+
+
+### Manual Solidity Compiler Build
+
+If your project does not use Foundry or Hardhat, or you choose to enable the
+`Ignore build system` setting in the Task Creation workflow, then your project
+will be compiled using a direct invocation to the Solidity compiler.
+This is only supported if you set the corresponding Solidity compiler settings
+in the Project Settings:
+
+| Step          | Parameter    | Instructions                                                                                                                                                                                       |
+|---------------|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Project Paths | Source path  | Set to the base directory containing the smart contracts. For Hardhat projects, this will typically be the `contracts` folder of your code; for Foundry, it will be the project root.              |
+| Project Paths | Include path | Leave blank unless the project uses dependencies not managed by Hardhat/Foundry. Hardhat dependencies are configured on the "Dependencies" step. Foundry dependencies are based on git submodules. |
+
 
 ## Step 2: Task Creation
 
