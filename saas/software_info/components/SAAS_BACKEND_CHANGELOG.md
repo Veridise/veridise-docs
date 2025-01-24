@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.2.1 - 2025-01-23
+### Changed
+- Internal configuration settings
+
 ## v2.2.0 - 2025-01-20
 ### Added
 - Allow updating and deleting comments in collaboration threads
