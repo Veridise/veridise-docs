@@ -6,6 +6,11 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.2.0 - 2025-02-06
+### Changed
+- Changed Python version to Pypy3.10 to improve fuzzing performance
+- Updated [V] Hint functionality to support only for-all blocks or assignment to transaction arguments.
+
 ## v2.1.1 - 2025-01-20
 ### Fixed
 - Fixed a bug with state_fold/fsum V expressions where OrCa would crash.
