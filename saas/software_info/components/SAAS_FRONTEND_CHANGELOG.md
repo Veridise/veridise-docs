@@ -6,6 +6,16 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.2.0 - 2025-02-06
+### Changed
+- Updated V grammar
+
+### Fixed
+- Error messages not relayed from backend in the project wizard
+- Frontend would not remove leading spaces when sending URLs to backend, causing errors
+- Stale temporary version used when creating projects with identical source location
+- node_modules was incorrectly set as an include path when the user checked then unchecked the NPM checkbox while configuring a project without an include path
+
 ## v2.1.3 - 2025-01-21
 ### Added
 - Ability to invite users from the admin panel
