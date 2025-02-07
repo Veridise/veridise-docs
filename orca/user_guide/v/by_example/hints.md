@@ -3,80 +3,174 @@ title: Guiding the Search
 sidebar_position: 4
 ---
 
-This section introduces the `hints` and `fair` sections as tools [V] developers can use in order to help guide
+This section introduces the `hints` section as a tool [V] developers can use in order to help guide
 the search for counterexamples against the input specification.
 
-## Our Bug: "I'll need your John Hancock"
+## Intro to Hints: A Small Example
 
-For this bug, we'll focus on the `transferCheckSignature` transaction.
+Hints are used to guide the fuzzer's search. If the fuzzed transaction has a require statement or satisfying the spec requires a specific contract state, random fuzzing will not help without spending excessive time. In those cases, the users can provide hints to improve the quality of fuzzing.
+
+Some ways hints can guide fuzzing include:
+
+* Providing values to the transaction arguments
+* Providing values to the sender/value fields of a transaction
+* Providing constraints over transaction arguments or contract variables.
+
+Below, we have an example function:
 
 ```solidity
-// Simple hashing function (uses keccak only)
-function hashMsg(bytes memory my_msg) public pure returns (bytes32) {
-    return keccak256(my_msg);
-}
+function foo(uint256 x, uint256 y) public onlyOwner {
+    require(x > 100000);
+    require(y < x);
 
-function transferCheckSignature(
-    address from,
-    bytes memory signature,
-    address to,
-    uint256 amount
-) public {
-    // Require that the signer was the `from` address
-    (uint8 v, bytes32 r, bytes32 s) = get_vrs(signature);
-    address signer = ecrecover(hashMsg(signature), v, r, s);
-    require(signer != address(0));
-    require(signer == from);
-
-    // NOTE: Should transfer from the `from` address, not message sender!
-    transfer(to, amount);
+    ...
 }
 ```
 
-Here, `hashMsg` is a simple hashing function that uses `keccak256` to hash a message. `get_vrs` splits the `bytes` signature into three parts, which can be used by the `ecrecover` function to recover the original signer of the signature.
+In this function, there are three constraints that are difficult to randomly satisfy.
 
-The bug itself is fairly straightforward -- the `from` address is not passed to `transfer`, meaning that funds will instead be sent from the message sender. This bug, though fairly straightforward, is difficult to reach in practice because it requires passing a valid signature into `transferCheckSignature`.
+* `x` must be greater than 100000.
+* `y` must be less than `x`.
+* `onlyOwner` limits valid callers to only the contract owner.
 
-Thus, in order to find bugs for functions like these in practice, we'll need to include a hint in our [V] spec that describes how to construct a valid signature. We can write such a spec like this:
+To pass these checks, the users can write [V] hints in the form of `finished(<target>, <hint-program>)` where target function's arguments or sender/value fields will be modified based on the hint program. The hint program is a sequence of assignments or for-all expressions containing other hint programs to modify the arguments.
 
-```solidity
-vars: MyVToken token
-hints: finished(token.transferCheckSignature(from, sig, to, amt),
-                sig := ecdsa256_sign_bytes(from, token.toBytes(to)))
-spec: []!finished(token.transferCheckSignature(from, sig, to, amt),
-                  old(token.balanceOf(from)) != token.balanceOf(from) + amt)
-```
-
-## Understanding the Spec
-
-At this point, the `vars` and `spec` sections are nothing new to us. The spec is saying that it should never be the case that `transferCheckSignature` finishes and the old balance for `from` is not exactly the new balance for `from` plus the transfered amount. Said another way, any successful call to `transferCheckSignature` should remove `amt` from the balance of `from`. Though this spec accurately describes a correctness property of `transferCheckSignature` that is violated by the bug we saw, finding such a counterexample in practice. That's because tools like OrCa perform enumerative search on the arguments of transactions, and the likelihood of randomly generating a valid signature is nearly zero.
-
-This is where the `hints` section comes in. In order to give tools like OrCa additional information about transaction parameter values, [V] developers may include an optional `hints` section that assigns transaction parameters to specific values or sets of valid values. In our example, the hint specifies that the `sig` argument to any successful call to `transferCheckSignature` must be `ecdsa256_sign_bytes(from, token.toBytes(to))` -- an expression using a builtin [V] function `ecdsa256_sign_bytes`, a call to `MyVToken`'s function `toBytes`, and other transaction parameters. The builtin function `ecdsa256_sign_bytes` signs a hashed message using the private key of the address given in the first argument. Here, the "message" we're signing is the `to` address converted into a byte representation. When OrCa performs fuzzing on this spec, it will use the hint to restrict the values that it tests for the `sig` argument to only those that match this bytes signature. Thus, any test case generated where `amt > 0` will register as a counterexample, exposing the bug!
-
-
-### General Hint Syntax
-
-Note that there are a few pieces of necessary syntax for the hint. Hints are expressed as `finished` statements, containing both a target function and a condition. Unlike normal `finished` statement conditions, hint conditions _must_ be expressed as a series of expressions, separated by `&&`. Multiple hints for different target transactions can be given in a single `hints` section. These hints are delimited by `;`. The general form of the hints section is as follows:
+An example for the function `foo` is given below.
 
 ```solidity
-hints: finished(target1, cond1 && cond2 ...) ;
-       finished(target2, cond3 && ...)
+vars: Contract c
+hints: finished(c.foo(x, y),
+                    x := elem_in_range(100001, MAX_UINT256); 
+                    y := elem_in_range(0, x);
+                    sender := c.owner
+               )
+spec: ...
 ```
 
-Notice that in the hint from the example, we use `:=` as the assignment operator. This is special syntax for hints, and it allows users to directly assign values to transaction parameters. The expected syntax for the assignment condition is `var := expr`, where the variable being assigned `var` is a transaction parameter. Generally, it is recommended to use assignment hints when possible, as these hints will lead to the best performance. However, hint conditions containing equality between two variables or inequality operators are also allowed.
+The hint above has three assignments to make it run successfully.
 
-### Other Hint Examples
+* `x` is assigned a random value between 100001 and MAX_UINT256 to satisfy `require(x > 100000)`.
+* `y` is assigned a random value between 0 and `x` to satisfy `require(y < x)`.
+* `sender` is assigned to contract's owner to satisfy the `onlyOwner` requirement.
 
-In addition to `ecdsa256_sign_bytes`, [V] provides several other useful built in functions for defining hints.
+Another way to write this hint would be to use `solve` expressions. This method invokes an SMT solver, so it is going to be slower to run but for complex cases, it might be useful. In the `solve` expressions, users can express constraints in [V]. The constraints are solved by an SMT solver and the expression returns the values to be used in assignment.
 
-The signature returned by `ecdsa256_sign_bytes` is a bytes-string, 65 bytes in length. An alternative `ecdsa256_sign` function can be used to get signatures as `(uint8, bytes32, bytes32)` tuples `(v,r,s)`.
+For example, the hint above can also be expressed as:
 
-The function `elem_in_range(low, high)` returns a random element in the range `[low, high)`. For input values that should always lie within a specific range, use a hint like this:
 ```solidity
-hints: finished(c.foo(percent), percent := elem_in_range(0,101))
+vars: Contract c
+hints: finished(c.foo(x, y),
+                    (x, y) := solve{uint256 a, uint256 b}(a > 100000 && b < a);
+                    sender := c.owner
+               )
+spec: ...
 ```
 
-The function `user_address()` returns random user address. For input addresses that should always be user addresses, use a hint like this:
+In the hint above, `solve` block calls SMT solver to find a satisfying solution to the provided constraint in the `solve` block, and returns `a` and `b` values satisfying the provided constraint as a tuple for assignment to the left hand side.
+
+## Now You're Thinking with Portals: Enhancing Hints with Complex Expressions
+
+As seen in the previous section, hints can be constructed as series of assignments with or without using `solve` blocks to pass requirements in transactions. For some complex require statements (on arrays or structs), users will need to use `solve` blocks or `forall` expressions to be able to express their constraints.
+
+Below, we have an example function comparing two lists:
+
 ```solidity
-hints: finished(c.foo(addr), addr := user_address())
+function countVotes(address[] voters, uint256[] votes) public {
+    # Require a non-empty voters and votes list
+    require(voters.length == votes.length && voters.length > 0);
+
+    # Only accepting votes for 4 candidates (1, 2, 3, 4)
+    for(uint i=0; i<votes.length; i++){
+        require(votes[i] < 5 && votes[i] > 0);
+    }
+    ...
+}
 ```
+
+For these two require statements, we can write a [V] hint like below:
+
+```solidity
+vars: Contract c
+hints: finished(c.count_votes(voters, votes),
+                    (voters, votes) := solve{address[] _voters, uint256[] _votes}(
+                                            len(_voters) = len(_votes) && len(_voters) > 0);
+                    forall{i : range(0, len(votes))}(votes[i] := elem_in_range(1, 5))
+               )
+spec: ...
+```
+
+These two expressions modify `voters` and `votes` to be able to pass the requirements:
+
+* The first expression solves a constraint on `_voters` and `_votes` to make them equal-length and non-empty, then assigns those lists to `voters` and `votes` respectively.
+* The second assignment modifies each element of the `votes` to be within the values 1-4.
+
+In this example, calling `solve` lets us randomly generate 2 arrays with equal length which we could not do in [V]. If we did not use `solve` to write the hint, we could have fixed the length of both arrays with an expression like `votes := [elem_in_range(1, 5), elem_in_range(1, 5)]`. That would have been faster but that would also limit the possible values to fuzz for that function to a small subset.
+
+## General Hint Syntax
+
+The hint grammar can be described as below:
+
+```solidity
+HintSequence :   Hint
+               | Hint ; HintSequence
+
+Hint: finished(Target, HintProgram)
+
+HintProgram :   LHSExpr := Expr
+              | forall(I : I)(HintProgram)
+              | HintProgram ; HintProgram
+
+Target :   I.I(I, ...)
+         | I.I
+         | I.*
+         | *
+
+LHSExpr :   I
+          | LHSExpr.I
+          | LHSExpr[I]
+          | (LHSExpr, ...)
+
+Expr :   SolveExpr 
+       | ConstraintExpr
+```
+
+`HintSequence` represents a single hint or a sequence of hints, separated by a semicolon `;`. `Hint` represents a single hint description with `Target` describing the function to match on and `HintProgram` describing the sequence of assignments to perform to modify the functions.
+`Target` represents the target of the statement, similar to the definition in [[V] statements](../language_description.md#v-statements).
+
+`HintProgram` represents a hint program, consisting of an assignment expression, a for all block containing a hint program, or a sequence of hint programs. `LHSExpr` represents any identifier, field access, array access, or tuple containing any of the previous expressions where each element has to match an argument of `Target`, `sender`, or `value`. `I` represents any identifier. `Expr` represents a solve expression (explained in the next chapter) or a constraint expression and it needs to return the type of `LHSExpr` when evaluated.
+
+## General Solve Syntax and Behavior
+
+To increase the expressibility of hints, `solve` expressions let users call an SMT solver and get a solution for their arguments. The `solve` expression can be described as the following:
+
+```solidity
+SolveExpr: solve{SMTVarDecl}(ConstraintExpr)
+
+SMTVarDecl:   VarType VarName
+            | SMTVarDecl, SMTVarDecl
+
+VarType:   address 
+         | string
+         | bool
+         | uint # Behaves same as uint256
+         | uint<num> # uint8, uint16, ..., uint256 are allowed
+         | int256 # Behaves same as int256
+         | int<num>  # int8, int16, ..., int256 are allowed
+         | bytes<num> # Only bounded byte variables are allowed
+         | VarType[] # Array types
+
+VarName: <str>
+```
+
+`SolveExpr` describes the expression which returns the concrete values to variables in `SMTVarDecl` based on the constraints in `ConstraintExpr`. `SMTVarDecl` lets users create undefined variables which *only* appear in the `ConstraintExpr`, similar to the free variables defined in [`vars` section](../language_description.md#vars-section) but only limited to primitive types and arrays described in `VarType`. `ConstraintExpr` is a [V] expression which will be translated into SMTLIB to be solved.
+
+There are two main differences between `ConstraintExpr` in solve blocks and [V] constraints:
+
+* For binary expressions, only primitive types (`address`, `bytes`, `bool`, `uint`, `int`, `string`) are allowed. `x = 1` is a valid expression, `x = [1, 2, 3]` is an invalid expression. For modifying array, struct, and enum variables, the users can express assignments in hints such as `x := [1, 2, 3]`, `x[0] := ...`, or `x.field := ...`.
+* For binary expressions on bytes, the lengths of left hand side and right hand side expressions have to match exactly. For example, `x = b"00cafe00"` is valid only when `x` is of type `bytes4`, otherwise solver translation returns a type error.
+
+As a warning, there may be some limitations in terms of the constraints OrCa can solve as SMT solvers (like Z3) may have difficulty providing solutions in a short amount of time where the constraints contain nested arrays or complex mathematical expressions like quadratics. If the solver times out or constraints have a type mismatch, OrCa will terminate to warn the user not to provide such constraints.
+
+## See Also
+
+For more details on [V] hints and hint functions, please refer to [Hint Description](../language_description.md#hints-section) and [Useful Hint Functions](../language_description.md#useful-functions-for-expressing-hints).

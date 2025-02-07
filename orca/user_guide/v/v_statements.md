@@ -80,6 +80,12 @@ To allow the specification of properties across different blockchains and langua
 | `ret`                       | The return value of the given transaction |
 | `balance(account)`          | Returns `account`’s balance in native tokens |
 | `old(expr)`                 | Evaluates `expr` just before the transaction executes |
+| `len(arr)`                  | Returns the length of `arr` array |
+| `range(low, high)`          | Returns a sorted array consisting of `low, low + 1, low + 2, ..., high-1` |
+| `address(val)`              | Converts passed integer or string `val` to an address |
+| `elem_in_range(low, high)`  | Returns a random integer within the `[low, high)` range |
+| `MAX_UINT256`               | Returns maximum possible value for a `uint256` |
+| `MAX_INT256`                | Returns maximum possible value for a `int256` |
 
 ### Arithmetic Operators
 
@@ -140,5 +146,4 @@ To allow the specification of properties across different blockchains and langua
 | `fsum{target}(expr)`                              | Shorthand for `fsum` with `cond` set to `True`. |
 | `state_fold{target when cond}((x) -> expr, expr)` | A generalization of `fsum`. The first argument `(x) -> expr` is the accumulation function, which takes as input the previous accumulated value and outputs the new accumulated value (any identifier may be used in place of `x`). Transaction parameters from `target` are considered in scope for this expression. The second parameter `expr` is the initial accumulated value, and transaction parameters are _not_ in scope for this expression. Similar to `fsum`, the accumulator is only applied to transactions `target` that successfully execute where `cond` holds. |
 | `state_fold{target}((x) -> expr, expr)`           | Shorthand for `state_fold` with `cond` set to `True`. |
-| `forall{x in arr}(expr)`                         | Evaluates `expr` `\|arr\|` times, where `x` is bound to each element of `arr`, then evaluates to the conjunction of all results. `arr` must evaluate to an array. `expr` must always evaluate to a boolean value. |
-
+| `forall{x : arr}(expr)`                         | Evaluates `expr` `\|arr\|` times, where `x` is bound to each element of `arr`, then evaluates to the conjunction of all results. `arr` must evaluate to an array. `expr` must always evaluate to a boolean value. |
