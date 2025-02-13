@@ -6,6 +6,22 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.2.1 - 2025-02-13
+### Added
+- Ability to edit and delete versions in the Project Viewer.
+
+### Changed
+- Improved contrast of text between version name and version hash in dropdown.
+- Upload form warns you when providing a Git link as a URL source
+
+### Fixed
+- Code editor would not disambiguate files with same name but different path
+- Edit and delete buttons appeared for system-generated comments.
+- Edit project wizard did not properly handle loading of version data
+- Findings table sorted severity in alphabetical order.
+- OrCa configuration displayed "Fork Block Number" option after setting "Fork Network" to "None".
+- The Project Wizard allowed selecting folders as deployment scripts.
+
 ## v2.2.0 - 2025-02-06
 ### Changed
 - Updated V grammar

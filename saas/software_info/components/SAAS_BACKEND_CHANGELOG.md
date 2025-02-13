@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.2.2 - 2025-02-13
+### Fixed
+- Bug fixes
+
 ## v2.2.1 - 2025-01-23
 ### Changed
 - Internal configuration settings
