@@ -6,6 +6,12 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v0.3.7 - 2025-03-07
+### Fixed
+- DeFi Vanguard
+  - Fixed a crash that occurs when handling contracts that read/write structs in Solidity 0.8.24 or newer
+  - Fixed a crash that occurs when handling true/false literals in inline assembly code
+  - Fixed a crash that occurs when handling low level calls that manual decode return data of an external call in inline assembly
 ## v0.3.6 - 2025-01-20
 ### Added
   - DeFi Vanguard
