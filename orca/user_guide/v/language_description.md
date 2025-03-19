@@ -39,6 +39,7 @@ Besides contract types, the following are accepted as variable types in the `var
 * Struct types `Contract.StructType`
 * Enum types `Contract.EnumType`
 * Array types `<type>[]`, `<type>[][]`, etc.
+* Bounded array types `<type>[<uint>]`, `<type>[<uint>][<uint>]`, etc.
 * Tuple types `(<type>, <type>)`, `(<type>,<type>,<type>)`, etc.
 
 
@@ -146,16 +147,15 @@ spec: []!finished(target, !expr)
 ## `hints` Section
 
 ```solidity
-hints: finished(<target>, <condition>) ; ...
+hints: finished(<target>, <hint-program>) ; finished(<target>, <hint-program>) ; ...
 ```
 
-The hints section contains a sequence of special `finished` statements. Note that the sequence is not required to end with a `;`, but `;` is required between each `finished` statement. These finished statements make up distinct hints.
+The hints section contains a sequence of special `finished` statements. Note that the sequence is not ending with a `;`, but `;` is required between each `finished` statement. These finished statements make up distinct hints.
 
-Each hint contains both a `target` and a `condition`. The meaning of hint `finished(target, condition)` is that transaction `target` should be issued with transaction arguments (and `sender` and `value` values) that satisfy `condition`.[^1]
-
-[^1]: We plan to allow future versions of OrCa to issue some portion of `target` transactions that do not satisfy hint conditions. In the current version of OrCa, all issued `target` transactions must satisfy all pertinent hints.
+Each hint contains both a `target` and a `hint-program`. The meaning of hint `finished(target, hint-program)` is that transaction `target` should be issued with transaction arguments (and `sender` and `value` values) based on the assignments in `hint-program`.
 
 The target, like any [V] statement, may take the following forms:
+
 1. `contractVar.function(arg1, arg2, ...)`
 2. `contractVar.function`
 3. `contractVar.*`
@@ -163,38 +163,119 @@ The target, like any [V] statement, may take the following forms:
 
 Since hints are used to constrain the arguments of transactions, nearly all hints will use the first form of the target (though hints that constrain the transaction `sender` or `value` may use the alternate forms).
 
-Hint conditions may contain any expressions from standard [V] statement conditions, but also include some additional syntax. Specifically, the assignment operator `:=` can be used to directly specify a (possibly random) value for transaction arguments.
+The hint program must consist of any sequence of assignment expressions or for-all blocks separated by semicolon (`;`). Expressions inside the for-all block can be described as another hint program, so it may contain any sequence of assignment expressions or for-all blocks.
 
-The assignment expression `<L> := <R>` must satisfy a few properties:
-* `<L>` must be either a transaction argument or the keyword `sender` or `value`
-* `<R>` must be an expression that evaluates to the type of `<L>`
+The assignment expression `<LHS> := <RHS>` must satisfy a few properties:
 
-In general, hint conditions that contain only a conjunction of assignments (e.g. `x := f() && y := g()`) are more efficient than hints with inequalities or disjunctions. Whenever possible, express hints as a conjunction of assignments for the best performance.
+* `<LHS>` must be either a transaction argument, tuple of transaction arguments, an array access on an argument, a field access on an argument, or the keyword `sender` or `value`
+* `<RHS>` must be an expression that evaluates to the type of `<LHS>`, or a `solve` expression that has returns the same type as `<LHS>`. For details on `solve`, please refer to [here](./by_example/hints.md#general-solve-syntax-and-behavior).
 
-### Useful functions for expressing hints
+For a hint like `finished(c.foo(arg1, arg2))`, `arg1`, `arg1.field`, `arg1[0]`, `(arg1, arg2)` can be candidates for `<LHS>`.
 
-[V] provides several useful function for expressing hints.
+For-all expressions can define hints on arrays. To modify each element of an array `arr` with its index value, use a hint like below:
 
-The functions `ecdsa256_sign(signer, msg)` and `ecdsa256_sign_bytes(signer, msg)` return a signature for `msg` signed by the address `signer`. `ecdsa256_sign` returns the signature as a `(uint8, bytes32, bytes32)` tuple `(v,r,s)`, while `ecdsa256_sign_bytes` returns the signature as a 65-byte bytes string.
-
-The function `elem_in_range(low, high)` returns a random element in the range `[low, high)`. For input values that should always lie within a specific range, use a hint like this:
 ```solidity
-hints: finished(c.foo(percent), percent := elem_in_range(0,101))
+finished(c.foo(arr), forall{i : range(0, len(arr))}(arr[i] := i))
 ```
 
-The function `user_address()` returns random user address. For input addresses that should always be user addresses, use a hint like this:
+For right hand side values `<RHS>`, you can provide [V] expressions which will be interpreted when the hint is being executed. As an example, the hint below describes that the argument `sum` will be equal to the sum of the first two arguments:
+
 ```solidity
-hints: finished(c.foo(addr), addr := user_address())
+finished(c.checksum(arg1, arg2, sum), sum := arg1 + arg2)
 ```
+
+### Useful Functions for Expressing Hints
+
+[V] has a series of utility functions used to express hint constraints or assignments, here is the list below.
+
+#### `user_address() -> address`
+
+Return a random address among non-contract addresses in the Anvil state (contains default Anvil user addresses and addresses used for deployment).
+
+#### `address(val) -> address`
+
+Return the converted value `val` as an address. `val` can be an integer, or a hex string, so `address(0)` or `address("0xdeadbeef")` are valid uses of this function. In Solidity, addresses are 20-byte long, so this function converts any integer or shorter hex-string to a 20-byte representation. If the passed address is longer than maximum possible address value, OrCa will crash with a value error.
+
+#### `elem_in_range(int low, int high) -> int`
+
+Return a random integer in the range of `[low, high)`.
+
+In the example below, the argument `percent` is assigned a random value from 0 to 100.
+
+```solidity
+finished(
+  c.foo(percent),
+  percent := elem_in_range(0, 101)
+)
+```
+
+#### `len(arr) -> int`
+
+Return the length of the array `arr` as an integer.
+
+#### `range(int low, int high) -> list[int]`
+
+Return a sorted array consisting of `low, low + 1, low + 2, ..., high-1`.
+
+This function and `len` function can be used to iterate over an array in hints such as the hint below. In the example below, each cell of the array is assigned to its index value.
+
+```solidity
+finished(
+  c.foo(arr), 
+  forall{i: range(0, len(arr))}(arr[i] := i)
+)
+```
+
+#### `ecdsa256_sign_bytes(address signer, bytes msg) -> bytes`
+
+Return the signature based on the bytes string `msg` and the address `signer` as a 65-byte bytes string.
+
+Below is an example of a cryptographic hint where `transferCheckSignature` function requires the address `from` to be equal to the signer of the `signature` argument and different from the null address. `HashMsg` function is only a wrapper for the [keccak256 function](https://docs.soliditylang.org/en/latest/units-and-global-variables.html#mathematical-and-cryptographic-functions).
+
+```solidity
+// Simple hashing function (uses keccak only)
+function hashMsg(bytes memory my_msg) public pure returns (bytes32) {
+    return keccak256(my_msg);
+}
+
+function transferCheckSignature(
+    address from,
+    bytes memory signature,
+    address to,
+    uint256 amount
+) public {
+    // Require that the signer was the `from` address
+    (uint8 v, bytes32 r, bytes32 s) = get_vrs(signature);
+    address signer = ecrecover(hashMsg(signature), v, r, s);
+    require(signer != address(0));
+    require(signer == from);
+    // NOTE: Should transfer from the `from` address, not message sender!
+    transfer(to, amount);
+}
+```
+
+The hint to pass the require statements, described below, assigns `from` to a random user address using `user_address()` function and replaces the signature with a message containing the address `to`, signed by address `from` using `ecdsa256_sign_bytes`.
+
+```solidity
+vars: MyVToken token
+hints: finished(token.transferCheckSignature(from, sig, to, amt),
+                from := user_address();
+                sig := ecdsa256_sign_bytes(from, token.toBytes(to)))
+```
+
+#### `ecdsa256_sign(address signer, bytes msg) -> (uint8, bytes32, bytes32)`
+
+Return the signature based on the bytes string `msg` and the address `signer` as a `(uint8, bytes32, bytes32)` tuple.
 
 ## `fair` Section
 
-The `fair` section allows users to specify a temporal property that should be assumed by OrCa. This section _must_ appear before the `spec` section in the specification: 
-```
+The `fair` section allows users to specify a temporal property that should be assumed by OrCa, similar to temporal properties defined in [V] spec section. This section _must_ appear before the `spec` section in the specification:
+
+```solidity
 fair: prop1
 spec: prop2
 ```
 
-For this example specification, OrCa will only report counterexamples that both (a) satisfy the fairness property `prop1` and (b) violate the correctness property `prop2`.[^2] See documentation on [fairness assumptions](fairness_assumptions.md) for more details on the `fair` section.
+For this example specification, OrCa will only report counterexamples that both (a) satisfy the fairness property `prop1` and (b) violate the correctness property `prop2`.[^1] See documentation on [fairness assumptions](fairness_assumptions.md) for more details on the `fair` section.
 
-[^2]: Currently, OrCa only uses the fairness property as a precondition for reporting counterexamples. Future versions of OrCa may direct the search to test only sequences that satisfy the fairness property.
+[^1]: Currently, OrCa only uses the fairness property as a precondition for reporting counterexamples. Future versions of OrCa may direct the search to test only sequences that satisfy the fairness property.
