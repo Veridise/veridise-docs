@@ -3,4 +3,5 @@
 .github/
 blog/
 build/
+deployment/
 node_modules/
