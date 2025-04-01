@@ -6,6 +6,28 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.2.2 - 2025-04-01
+### Added
+- Debug mode option in Picus V2 configuration form
+- New "multi-solver" option in Picus V2 advanced settings
+
+### Changed
+- Added back version edit and deletion in the Project Viewer.
+- Improved error messages when versions fail to upload
+- Improved logic of the "non-auditor" UI
+- New URL scheme for various parts of the UI
+- Now project root defaults to the root
+
+### Fixed
+- Admin UI not working when organization of task differed from ambient organization
+- Creating task in project viewer page would direct to legacy dashboard
+- Non-admin users were unable to delete projects in the project list
+- Picus V2 failed to run when "Assume deterministic" field was empty
+- Projects page used the wrong endpoint for accessing organization data
+- The Upload Version form in the Project Viewer would clear itself when uploads failed
+- The source browser in Project Viewer was not sorting deeply embedded files
+- Zip files sometimes were not selectable when uploading a version
+
 ## v2.2.1 - 2025-02-13
 ### Added
 - Ability to edit and delete versions in the Project Viewer.
