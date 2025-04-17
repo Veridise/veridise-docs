@@ -6,6 +6,26 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.2.3 - 2025-04-17
+### Changed
+- Block user on duplicate project names
+- Confirm when user inputs an include_path that doesn't exist in version archive
+- Line highlights persist until the user scrolls or moves within the editor
+- Prevent users from creating [V] Spec with a duplicate name
+- You can add include paths that dont exist beforehand in a version archive.
+
+### Fixed
+- An empty call metrics chart displayed when OrCa did not produce call metrics
+- Clicking "X" in the last tab in the editor would deselect all tabs
+- Deleting tasks wouldnt immediately update task list
+- Line highlights disappearing from links
+- Next button became permanently disabled when no specs were selected and the back button was clicked
+- Opening files would create a new tab but not switch to the new tab
+- OrCa call metrics chart not displaying
+- Picus v1 UI not showing file list
+- Support for new call metrics format of OrCa
+- When resubmitting OrCa tasks, specs were not being pre-filled
+
 ## v2.2.2 - 2025-04-01
 ### Added
 - Debug mode option in Picus V2 configuration form

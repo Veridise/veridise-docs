@@ -6,6 +6,13 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.3.0 - 2025-04-17
+### Added
+- Added the support to add constraints over variables in [V] hints.
+
+### Changed
+- FuzzingInformation object, containing information for SaaS to present to users, now uses Pydantic
+
 ## v2.2.0 - 2025-02-06
 ### Changed
 - Changed Python version to Pypy3.10 to improve fuzzing performance
