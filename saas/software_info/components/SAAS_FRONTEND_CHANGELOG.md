@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.2.4 - 2025-04-23
+### Fixed
+- Links in the "All Comments" dialog would not open the corresponding thread
+
 ## v2.2.3 - 2025-04-17
 ### Changed
 - Block user on duplicate project names
