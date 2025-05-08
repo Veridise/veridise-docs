@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.2.5 - 2025-05-08
+### Fixed
+- V Spec validation would never finish given certain erroneous inputs
+
 ## v2.2.4 - 2025-04-23
 ### Fixed
 - Links in the "All Comments" dialog would not open the corresponding thread

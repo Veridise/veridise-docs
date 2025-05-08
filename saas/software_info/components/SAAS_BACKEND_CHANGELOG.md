@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.3.6 - 2025-05-08
+### Fixed
+- Bug fixes
+
 ## v2.3.5 - 2025-04-17
 ### Changed
 - Improvements on how OrCa is invoked for all build systems
