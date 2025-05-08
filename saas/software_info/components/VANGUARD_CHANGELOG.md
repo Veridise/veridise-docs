@@ -6,6 +6,12 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v0.3.8 - 2025-05-08
+### Fixed
+- DeFi Vanguard
+  - Fixed an error that could occur when building Hardhat projects that are configured with hardhat.config.ts
+  - Fixed a crash that occurs when handling inline assembly involving external calls
+  - Fixed several nondeterministic crashes that involve handling of control flow statements.
 ## v0.3.7 - 2025-03-07
 ### Fixed
 - DeFi Vanguard
