@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.2.6 - 2025-05-09
+### Changed
+- Creating a task in the Project Viewer now requires selecting a tool first.
+
 ## v2.2.5 - 2025-05-08
 ### Fixed
 - V Spec validation would never finish given certain erroneous inputs
