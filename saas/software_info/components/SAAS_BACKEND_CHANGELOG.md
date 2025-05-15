@@ -6,6 +6,14 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.0 - 2025-05-15
+### Added
+- Audit Issue Management feature
+- GET endpoint to retrieve all findings of all tasks of a project
+
+### Changed
+- Allow `commit_hash` input for versions.
+
 ## v2.3.7 - 2025-05-09
 ### Fixed
 - Bug fixes

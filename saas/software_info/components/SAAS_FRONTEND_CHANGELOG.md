@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.0 - 2025-05-15
+### Added
+- Audit issue management
+- '`commit_hash` option to version creation and edit forms.'
+
+### Changed
+- Improved presentation of "Fork Network" parameter when reviewing OrCa tasks
+
 ## v2.2.6 - 2025-05-09
 ### Changed
 - Creating a task in the Project Viewer now requires selecting a tool first.
