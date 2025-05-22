@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.1 - 2025-05-22
+### Added
+- Endpoint to post a new thread comment
+
 ## v2.4.0 - 2025-05-15
 ### Added
 - Audit Issue Management feature
