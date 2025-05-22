@@ -6,6 +6,15 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.1 - 2025-05-22
+### Changed
+- Changed button name and errors in the Upload modal to match the type of upload we choose.
+
+### Fixed
+- Duplicated logs in task steps when repeatedly opening and closing the step.
+- Thread resolution did not immediately reflect in drop down when resolving the thread
+- Wrong highlight when clicking links in findings and multiple files were opened
+
 ## v2.3.0 - 2025-05-15
 ### Added
 - Audit issue management
