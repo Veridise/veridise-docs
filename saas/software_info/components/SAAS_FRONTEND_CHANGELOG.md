@@ -6,6 +6,11 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.2 - 2025-05-29
+### Added
+- A warning while changing threads if there's an unsent message
+- Commit_hash to project creation
+
 ## v2.3.1 - 2025-05-22
 ### Changed
 - Changed button name and errors in the Upload modal to match the type of upload we choose.

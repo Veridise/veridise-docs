@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.2 - 2025-05-29
+### Fixed
+- Bug fixes
+
 ## v2.4.1 - 2025-05-22
 ### Added
 - Endpoint to post a new thread comment
