@@ -6,6 +6,23 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.3 - 2025-06-11
+### Added
+- Ability to edit links by clicking on the link icon in the editor
+- Add a right-click option for users to create links for lines to share
+- Audit issue export button
+- Button to copy issue link directly
+
+### Changed
+- Pressing `Tab` while editing code blocks now indents. Similarly, `Shift + Tab` de-indents.
+- Split the "Open Discussion" button of issues into two buttons when the user is an auditor.
+
+### Fixed
+- Issue links appear as text when issue is being edited
+- Issue links not working
+- Mentions did not work when they looked like "[@John Appleseed]".
+- OrCa tasks were able to be submitted without a deployment script by creating a project with a deployment script, starting an OrCa task, removing the deployment script, then resubmitting the OrCa task.
+
 ## v2.3.2 - 2025-05-29
 ### Added
 - A warning while changing threads if there's an unsent message
