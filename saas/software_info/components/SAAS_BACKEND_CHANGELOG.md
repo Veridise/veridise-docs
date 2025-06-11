@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.3 - 2025-06-11
+### Changed
+- Support multiple logging services
+- Format of issues export data
+
+### Fixed
+- Bug fixes
 ## v2.4.2 - 2025-05-29
 ### Fixed
 - Bug fixes
