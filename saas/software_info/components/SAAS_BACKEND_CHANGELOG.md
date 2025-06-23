@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.4 - 2025-06-23
+### Changed
+- OrCa foundry `forge script` invocation now uses the `--code-size-limit` flag
+
 ## v2.4.3 - 2025-06-11
 ### Changed
 - Support multiple logging services
