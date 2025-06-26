@@ -6,6 +6,11 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.5 - 2025-06-26
+### Changed
+- Disable gas limit checks for Anvil during OrCa task execution
+- Limit thread comment data size to 7500 bytes.
+
 ## v2.4.4 - 2025-06-23
 ### Changed
 - OrCa foundry `forge script` invocation now uses the `--code-size-limit` flag
