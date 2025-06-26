@@ -6,6 +6,22 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.4 - 2025-06-26
+### Added
+- Added Project Overview page.
+- Persistence of filters in both Issues and Findings tables
+
+### Changed
+- Internal AuditHub links to issues are rendered with caption set to the issue title
+- Projects in the project list are sorted in lexicographical order.
+- The "Copy URL" button on issues now only includes an issue and version in links.
+
+### Fixed
+- Excessive spacing between list items in comments
+- In Edit Project, users couldn't reuse a project name after deleting it
+- Table filters not working
+- socket issue
+
 ## v2.3.3 - 2025-06-11
 ### Added
 - Ability to edit links by clicking on the link icon in the editor
