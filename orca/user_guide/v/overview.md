@@ -12,7 +12,6 @@ First, we provide a guide for learning [V] by example:
 - [Hello, Bugs!](by_example/hello_bugs.md)
 - [Intro to LTL](by_example/intro_to_ltl.md)
 - [Aggregate Properties](by_example/aggregate_properties.md)
-- [Guiding the Search](by_example/hints.md)
 
 ## Building Blocks of [V]
 
