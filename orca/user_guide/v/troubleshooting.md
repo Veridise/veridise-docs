@@ -49,4 +49,12 @@ vars: Foo f, address addr
 spec: []!(finished(f.baz(a), a = addr) && X<>finished(f.baz(a), a = addr)
 ```
 
+## Undefined Variable
 
+You may encounter an error of the following form:
+
+```
+Name "variable" is undefined! Check to see if this variable is defined correctly (e.g., as a free variable or target argument).
+```
+
+Usually, when this error is encountered, it means you have introduced a variable that is not defined. Any variable that is referenced in a constraint must be *defined*. Variables can be defined as free variables in the `vars` section, as arguments to a target in a [V] statement, or as arguments to a `forall` or `state_fold` operator. Double check that your variable is defined via one of these methods.
