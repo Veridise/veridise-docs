@@ -6,6 +6,14 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.6 - 2025-07-03
+### Added
+- Allow overriding deployment script at OrCa task launch time
+- OrCa Hints support
+
+### Fixed
+- Bug fixes
+
 ## v2.4.5 - 2025-06-26
 ### Changed
 - Disable gas limit checks for Anvil during OrCa task execution

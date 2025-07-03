@@ -6,6 +6,16 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.4.0 - 2025-07-03
+### Added
+- OrCa can now fuzz the amount of time between transactions to handle projects dependent on timestamps.
+
+### Changed
+- OrCa hints now need to be provided separately by users instead of bundled in [V] spec files
+
+### Fixed
+- Fixed a bug with reentrancy detection on Hardhat projects.
+
 ## v2.3.0 - 2025-04-17
 ### Added
 - Added the support to add constraints over variables in [V] hints.

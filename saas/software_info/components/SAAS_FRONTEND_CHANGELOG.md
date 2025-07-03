@@ -6,6 +6,27 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.5 - 2025-07-03
+### Added
+- Add ability to save issues as drafts
+- Deployment script path override in OrCa common settings
+- Inline code button
+- Notifications when app updates are available
+- OrCa Hints
+- Right-click finding to create issues
+
+### Changed
+- Adjusted density and spacing of markdown content
+
+### Fixed
+- File browser was not normalizing file paths
+- Fuzzing Blacklist did not correctly validate form data when contract ABI was missing
+- Input validation for start and end line numbers was changed to only validate on blur instead of on every change.
+- Issue link regression
+- Links not working in markdown viewer
+- OrCa task submitted when pushing enter
+- Wrong endpoints called in a part of the admin interface
+
 ## v2.3.4 - 2025-06-26
 ### Added
 - Added Project Overview page.
