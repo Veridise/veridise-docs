@@ -6,6 +6,12 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v0.3.9 - 2025-07-03
+### Fixed
+- DeFi Vanguard
+  - Fixed Foundry projects failing to build when `out` is overridden in `foundry.toml`
+- ZK Vanguard
+  - Improved array index sensitivity in analyses
 ## v0.3.8 - 2025-05-08
 ### Fixed
 - DeFi Vanguard

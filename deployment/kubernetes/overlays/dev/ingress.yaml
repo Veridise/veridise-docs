@@ -3,11 +3,13 @@ kind: Ingress
 metadata:
   name: saas-docs
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-veridise.tools
+    external-dns.alpha.kubernetes.io/hostname: "docs.veridise.tools"
+    external-dns.alpha.kubernetes.io/ttl: "120"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
 spec:
-  ingressClassName: nginx
+  ingressClassName: ingress-public
   rules:
     - host: docs.veridise.tools
       http:
@@ -22,4 +24,4 @@ spec:
   tls:
     - hosts:
         - docs.veridise.tools
-      secretName: docs-tls-cert
+      secretName: docs-veridise-tools

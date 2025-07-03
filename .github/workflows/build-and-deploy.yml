@@ -13,7 +13,7 @@ env:
   
 jobs:
   docker-build:
-    runs-on: ["self-hosted", "kubernetes", "dev"]
+    runs-on: ["dev"]
     timeout-minutes: 30
     outputs:
         deploy_env: ${{ env.DEPLOY_ENV }}
