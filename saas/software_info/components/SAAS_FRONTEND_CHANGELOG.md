@@ -6,6 +6,15 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.6 - 2025-07-09
+### Added
+- Management interface for custom language syntax highlighting
+
+### Fixed
+- Fix SourceLocation step not clearing postResult when the source URL changes
+- Fix paste markdown inside of code editor not being shown as markdown
+- When submitting a comment from preview tab, the tab is not reset to the message tab and the field is not cleared
+
 ## v2.3.5 - 2025-07-03
 ### Added
 - Add ability to save issues as drafts

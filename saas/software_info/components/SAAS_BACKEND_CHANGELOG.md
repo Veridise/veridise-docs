@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.4.7 - 2025-07-09
+### Added
+- Add digest notifications for recent activity on threads
+  
+### Fixed
+- Bug fixes
+
 ## v2.4.6 - 2025-07-03
 ### Added
 - Allow overriding deployment script at OrCa task launch time
