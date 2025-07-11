@@ -5,6 +5,15 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.6.6 - 2025-07-11
+### Added
+- New component OrCa with version *v2.4.0*.
+- New component Picus with version *v1.0.3*.
+- New component PicusV2 with version *v1.0.0*.
+- New component SaaS Backend with version *v2.4.7*.
+- New component SaaS Frontend with version *v2.3.6*.
+- New component Vanguard with version *v0.3.9*.
+
 ## v2.6.6 - 2025-07-09
 ### Changed
 - Component SaaS Backend upgraded to version *v2.4.7*.
