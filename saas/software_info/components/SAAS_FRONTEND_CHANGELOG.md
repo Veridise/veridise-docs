@@ -6,6 +6,18 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.7 - 2025-07-17
+### Added
+- API key management in the "Accounts" page
+
+### Changed
+- Remove gap between file path and line no. in issue details
+- The "API Key Created" dialog now includes instructions on how to use API keys
+
+### Fixed
+- Fix Orca fork block number not being reset when fork network is unset
+- Mention inserted in between of other text does not delete the text after it
+
 ## v2.3.6 - 2025-07-09
 ### Added
 - Management interface for custom language syntax highlighting

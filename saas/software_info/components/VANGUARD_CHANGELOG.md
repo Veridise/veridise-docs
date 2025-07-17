@@ -6,6 +6,12 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v0.3.10 - 2025-07-17
+### Fixed
+- Solidity:
+  - 'Fixed a Hardhat build failure when `"type": "module"` is set in `package.json`'
+  - Fixed a crash that could occur when using the `or()` operator in inline assembly
+
 ## v0.3.9 - 2025-07-03
 ### Fixed
 - DeFi Vanguard
