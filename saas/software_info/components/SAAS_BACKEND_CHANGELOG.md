@@ -6,6 +6,16 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.0 - 2025-07-17
+### Added
+- Allow users to self-manage their AuditHub API keys
+
+### Changed
+- At issue management, make dispute transition function available after reopen from a dispute state
+
+### Fixed
+- Bug fixes
+
 ## v2.4.7 - 2025-07-09
 ### Added
 - Add digest notifications for recent activity on threads
