@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.1 - 2025-07-28
+### Added
+- Support for favorite projects
+
+### Fixed
+- Fix pyul invocation issue (project root path) for DeFi Vanguard
+
 ## v2.5.0 - 2025-07-17
 ### Added
 - Allow users to self-manage their AuditHub API keys

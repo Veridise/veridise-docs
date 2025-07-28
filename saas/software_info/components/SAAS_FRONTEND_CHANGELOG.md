@@ -6,6 +6,16 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.8 - 2025-07-28
+### Changed
+- Disable dialog while submitting
+- Respect backend limits for API keys
+
+### Fixed
+- Incorrect logic used when checking API key limits
+- Redirect to /not-found when project is not found
+- Unable to view findings when tools finished in an "Error" state.
+
 ## v2.3.7 - 2025-07-17
 ### Added
 - API key management in the "Accounts" page
