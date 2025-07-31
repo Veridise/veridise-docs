@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.0 - 2025-07-31
+### Added
+- Added copy thread link button in the thread panel
+
+### Fixed
+- Fixed light mode for the codeblock
+
 ## v2.3.9 - 2025-07-31
 ### Added
 - Language detection for code blocks
