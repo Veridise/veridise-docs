@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.2 - 2025-07-31
+### Fixed
+- Bug fixes
+
 ## v2.5.1 - 2025-07-28
 ### Added
 - Support for favorite projects

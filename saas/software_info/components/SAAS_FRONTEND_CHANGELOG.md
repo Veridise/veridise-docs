@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.3.9 - 2025-07-31
+### Added
+- Language detection for code blocks
+
 ## v2.3.8 - 2025-07-28
 ### Changed
 - Disable dialog while submitting
