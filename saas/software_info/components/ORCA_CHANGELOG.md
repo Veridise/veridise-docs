@@ -6,6 +6,14 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.5.0 - 2025-07-31
+### Added
+- Added Hint and VSpec metrics generation for visualization in AuditHub and VSCode Plugin.
+
+### Fixed
+- Fixed a bug with fuzzing Enum values.
+- Fixed a bug with matching Hints with fuzzed transactions.
+- Fixed a bug with reentrancy detection.
 ## v2.4.0 - 2025-07-03
 ### Added
 - OrCa can now fuzz the amount of time between transactions to handle projects dependent on timestamps.
