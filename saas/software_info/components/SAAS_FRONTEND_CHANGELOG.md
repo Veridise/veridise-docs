@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.1 - 2025-08-07
+### Changed
+- The bottom panel is now set to issues by default
+
+### Fixed
+- Fix issue with version threads showing all of the threads in the dropdown
+- Fixed drafts disappearing when reloading the page for edits
+
 ## v2.4.0 - 2025-07-31
 ### Added
 - Added copy thread link button in the thread panel
