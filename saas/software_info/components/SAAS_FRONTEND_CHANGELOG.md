@@ -6,6 +6,15 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.2 - 2025-08-21
+### Changed
+- Count badge for threads now shows only the number of unresolved threads in each section
+- Name field in invitation form is optional
+
+### Fixed
+- Fix issue with cancel edit button not working when thread is resolved
+- Fixed bug with issue selection not working after opening URL
+
 ## v2.4.1 - 2025-08-07
 ### Changed
 - The bottom panel is now set to issues by default
