@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.4 - 2025-08-21
+### Fixed
+- Bug fixes
+
 ## v2.5.3 - 2025-08-05
 ### Changed
 - Improve content of online notifications
