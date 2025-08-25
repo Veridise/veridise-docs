@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.6 - 2025-08-25
+### Added
+- Cleanup cache functionality
+
 ## v2.5.5 - 2025-08-22
 ### Changed
 - Improvements on file I/O
