@@ -6,6 +6,11 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.7 - 2025-09-03
+### Changed
+- Update OrCa commands to support Foundry version v1.3.1
+- Update yarn and pnpm commands to make them non-interactive
+
 ## v2.5.6 - 2025-08-25
 ### Added
 - Cleanup cache functionality

@@ -6,6 +6,18 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.6.0 - 2025-09-03
+### Changed
+- Updated PyREVM to support latest stable Foundry version v1.3.1.
+
+### Fixed
+- Fixed an issue with Foundry test generation where Orca runs and generated tests had mismatching timestamps.
+- Fixed an issue with reentrancy contract address collision.
+- Fixed an issue with hint vars section, now functions can be called from any contract in vars section and variables in vars section can be referenced in hints.
+- Improved error reporting on hints referencing non-existent functions or contracts.
+- Updated [V] and hint Antlr grammars to handle issues with minus token.
+- Updated [V] Antlr grammar to handle expressions with a lot of function calls without taking a long time.
+
 ## v2.5.0 - 2025-07-31
 ### Added
 - Added Hint and VSpec metrics generation for visualization in AuditHub and VSCode Plugin.
