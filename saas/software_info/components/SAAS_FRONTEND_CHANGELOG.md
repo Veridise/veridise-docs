@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.3 - 2025-09-03
+### Added
+- Copy button for resolved threads.
+
 ## v2.4.2 - 2025-08-21
 ### Changed
 - Count badge for threads now shows only the number of unresolved threads in each section
