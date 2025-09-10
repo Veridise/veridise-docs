@@ -125,6 +125,19 @@ const config = {
     [
       "@docusaurus/plugin-content-docs",
       {
+        id: "zkvanguard-legacy",
+        path: "zkvanguard-legacy",
+        routeBasePath: "zkvanguard-legacy",
+        sidebarPath: require.resolve("./sidebars.js"),
+        lastVersion: "current",
+        sidebarCollapsed: false,
+        remarkPlugins: [math, dashes],
+        rehypePlugins: [katex],
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
         id: "picus",
         path: "picus",
         routeBasePath: "picus",
@@ -196,6 +209,13 @@ const config = {
             docsPluginId: "zkvanguard",
             position: "left",
             label: "ZK Vanguard",
+          },
+          {
+            // TODO: replace with dropdown when versions are available.
+            type: "docsVersion",
+            docsPluginId: "zkvanguard-legacy",
+            position: "left",
+            label: "ZK Vanguard (legacy)",
           },
           {
             // TODO: replace with dropdown when versions are available.

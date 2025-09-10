@@ -42,18 +42,18 @@ template Divide() {
 component main = Divide();
 ```
 
-The intended behavior of this circuit is for `out` to be set to `in1 / in2`.
-This performed by first assigning `out <-- in1 / in2`, then generating the constraint
-of `out * in2 === in1` (which is done because constraints cannot contain division operations,
+The intended behavior of this circuit is for `quotient` to be set to `divident / divisor`.
+This performed by first assigning `quotient <-- dividend / divisor`, then generating the constraint
+of `quotient * divisor === dividend` (which is done because constraints cannot contain division operations,
 as they result in non-quadratic constraints).
-However, this constraint does not enforce the requirement that `in2` cannot be
-0 in order for `in1 / in2` to be a valid operation; in other words, the developer
-did not intend for 0 to be a valid assignment for `in2`.
+However, this constraint does not enforce the requirement that `divisor` cannot be
+0 in order for `dividend / divisor` to be a valid operation; in other words, the developer
+did not intend for 0 to be a valid assignment for `divisro`.
 Therefore, the constraints of the circuit can be satisfied by the
-following assignment: `in1 = 0, in2 = 0, out = 5`, as this satisfies the circuit's
+following assignment: `dividend = 0, divisor = 0, quotient = 5`, as this satisfies the circuit's
 constraint (`5 * 0 === 0`).
 However, this clearly deviates from the developer’s intention,
-which was for `out` to be set to `in1 / in2` and for `in2` to be non-zero.
+which was for `quotient` to be set to `dividend / divisor` and for `divisor` to be non-zero.
 
 ## Usage Example
 

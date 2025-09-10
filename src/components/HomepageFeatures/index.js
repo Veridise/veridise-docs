@@ -37,9 +37,32 @@ const FeatureList = [
       <>
         Vanguard is a static analysis tool created by Veridise for discovering
         bugs in&nbsp;
-        <a href="vanguard">DeFi applications</a> and&nbsp;
-        <a href="zkvanguard">ZK-circuits</a> by searching for well known
+        <a href="vanguard">DeFi applications</a> by searching for well known
         security vulnerabilities and anti-patterns.
+      </>
+    ),
+  },
+  {
+    title: "ZK Vanguard",
+    // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        ZK Vanguard is a static analysis tool created by Veridise for discovering
+        bugs in&nbsp;
+        <a href="zkvanguard">ZK circuits</a> written in a variety of ZK circuit DSLs
+        by leveraging the power of the <a href="https://veridise.github.io/llzk-lib">LLZK intermediate representation</a>.
+      </>
+    ),
+  },
+  {
+    title: "ZK Vanguard (legacy)",
+    // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        ZK Vanguard (legacy) is a static analysis tool created by Veridise for discovering
+        bugs in&nbsp;
+        <a href="zkvanguard-legacy">ZK circuits</a> written in&nbsp;
+        <a href="https://docs.circom.io/">circom</a>.
       </>
     ),
   },
@@ -48,7 +71,7 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        <a href="picus">Picus</a> is a Veridise tool to prove that a ZK-circuit
+        <a href="picus">Picus</a> is a Veridise tool to prove that a ZK circuit
         is not underconstrained, or find a counterexample if it is
         underconstrained.
       </>

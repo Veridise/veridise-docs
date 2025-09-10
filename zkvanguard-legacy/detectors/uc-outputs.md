@@ -85,4 +85,4 @@ constrained by _an_ input, but should be constrained by multiple inputs.
 
 It is generally rare for output signals to not be a function of input signals
 or constants, so findings from this detector often indicate severe issues where key computations and constraints have been accidentally omitted.
-These findings are therefore
+These findings are therefore highly likely to be critical issues.
