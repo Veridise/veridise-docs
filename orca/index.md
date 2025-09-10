@@ -15,4 +15,4 @@ For instructions on how to get started with running OrCa, checkout [the guide he
 
 ## User Guide
 
-For learning how to use all of the bells and whistles of OrCa, checkout the User guide, which includes an overview of getting setup on SAAS, how to configure OrCa, and the [V] specification language.
+For learning how to use all of the bells and whistles of OrCa, checkout the User guide on the left, which includes all the details on how to configure OrCa, how to use hints to guide the execution, and how to use the [V] specification language.
