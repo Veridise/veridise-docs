@@ -32,18 +32,26 @@ This section will be populated once per-detector configuration is enabled in Aud
 The property a ZK circuit is striving to achieve by not leaking private inputs is called *non-interference*.
 Informally, non-interference means that public data should not depend on secure information. Put more formally:
 
-> For all public data $P$ (i.e., *low-security data*), and any pair of private (i.e., *secret*) pieces of data $S_1$ and $S_2$ (i.e., *high-security data*), circuit $C$ exhibits the non-interference property if $C(P, S_1) = O_1$, $C(P, S_2) = O_2$, $O_1 = O_2$.
+> For all public data $P$ (i.e., *low-security data*), and any pair of private
+(i.e., *secret*) pieces of data $S_1$ and $S_2$ (i.e., *high-security data*),
+circuit $C$ exhibits the non-interference property if
+$C(P, S_1) = O_1$, $C(P, S_2) = O_2$, $O_1 = O_2$.
 
 Now of course, it is often impractical to have a system that provides no flow from high-security data to low-security data.
 For example (from [Li et. al](https://www.cis.upenn.edu/~stevez/papers/LZ05a.pdf)):
 
-> Take the example of a login process, the password is a secret and it has a higher security level than the user-level data.
-By comparing the user input with the password and sending the result back to the user, data flows from high to low, thus the noninterference property is violated.
+> Take the example of a login process, the password is a secret and it has a
+higher security level than the user-level data.
+By comparing the user input with the password and sending the result back to
+the user, data flows from high to low, thus the noninterference property is violated.
 
 Similar examples exist for crypto domains as well (e.g., wanting to verify a user is authorized without leaking their private keys).
 
-So, we must often have some way to *downgrade* (or *declassify*) some information safely—in other words, we can transform secret data into public data via some non-reversible, non-revealing function.
-A common example of such a function would be a cryptographic hash function, as knowledge of the image of the hash function should give no knowledge of the pre-image, and so the hash of a secret value can be make public without leaking information about the secret.
+So, we must often have some way to *downgrade* (or *declassify*) some information safely—in other words,
+we can transform secret data into public data via some non-reversible, non-revealing function.
+A common example of such a function would be a cryptographic hash function,
+as knowledge of the image of the hash function should give no knowledge of the pre-image,
+and so the hash of a secret value can be make public without leaking information about the secret.
 
 ## Example and Explanation
 

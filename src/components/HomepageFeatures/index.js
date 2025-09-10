@@ -47,10 +47,14 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        ZK Vanguard is a static analysis tool created by Veridise for discovering
-        bugs in&nbsp;
-        <a href="zkvanguard">ZK circuits</a> written in a variety of ZK circuit DSLs
-        by leveraging the power of the <a href="https://veridise.github.io/llzk-lib">LLZK intermediate representation</a>.
+        ZK Vanguard is a static analysis tool created by Veridise for
+        discovering bugs in&nbsp;
+        <a href="zkvanguard">ZK circuits</a> written in a variety of ZK circuit
+        DSLs by leveraging the power of the{" "}
+        <a href="https://veridise.github.io/llzk-lib">
+          LLZK intermediate representation
+        </a>
+        .
       </>
     ),
   },
@@ -59,8 +63,8 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        ZK Vanguard (legacy) is a static analysis tool created by Veridise for discovering
-        bugs in&nbsp;
+        ZK Vanguard (legacy) is a static analysis tool created by Veridise for
+        discovering bugs in&nbsp;
         <a href="zkvanguard-legacy">ZK circuits</a> written in&nbsp;
         <a href="https://docs.circom.io/">circom</a>.
       </>
