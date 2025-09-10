@@ -1,4 +1,4 @@
-# Running OrCA Through SAAS
+# Running OrCA Through AuditHub
 
 For this introduction, we will consider using OrCa to check that the following simple `Vault` contract only ever allows a user to deposit when the `Vault` is not closed.
 
@@ -30,23 +30,10 @@ contract Vault {
 }
 ```
 
-## Onboarding process
+## Accessing AuditHub
 
-To start using Orca visit the [SaaS page](https://demo.veridise.com/).
-When you access the platform, you will be redirected to our SSO.
-
-### Registration
-
-As shown in the following image, you have two log in options:
-
-1. Log in using your Google account
-2. Create a new local user
-
-You must log-in with your Veridise e-mail address if you are using Google. Otherwise you must create an account with your Veridise e-mail.
-
-![image](img/login_screen.png)
-
-Please note that even if you use the first two options you will have to provide additional required information during the registration process. In the case of local user registration, you will also have to verify your email address.
+To start using Orca visit [AuditHub](https://audithub.veridise.com/).
+For details about registration and accessing AuditHub, please refer to [this page about onboarding](../../saas/guide/on_boarding).
 
 ### Organization Menu
 
@@ -54,15 +41,13 @@ The first thing you will see upon logging in is the Organization menu.
 
 ![image](img/organization_screen.png)
 
-You should have access to a private repo only for you. If you want access to other organizations, currently it will be manually granted by the SaaS team. Upon clicking it you will be taken to this main menu for the organization.
+You should have access to a private repo only for you. Upon clicking it you will be taken to this main menu for the organization.
 
-## Using SaaS
+## Using AuditHub
 
-You should now have access to the Veridise SAAS platform. You should see the following page:
+You should now have access to the Veridise AuditHub platform. You should see the following page:
 
 ![image](img/main_page.png)
-
-If you see something like this, congratulations. You now have access to the garden of Earthly delights that is, SaaS.
 
 ### Selecting an Existing Project
 
@@ -78,38 +63,36 @@ To create a project, simply click the `+ New Project` button and you will be tak
 
 #### Provide Source Code and Job Name
 
-Now we need to provide the actual source code we want t operate one. There are three ways of doing it, let's look at each.
+Now we need to provide the actual source code we want to operate one. There are three ways of doing it, let's look at each.
 
-First, you can upload a file. This is uploading a folder directly from you device. This must be a zip file.
+First, you can upload a file. This is uploading a folder directly from your device. This must be a zip file.
 
 ![image](img/direct_file_upload.png)
 
-You can also provide the address of a git repo. It's important to know whether your code includes git submodules that have to be reified. These are Git submodules specifically.
+You can also provide the address of a Git repo. It's important to know whether your code includes Git submodules that have to be reified.
 If it is a Foundry project, then also select this option. This will pull in the correct Foundry dependencies necessary for execution.
 
 ![image](img/github_upload.png)
 
-The final one is providing a URL
-
-[TODO] What is this?
+The final one is providing a URL and a commit hash for the project.
 
 ![image](img/url_upload.png)
 
 #### Identify the Root of the Project
 
-In Hardhat and Foundry tasks are run from a root folder. You must identify this for SaaS so we can properly execute your tasks. This usually will just be the top level of your zip.
+In Hardhat and Foundry tasks are run from a root folder. You must identify this for AuditHub so that OrCa can properly execute your tasks. This usually will just be the top level of your zip file.
 
 ![image](img/root_selection.png)
 
 #### Project Paths
 
-You must select where the source code and the V Specs to use at least.
+You must select where the source code and the [V] specs to use at least.
 
 The Source Path is usually /src but depends on what the user set for it. This is where the contracts exist.
 
 Include Path is not used by OrCa, please consult the Vanguard documentation for details about its usage.
 
-Specs path is where V-Specs are. These (currently) must be added manually to the zip ahead of time. The preferred way of doing this is to create a /specs folder, but you can name it as you choose.
+Specs path is where [V] specs are. These (currently) must be added manually to the zip ahead of time. The preferred way of doing this is to create a /specs folder, but you can name it as you choose.
 
 ![image](img/project_path.png)
 
@@ -123,9 +106,7 @@ Note: OrCa does not currently support Circom circuits. Please consult the docume
 
 #### Downloading Depedencies
 
-This gathers the required dependencies for the project.
-
-This is mainly used for Hardhat projects as Foundry maintains its own dependency management system. You will have to look to how the Hardhat project is built and select the relevant dependency management tool.
+This gathers the required dependencies for the project. This is mainly used for Hardhat projects as Foundry maintains its own dependency management system. You will have to look to how the Hardhat project is built and select the relevant dependency management tool.
 
 ![image](img/get_dependencies.png)
 
@@ -133,15 +114,15 @@ This is mainly used for Hardhat projects as Foundry maintains its own dependency
 
 Foundry and Hardhat have different means of specifying deployment. OrCa will require some version of this to initialize state for fuzzing. You can write your own if you are familiar with it, or use what the user has provided.
 
-Additionally, any Environmental variables that are required by the scripts or the build must be set here. This is project to project and requires some understanding of the project you are trying to deploy.
+Additionally, any environmental variables that are required by the scripts or the build must be set here. These variables are usually specific to a particular project and requires some understanding of the project you are trying to deploy.
 
 ![image](img/script_resolution.png)
 
-There are three (maybe 2 1/2 really) means for deployment that we support.
+There are three means for deployment that we support.
 
 1. Foundry by default has its scripts defined in a `/script` folder. The common suffix is `.s.sol`
 2. Hardhat Ignition is what Hardhat is moving towards for its deployment handling. The default path for this information is `/ignition/module` and will contain possibly many module files which can be launched. It is a Javascript file that uses Hardhat Ignitions common library for managing contracts.
-3. Hardhat Legacy is what we use to refer to the original means for Hardhat deployment which is a Javascript file. It imports and manipulates the core Hardhat libraries directly and is largely unstructured vs. ignition. This is by default in a `/scripts` folder.
+3. Hardhat Legacy is what we use to refer to the original means for Hardhat deployment which is a Javascript file. It imports and manipulates the core Hardhat libraries directly and is largely unstructured unlike Hardhat ignition. This is by default in a `/scripts` folder.
 
 #### Review
 
@@ -179,64 +160,57 @@ Currently you can set `Timeout` and `Fork Network`.
 
 `Fork Network` is a set list of known Ethereum networks that you can choose to fork your test from as a basis network. This will be used only when the underlying code makes some calls during set-up to pre-existing contracts.
 
-There is a fixed set of networks allowed. If you find reason to allow additional networks, please reach out to SaaS to discuss adding it to the list.
+There is a fixed set of networks allowed. If you find reason to allow additional networks, please reach out to AuditHub team to discuss adding it to the list.
 
 ![image](img/advanced_features.png)
 
-There is additional Advanced Features which allow you to further tune the run.
+There are additional Advanced Features which allow you to further tune the run.
 
 `Fuzzing Targets` lets you define which contracts you want to specifically fuzz. This will narrow the list of functions to be fuzzed to only those of the specified contracts.
 
-`Fuzzing Blacklist` is the antithesis of the above. This says don't fuzz the functions on the set contract.
+`Fuzzing Blacklist` lets you define which functions you _do not_ want to fuzz. They will be ignored by OrCa.
 
-`Pure function fuzzing` is what it sounds like. OrCa doesn't fuzz Pure functions by default. This allows you to enable fuzzing of pure functions (pure functions are basically static functions in Solidity. Something that does not change state.)
+`Pure function fuzzing` lets you enable fuzzing of the pure and view functions (functions that do not affect the blockchain state). OrCa doesn't fuzz pure and view  functions by default.
 
-`Detect Reentrancy` enables testing for Reentracy errors. This will slow down performance but can detect a variety of possible reentrancy errors.
+`Detect Reentrancy` enables checking for reentrancy errors. This will slow down performance but can detect a variety of possible reentrancy errors.
 
-#### VSpec Selection
+#### [V] Spec Selection
 
-There are set VSpec detecting common errors that you can select, these are given in the `[V] Specification Library` and have names describing what they are detecting.
+There are a set of [V] spec checking common contract properties that you can select, these are given in the `[V] Specification Library` and have names describing what they are checking.
 
-The `Embedded in version` field contains VSpecs provided in the folder you provided for specs during project creation.
+The `Embedded in version` field contains [V] specs provided in the folder you provided for specs during project creation.
 
-You can select multiple VSpecs and they will be each tested against the project under test.
+You can select multiple [V] specs and they will be each tested against the project under test.
 
 ![image](img/vspec_selection.png)
 
 #### Task Review
 
-You'll see another review page. Look it over and click `Launch Task`. You can give an optional task name here, if you do not add one, the name for the task will be the run ID created by SaaS.
+You'll see another review page. Look it over and click `Launch Task`. You can give an optional task name here, if you do not add one, the name for the task will be the run ID created by AuditHub.
 
 ![image](img/another_review_page.png)
 
 ### Task Run Page
 
-You will now see a large showing the pipeline for an OrCa execution. We will be glossing over certain steps that are specific to SaaS, and will attempt to focus on OrCa specific operations.
+You will now see a large showing the pipeline for an OrCa execution. We will be glossing over certain steps that are specific to AuditHub, and will attempt to focus on OrCa specific operations.
 
 ![image](img/task_run_page.png)
 
-#### Fetch Project Resources & Copy VSpec
+#### Fetch Project Source from Backend Storage
 
 This is a general step. This is just copying information from the backend.
 
-#### Deploy Foundry Project
+#### Deploy Project
 
-This is probably the most complicated step in the process. This involves a four step algorithm:
-
-1. A local Ethereum Node is launched with default users and ready to receive information from Hardhat or Foundry.
-2. Hardhat or Foundry is called to deploy the contracts as defined in their user provided script
-3. After the contracts deploy, state information is dumped from the local node
-4. Mappings from Ethereum addresses to the contract at that address are created
-
-This should all be transparent to the users, but is a place of active development. Please bring errors here to the help-saas channel.
+This step runs the user specified deployment script and saves the artifact and the blockchain state for fuzzing.
 
 #### Deployment parsing; ABI Extraction; Configuration creation
 
-These steps are all simple data collection from various compilation and deployment artifacts to construct input to OrCa.
+These steps are all simple data collection from various compilation and deployment artifacts to construct the input to OrCa.
 
 #### Run OrCa Fuzzer
 
-If everything up until now has worked, the config will be fed to OrCa and fuzzing will begin. This will run until the timeout is reached, or counterexamples are found for the provided [V] specs. Let's look at a completed run.
+If everything up until now has worked, the user configuration and the deployment artifacts will be fed to OrCa and fuzzing will begin. This will run until the timeout is reached, or counterexamples are found for the provided [V] specs. Let's look at a completed run.
 
 First, after the run is completed with an error found you will see a Findings field:
 
@@ -246,13 +220,13 @@ Click the findings button, and take a look at our demo output.
 
 ![image](img/findings_results.png)
 
-There should only be one finding per-spec at most. Click the finding and you will see information on the right which details the bug found.
+There will only be at most one finding per spec. Click the finding and you will see information on the right which details the bug found.
 
 Let's take a look at the contract under test. You can use the code viewer in the findings menu and click the contract to view it.
 
 ![image](img/contract_information.png)
 
-This test contract is very simple. A Counter class that you set a value, or increment the value.
+This test contract is very simple. A Counter class with two functions to set or increment a value.
 
 Now, let's look at the spec we ran.
 
@@ -266,6 +240,6 @@ At the top here, we see a representation of the [V] spec that was provided. If m
 
 Below that you will see your counterexample. The `vars` field gives the names for variables used counterexample.
 
-The counterexample itself is a minimum number of steps required to recreate something that violates your spec. In this case, it's a simple one. We said increment() calls should never complete, and increment() always ends.
+The counterexample itself is a minimum number of steps required to recreate something that violates your spec. In this case, it's a simple one. The [V] spec specified `increment()` calls should never finish, and `increment()` always fully executes.
 
-For more complex specs, there will be a list of the minimum number of steps required to create a violation. This can be arbitrarily large, but will be consistently reproducable given the steps.
+For more complex specs, there will be a list of the minimum number of steps required to create a counterexample. These counterexamples can be arbitrarily large, but will be consistently reproducable given the steps.
