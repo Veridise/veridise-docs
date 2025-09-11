@@ -1,10 +1,16 @@
 ---
 sidebar_position: 3
-title: Report Access Control
+title: Report Access Control (Legacy)
 description: Lists inferred access controls in a contract.
 ---
 
 # Report Access Control (`report-access-control`)
+
+:::info
+
+This detector is only available when selecting "DeFi Vanguard (Legacy)" in AuditHub.
+
+:::
 
 The Report Access Control detector reports, for each contract, a model of the
 access controls of that contract as inferred by Vanguard.

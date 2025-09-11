@@ -1,10 +1,16 @@
 ---
 sidebar_position: 2
-title: Flashloan
+title: Flashloan (Legacy)
 description: Detects potential vulnerabilities that can be exploited through the use of a flash loan.
 ---
 
 # Flashloan (`flashloan`)
+
+:::info
+
+This detector is only available when selecting "DeFi Vanguard (Legacy)" in AuditHub.
+
+:::
 
 ## Summary and Usage
 
