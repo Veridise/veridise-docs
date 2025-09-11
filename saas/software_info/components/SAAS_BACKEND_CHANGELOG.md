@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.8 - 2025-09-11
+### Fixed
+- Bug fixes
+
 ## v2.5.7 - 2025-09-03
 ### Changed
 - Update OrCa commands to support Foundry version v1.3.1
