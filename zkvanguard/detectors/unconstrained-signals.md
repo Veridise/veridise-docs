@@ -8,7 +8,7 @@ description: Finds unconstrained signals.
 
 ## Summary and Usage
 
-The Unconstrained Signals (UCS) detector finds unconstrained input vulnerabilities in ZK circuit code.
+The Unconstrained Signals (UCS) detector finds unconstrained signals in ZK circuit code.
 The UCS detector looks to see if a signal is used in any constraint---if not,
 then a malicious actor may be able to create new valid proofs by taking an
 existing proof and simply changing the value of the unconstrained signal.
@@ -70,21 +70,35 @@ This section will be populated after ZK Vanguard lands in AuditHub.
 
 ## Limitations
 
-While attackers may be able to exploit unconstrained input signals, some proof systems introduce a "magic constraint"
+While attackers may be able to exploit unconstrained input signals,
+some proof systems introduce a "magic constraint"
 to automatically constrain otherwise unconstrained inputs (see
-[this discussion on Groth16 malleability](https://geometry.xyz/notebook/groth16-malleability) for a more in-depth discussion).
-These magic constraints prevent attackers from manipulating public, not-explicitly-constrained inputs to create new valid proofs.
-So, the potential severity of an unconstrained input signal is lower than other findings found by ZK Vanguard, as they may often
+[this discussion on Groth16 malleability][groth16-malleability] for a more in-depth discussion).
+These magic constraints prevent attackers from manipulating public,
+not-explicitly-constrained inputs to create new valid proofs.
+So, the potential severity of an unconstrained input signal is
+lower than other findings found by ZK Vanguard, as they may often
 be false positives due to these magic constraints.
+
 
 ## Assessing Severity
 
-Input signals may be left unconstrained intentionally in cases where (1) magic constraints are known to be
+The severity of the finding depends in part on the visibility of the unconstrained signal.
+
+- Input signals may be left unconstrained intentionally in cases where (1) magic constraints are known to be
 generated and (2) a specific constraint about a value is not required, but the value should be tied to
 the proof (e.g., a proof must use a nonce that is checked for uniqueness in a smart contract).
-
 However, it is still good to be aware of potential vulnerabilities that may
 arise when building circuits for proof systems that may or may not introduce such constraints automatically
 (which can be difficult to assertain). Furthermore, unconstrained inputs may be
 indicating of other semantic bugs, such as forgetting to include an input as
 part of a hash computation.
+- Unconstrained outputs, as discussed in [the Underconstrained Output Detector](./underconstrained-outputs.md), are
+often indicative of severe issues where key computations and constraints have been accidentally omitted.
+These findings are therefore highly likely to be critical issues.
+- Internal signals that are unconstrained may lead to nondeterministic proofs
+(where multiple different proofs for the same set of inputs and outputs may be
+generated), which may lead to severe protocol issues (e.g., double spending,
+multiple nullifiers for the same commitment).
+
+[groth16-malleability]: https://geometry.xyz/notebook/groth16-malleability

@@ -1,20 +1,21 @@
 ---
 sidebar_position: 7
-title: Unused Subcomponents
-description: Finds unused subcomponents in subcomponent arrays.
+title: Unused Fields
+description: Finds unused fields within structures/circuit components.
 ---
 
-# Unused Subcomponents (`unused-subcmps`)
+# Unused Subcomponents
 
 ## Summary and Usage
 
-The Unused Subcomponent (USC) detector detects if any elements in an array of
-subcomponents are declared, but never assigned any input or output signals by the containing component.
-This may indicate some computation or safety checks are being erroneously omitted, which a malicious actor may be able to exploit.
+The Unused Fields (USF) detector detects if any declared fields of a circuit component
+are never assigned nor constrained.
+This may indicate some computation or safety checks are being erroneously omitted,
+which a malicious actor may be able to exploit.
 
 ### Usage
 
-The USC detector is invoked by selecting "Unused subcomponents"
+The USF detector is invoked by selecting "Unused subcomponents"
 (`unused-subcmps`) in the Detector selection during the tool configuration step.
 
 
@@ -34,7 +35,7 @@ $$
 <details open>
 <summary>Circom Example</summary>
 
-```circom title="unused_subcmps_bug.circom" showLineNumbers
+```circom title="unused_fields_bug.circom" showLineNumbers
 pragma circom 2.1.8;
 
 // Inlined from circomlib/circuits/bitify.circom
@@ -94,7 +95,9 @@ component main = MultiDiff(3);
 
 </details>
 
-To enforce this property, the developer means to use an array of `LessThan` subcomponent to test if `inp_small[i]` is less than `inp_large[i]` for all i in range $[0,n)$, but never initializes the subcomponent `lt[0]` and therefore never checks the condition for `i = 0`.
+To enforce this property, the developer means to use an array of `LessThan` subcomponent
+to test if `inp_small[i]` is less than `inp_large[i]` for all i in range $[0,n)$,
+but never initializes the subcomponent `lt[0]` and therefore never checks the condition for `i = 0`.
 A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `inp_small[0] < inp_large[0]`, the developer can expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`).
 
 ## Usage Example
@@ -105,12 +108,11 @@ This section will be populated after ZK Vanguard lands in AuditHub.
 
 :::
 
-## Limitations
-
-The
-
 ## Assessing Severity
 
-Unused subcomponents, if unintentional, are indicative of severe computational errors or constraint
+Unused fields, if unintentional, are indicative of severe computational errors or constraint
 generation errors that may allow malicious actors to create valid proofs for bogus statements.
-Manual analysis should be performed to determine if the subcomponent is correctly left unused.
+Unused fields may also lead to [unconstrained signals](./unconstrained-signals.md)
+if the fields in question are translated into circuit signals.
+Manual analysis should be performed to determine if the field is correctly left unused,
+and if so, the unused fields should be removed.

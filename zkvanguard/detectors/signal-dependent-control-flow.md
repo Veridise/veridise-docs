@@ -8,10 +8,9 @@ description: Detects control flow that is conditional on signal-derived values.
 
 ## Summary and Usage
 
-The Signal-Dependent Control Flow (SDCF) detector warns the user about
-non-deterministic witness code (i.e., dataflow operations) in their ZK circuit,
-which occurs when dataflow is dependent on conditional branches or conditional assignments.
-Conditional assignments are difficult to properly constrain and likely to
+The Signal-Dependent Control Flow (SDCF) detector warns the user when signal-derived values
+are used to control conditional statements in their ZK circuit.
+Conditional assignments are difficult to properly constrain and may
 lead to unconstrained values, which can lead to significant security risks as
 unconstrained values could allow for the construction of bogus proofs.
 
@@ -26,7 +25,7 @@ The following circuit is designed to determine whether the input `in` is 0 or no
 If `in = 0`, then `out = 1`.
 For any other value of `in` where `in != 0`, then `out = 0`.
 
-```circom title="non_det_wit_bug.circom" showLineNumbers
+```circom title="signal_dependent_control_flow_bug.circom" showLineNumbers
 pragma circom 2.0.0;
 
 template IsZero() {
@@ -65,7 +64,7 @@ which is that if `in = 1`, `out` should be `0`.
 
 This example demonstrates that conditional assignments often require additional and
 more nuanced constraints than normal unconditional assignments may require.
-These challenges are why the NDW detector can be a useful tool in flagging conditional
+These challenges are why the SDCF detector can be a useful tool in flagging conditional
 logic for further scrutiny.
 
 :::note
