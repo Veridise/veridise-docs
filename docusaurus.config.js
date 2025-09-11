@@ -215,7 +215,7 @@ const config = {
             type: "docsVersion",
             docsPluginId: "zkvanguard-legacy",
             position: "left",
-            label: "ZK Vanguard (legacy)",
+            label: "ZK Vanguard (Circom)",
           },
           {
             // TODO: replace with dropdown when versions are available.
