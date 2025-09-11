@@ -6,6 +6,13 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v0.3.11 - 2025-09-11
+### Fixed
+- Solidity:
+  - Fixed a crash that could occur when building some Foundry projects
+- Solidity - Fixed a crash when handling staticcalls with only 1 argument
+- cross-contract-reentrancy - Fixed a assertion failure triggered due to handling of control flow emitted by exponetiation operation
+
 ## v0.3.10 - 2025-07-17
 ### Fixed
 - Solidity:
