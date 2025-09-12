@@ -4,6 +4,9 @@ title: Compute-Constrain Difference
 description: Detects discrepancies between witness computation and constraint generation.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Compute-Constrain Difference
 
 ## Summary and Usage
@@ -28,6 +31,9 @@ The `LessThanPower` circuit (from the [ed25519-circom][ed25519-link] repo) is de
 less than or equal to $$2^{base}$$.
 The circuit therefore sets `out = 1` if `in` $$\le 2^{base}$$ and `out = 0` otherwise.
 
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
+
 ```circom title="compute_constrain_difference_bug.circom" showLineNumbers
 pragma circom 2.0.0;
 
@@ -36,6 +42,7 @@ template LessThanPower(base) {
   signal output out;
 
   out <-- 1 - ((in >> base) > 0);
+  // highlight-next-line
   out * (out - 1) === 0;
 }
 
@@ -58,14 +65,71 @@ to ensure that the signals involved are properly constrained.
 These challenges demonstrate why the CCD detector can be a useful tool in flagging discrepancies
 between separate constraints and assignments.
 
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+We've translated this example into Zirgen below.
+
+```zirgen title="compute_constrain_difference_bug.zir" showLineNumbers
+component Po2<n: Val>() {
+  if (Isz(n)) {
+    1
+  } else {
+    reduce for i : 0..n { 2 } init 1 with Mul;
+  }
+}
+
+component LessThanPower<base: Val>(in: Reg) {
+  po2 := Val(Po2<base>());
+  public out := NondetReg(if (InRange(0, in, po2)) {
+    1
+  } else {
+    0
+  });
+  // highlight-next-line
+  out * (out - 1) = 0;
+}
+```
+
+However, this code has a bug: `out` is only constrained to be binary (line 16) and is not
+constrained by `in` or the `base` constant at all.
+This allows a malicious actor to set `out` to be any value independent of `in` as
+long as `out = 0` or `out = 1` (to satisfy the constraint on line 16).
+For example, the signal assignment `in = 0, out = 0` would satisfy the constraints
+in this circuit even though this assignment does not match the intended output
+(i.e., if `in = 0`, `out` should be `1`).
+
+This example demonstrates that special care must be taken when using `NondetReg`s
+to ensure that the signals involved are properly constrained.
+These challenges demonstrate why the CCD detector can be a useful tool in flagging discrepancies
+between separate constraints and assignments.
+
+</TabItem>
+</Tabs>
 
 ## Usage Example
 
-:::info TODO
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+:::info
+
+Coming soon.
 
 :::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+</Tabs>
+
 ## Limitations
 
 The CCD detector only tracks what signals and constants a given signal is constrained by
@@ -79,7 +143,7 @@ are often not precise enough.
 The CCD detector also only tracks the set of signals and constants in constraints and dataflow assignments, but
 not the operations performed over those values (e.g., addition, multiplication). The detector
 may therefore generate false negatives for assignments and constraints that contain the same values,
-but perform different operations (e.g., `out <-- in + 7`, `out === in * 7` will not be flagged).
+but perform different operations (e.g., `in + 7`, `in * 7` are treated as equivalent expressions).
 
 ## Assesing Severity
 

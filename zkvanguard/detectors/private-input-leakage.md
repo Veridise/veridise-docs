@@ -4,6 +4,10 @@ title: Private Input Leakage
 description: Detects leakages of private inputs via public signals.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 # Private Input Leakage
 
 ## Summary and Usage
@@ -65,6 +69,8 @@ This commitment can be therefore used to prove the committer's specific intent t
 perform the specified operation, as the commitment can be easily verified externally, but
 can only be forged if the private key of the committer is compromised.
 
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 ```circom title="private_input_leak_bug.circom" showLineNumbers
 pragma circom 2.1.8;
@@ -90,13 +96,52 @@ Therefore, even though the circuit is not vulnerable to forged proofs or computa
 the manner in which the output is computed effectively makes the private input `private_key` publicly known,
 thus leaking private data.
 
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+```zirgen title="private_input_leak_bug.zir" showLineNumbers
+component OpCommitment(operation: Reg, private_key: Reg) {
+  // highlight-next-line
+  public commitment := Reg(operation + private_key);
+  commitment
+}
+```
+
+The circuit computes a simple commitment that is merely the sum of `operation` and `private_key` (line 2).
+This commitment computation does _not_ properly downgrade the
+`private_key` of the committer: given that the circuit implementation itself it not a secret, any observer of the proof could
+easily reverse-engineer the value of `private_key` by computing `commitment - private_key`,
+as both of these values are public knowledge.
+Therefore, even though the circuit is not vulnerable to forged proofs or computational errors,
+the manner in which the output is computed effectively makes the private input `private_key` publicly known,
+thus leaking private data.
+
+</TabItem>
+</Tabs>
+
+
 ## Usage Example
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 :::info TODO
 
 This section will be populated after ZK Vanguard lands in AuditHub.
 
 :::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info TODO
+
+This section will be populated after ZK Vanguard lands in AuditHub.
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Limitations
 
