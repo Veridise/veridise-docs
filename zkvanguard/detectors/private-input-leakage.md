@@ -25,9 +25,9 @@ The PIL detector is invoked by selecting "Private input leakage"
 
 #### Configuration Options
 
-:::info TODO
+:::info
 
-This section will be populated once per-detector configuration is enabled in AuditHub.
+Coming soon.
 
 :::
 
@@ -125,18 +125,18 @@ thus leaking private data.
 <Tabs groupId="example">
 <TabItem value="circom" label="Circom">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
 
 </TabItem>
 <TabItem value="zirgen" label="Zirgen">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
 

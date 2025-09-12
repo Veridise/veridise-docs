@@ -4,6 +4,9 @@ title: Unused Fields
 description: Finds unused fields within structures/circuit components.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Unused Subcomponents
 
 ## Summary and Usage
@@ -20,6 +23,9 @@ The USF detector is invoked by selecting "Unused subcomponents"
 
 
 ## Example and Explanation
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 In the following example, the developer is
 computing the positive difference between inputs. However, unlike the previous
@@ -100,13 +106,40 @@ to test if `inp_small[i]` is less than `inp_large[i]` for all i in range $[0,n)$
 but never initializes the subcomponent `lt[0]` and therefore never checks the condition for `i = 0`.
 A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `inp_small[0] < inp_large[0]`, the developer can expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`).
 
-## Usage Example
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
+
+</TabItem>
+</Tabs>
+
+## Usage Example
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Assessing Severity
 

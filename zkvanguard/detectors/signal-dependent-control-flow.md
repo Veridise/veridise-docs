@@ -1,8 +1,11 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 title: Signal-Dependent Control Flow
 description: Detects control flow that is conditional on signal-derived values.
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Signal-Dependent Control Flow
 
@@ -20,6 +23,9 @@ The SCDF detector is invoked by selecting "Signal-dependent control flow"
 (`llzk/signal-dependent-control-flow`) in the Detector selection during the tool configuration step.
 
 ## Example and Explanation
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 The following circuit is designed to determine whether the input `in` is 0 or not.
 If `in = 0`, then `out = 1`.
@@ -94,13 +100,40 @@ The addition of the `in*out === 0` constraint on line 13 fixes the issue pointed
 our example, as it forces one of `in` and `out` to be 0.
 :::
 
-## Usage Example
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
+
+</TabItem>
+</Tabs>
+
+## Usage Example
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Limitations
 

@@ -4,6 +4,9 @@ title:  Out-Of-Range Signals
 description: Finds signals that may be assigned a value outside of their desired range.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Out-Of-Range Signals
 
 ## Summary and Usage
@@ -24,13 +27,16 @@ The OORS detector is invoked by selecting "Out-of-range signals"
 
 #### Configuration Options
 
-:::info TODO
+:::info
 
-This section will be populated once per-detector configuration is enabled in AuditHub.
+Coming soon.
 
 :::
 
 ## Example and Explanation
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 The following example circom file contains the implementation of the `U16` component,
 which is designed to compute a 16-bit value given two 8-bit inputs.
@@ -66,13 +72,42 @@ This means that multiple values of `lowByte` and `highByte` may compute the same
 For example, both `lowByte = 0, highByte = 1, shortVal = 256` and `lowByte = 256, highByte = 0, shortVal = 256`
 satisfy the constraints with the same value for `shortVal`.
 
-## Usage Example
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
+
+</TabItem>
+</Tabs>
+
+
+
+## Usage Example
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Limitations
 

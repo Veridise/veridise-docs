@@ -4,6 +4,9 @@ title: Divide By Zero
 description: Finds potential divide-by-zero errors.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Divide By Zero
 
 ## Summary and Usage
@@ -28,6 +31,10 @@ Formally, this computation is:
 $$
 a / b \, \text{(mod p)} \equiv a * b^{-1} \, \text{(mod p), where } b * b^{-1} \, \text{(mod p)} = 1
 $$
+
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 ```circom title="division_bug.circom"
 pragma circom 2.1.8;
@@ -56,13 +63,40 @@ constraint (`5 * 0 === 0`).
 However, this clearly deviates from the developer’s intention,
 which was for `quotient` to be set to `dividend / divisor` and for `divisor` to be non-zero.
 
-## Usage Example
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
+
+</TabItem>
+</Tabs>
+
+## Usage Example
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Limitations
 

@@ -1,8 +1,11 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 title: Underconstrained Outputs
 description: Finds underconstrained output signals.
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Underconstrained Outputs
 
@@ -17,9 +20,12 @@ as a malicious actor may be able to create valid proofs for bogus statements whe
 ### Usage
 
 The UCO detector is invoked by selecting "Underconstrained outputs"
-(`llzk/uderconstrained-outputs`) in the Detector selection during the tool configuration step.
+(`llzk/underconstrained-outputs`) in the Detector selection during the tool configuration step.
 
 ## Example and Explanation
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 The following toy example is designed to determine if the lowest bit of the
 input signal `inp` is 1. If `(inp & 1) = 1`, then `outp` should be 1, and otherwise, `outp` should be 0.
@@ -45,13 +51,40 @@ While the `outp * (outp - 1) === 0` constraint does constrain the `outp` signal 
 of the circuit, the constraint may be satisfied by the assignment `outp = 0` or `outp = 1` _regardless_ of the value of `inp`, allowing the
 attacker to forge arbtrary proofs of the form `{inp = <any value>, outp = <0 or 1>}`.
 
-## Usage Example
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
+
+</TabItem>
+</Tabs>
+
+## Usage Example
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Limitations
 

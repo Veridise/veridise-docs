@@ -1,8 +1,11 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 title: Unconstrained Signals
 description: Finds unconstrained signals.
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Unconstrained Signals
 
@@ -19,6 +22,9 @@ The UCS detector is invoked by selecting "Unconstrained signals"
 (`llzk/unconstrained-signals`) in the Detector selection during the tool configuration step.
 
 ## Example and Explanation
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 The following example circuit is designed to compute a crytographic commitment
 to performing a specific public operation.
@@ -60,13 +66,40 @@ A malicious actor could therefore theoretically take the existing proof, change
 the public `commitment` input, and submit the existing proof with the new public
 input and prove the commitment to an unintented operation.
 
-## Usage Example
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
 
-:::info TODO
+:::info
 
-This section will be populated after ZK Vanguard lands in AuditHub.
+Coming soon.
 
 :::
+
+</TabItem>
+</Tabs>
+
+## Usage Example
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+<TabItem value="zirgen" label="Zirgen">
+
+:::info
+
+Coming soon.
+
+:::
+
+</TabItem>
+</Tabs>
 
 ## Limitations
 

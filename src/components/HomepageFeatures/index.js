@@ -48,8 +48,8 @@ const FeatureList = [
     description: (
       <>
         <a href="zkvanguard">ZK Vanguard</a> is a static analysis tool created
-        by Veridise for discovering bugs in ZK circuits written in a
-        variety of ZK circuit DSLs, such as Zirgen and circom.
+        by Veridise for discovering bugs in ZK circuits written in a variety of
+        ZK circuit DSLs, such as Zirgen and circom.
       </>
     ),
   },

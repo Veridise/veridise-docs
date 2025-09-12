@@ -13,10 +13,9 @@ Currently, ZK Vanguard is able to provide analysis for [Zirgen] circuits,
 with support for [circom][circom], [halo2][halo2], and [Plonky3][Plonky3] coming soon to AuditHub.
 An older version of ZK Vanguard which supports circom is available through the  [ZK Vanguard (Circom)](/zkvanguard-legacy/) version.
 
-:::caution
+:::info
 
-This section of the documentation is currently a work-in-progress, as this version
-of ZK Vanguard has not yet landed in AuditHub.
+This section of the documentation is currently a work-in-progress.
 
 :::
 
