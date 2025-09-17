@@ -1,10 +1,19 @@
 ---
 sidebar_position: 2
-title: Simple Reentrancy
+title: Simple Reentrancy (Legacy)
 description: Detects potential reentrancy attacks affecting one contract.
 ---
 
 # Simple Reentrancy (`reentrancy`)
+
+:::info
+
+This detector is only available when selecting "DeFi Vanguard (Legacy)" in AuditHub.
+
+Consider using the new Cross-Contract Reentrancy detector instead, which
+provides more accurate findings.
+
+:::
 
 ## Summary and Usage
 

@@ -16,5 +16,6 @@ export default function prismIncludeLanguages(PrismObject) {
     require(`prismjs/components/prism-${lang}`);
   });
   require("/src/components/prismjs/prism-circom");
+  require("/src/components/prismjs/prism-paql");
   delete globalThis.Prism;
 }

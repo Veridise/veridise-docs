@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.4 - 2025-09-17
+### Fixed
+- Fix promoted findings not visible
+
 ## v2.4.3 - 2025-09-03
 ### Added
 - Copy button for resolved threads.
