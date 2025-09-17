@@ -32,6 +32,7 @@ less than or equal to $$2^{base}$$.
 The circuit therefore sets `out = 1` if `in` $$\le 2^{base}$$ and `out = 0` otherwise.
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 ```circom title="compute_constrain_difference_bug.circom" showLineNumbers
@@ -66,6 +67,7 @@ These challenges demonstrate why the CCD detector can be a useful tool in flaggi
 between separate constraints and assignments.
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 We've translated this example into Zirgen below.
@@ -110,6 +112,7 @@ between separate constraints and assignments.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -119,6 +122,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info

@@ -25,6 +25,7 @@ The UCO detector is invoked by selecting "Underconstrained outputs"
 ## Example and Explanation
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following toy example is designed to determine if the lowest bit of the
@@ -52,6 +53,7 @@ of the circuit, the constraint may be satisfied by the assignment `outp = 0` or 
 attacker to forge arbtrary proofs of the form `{inp = <any value>, outp = <0 or 1>}`.
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info
@@ -66,6 +68,7 @@ Coming soon.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -75,6 +78,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info

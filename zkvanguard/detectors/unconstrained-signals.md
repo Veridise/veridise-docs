@@ -24,6 +24,7 @@ The UCS detector is invoked by selecting "Unconstrained signals"
 ## Example and Explanation
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following example circuit is designed to compute a crytographic commitment
@@ -67,6 +68,7 @@ the public `commitment` input, and submit the existing proof with the new public
 input and prove the commitment to an unintented operation.
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info
@@ -81,6 +83,7 @@ Coming soon.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -90,6 +93,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info

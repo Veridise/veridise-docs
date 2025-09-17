@@ -36,6 +36,7 @@ Coming soon.
 ## Example and Explanation
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following example circom file contains the implementation of the `U16` component,
@@ -73,6 +74,7 @@ For example, both `lowByte = 0, highByte = 1, shortVal = 256` and `lowByte = 256
 satisfy the constraints with the same value for `shortVal`.
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info
@@ -89,6 +91,7 @@ Coming soon.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -98,6 +101,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info

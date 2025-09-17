@@ -70,6 +70,7 @@ perform the specified operation, as the commitment can be easily verified extern
 can only be forged if the private key of the committer is compromised.
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 ```circom title="private_input_leak_bug.circom" showLineNumbers
@@ -97,6 +98,7 @@ the manner in which the output is computed effectively makes the private input `
 thus leaking private data.
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 ```zirgen title="private_input_leak_bug.zir" showLineNumbers
@@ -123,6 +125,7 @@ thus leaking private data.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -132,6 +135,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info

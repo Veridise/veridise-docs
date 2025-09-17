@@ -25,6 +25,7 @@ The SCDF detector is invoked by selecting "Signal-dependent control flow"
 ## Example and Explanation
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following circuit is designed to determine whether the input `in` is 0 or not.
@@ -101,6 +102,7 @@ our example, as it forces one of `in` and `out` to be 0.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info
@@ -115,6 +117,7 @@ Coming soon.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -124,6 +127,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info

@@ -34,6 +34,7 @@ $$
 
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 ```circom title="division_bug.circom"
@@ -64,6 +65,7 @@ However, this clearly deviates from the developer’s intention,
 which was for `quotient` to be set to `dividend / divisor` and for `divisor` to be non-zero.
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info
@@ -78,6 +80,7 @@ Coming soon.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -87,6 +90,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info

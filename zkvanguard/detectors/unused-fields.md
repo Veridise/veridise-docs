@@ -25,6 +25,7 @@ The USF detector is invoked by selecting "Unused subcomponents"
 ## Example and Explanation
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 In the following example, the developer is
@@ -107,6 +108,7 @@ but never initializes the subcomponent `lt[0]` and therefore never checks the co
 A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `inp_small[0] < inp_large[0]`, the developer can expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`).
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info
@@ -121,6 +123,7 @@ Coming soon.
 ## Usage Example
 
 <Tabs groupId="example">
+{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 :::info
@@ -130,6 +133,7 @@ Coming soon.
 :::
 
 </TabItem>
+*/}
 <TabItem value="zirgen" label="Zirgen">
 
 :::info
