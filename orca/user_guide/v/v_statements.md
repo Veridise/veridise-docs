@@ -77,15 +77,22 @@ To allow the specification of properties across different blockchains and langua
 
 |   Utility                   | Description |
 | :-------------------------- | :---------- |
-| `ret`                       | The return value of the given transaction |
-| `balance(account)`          | Returns `account`’s balance in native tokens |
-| `old(expr)`                 | Evaluates `expr` just before the transaction executes |
-| `len(arr)`                  | Returns the length of `arr` array |
-| `range(low, high)`          | Returns a sorted array consisting of `low, low + 1, low + 2, ..., high-1` |
-| `address(val)`              | Converts passed integer or string `val` to an address |
-| `elem_in_range(low, high)`  | Returns a random integer within the `[low, high)` range |
-| `MAX_UINT256`               | Returns maximum possible value for a `uint256` |
-| `MAX_INT256`                | Returns maximum possible value for a `int256` |
+| `ret`                       | The return value of the given transaction. |
+| `balance(account)`          | Returns `account`’s balance in native tokens. |
+| `old(expr)`                 | Evaluates `expr` just before the transaction executes. |
+| `address(val)`              | Converts passed integer, string, or address `val` to an address. |
+| `len(val)`                  | Returns the length of array or string `val`. |
+| `range(low, high)`          | Returns a sorted array consisting of `[low, low + 1, low + 2, ..., high-1]`. |
+| `elem_in_range(low, high)`  | Returns a random integer within the `[low, high)` range (`high` excluded). |
+| `rand_int(low, high)`       | Returns a random integer within the `[low, high]` range (`high` included). |
+| `rand_string(len)`          | Returns a random string with length `len`. |
+| `rand_bool()`               | Returns a random boolean value. |
+| `choose_rand(arr)`          | Returns a uniformly sampled element from `arr`. |
+| `weighted_choose_rand(arr, weights)` | Returns a random element from `arr` sampled based on the `weights` integer array. |
+| `sample(arr, n)`            | Samples `n` elements from the provided array and returns a sub-array containing those elements. |
+| `shuffle(arr)`              | Returns a shuffled version of the array `arr`. |
+| `MAX_UINT256`               | Returns maximum possible value for a `uint256`. |
+| `MAX_INT256`                | Returns maximum possible value for a `int256`. |
 
 ### Arithmetic Operators
 
