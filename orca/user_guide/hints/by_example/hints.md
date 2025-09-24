@@ -3,7 +3,7 @@ title: Guiding the Search
 sidebar_position: 1
 ---
 
-This section introduces the `hints` section as a tool developers can use in order to help guide
+This section introduces OrCa Hint files as a tool developers can use in order to help guide
 the search for counterexamples against the input specification.
 
 ## Intro to Hints: A Small Example
@@ -27,7 +27,7 @@ function foo(uint256 x, uint256 y) public onlyOwner {
 }
 ```
 
-In this function, there are three constraints that are difficult to randomly satisfy.
+In this function, there are three constraints that are difficult to satisfy with pure chance.
 
 * `x` must be greater than 100000.
 * `y` must be less than `x`.
@@ -40,8 +40,8 @@ An example for the function `foo` is given below.
 ```solidity
 vars: Contract c
 hints: finished(c.foo(x, y),
-                    x := elem_in_range(100001, MAX_UINT256); 
-                    y := elem_in_range(0, x);
+                    x := rand_int(100001, MAX_UINT256);
+                    y := rand_int(0, x-1);
                     sender := c.owner
                )
 spec: ...
@@ -50,10 +50,10 @@ spec: ...
 The hint above has three assignments to make it run successfully.
 
 * `x` is assigned a random value between 100001 and MAX_UINT256 to satisfy `require(x > 100000)`.
-* `y` is assigned a random value between 0 and `x` to satisfy `require(y < x)`.
+* `y` is assigned a random value between 0 and `x-1` to satisfy `require(y < x)`.
 * `sender` is assigned to contract's owner to satisfy the `onlyOwner` requirement.
 
-Another way to write this hint would be to use `solve` expressions. This method invokes an SMT solver, so it is going to be slower to run but for complex cases, it might be useful. In the `solve` expressions, users can express constraints. The constraints are solved by an SMT solver and the expression returns the values to be used in assignment.
+Another way to write this hint would be to use `solve` expressions. In `solve` expressions, users can express constraints over a set of new free variables. Those free variables can be used in arithmetic and comparison constraints and passed to `len(x)` to reason about length of a free variable string or array. The constraints are solved by an SMT solver and the expression returns the values to be used in assignment as a tuple or a single value.
 
 For example, the hint above can also be expressed as:
 
@@ -66,6 +66,12 @@ hints: finished(c.foo(x, y),
 ```
 
 In the hint above, `solve` block calls SMT solver to find a satisfying solution to the provided constraint in the `solve` block, and returns `a` and `b` values satisfying the provided constraint as a tuple for assignment to the left hand side.
+
+While `solve` expressions might be easy to use, they have a few limitations:
+
+* The free variables cannot be passed to a function, so users cannot express constraints like `solve{address addr}(c.balanceOf(addr) > 100)` to find an address with balance greater than 100. The only exception to this is `len()` which is translated to a length constraint internally.
+* Users can write constraints that are unsatisfiable or solver might not be able to solve the constraint within the limited timeout of 10 seconds. If the solver times out, OrCa will crash with an exception, warning the user that the provided constraints cannot be handled by the solver.
+* This method invokes an external SMT solver, therefore it is going to be slower using helper functions directly but for complex cases, it might be useful to express constraints over variables rather than to use the helper functions.
 
 ## Now You're Thinking with Portals: Enhancing Hints with Complex Expressions
 
@@ -93,7 +99,7 @@ vars: Contract c
 hints: finished(c.count_votes(voters, votes),
                     (voters, votes) := solve{address[] _voters, uint256[] _votes}(
                                             len(_voters) = len(_votes) && len(_voters) > 0);
-                    forall{i : range(0, len(votes))}(votes[i] := elem_in_range(1, 5))
+                    forall{i : range(0, len(votes))}(votes[i] := rand_int(1, 4))
                )
 ```
 
@@ -152,7 +158,7 @@ VarType:   address
          | bool
          | uint # Behaves same as uint256
          | uint<num> # uint8, uint16, ..., uint256 are allowed
-         | int256 # Behaves same as int256
+         | int # Behaves same as int256
          | int<num>  # int8, int16, ..., int256 are allowed
          | bytes<num> # Only bounded byte variables are allowed
          | VarType[] # Array types
@@ -162,10 +168,10 @@ VarName: <str>
 
 `SolveExpr` describes the expression which returns the concrete values to variables in `SMTVarDecl` based on the constraints in `ConstraintExpr`. `SMTVarDecl` lets users create undefined variables which *only* appear in the `ConstraintExpr`, similar to the free variables defined in [`vars` section](../../v/language_description.md#vars-section) but only limited to primitive types and arrays described in `VarType`. `ConstraintExpr` is an expression which will be translated into SMTLIB to be solved.
 
-There are two main differences between `ConstraintExpr` in solve blocks and other constraints:
+There are a differences between regular Hint expressions and constraint expressions used in `solve` blocks:
 
-* For binary expressions, only primitive types (`address`, `bytes`, `bool`, `uint`, `int`, `string`) are allowed. `x = 1` is a valid expression, `x = [1, 2, 3]` is an invalid expression. For modifying array, struct, and enum variables, the users can express assignments in hints such as `x := [1, 2, 3]`, `x[0] := ...`, or `x.field := ...`.
-* For binary expressions on bytes, the lengths of left hand side and right hand side expressions have to match exactly. For example, `x = b"00cafe00"` is valid only when `x` is of type `bytes4`, otherwise solver translation returns a type error.
+* For assignment/inequality expressions, only primitive types (`address`, `bytesN`, `bool`, `uint`, `int`, `string`) are allowed on the right hand side. `solve{uint8 x}(x = 1)` is a valid expression, `solve{uint8[] x}(x = [1, 2, 3])` is an invalid expression. Instead of using a full array for assignment like `x = [1, 2, 3]` users can instead assign each variable like `x[0] = 1 && x[1] = 2 ...`, or the users can express assignments in hints rather than in `solve` blocks such as `x := [1, 2, 3]`, `x[0] := 1`.
+* For expressions on bytes, unbounded `bytes` type is not allowed in `solve` blocks and the lengths of left hand side and right hand side expressions have to match exactly. For example, `x = b"\x01\x02\x03\x04"` is valid only when `x` is of type `bytes4`, otherwise OrCa returns a type error. This is a limitation on the solver where `bytesX` and `bytesY` are treated as different bit vector types.
 
 As a warning, there may be some limitations in terms of the constraints OrCa can solve as SMT solvers (like Z3) may have difficulty providing solutions in a short amount of time where the constraints contain nested arrays or complex mathematical expressions like quadratics. If the solver times out or constraints have a type mismatch, OrCa will terminate to warn the user not to provide such constraints.
 

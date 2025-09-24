@@ -107,18 +107,6 @@ finished(
 )
 ```
 
-#### `elem_in_range(low: int, high: int) -> int`
-
-Return a random integer in the range of `[low, high)` (`high` excluded). If the range is empty (if `low` is greater than or equal to `high`), OrCa will crash with a value error.
-In the example below, the argument `percent` is assigned a random value from 0 to 100.
-
-```solidity
-finished(
-  c.foo(percent),
-  percent := elem_in_range(0, 101)
-)
-```
-
 #### `rand_int(low: int, high: int) -> int`
 
 Returns a uniformly random integer in the range of `[low, high]` (`high` included). If the range is empty (if `low` is greater than `high`), OrCa will crash with a value error.
@@ -135,6 +123,10 @@ finished(
 #### `rand_string(len: int) -> str`
 
 Returns a random string of specified length value `len`. If `len` is negative, OrCa will crash with a value error.
+
+#### `rand_bytes(len: int) -> bytesN | bytes`
+
+Returns a random bytes string of specified length value `len`. If `len` is negative, OrCa will crash with a value error. If `len` is between 1-32, OrCa will return a `bytesN` object with the corresponding length, otherwise it will return an unbounded `bytes` string.
 
 #### `rand_bool() -> bool`
 

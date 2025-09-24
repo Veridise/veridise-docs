@@ -33,7 +33,6 @@ This section discusses requirements and restrictions on Hardhat projects that ma
 
 * Ensure that all required secrets (e.g. wallet keys, API keys, etc.) are provided prior to running OrCa.
 
-
 ## Known Issues
 
 This section lists known issues for fuzzing Hardhat projects with OrCa.
