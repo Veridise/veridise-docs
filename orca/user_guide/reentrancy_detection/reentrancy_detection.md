@@ -1,14 +1,13 @@
-# Understand Reentrancy Detection
+# Understanding Reentrancy Detection
 
-This portion of the documentation explains how OrCa can detect oreentrancy vulnerabilities.
+This portion of the documentation explains how OrCa can detect reentrancy vulnerabilities.
 Detection works by altering the REVM dump state JSON and ABI passed to OrCa. In the following
 sections, we will describe *how* reentrancy detection works and how you can understand OrCa's
 output when a reeentrancy vulnerability is discovered.
 
 ## How it Works
 
-The following
-sections first explain the high-level idea behind reentrancy detection and then the
+The following sections first explain the high-level idea behind reentrancy detection and then the
 specific smart contracts used to implement it. Finally, an example is given which
 shows how this approach enables OrCa to detect reentrancy vulnerabilities.
 
@@ -44,7 +43,7 @@ it). The RAC also includes the ability to issue calls directly to a contract via
 `executeTopLevelTransaction()`, which should only be executed by an executor contract
 (again, this function is removed from the ABI for the RAC to avoid OrCa calling it).
 
-The RAC also supports *multiple* attack sequences, where an attack sequence are the
+The RAC also supports *multiple* attack sequences, where an attack sequence is the
 sequence of transactions that will be executed on invoking the RAC `fallback()`. This
 enables the RAC to support attacks which require invoking the RAC `fallback()` method
 multiple times. The function `moveToNextAttackSequence()` will make it so that future
