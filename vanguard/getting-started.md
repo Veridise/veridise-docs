@@ -88,5 +88,17 @@ In the code viewer:
 
 For more information, see the page on the [issue triage interface][triage].
 
+## Frequently Asked Questions
+
+#### What should I do if the task fails at the "Compile" step with an "OOMKilled" error?
+
+AuditHub limits the amount of RAM used for compilation; however, it is set
+sufficiently high enough to allow large projects to compile.
+If you are using Solidity 0.8.27 or older, you are highly recommended to upgrade
+your project to use only 0.8.28 or newer, as [recent versions of
+Solidity use RAM much more efficiently][solc-0828-announcement].
+
 [audithub-guide]: ../saas
 [triage]: ./triage.md
+
+[solc-0828-announcement]: https://soliditylang.org/blog/2024/10/09/solidity-0.8.28-release-announcement

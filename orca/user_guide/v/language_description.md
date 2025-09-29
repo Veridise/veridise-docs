@@ -115,7 +115,7 @@ A [V] statement `F(T, E)` is evaluated over a particular point in the event sequ
   <ol type="a">
     <li><code>c.txn(...)</code> and <code>c.txn</code> match the transaction <code>txn</code> over the contract instance <code>c</code></li>
     <li><code>c.*</code> matches any transaction over the contract instance <code>c</code></li>
-    <li><code>*</code> matches any transaction</li>
+    <li>`*` matches any transaction</li>
   </ol>
   <li>The condition <code>E</code> holds over the associated blockchain state.</li>
 </ol>

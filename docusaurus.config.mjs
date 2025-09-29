@@ -1,11 +1,15 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/vsLight");
-const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
-const math = require("remark-math");
-const katex = require("rehype-katex");
-const dashes = require("./src/remark/dashes");
+import {
+  github as lightCodeTheme,
+  dracula as darkCodeTheme,
+} from "prism-react-renderer";
+import math from "remark-math";
+import katex from "rehype-katex";
+import dashes from "./src/remark/dashes.mjs";
+
+const sidebarPath = "./sidebars.js";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -19,8 +23,12 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+      onBrokenMarkdownImages: "throw",
+    },
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -47,7 +55,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath,
           exclude: [],
           remarkPlugins: [math, dashes],
           rehypePlugins: [katex],
@@ -80,7 +88,7 @@ const config = {
         id: "saas",
         path: "saas",
         routeBasePath: "saas",
-        sidebarPath: require.resolve("./sidebars.js"),
+        sidebarPath,
         lastVersion: "current",
         exclude: ["**/guide/other.md", "**/guide/usage.md", "**/reference/**"],
         remarkPlugins: [dashes],
@@ -92,7 +100,7 @@ const config = {
         id: "orca",
         path: "orca",
         routeBasePath: "orca",
-        sidebarPath: require.resolve("./sidebars.js"),
+        sidebarPath,
         lastVersion: "current",
         exclude: ["**/internal/**"],
         remarkPlugins: [dashes],
@@ -104,7 +112,7 @@ const config = {
         id: "vanguard",
         path: "vanguard",
         routeBasePath: "vanguard",
-        sidebarPath: require.resolve("./sidebars.js"),
+        sidebarPath,
         lastVersion: "current",
         sidebarCollapsed: false,
         remarkPlugins: [dashes],
@@ -116,7 +124,7 @@ const config = {
         id: "zkvanguard",
         path: "zkvanguard",
         routeBasePath: "zkvanguard",
-        sidebarPath: require.resolve("./sidebars.js"),
+        sidebarPath,
         lastVersion: "current",
         sidebarCollapsed: false,
         remarkPlugins: [math, dashes],
@@ -142,7 +150,7 @@ const config = {
         id: "picus",
         path: "picus",
         routeBasePath: "picus",
-        sidebarPath: require.resolve("./sidebars.js"),
+        sidebarPath,
         lastVersion: "current",
         remarkPlugins: [dashes],
       },
@@ -153,14 +161,14 @@ const config = {
         id: "picus-v2",
         path: "picus-v2",
         routeBasePath: "picus-v2",
-        sidebarPath: require.resolve("./sidebars.js"),
+        sidebarPath,
         lastVersion: "current",
         remarkPlugins: [math, dashes],
         rehypePlugins: [katex],
       },
     ],
     [
-      require.resolve("docusaurus-lunr-search"),
+      "docusaurus-lunr-search",
       {
         // Do not index pages with routes like /orca/internal/dev-guide etc.
         excludeRoutes: ["**/internal/*"],
