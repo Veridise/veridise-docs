@@ -62,7 +62,7 @@ For example, the following image displays the common OrCa settings, which includ
 
 For more information on configuring any of our tools please visit the corresponding tool's documentation page
 <!-- 
-( [OrCa](../../orca/getting_started/running_orca_through_saas#orca-configuration) and [Vanguard](../../vanguard) )
+( [OrCa](../../orca/getting_started/introductory_example#orca-configuration) and [Vanguard](../../vanguard) )
 -->
 .
 
