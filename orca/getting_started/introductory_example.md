@@ -104,13 +104,11 @@ vars: Vault v
 spec: []!finished(v.deposit, v.closed)
 ```
 
-In English, this specification can be read as "it is never the case that we finish a call to deposit where the vault is closed." A more detailed introduction to the [V] specification language can be found in [this guide](user_guide/v/by_example/hello_bugs).
+In English, this specification can be read as "it is never the case that we finish a call to deposit where the vault is closed." A more detailed introduction to the [V] specification language can be found in [this guide](../user_guide/v/by_example/hello_bugs).
 
 The [V] specification can be added as part of the AuditHub project, embedded in the project itself as a file with the extension `.spec`, or added during the configuration phase of OrCa as an "ad-hoc" specification.
 
 ## Running OrCa
-
-Now that we have all of our inputs, it is as easy as running an OrCa task (see [instructions on running an AuditHub task](../../saas/guide/usage.md#tool-execution)).
 
 When running OrCa, there are a number of configurable options, including the amount of time to fuzz, contracts to ignore during fuzzing, and others (see [OrCa Configuration Options](../user_guide/orca_configuration/advanced_settings.md) for more on these). Good news here is we can run with all of the default options. Just make sure to select/add the [V] specification above when this option is presented.
 
