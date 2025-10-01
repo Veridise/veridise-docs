@@ -24,7 +24,7 @@ The DBZ detector is invoked by selecting "Divide by zero"
 
 In the following example, the `Divide` circuit has been developed to compute the
 `quotient` of `dividend` divided by `divisor`.
-In finite prime field arithmetic, as is performed in circom (i.e., all operations performed modulo the prime $p$),
+In prime field arithmetic, as is performed in circom (i.e., all operations performed modulo the prime $p$),
 division is implemented as multiplication by the inverse of the divisor,
 Formally, this computation is:
 

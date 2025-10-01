@@ -42,13 +42,13 @@ template Divide() {
 component main = Divide();
 ```
 
-The intended behavior of this circuit is for `quotient` to be set to `divident / divisor`.
+The intended behavior of this circuit is for `quotient` to be set to `dividend / divisor`.
 This performed by first assigning `quotient <-- dividend / divisor`, then generating the constraint
 of `quotient * divisor === dividend` (which is done because constraints cannot contain division operations,
 as they result in non-quadratic constraints).
 However, this constraint does not enforce the requirement that `divisor` cannot be
 0 in order for `dividend / divisor` to be a valid operation; in other words, the developer
-did not intend for 0 to be a valid assignment for `divisro`.
+did not intend for 0 to be a valid assignment for `divisor`.
 Therefore, the constraints of the circuit can be satisfied by the
 following assignment: `dividend = 0, divisor = 0, quotient = 5`, as this satisfies the circuit's
 constraint (`5 * 0 === 0`).
