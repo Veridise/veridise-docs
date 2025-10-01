@@ -16,7 +16,7 @@ In order to fuzz a Solidity project, OrCa requires the following things:
 2. A deployment script that deploys the desired smart contracts.
 3. At least one [V] specification that will be checked by OrCa.
 
-In the following sections, we will examine each of these requirements via a simple example. For a more detailed breakdowns of the requirements, particularly with respect to build system and deployment scripts, please see [Build System and Deployment Requirements]().
+In the following sections, we will examine each of these requirements via a simple example. For a more detailed breakdowns of the requirements, particularly with respect to build system and deployment scripts, please see [our documentation on build systems and deployment scripts](../user_guide/orca_configuration/build_system_and_deployment/build_system_and_deployment.md).
 
 ## A Running Example
 
@@ -91,7 +91,7 @@ contract OrCaDeploymentScript is Script {
 }
 ```
 
-For more information on setup and deployment, see [Build System Integration]() and [Writing a Deployment Script]().
+For more information on setup and deployment, see [our documentation on build systems and deployment scripts](../user_guide/orca_configuration/build_system_and_deployment/build_system_and_deployment.md).
 
 ## Writing a [V] Specification
 
@@ -110,9 +110,9 @@ The [V] specification can be added as part of the AuditHub project, embedded in 
 
 ## Running OrCa
 
-Now that we have all of our inputs, it is as easy as running an OrCa task (see [instructions on running an AuditHub task]()).
+Now that we have all of our inputs, it is as easy as running an OrCa task (see [instructions on running an AuditHub task](../../saas/guide/usage.md#tool-execution)).
 
-When running OrCa, there are a number of configurable options, including the amount of time to fuzz, contracts to ignore during fuzzing, and others (see [OrCa Configuration Options]() for more on these). Good news here is we can run with all of the default options. Just make sure to select/add the [V] specification above when this option is presented.
+When running OrCa, there are a number of configurable options, including the amount of time to fuzz, contracts to ignore during fuzzing, and others (see [OrCa Configuration Options](../user_guide/orca_configuration/advanced_settings.md) for more on these). Good news here is we can run with all of the default options. Just make sure to select/add the [V] specification above when this option is presented.
 
 ## Interpretting OrCa Results
 
