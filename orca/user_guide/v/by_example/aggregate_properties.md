@@ -50,6 +50,7 @@ As you can see in the implementation of `MyVToken`, the constrcutor adds the tok
 The first new aspect of this spec you may notice is the target: `token.*`. [V] allows wildcards to be used in targets, both in the form shown here and in the form of a standalone wildcard `*`. Here, `token.*` refers to any transactions within `MyVToken` called on `token`. When there are multiple deployed contracts, the target `*` refers to any transaction over any deployed contract. In this spec, we could also use `*` as the target if we want to check the property across transactions over all deployed contracts.
 
 The second new feature showcased in this spec is the `fsum` macro. `fsum` is used to sum over expressions evaluated at multiple previous points in the transaction sequence. The first argument, enclosed in `{}` is a syntactic argument -- the `target` of the `fsum`. The second argument, enclosed in `()` is an expression to be evaluated at each previous blockchain state whose corresponding transaction matches the `target`. Specifically, the result of `fsum{target}(expr)` is the sum of all `expr` evaluated at each point along the preceding transaction sequence that matches the `target`. Framed another way, `fsum` can be thought of as applying a filter, map, and fold:
+
 1. First, filter the sequence of previous blockchain states (_including the current state_) based on the input `target`. Note that these are the states _after_ the `target` transaction was successfully executed.
 2. Next, map each blockchain state to the evaluation of `expr` over that state. `expr` may reference state variables, `public view` transactions, or transaction arguments.
 3. Finally, sum all resulting evaluations of `expr`.
@@ -75,7 +76,7 @@ In general, any spec of the form `inv: P` is equivalent to `spec: []!finished(*,
 
 ## Other Expressions in [V] Conditions
 
-In addition to `fsum`, there are two other advanced operators we'll discuss in this section: `forall` and `state_fold`.
+In addition to `fsum`, there are two other advanced operators we will discuss in this section: `forall` and `state_fold`.
 
 ### `forall`
 
@@ -96,9 +97,9 @@ state_fold{token.mint(acc, amt)}((total) -> total + amt, 100)
 ```
 
 In general, `state_fold{target}((x) -> expr, a_0)` is evaluated in the following way:
+
 1. First, filter the sequence of previous blockchain states (_including the current state_) based on the input `target`.
 2. Next, starting with the oldest matching blockchain state, evaluate `expr` with `x` bound to `a_0`. Call this value `a_1`. Subsequently, evaluate `expr` over the next oldest blockchain state in the filtered sequence, binding `x` to `a_1` and call the result `a_2`. Continue this process for all `n` blockchain states in the sequence.
 3. After performing this process iteratively, return the last value `a_n`.
 
 Also, similarly to `fsum`, `when` clauses can be included in `state_fold` with the syntax `state_fold{target when cond}((x) -> expr, a_0)`.
-
