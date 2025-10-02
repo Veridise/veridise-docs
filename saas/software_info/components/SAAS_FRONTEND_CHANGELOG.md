@@ -6,43 +6,7 @@ slug: frontend-changelog
 ---
 # Software Changes
 
-## v2.4.4 - 2025-09-17
-### Fixed
-- Fix promoted findings not visible
-
-## v2.4.3 - 2025-09-03
-### Added
-- Copy button for resolved threads.
-
-## v2.4.2 - 2025-08-21
-### Changed
-- Count badge for threads now shows only the number of unresolved threads in each section
-- Name field in invitation form is optional
-
-### Fixed
-- Fix issue with cancel edit button not working when thread is resolved
-- Fixed bug with issue selection not working after opening URL
-
-## v2.4.1 - 2025-08-07
-### Changed
-- The bottom panel is now set to issues by default
-
-### Fixed
-- Fix issue with version threads showing all of the threads in the dropdown
-- Fixed drafts disappearing when reloading the page for edits
-
-## v2.4.0 - 2025-07-31
-### Added
-- Added copy thread link button in the thread panel
-
-### Fixed
-- Fixed light mode for the codeblock
-
-## v2.3.9 - 2025-07-31
-### Added
-- Language detection for code blocks
-
-## v2.3.8 - 2025-07-28
+## v2.4.5 - 2025-10-02
 ### Changed
 - Disable dialog while submitting
 - Respect backend limits for API keys
@@ -50,7 +14,6 @@ slug: frontend-changelog
 ### Fixed
 - Incorrect logic used when checking API key limits
 - Redirect to /not-found when project is not found
-- Unable to view findings when tools finished in an "Error" state.
 
 ## v2.3.7 - 2025-07-17
 ### Added
