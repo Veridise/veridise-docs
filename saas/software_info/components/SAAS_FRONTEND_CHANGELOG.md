@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.6 - 2025-10-03
+### Added
+- Email notifications for new issues and findings threads
+
 ## v2.4.5 - 2025-10-02
 ### Changed
 - Disable dialog while submitting
