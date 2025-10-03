@@ -12,10 +12,10 @@ import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/Dete
 
 ## Summary and Usage
 
-The Unconstrained Input (UCI) detector finds unconstrained input vulnerabilities in ZK circuit code.
-The UCI detector looks to see if an input into a component is used in any constraint---if not,
-then a malicious actor may be able to create new valid proofs by taking an
-existing proof and simply changing a public input that is unconstrained.
+The Unconstrained Input (UCI) detector finds unconstrained input vulnerabilities in ZK circuits.
+It checks whether an input to a component is used in any constraint. If not,
+a malicious actor could potentially create new valid proofs by taking an
+existing proof and changing a public input that is unconstrained.
 
 ### Usage
 
@@ -24,15 +24,15 @@ in the Detector selection during the tool configuration step.
 
 ## Example and Explanation
 
-The following example circuit is designed to compute a crytographic commitment
+The following example circuit is designed to compute a cryptographic commitment
 to performing a specific public operation.
 This commitment is based on a public operation, represented by the public
 input signal `operation` (in practice, this could be a hash of a smart contract
 function and arguments) combined with a private input `private_key` only known
 by the committer.
-This commitment can be therefore used to prove the committer's specific intent to
-perform the specified operation, as the commitment can be easily verified externally, but
-can only be forged if the private key of the committer is compromised.
+This commitment can therefore be used to prove the committer's specific intent
+to perform the specified operation. The commitment can be easily verified externally, but
+it can only be forged if the committer's private key is compromised.
 
 
 ```circom title="uc_inputs_bug.circom" showLineNumbers
@@ -56,13 +56,12 @@ component main {public [operation]} = OpCommitment();
 ```
 
 The circuit uses the [Poseidon hash function](https://www.poseidon-hash.info/) to compute the `commitment`.
-However, the `operation` is not used in the computation of the `commitment` hash; it
-is not used in any constraints in the circuit at all.
-Since the `operation` is not used in the computation of the commitment, the
-commitment is only tied to the `private_key` of the committer.
-A malicious actor could therefore theoretically take the existing proof, change
-the public `commitment` input, and submit the existing proof with the new public
-input and prove the commitment to an unintented operation.
+However, the `operation` signal is not used in computing the `commitment` hash;
+it is not part of any constraint in the circuit.
+Thus, the commitment depends only on the committer's `private_key`.
+A malicious actor could theoretically take an existing proof, change the public `operation` input,
+and submit the proof with the new public input, potentially proving a commitment
+to an unintended operation.
 
 ## Usage Example
 
@@ -100,14 +99,13 @@ These magic constraints prevent attackers from manipulating public, not-explicit
 So, the potential severity of an unconstrained input signal is lower than other findings found by ZK Vanguard, as they may often
 be false positives due to these magic constraints.
 
-## Assessing Severity
+## How to Assess Severity
 
 Input signals may be left unconstrained intentionally in cases where (1) magic constraints are known to be
 generated and (2) a specific constraint about a value is not required, but the value should be tied to
 the proof (e.g., a proof must use a nonce that is checked for uniqueness in a smart contract).
 
-However, it is still good to be aware of potential vulnerabilities that may
-arise when building circuits for proof systems that may or may not introduce such constraints automatically
-(which can be difficult to assertain). Furthermore, unconstrained inputs may be
-indicating of other semantic bugs, such as forgetting to include an input as
-part of a hash computation.
+However, it is still important to be aware of potential vulnerabilities when
+building circuits for proof systems that may or may not introduce such constraints automatically
+(which can be difficult to ascertain). Furthermore, unconstrained inputs may indicate
+other semantic bugs, such as forgetting to include an input as part of a hash computation.

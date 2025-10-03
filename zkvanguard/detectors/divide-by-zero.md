@@ -59,7 +59,7 @@ to be valid. In other words, the developer did not intend for `divisor = 0` to b
 
 As a result, the constraints can be satisfied by an assignment such as
 `dividend = 0, divisor = 0, quotient = 5`, since `5 * 0 === 0`.
-This clearly violates the developer’s intent: `quotient` should represent `dividend / divisor`
+This clearly violates the developer's intent: `quotient` should represent `dividend / divisor`
 and `divisor` should never be zero.
 
 </TabItem>

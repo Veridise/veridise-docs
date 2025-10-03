@@ -12,14 +12,16 @@ import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/Dete
 
 ## Summary and Usage
 
-The Witness-Constraints Difference (WCD) detector warns the user about signals
-where the assignment of a given signal in the witness (i.e., in dataflow operations) contain
-a different set of signals and/or constant values than are contained in the set of
-signals and/or constant values that constrain the given signal.
-Such differences occur when witness computation and constraint generation for a given
-signal are performed separately (i.e., with `<--` and `===` operations in Circom instead of
-`<==` operations), and these differences can lead to underconstrained or improperly constrained signals.
-Such discrepancies may allow malicious actors to construct bogus proofs and subvert the application's security checks.
+The Witness-Constraints Difference (WCD) detector flags signals
+where the witness assignment (i.e., dataflow operations) uses
+a different set of signals or constants than the set used
+to constrain that signal.
+These differences typically arise when witness computation and constraint generation
+for a signal are performed separately (e.g., `<--` and `===` operations in Circom instead of
+`<==`). This separation can lead to underconstrained or
+improperly constrained signals.
+These discrepancies may allow malicious actors to construct bogus proofs
+and bypass application-level security checks.
 
 ### Usage
 
@@ -47,7 +49,8 @@ component main = LessThanPower(2);
 ```
 
 However, this code has a bug: `out` is only constrained to be binary (line 8) and is not
-constrained by `in` or the `base` constant at all.
+constrained by `in` or the `base` constant in any way.
+
 This allows a malicious actor to set `out` to be any value independent of `in` as
 long as `out = 0` or `out = 1` (to satisfy the constraint on line 8).
 For example, the signal assignment `in = 0, out = 0` would satisfy the constraints
@@ -90,10 +93,9 @@ Signal out in component LessThanPower @ wit_constr_diff_bug.circom:3 witness gen
 
 </details>
 
-Line 3 of the above log tells us that the WCD detector has found a signal that has differing dataflow and constraint operations.
-Lines 8--11 of the above log tell us that the output signal `out` appears in a dataflow operation with input signal `in` and the constant `base = 2`, but
-that `out` is not constrained by either of these values.
-This finding tells us we need to update the component to properly constrain output signal `out`.
+Line 3 of the log indicates that the WCD detector found a signal with differing dataflow and constraint operations.
+Lines 8–-11 indicate that `out` is computed from `in` and the constant `base = 2`, but is not constrained by them.
+This shows that the component must be updated to properly constrain `out`.
 
 ## Limitations
 
@@ -108,15 +110,15 @@ are often not precise enough.
 The WCD detector also only tracks the set of signals and constants in constraints and dataflow assignments, but
 not the operations performed over those values (e.g., addition, multiplication). The detector
 may therefore generate false negatives for assignments and constraints that contain the same values,
-but perform different operations (e.g., `out <-- in + 7`, `out === in * 7` will not be flagged).
+but perform different operations (e.g., `in + 7`, `in * 7` are treated as equivalent expressions).
 
 ## Assesing Severity
 
-The severity of a witness-constraint difference depends heavily on whether
-or not the involved signals have been properly constrained according to the design
-of the circuit.
-Assuming that the finding is not a false positive, then the consequences
-can be severe, as the verifier may accept a proof with signal assignments outside of what is
-intended, allowing malicious users to prove invalid statements.
+The severity of a witness-constraint difference depends on whether the involved
+signals are properly constrained according to the circuit's design.
+
+If the finding is not a false positive (i.e., signals are underconstrained), the consequences can be severe:
+the verifier may accept proofs with signal assignments outside the intended range,
+allowing malicious users to prove invalid statements.
 
 [ed25519-link]: https://github.com/Electron-Labs/ed25519-circom/blob/c9435c021384a74009c0b2ec2a5e863b2190e63b/circuits/lt.circom#L5-L11

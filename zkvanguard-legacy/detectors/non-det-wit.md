@@ -26,9 +26,9 @@ The NDW detector is invoked by selecting "Non-deterministic dataflow"
 
 ## Example and Explanation
 
-The following circuit is designed to determine whether the input `in` is 0 or not.
-If `in = 0`, then `out = 1`.
-For any other value of `in` where `in != 0`, then `out = 0`.
+The following circuit is designed to determine whether the input `in` is 0 or not:
+- If `in = 0`, then `out = 1`.
+- For any other value of `in` (`in != 0`), then `out = 0`.
 
 ```circom title="non_det_wit_bug.circom" showLineNumbers
 pragma circom 2.0.0;
@@ -51,31 +51,27 @@ component main = IsZero();
 To implement this functionality, the circuit first computes the inverse `inv`
 of the input `in`, but uses a conditional assignment such that `inv` will be 0
 if `in` is 0, with `inv = 1/in` otherwise (line 9).
-With this conditional assignment, it follows that the value of `-in*inv` should be
--1 (mod p) if `in` is non-zero, and 0 otherwise.
-Therefore, the computation and assignment of `out <== -in*inv + 1` should be
-1 if `in` is 0, and 0 if `in` is non zero.
 
-However, this code has a bug: there is no constraint that requires `out` to be a boolean
-value (i.e., 0 or 1).
-`out` being boolean a consequence of `inv` being the inverse of `in`, which
-is _not_ a constraint in this circuit due to the use of the conditional assignment
-used to create `inv`.
-This allows a malicious actor to set `inv` to be any value independent of `in` as
-long as the `out <== -in*inv +1` constraint is satisfied.
-The witness assignment of `in = 1`, `inv = -1 (mod p)`, and `out = 2` would therefore
-satisfy the circuit's constraints, but violates the intended output of the circuit,
-which is that if `in = 1`, `out` should be `0`.
+With this conditional assignment, `-in*inv` should be:
+- `-1 (mod p)` if `in` is non-zero
+- `0` if `in = 0`
+Thus, the computation `out <== -in*inv + 1` yields:
+- `1` if `in = 0`
+- `0` if `in` is non-zero
 
-This example demonstrates that conditional assignments often require additional and
-more nuanced constraints than normal unconditional assignments may require.
-These challenges are why the NDW detector can be a useful tool in flagging conditional
-logic for further scrutiny.
+However, this code contains a bug: there is no constraint enforcing that `out` is boolean (0 or 1).
+The boolean nature of `out` is assumed from `inv` being the inverse of `in`, which is **not**
+enforced due to the conditional assignment.
+A malicious actor could assign `inv` any value,
+as long as `out <== -in*inv + 1` holds.
+For example, `in = 1`, `inv = -1 (mod p)`, `out = 2` satisfies constraints but violates intended behavior.
+This demonstrates that conditional assignments often require additional and nuanced constraints.
+The NDW detector is valuable for flagging such conditional logic for review.
 
 :::note
 
-This example is adapted from the `IsZero` circuit provided by [circomlib][circomlib].
-However, unlike our above example, the version in circomlib (found in [comparators.circom][iszero-snippet]) is properly constrained:
+This example is adapted from the `IsZero` circuit provided by [circomlib][circomlib] (found in [comparators.circom][iszero-snippet]).
+Unlike our above example, circomlib's version is properly constrained:
 
 ```circom title="IsZero circuit from circomlib. The constraint missing from our example above is highlighted." showLineNumbers
 template IsZero() {
@@ -142,10 +138,9 @@ as this requires knowledge of what the design goal of the circuit is.
 For example, the NDW detector would still report the same issue for circomlib's `IsZero` circuit, even
 though it is properly constrained.
 
-## Assesing Severity
+## How to Assess Severity
 
-The severity of a non-deterministic witness computation depends heavily on whether
-or not the involved signals have been properly constrained according to the design
-of the circuit. Assuming that the finding is not a false positive, then the consequences
-can be severe, as the verifier may accept a proof with signal assignments outside of what is
-intended, allowing malicious users to prove invalid statements.
+The severity of a non-deterministic witness computation depends on whether
+the involved signals are properly constrained.
+If a finding is not a false positive,
+it may have severe consequences, allowing invalid proofs to be accepted.

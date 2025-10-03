@@ -8,15 +8,11 @@ detectorTypes:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Compute-Constrain Difference
-
 import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
 
 <DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
-
 
 The Compute-Constrain Difference (CCD) detector flags signals
 where the witness assignment (i.e., dataflow operations) uses
