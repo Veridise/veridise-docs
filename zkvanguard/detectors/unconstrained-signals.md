@@ -8,24 +8,25 @@ detectorTypes:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Unconstrained Signals
-
 import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
 
 <DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 
-The Unconstrained Signals (UCS) detector finds unconstrained signals in ZK circuit code.
-The UCS detector looks to see if a signal is used in any constraint---if not,
-then a malicious actor may be able to create new valid proofs by taking an
-existing proof and simply changing the value of the unconstrained signal.
+The Unconstrained Signals (UCS) detector identifies signals in ZK circuits that are not used
+in any constraint.
+If a signal is unconstrained, a malicious actor may be able to
+generate new valid proofs by reusing an existing proof and simply changing the value
+of the unconstrained signal.
 
 ### Usage
 
-The UCS detector is invoked by selecting "Unconstrained signals"
-(`llzk/unconstrained-signals`) in the Detector selection during the tool configuration step.
+:::info
+
+Coming soon.
+
+:::
 
 ## Example and Explanation
 
@@ -33,15 +34,15 @@ The UCS detector is invoked by selecting "Unconstrained signals"
 {/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
-The following example circuit is designed to compute a crytographic commitment
+The following example circuit is designed to compute a cryptographic commitment
 to performing a specific public operation.
-This commitment is based on a public operation, represented by the public
-input signal `operation` (in practice, this could be a hash of a smart contract
-function and arguments) combined with a private input `private_key` only known
-by the committer.
-This commitment can be therefore used to prove the committer's specific intent to
-perform the specified operation, as the commitment can be easily verified externally, but
-can only be forged if the private key of the committer is compromised.
+
+The commitment should be derived from a public input signal `operation` (e.g., a hash
+of a smart contract function and arguments) combined with a private input `private_key`
+known only to the committer.
+Such a commitment can then be used to prove the committer’s intent to perform the specified
+operation: it is easily verifiable externally, but should only be forgeable if the committer's
+private key is compromised.
 
 
 ```circom title="uc_inputs_bug.circom" showLineNumbers
@@ -65,13 +66,11 @@ component main {public [operation]} = OpCommitment();
 ```
 
 The circuit uses the [Poseidon hash function](https://www.poseidon-hash.info/) to compute the `commitment`.
-However, the `operation` is not used in the computation of the `commitment` hash; it
-is not used in any constraints in the circuit at all.
-Since the `operation` is not used in the computation of the commitment, the
-commitment is only tied to the `private_key` of the committer.
-A malicious actor could therefore theoretically take the existing proof, change
-the public `commitment` input, and submit the existing proof with the new public
-input and prove the commitment to an unintented operation.
+However, in this implementation the `operation` signal is not used in the computation
+of the `commitment` hash and is not referenced in any constraints at all.
+As a result, the commitment depends only on the committer’s `private_key`.
+A malicious actor could therefore reuse an existing proof, substitute a different
+public `operation`, and present a valid proof for an unintended operation.
 
 </TabItem>
 */}
@@ -114,34 +113,30 @@ Coming soon.
 ## Limitations
 
 While attackers may be able to exploit unconstrained input signals,
-some proof systems introduce a "magic constraint"
-to automatically constrain otherwise unconstrained inputs (see
-[this discussion on Groth16 malleability][groth16-malleability] for a more in-depth discussion).
-These magic constraints prevent attackers from manipulating public,
-not-explicitly-constrained inputs to create new valid proofs.
-So, the potential severity of an unconstrained input signal is
-lower than other findings found by ZK Vanguard, as they may often
-be false positives due to these magic constraints.
+some proof systems automatically introduce a "magic constraint" that
+constrains otherwise unconstrained inputs (see [this discussion on Groth16 malleability][groth16-malleability]).
+These implicit constraints prevent attackers from manipulating unconstrained
+public inputs to forge new proofs.
+As a result, unconstrained input findings may have lower severity than other ZK Vanguard findings,
+and can sometimes be false positives due to these system-level constraints.
 
+## How to Assess Severity
 
-## Assessing Severity
+Findings from the UCS detector can range from benign to critical, depending on
+which type of signal is unconstrained and how it affects the circuit.
 
-The severity of the finding depends in part on the visibility of the unconstrained signal.
-
-- Input signals may be left unconstrained intentionally in cases where (1) magic constraints are known to be
-generated and (2) a specific constraint about a value is not required, but the value should be tied to
-the proof (e.g., a proof must use a nonce that is checked for uniqueness in a smart contract).
-However, it is still good to be aware of potential vulnerabilities that may
-arise when building circuits for proof systems that may or may not introduce such constraints automatically
-(which can be difficult to assertain). Furthermore, unconstrained inputs may be
-indicating of other semantic bugs, such as forgetting to include an input as
-part of a hash computation.
-- Unconstrained outputs, as discussed in [the Underconstrained Output Detector](./underconstrained-outputs.md), are
-often indicative of severe issues where key computations and constraints have been accidentally omitted.
-These findings are therefore highly likely to be critical issues.
-- Internal signals that are unconstrained may lead to nondeterministic proofs
-(where multiple different proofs for the same set of inputs and outputs may be
-generated), which may lead to severe protocol issues (e.g., double spending,
-multiple nullifiers for the same commitment).
+- **Input signals** may sometimes be intentionally left unconstrained, for example
+  when magic constraints are expected to be generated or when a value only needs to be
+  tied to the proof (e.g., a nonce checked for uniqueness by a smart contract).
+  However, developers should still be cautious: different proof systems may or may not
+  add such constraints automatically, and unconstrained inputs may also indicate semantic bugs,
+  such as forgetting to include a value in a hash computation.
+- **Output signals** that are unconstrained (see [Underconstrained Outputs](./underconstrained-outputs.md))
+  are usually severe, since they often mean key computations or constraints have been
+  accidentally omitted. These findings are highly likely to be critical.
+- **Internal signals** that are unconstrained may cause nondeterministic proofs,
+  where multiple valid proofs can be generated for the same inputs and outputs.
+  This can lead to severe protocol issues such as double spending or multiple nullifiers
+  for the same commitment.
 
 [groth16-malleability]: https://geometry.xyz/notebook/groth16-malleability

@@ -17,19 +17,25 @@ import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/Dete
 
 ## Summary and Usage
 
-The Compute-Constrain Difference detector warns the user about signals
-where the assignment of a given signal in the witness (i.e., in dataflow operations) contain
-a different set of signals and/or constant values than are contained in the set of
-signals and/or constant values that constrain the given signal.
-Such differences occur when witness computation and constraint generation for a given
-signal are performed separately (e.g., with `<--` and `===` operations in Circom instead of
-`<==` operations, or with `NondetReg`s in Zirgen), and these differences can lead to underconstrained or improperly constrained signals.
-Such discrepancies may allow malicious actors to construct bogus proofs and subvert the application's security checks.
+
+The Compute-Constrain Difference (CCD) detector flags signals
+where the witness assignment (i.e., dataflow operations) uses
+a different set of signals or constants than the set used
+to constrain that signal.
+These differences typically arise when witness computation and constraint generation
+for a signal are performed separately (e.g., `<--` and `===` operations in Circom instead of
+`<==`, or `NondetReg`s in Zirgen). This separation can lead to underconstrained or
+improperly constrained signals.
+These discrepancies may allow malicious actors to construct bogus proofs
+and bypass application-level security checks.
 
 ### Usage
 
-This detector is invoked by selecting "Compute-constrain difference"
-(`llzk/compute-constrain-difference`) in the Detector selection during the tool configuration step.
+:::info
+
+Coming soon.
+
+:::
 
 ## Example and Explanation
 
@@ -57,7 +63,8 @@ component main = LessThanPower(2);
 ```
 
 However, this code has a bug: `out` is only constrained to be binary (line 8) and is not
-constrained by `in` or the `base` constant at all.
+constrained by `in` or the `base` constant in any way.
+
 This allows a malicious actor to set `out` to be any value independent of `in` as
 long as `out = 0` or `out = 1` (to satisfy the constraint on line 8).
 For example, the signal assignment `in = 0, out = 0` would satisfy the constraints
@@ -103,14 +110,14 @@ However, this code has a bug: `out` is only constrained to be binary (line 16) a
 constrained by `in` or the `base` constant at all.
 This allows a malicious actor to set `out` to be any value independent of `in` as
 long as `out = 0` or `out = 1` (to satisfy the constraint on line 16).
-For example, the signal assignment `in = 0, out = 0` would satisfy the constraints
-in this circuit even though this assignment does not match the intended output
-(i.e., if `in = 0`, `out` should be `1`).
+
+For example, the assignment `in = 0, out = 0` satisfies the constraints,
+even though the intended behavior is `out = 1` when `in = 0`.
 
 This example demonstrates that special care must be taken when using `NondetReg`s
 to ensure that the signals involved are properly constrained.
-These challenges demonstrate why the CCD detector can be a useful tool in flagging discrepancies
-between separate constraints and assignments.
+This illustrates why the CCD detector is useful: it flags discrepancies
+between separate constraints and assignments that may otherwise go unnoticed.
 
 </TabItem>
 </Tabs>
@@ -155,13 +162,13 @@ not the operations performed over those values (e.g., addition, multiplication).
 may therefore generate false negatives for assignments and constraints that contain the same values,
 but perform different operations (e.g., `in + 7`, `in * 7` are treated as equivalent expressions).
 
-## Assesing Severity
+## How to Assess Severity
 
-The severity of a compute-constrain difference depends heavily on whether
-or not the involved signals have been properly constrained according to the design
-of the circuit.
-Assuming that the finding is not a false positive, then the consequences
-can be severe, as the verifier may accept a proof with signal assignments outside of what is
-intended, allowing malicious users to prove invalid statements.
+The severity of a compute-constrain difference depends on whether the involved
+signals are properly constrained according to the circuit's design.
+
+If the finding is not a false positive (i.e., signals are underconstrained), the consequences can be severe:
+the verifier may accept proofs with signal assignments outside the intended range,
+allowing malicious users to prove invalid statements.
 
 [ed25519-link]: https://github.com/Electron-Labs/ed25519-circom/blob/c9435c021384a74009c0b2ec2a5e863b2190e63b/circuits/lt.circom#L5-L11

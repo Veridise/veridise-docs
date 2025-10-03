@@ -51,7 +51,7 @@ component main = IsZero();
 To implement this functionality, the circuit first computes the inverse `inv`
 of the input `in`, but uses a conditional assignment such that `inv` will be 0
 if `in` is 0, with `inv = 1/in` otherwise (line 9).
-With this conditional assignment, it follows thaat the value of `-in*inv` should be
+With this conditional assignment, it follows that the value of `-in*inv` should be
 -1 (mod p) if `in` is non-zero, and 0 otherwise.
 Therefore, the computation and assignment of `out <== -in*inv + 1` should be
 1 if `in` is 0, and 0 if `in` is non zero.

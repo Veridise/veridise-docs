@@ -17,19 +17,21 @@ import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/Dete
 
 ## Summary and Usage
 
-The Out-Of-Range Signals detector examines patterns of computation/constraint
-generation to estimate what **should** be the ranges of IR values (e.g., if
-a value is part of a byte decomposition, it should be within the range [0, 255]).
-These "presumed" ranges are then compared against the ranges those values are actually
-constrained to be within.
-If the "presumed" range is narrower than the allowed range,
-then it is possible for a value to become "out-of-range",
-which may lead to bugs or vulnerabilities as the values are underconstrained.
+The Out-Of-Range Signals (OORS) detector analyzes patterns of computation and constraint
+generation to estimate the expected ranges of intermediate values (e.g., if a value
+is part of a byte decomposition, it should lie within [0, 255]).
+These expected ranges are then compared against the actual ranges enforced by constraints.
+If the expected range is narrower than the enforced range,
+values may fall "out of range," leaving them underconstrained and potentially
+introducing bugs or vulnerabilities.
 
 ### Usage
 
-The OORS detector is invoked by selecting "Out-of-range signals"
-(`llzk/out-of-range-signals`) in the Detector selection during the tool configuration step.
+:::info
+
+Coming soon.
+
+:::
 
 #### Configuration Options
 
@@ -73,11 +75,14 @@ component main = U16();
 
 </details>
 
-While `shortVal` is properly constrained to be a 16-bit value, and to be the composition
-of `lowByte` and `highByte`, neither `lowByte` or `highByte` are constrained to only be bytes.
-This means that multiple values of `lowByte` and `highByte` may compute the same output value.
-For example, both `lowByte = 0, highByte = 1, shortVal = 256` and `lowByte = 256, highByte = 0, shortVal = 256`
-satisfy the constraints with the same value for `shortVal`.
+While `shortVal` is properly constrained to be a 16-bit value and to equal
+the composition of `lowByte` and `highByte`, neither `lowByte` nor `highByte`
+is constrained to lie within the 8-bit range.
+As a result, multiple assignments of `lowByte` and `highByte` can yield the same `shortVal`.
+For example:
+- `lowByte = 0, highByte = 1, shortVal = 256`
+- `lowByte = 256, highByte = 0, shortVal = 256`
+Both satisfy the constraints, even though only the first reflects the intended design.
 
 </TabItem>
 */}
@@ -121,16 +126,15 @@ Coming soon.
 
 ## Limitations
 
-- This detector uses LLZK's intraprocedural range analysis to determine if a divisor
-value may be 0. Any inaccuracies caused by this analysis (e.g., if a divisor is
-constrained to be non-zero via a separate function call) may cause false
-positives in this detector's findings.
-- This detector looks for a specifc sset of patterns to infer likely intervals.
-This detector will not find out-of-range errors for computation patterns that are
-circuit or application specific.
+- This detector uses LLZK’s intraprocedural range analysis to infer expected intervals.
+  Any inaccuracies in this analysis (e.g., when constraints are applied indirectly in
+  other parts of the circuit) may result in false positives.
+- This detector only recognizes a specific set of patterns to infer likely intervals.
+  It will not detect out-of-range errors for computation patterns that are highly
+  circuit- or application-specific.
 
-## Assessing Severity
+## How to Assess Severity
 
-If deemed to be a true positive, a finding from the OORS detector is severe, as
-it means that values in the circuit are underconstrained and may allow for multiple
-value proofs for the same output values.
+If confirmed as a true positive, a finding from the OORS detector indicates
+a severe issue. Underconstrained values may allow multiple different proofs
+to yield the same output, undermining the integrity of the circuit.

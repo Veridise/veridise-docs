@@ -8,25 +8,26 @@ detectorTypes:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Underconstrained Outputs
-
 import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
 
 <DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 
-The Underconstrained Output (UCO) detector finds underconstrained output vulnerabilities in ZK circuits.
-The UCO detector looks to see if a used output from a component is
-constrained either by an input value or a single constant value;
-if neither is true, then the output is not constrained and can result in a vulnerability,
-as a malicious actor may be able to create valid proofs for bogus statements when outputs are underconstrained.
+The Underconstrained Output (UCO) detector identifies underconstrained output
+vulnerabilities in ZK circuits where signals are not sufficiently constrained.
+The UCO detector checks whether a component's output is constrained
+by either an input signal or a constant value.
+If neither condition holds, the output is underconstrained, creating a vulnerability
+that may allow malicious actors to generate valid proofs for bogus statements.
 
 ### Usage
 
-The UCO detector is invoked by selecting "Underconstrained outputs"
-(`llzk/underconstrained-outputs`) in the Detector selection during the tool configuration step.
+:::info
+
+Coming soon.
+
+:::
 
 ## Example and Explanation
 
@@ -53,10 +54,12 @@ template LowestBitIsOne() {
 component main = LowestBitIsOne();
 ```
 
-In this example, `outp` is assigned to `inp & 1`, but is not constrained by the input `inp`, which is flagged as a UCO bug.
-While the `outp * (outp - 1) === 0` constraint does constrain the `outp` signal to a boolean value per the overall design
-of the circuit, the constraint may be satisfied by the assignment `outp = 0` or `outp = 1` _regardless_ of the value of `inp`, allowing the
-attacker to forge arbtrary proofs of the form `{inp = <any value>, outp = <0 or 1>}`.
+In this example, `outp` is assigned to `inp & 1`, but its value is not explicitly tied
+to `inp` in any constraint.
+This is why the detector flags it as a UCO issue.
+While the constraint `outp * (outp - 1) === 0` ensures that `outp` is boolean,
+it can be satisfied by either `outp = 0` or `outp = 1` regardless of the actual value of `inp`.
+This allows an attacker to forge arbitrary proofs of the form `{inp = <any value>, outp = <0 or 1>}`.
 
 </TabItem>
 */}
@@ -98,15 +101,15 @@ Coming soon.
 
 ## Limitations
 
-- This detector may incur false positives if the output signal is designed to be
-constant constrained, but that constant is computed within the circuit (e.g.,
-the output signal is a hash of a constant value).
-- This detector will fail to detect issues where, e.g., an output signal is
-constrained by _an_ input, but should be constrained by multiple inputs.
+- This detector may produce false positives if an output is intended to be constant-constrained,
+  but the constant is computed within the circuit (e.g., the output is a hash of a fixed value).
+- This detector will miss cases where an output is constrained by *some* inputs,
+  but should actually be constrained by multiple inputs.
 
-## Assessing Severity
+## How to Assess Severity
 
-It is generally rare for output signals to not be a function of input signals
-or constants, so findings from this detector often indicate severe issues where
-key computations and constraints have been accidentally omitted.
-These findings are therefore highly likely to be critical issues.
+Findings from the UCO detector are generally considered severe.
+It is rare for output signals not to be derived from input signals or constants,
+so underconstrained outputs usually indicate that key computations or constraints
+have been accidentally omitted.
+These findings are therefore highly likely to represent critical issues.

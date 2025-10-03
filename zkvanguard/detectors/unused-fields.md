@@ -8,25 +8,24 @@ detectorTypes:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Unused Subcomponents
-
 import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
 
 <DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 
-The Unused Fields (USF) detector detects if any declared fields of a circuit component
-are never assigned nor constrained.
-This may indicate some computation or safety checks are being erroneously omitted,
-which a malicious actor may be able to exploit.
+The Unused Fields (USF) detector identifies declared fields of a circuit component
+that are never assigned or constrained.
+This may indicate that required computations or safety checks have been omitted,
+potentially allowing malicious actors to exploit the circuit.
 
 ### Usage
 
-The USF detector is invoked by selecting "Unused subcomponents"
-(`unused-subcmps`) in the Detector selection during the tool configuration step.
+:::info
 
+Coming soon.
+
+:::
 
 ## Example and Explanation
 
@@ -34,12 +33,11 @@ The USF detector is invoked by selecting "Unused subcomponents"
 {/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
-In the following example, the developer is
-computing the positive difference between inputs. However, unlike the previous
-two examples, the `MultiDiff` circuit is computing the pairwise difference between
-elements in the `inp_large` and `inp_small` array, with the differences being output
-in the `outp` array. Since the circuit is designed to output a positive difference,
-each pair of elements in the input is constrained such that:
+In the following example, the developer intends to compute the positive difference
+between inputs. The `MultiDiff` circuit computes the pairwise difference between
+elements in the `inp_large` and `inp_small` arrays, outputting the results
+in the `outp` array. Since the circuit is intended to output only positive differences,
+each pair of inputs should satisfy the constraint:
 
 $$
 \forall_{i \in [0, n)}\, \text{inp\_large[i]} > \text{inp\_small[i]}
@@ -108,10 +106,16 @@ component main = MultiDiff(3);
 
 </details>
 
-To enforce this property, the developer means to use an array of `LessThan` subcomponent
-to test if `inp_small[i]` is less than `inp_large[i]` for all i in range $[0,n)$,
-but never initializes the subcomponent `lt[0]` and therefore never checks the condition for `i = 0`.
-A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `inp_small[0] < inp_large[0]`, the developer can expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`).
+To enforce this property, the developer intended to use an array of `LessThan` subcomponents
+to check that `inp_small[i] < inp_large[i]` for all `i` in the range $[0,n)$.
+However, the subcomponent `lt[0]` is never initialized, so the condition for `i = 0` is never checked.
+As a result, an assignment such as:
+- `inp_small[0] = 100`
+- `inp_large[0] = 1`
+- `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518`
+would satisfy the circuit’s constraints but produce an invalid output.
+This violates the intended invariant that if `inp_small[0] < inp_large[0]`,
+then `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`.
 
 </TabItem>
 */}
@@ -151,11 +155,15 @@ Coming soon.
 </TabItem>
 </Tabs>
 
-## Assessing Severity
+## How to Assess Severity
 
-Unused fields, if unintentional, are indicative of severe computational errors or constraint
-generation errors that may allow malicious actors to create valid proofs for bogus statements.
+Findings from the USF detector often indicate severe issues.
+
+Unused fields, if unintentional, may reflect serious computational or constraint-generation
+errors that could allow malicious actors to create valid proofs for bogus statements.
 Unused fields may also lead to [unconstrained signals](./unconstrained-signals.md)
-if the fields in question are translated into circuit signals.
-Manual analysis should be performed to determine if the field is correctly left unused,
-and if so, the unused fields should be removed.
+if the unused fields are translated into circuit signals.
+
+Manual analysis is required to determine whether a field is intentionally unused.
+If it is intentional, the field should be removed; otherwise, the underlying bug should be fixed.
+
