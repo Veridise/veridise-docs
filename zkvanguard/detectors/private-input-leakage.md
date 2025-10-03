@@ -150,9 +150,31 @@ or whether it has practical security impact.
 
 ## How to Assess Severity
 
-Once a finding is confirmed as not a false positive, its severity depends on how much
-information is leaked.
-If the entire secret is exposed, the finding is critical.
-If only minimal information is leaked (e.g., whether a value is nonzero),
-the issue may merit only a warning or be considered benign.
-The severity ultimately depends on the nature of the secret and the type of information revealed.
+Once a finding is confirmed as not a false positive (i.e., the leaks occur via invertible functions),
+severity depends on how much private information is exposed and the nature of that information.
+The follwing approach can help determine the severity:
+
+1. **Quantify the leakage(s).**
+
+   Determine how many bits of the secret can be inferred from each output.
+   - If the full secret is revealed (e.g., direct assignment to a public value), all bits are leaked.
+   - If only one bit is revealed (e.g., `IsZero`), the impact is smaller and may be benign.
+   - For partial leaks, estimate entropy loss (e.g., reducing a secret from $[0, 2^{32})$ to $[0, 2^8)$ leaks 24 bits).
+
+2. **Assess aggregate leakage.**
+
+   Circuits may leak a secret across multiple outputs.
+   Check if these leaks expose unique bits of the same secret,
+   since combined they may reveal more than any single output.
+
+3. **Classify severity.**
+
+   - **Critical:** Full secret recoverable or leakage enables practical attacks.
+   - **High:** Large portion of secret or highly sensitive bits exposed.
+   - **Medium:** Partial leakage that meaningfully reduces uncertainty.
+   - **Low/Informational:** Minimal leakage (e.g., a single bit) unlikely to be exploitable.
+
+   Adjust severity based on the sensitivity of the input itself.
+   For example, a full leak of a non-critical value may still warrant only Medium severity.
+
+By following this process, users can move beyond a simple “leak/no-leak” distinction and make informed judgments about real-world risk.
