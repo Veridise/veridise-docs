@@ -1,35 +1,39 @@
-import React from 'react';
-import {useDoc, useDocsSidebar} from '@docusaurus/theme-common/internal';
-import {useAllDocsData, useActivePlugin} from '@docusaurus/plugin-content-docs/client';
-import Link from '@docusaurus/Link';
-import pluralize from 'pluralize';
-import DocCard from '@theme/DocCard';
+import React from "react";
+import { useDoc, useDocsSidebar } from "@docusaurus/theme-common/internal";
+import {
+  useAllDocsData,
+  useActivePlugin,
+} from "@docusaurus/plugin-content-docs/client";
+import Link from "@docusaurus/Link";
+import pluralize from "pluralize";
+import DocCard from "@theme/DocCard";
 
 // On a detector documentation page, displays the "detector types" associated
 // with this detector.
 export function DisplayDetectorTypes(typeNameMap, rootUrl) {
-  const {metadata} = useDoc();
+  const { metadata } = useDoc();
   const detectorTypes = metadata.frontMatter.detectorTypes;
   if (!detectorTypes || detectorTypes.length === 0) return null;
 
   return (
-    <h4>Detector {pluralize("Type", detectorTypes.length)}:
-    <span className="doc-tags">
-      {detectorTypes.map((type) => {
-        const typeName = typeNameMap[type];
-        if (typeName !== undefined) {
-          return (
-            <Link
-              key={type}
-              className="doc-tag"
-              to={`${rootUrl}#${type}`} // auto-generated tag page
-            >
-              {typeName}
-            </Link>
-          );
-        }
-      })}
-    </span>
+    <h4>
+      Detector {pluralize("Type", detectorTypes.length)}:
+      <span className="doc-tags">
+        {detectorTypes.map((type) => {
+          const typeName = typeNameMap[type];
+          if (typeName !== undefined) {
+            return (
+              <Link
+                key={type}
+                className="doc-tag"
+                to={`${rootUrl}#${type}`} // auto-generated tag page
+              >
+                {typeName}
+              </Link>
+            );
+          }
+        })}
+      </span>
     </h4>
   );
 }
@@ -37,16 +41,16 @@ export function DisplayDetectorTypes(typeNameMap, rootUrl) {
 const zkVanguardTypeNameMap = {
   "compute-constrain": "Compute and Constrain",
   "compute-only": "Compute Only",
-  "constrain-only": "Constrain Only"
+  "constrain-only": "Constrain Only",
 };
 
 // Displays the badges for ZK Vanguard detector types.
-export function DisplayZKVanguardDetectorTypes({ rootUrl="." }) {
+export function DisplayZKVanguardDetectorTypes({ rootUrl = "." }) {
   return DisplayDetectorTypes(zkVanguardTypeNameMap, rootUrl);
 }
 
 // Displays doc information for the documents matching the given doc IDs.
-export function DisplayDetectorCards({docIds}) {
+export function DisplayDetectorCards({ docIds }) {
   const allDocsData = useAllDocsData();
   const activePlugin = useActivePlugin(); // returns { pluginId, version }
   const pluginId = activePlugin?.pluginId;
@@ -72,16 +76,18 @@ export function DisplayDetectorCards({docIds}) {
   }
 
   // Combines all top level items
-  const allItems = sidebar.items.map(allItemsFrom).reduce((p, c) => p.concat(c));
+  const allItems = sidebar.items
+    .map(allItemsFrom)
+    .reduce((p, c) => p.concat(c));
 
-  const itemsToShow = allItems.filter(i => docIds.includes(i.docId));
+  const itemsToShow = allItems.filter((i) => docIds.includes(i.docId));
 
   // Using individual doc cards instead of the DocCardList to present them in
   // a list rather than in multiple columns.
   return (
     <div>
       {itemsToShow.map((i) => {
-        return <DocCard item={i} />
+        return <DocCard item={i} />;
       })}
     </div>
   );
