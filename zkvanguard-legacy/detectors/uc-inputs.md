@@ -2,9 +2,13 @@
 sidebar_position: 3
 title: Unconstrained Inputs
 description: Finds unconstrained input signals.
+detectorTypes:
+- constrain-only
 ---
 
-# Unconstrained Inputs (`uc-inputs`)
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

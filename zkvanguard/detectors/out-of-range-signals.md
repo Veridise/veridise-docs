@@ -2,12 +2,18 @@
 sidebar_position: 2
 title:  Out-Of-Range Signals
 description: Finds signals that may be assigned a value outside of their desired range.
+detectorTypes:
+- compute-constrain
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Out-Of-Range Signals
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

@@ -2,12 +2,18 @@
 sidebar_position: 2
 title: Divide By Zero
 description: Finds potential divide-by-zero errors.
+detectorTypes:
+- compute-only
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Divide By Zero
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

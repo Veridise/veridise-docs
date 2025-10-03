@@ -2,12 +2,18 @@
 sidebar_position: 7
 title: Unused Fields
 description: Finds unused fields within structures/circuit components.
+detectorTypes:
+- compute-constrain
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Unused Subcomponents
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

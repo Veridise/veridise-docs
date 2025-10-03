@@ -2,9 +2,13 @@
 sidebar_position: 4
 title: Underconstrained Outputs
 description: Finds underconstrained output signals.
+detectorTypes:
+- constrain-only
 ---
 
-# Underconstrained Outputs (`uc-outputs`)
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

@@ -2,9 +2,13 @@
 sidebar_position: 5
 title: Unconstrained Subcomponent Input
 description: Finds unconstrained subcomponent input signals.
+detectorTypes:
+- constrain-only
 ---
 
-# Unconstrained Subcomponent Inputs (`uc-subcmp-inputs`)
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

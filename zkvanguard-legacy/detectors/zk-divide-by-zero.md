@@ -2,9 +2,13 @@
 sidebar_position: 9
 title: (ZK) Divide By Zero
 description: Finds potential divide-by-zero errors.
+detectorTypes:
+- compute-only
 ---
 
-# Divide By Zero (`zk-divide-by-zero`)
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

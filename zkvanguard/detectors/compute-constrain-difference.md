@@ -2,12 +2,18 @@
 sidebar_position: 1
 title: Compute-Constrain Difference
 description: Detects discrepancies between witness computation and constraint generation.
+detectorTypes:
+- compute-constrain
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Compute-Constrain Difference
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

@@ -2,12 +2,18 @@
 sidebar_position: 5
 title: Unconstrained Signals
 description: Finds unconstrained signals.
+detectorTypes:
+- constrain-only
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Unconstrained Signals
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

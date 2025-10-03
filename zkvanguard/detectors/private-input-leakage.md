@@ -2,6 +2,8 @@
 sidebar_position: 3
 title: Private Input Leakage
 description: Detects leakages of private inputs via public signals.
+detectorTypes:
+- compute-constrain
 ---
 
 import Tabs from '@theme/Tabs';
@@ -9,6 +11,10 @@ import TabItem from '@theme/TabItem';
 
 
 # Private Input Leakage
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

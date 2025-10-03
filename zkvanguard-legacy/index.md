@@ -1,9 +1,9 @@
 ---
-title: ZK Vanguard (Legacy) Overview
+title: ZK Vanguard (Circom) Overview
 sidebar_position: 1
 ---
 
-# ZK Vanguard (Legacy) Overview
+import {DisplayDetectorCards} from '@site/src/components/vanguard/DetectorTypeUtils';
 
 :::caution
 
@@ -13,9 +13,9 @@ please refer to [these ZK Vanguard documents](/zkvanguard/).
 
 :::
 
-## What is ZK Vanguard (Legacy)?
+## What is ZK Vanguard (Circom)?
 
-ZK Vanguard (Legacy) is a static analysis tool used to discover common vulnerabilities in zero-knowledge (ZK) circuits.
+ZK Vanguard (Circom) is a static analysis tool used to discover common vulnerabilities in zero-knowledge (ZK) circuits.
 This legacy version only supports detecting bugs in ZK circuits written in [circom](https://docs.circom.io/).
 
 ## General Usage Instructions

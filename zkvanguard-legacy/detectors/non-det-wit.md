@@ -2,9 +2,13 @@
 sidebar_position: 1
 title: Non-Deterministic Witness
 description: Detects non-deterministic witness computations.
+detectorTypes:
+- compute-only
 ---
 
-# Non-Deterministic Witness (`non-det-wit`)
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

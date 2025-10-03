@@ -2,9 +2,13 @@
 sidebar_position: 6
 title: Unconstrained Subcomponent Output
 description: Finds unconstrained subcomponent output signals.
+detectorTypes:
+- constrain-only
 ---
 
-# Unconstrained Subcomponent Output (`uc-subcmp-outputs`)
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

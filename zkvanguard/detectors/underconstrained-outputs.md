@@ -2,12 +2,18 @@
 sidebar_position: 6
 title: Underconstrained Outputs
 description: Finds underconstrained output signals.
+detectorTypes:
+- constrain-only
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Underconstrained Outputs
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 

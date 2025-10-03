@@ -2,12 +2,18 @@
 sidebar_position: 4
 title: Signal-Dependent Control Flow
 description: Detects control flow that is conditional on signal-derived values.
+detectorTypes:
+- compute-only
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Signal-Dependent Control Flow
+
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 
