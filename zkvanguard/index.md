@@ -3,22 +3,22 @@ title: ZK Vanguard Overview
 sidebar_position: 1
 ---
 
-# ZK Vanguard Overview
-
 ## What is ZK Vanguard?
 
 ZK Vanguard is a static analysis tool used to discover common vulnerabilities in zero-knowledge (ZK) circuits.
-ZK Vanguard currently supports detecting bugs in ZK circuits written in [circom](https://docs.circom.io/).
+ZK Vanguard is able to analyze any ZK language that supports [LLZK compilation][llzk-docs], such as [Zirgen], [halo2], and [Plonky3].
+Currently, ZK Vanguard is able to provide analysis for [Zirgen] circuits,
+with support for [circom][circom], [halo2][halo2], and [Plonky3][Plonky3] coming soon to AuditHub.
+An older version of ZK Vanguard which supports circom is available through the [ZK Vanguard (Circom)](/zkvanguard-legacy/) version.
 
-## General Usage Instructions
+:::info
 
-### AuditHub Usage
+This section of the documentation is currently a work-in-progress.
 
-If you're not familiar with AuditHub, first read the [AuditHub guide](/saas/).
+:::
 
-To use ZK Vanguard on AuditHub, upload a project source archive that contains Circom circuit code.
-AuditHub will automatically detect that the project contains ZK circuits and present Veridise's
-ZK tools for selection on the tool selection screen.
-To use ZK Vanguard, select it from the tool selection screen.
-
-![image](./screenshots/zkvanguard-tool-selection.png)
+[llzk-docs]: https://veridise.github.io/llzk-lib/main/
+[Zirgen]: https://github.com/risc0/zirgen
+[halo2]: https://zcash.github.io/halo2/
+[Plonky3]: https://polygon.technology/plonky3
+[circom]: https://docs.circom.io/
