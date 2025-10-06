@@ -112,7 +112,7 @@ not the operations performed over those values (e.g., addition, multiplication).
 may therefore generate false negatives for assignments and constraints that contain the same values,
 but perform different operations (e.g., `in + 7`, `in * 7` are treated as equivalent expressions).
 
-## Assesing Severity
+## How to Assess Severity
 
 The severity of a witness-constraint difference depends on whether the involved
 signals are properly constrained according to the circuit's design.
