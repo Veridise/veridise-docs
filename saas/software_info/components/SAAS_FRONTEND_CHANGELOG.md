@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.7 - 2025-10-09
+### Added
+- Improvements to the redesign and several fixes
+
 ## v2.4.6 - 2025-10-03
 ### Added
 - Email notifications for new issues and findings threads

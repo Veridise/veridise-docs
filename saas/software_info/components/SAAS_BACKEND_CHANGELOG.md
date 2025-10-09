@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.11 - 2025-10-09
+### Changed
+- Infrastructure improvements
+
+### Fixed
+- Bug fixes
+
 ## v2.5.10 - 2025-10-02
 ### Added
 - Vanguard custom detectors support
