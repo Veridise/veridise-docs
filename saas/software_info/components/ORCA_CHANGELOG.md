@@ -6,6 +6,15 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.7.0 - 2025-10-09
+### Added
+- Added more helper functions to Hints and [V] languages.
+- Updated struct and function descriptions on counterexamples to include field names.
+
+### Fixed
+- Fixed an issue with OrCa not recognizing global enums and structs.
+- Fixed a bug with type casting bytes and array types.
+- Fixed a bug with bytes values not matching expected length in cryptographic hints.
 ## v2.6.0 - 2025-09-03
 ### Changed
 - Updated PyREVM to support latest stable Foundry version v1.3.1.

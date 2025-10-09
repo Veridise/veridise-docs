@@ -17,5 +17,6 @@ export default function prismIncludeLanguages(PrismObject) {
   });
   require("/src/components/prismjs/prism-circom");
   require("/src/components/prismjs/prism-paql");
+  require("/src/components/prismjs/prism-zirgen");
   delete globalThis.Prism;
 }

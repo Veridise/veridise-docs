@@ -45,3 +45,23 @@ html[data-theme="dark"] .algolia-docsearch-suggestion--title {
 html[data-theme="dark"] .ds-cursor .algolia-docsearch-suggestion--wrapper {
   background: var(--ifm-background-surface-color);
 }
+
+/* for doc tags */
+
+/* .doc-tags {
+  margin-top: 1rem;
+} */
+
+.doc-tag {
+  padding: 0.2em 0.6em;
+  margin: 0 0.2em;
+  border-radius: 4px;
+  background: var(--ifm-color-primary-lightest);
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-font-color-base);
+}
+
+html[data-theme="dark"] .doc-tag {
+  background: var(--ifm-color-primary-darkest);
+  color: var(--ifm-font-color-base);
+}

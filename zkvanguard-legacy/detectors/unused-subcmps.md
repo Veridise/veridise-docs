@@ -2,31 +2,34 @@
 sidebar_position: 7
 title: Unused Subcomponents
 description: Finds unused subcomponents in subcomponent arrays.
+detectorTypes:
+- compute-constrain
 ---
 
-# Unused Subcomponents (`unused-subcmps`)
+import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';
+
+<DisplayZKVanguardDetectorTypes />
 
 ## Summary and Usage
 
-The Unused Subcomponent (USC) detector detects if any elements in an array of
-subcomponents are declared, but never assigned any input or output signals by the containing component.
-This may indicate some computation or safety checks are being erroneously omitted, which a malicious actor may be able to exploit.
+The Unused Subcomponent (USC) detector identifies elements in an array of subcomponents that are declared
+but never assigned input or output signals by the containing component.
+Such omissions may indicate missing computations or safety checks that could be exploited by a malicious actor.
 
 ### Usage
 
 The USC detector is invoked by selecting "Unused subcomponents"
 (`unused-subcmps`) in the Detector selection during the tool configuration step.
 
-
 ## Example and Explanation
 
 In the following example, similar the two examples in the [unconstrained subcomponent inputs](./uc-subcmp-inputs.md) and
 [unconstrained subcomponent outputs](./uc-subcmp-outputs.md) detectors, the developer is
 computing the positive difference between inputs. However, unlike the previous
-two examples, the `MultiDiff` circuit is computing the pairwise difference between
+two examples, the `MultiDiff` circuit computes the pairwise difference between
 elements in the `inp_large` and `inp_small` array, with the differences being output
 in the `outp` array. Since the circuit is designed to output a positive difference,
-each pair of elements in the input is constrained such that:
+each pair of elements in the input is expected to satisfy:
 
 $$
 \forall_{i \in [0, n)}\, \text{inp\_large[i]} > \text{inp\_small[i]}
@@ -77,7 +80,7 @@ template MultiDiff(N) {
   signal output outp[N];
 
   component lt[N];
-  // Bug: should be `var i = 0`!
+  // Bug: `lt[0]` is never initialized since `i` starts at 1
   for (var i = 1; i < N; i++) {
     lt[i] = LessThan(252);
     lt[i].in[0] <== inp_small[i];
@@ -95,8 +98,8 @@ component main = MultiDiff(3);
 
 </details>
 
-To enforce this property, the developer means to use an array of `LessThan` subcomponent to test if `inp_small[i]` is less than `inp_large[i]` for all i in range $[0,n)$, but never initializes the subcomponent `lt[0]` and therefore never checks the condition for `i = 0`.
-A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will therefore satisfy the circuit’s constraints, yet provides an output value outside the range that the developer intended (as if `inp_small[0] < inp_large[0]`, the developer can expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`).
+A correct implementation should initialize all `lt` subcomponents from `i = 0`, but here `lt[0]` is never initialized and the condition for `i = 0` is never checked.
+A value assignment of `inp_small[0] = 100`, `inp_large[0] = 1`, `outp[0] = 21888242871839275222246405745257275088548364400416034343698204186575808495518` will satisfy the circuit’s constraints, yet produces an output outside the intended range, as if `inp_small[0] < inp_large[0]`, the developer would expect `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`.
 
 ## Usage Example
 
@@ -165,12 +168,11 @@ template Sum(n) {
 component main = Sum(3);
 ```
 
-Even though `adds[0]` is unused, the sum is still computed correctly
-(as for `n` numbers, only `n-1` additions must be performed).
-The USC detector will still output a warning for this case, however, which is a false positive.
+Even though `adds[0]` is unused, the sum is still computed correctly (for `n` numbers, only `n-1` additions must be performed).
+The USC detector will still output a warning in this case, which is a false positive.
 
-## Assessing Severity
+## How to Assess Severity
 
-Unused subcomponents, if unintentional, are indicative of severe computational errors or constraint
-generation errors that may allow malicious actors to create valid proofs for bogus statements.
-Manual analysis should be performed to determine if the subcomponent is correctly left unused.
+If unused subcomponents are unintentional, they indicate severe computational
+or constraint-generation errors that could allow malicious actors to create valid proofs for unintended statements.
+Manual analysis should confirm whether the subcomponent is correctly left unused.
