@@ -1,3 +1,9 @@
+---
+sidebar_position: 5
+sidebar_label: Vanguard Legacy
+title: Software Changes
+slug: vanguard-legacy-changelog
+---
 ## v0.3.11 - 2025-09-11
 ### Fixed
 - Solidity:
