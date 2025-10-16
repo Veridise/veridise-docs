@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
-sidebar_label: Picus-v2
+sidebar_position: 4
+sidebar_label: Picus v2
 title: Software Changes
 slug: picus-v2-changelog
 ---
