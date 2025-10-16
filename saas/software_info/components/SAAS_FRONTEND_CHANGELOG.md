@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.8 - 2025-10-16
+### Added
+- Add markdown link conversion to HTML in MarkdownEditorMini
+- General fixes for redesign
+
+### Fixed
+- Fix timeout issue in Picus v1 and v2
+
 ## v2.4.7 - 2025-10-09
 ### Added
 - Improvements to the redesign and several fixes
