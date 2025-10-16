@@ -1,6 +1,6 @@
 ---
-sidebar_position: 4
-sidebar_label: Vanguard
+sidebar_position: 5
+sidebar_label: Vanguard v2
 title: Software Changes
 slug: vanguard-changelog
 ---
