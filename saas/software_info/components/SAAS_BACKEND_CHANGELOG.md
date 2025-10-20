@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.13 - 2025-10-20
+### Fixed
+- Bug fixes
+
 ## v2.5.12 - 2025-10-16
 ### Added
 - ZK Vanguard v2
