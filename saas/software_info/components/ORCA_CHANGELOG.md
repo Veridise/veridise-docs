@@ -6,6 +6,11 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.8.0 - 2025-10-23
+### Changed
+- Updated OrCa dependencies to improve performance.
+- Updated OrCa Findings reports for AuditHub.
+
 ## v2.7.0 - 2025-10-09
 ### Added
 - Added more helper functions to Hints and [V] languages.
