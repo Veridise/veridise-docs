@@ -6,6 +6,16 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.4.9 - 2025-10-23
+### Added
+- Add multiple fixes to the redesign.
+- Add zk-vanguard v2
+- Custom detectors
+- Vanguard v2
+
+### Changed
+- Updated ANTLR to the latest version
+
 ## v2.4.8 - 2025-10-16
 ### Added
 - Add markdown link conversion to HTML in MarkdownEditorMini
