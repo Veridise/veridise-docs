@@ -6,6 +6,16 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.0 - 2025-10-30
+### Added
+- Add copy markdown functionality
+- Add markdown editor mini functionality
+- Add settings modal that allows to manage organization's V-specifications and hints library
+- Max width for tabs
+
+### Changed
+- Show a notification when there's an update that is dismissable
+
 ## v2.4.9 - 2025-10-23
 ### Added
 - Add multiple fixes to the redesign.
