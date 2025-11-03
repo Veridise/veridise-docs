@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.15 - 2025-11-03
+### Added
+- User management on organization by organization users
+
+### Fixed
+- Bug fixes
+
 ## v2.5.14 - 2025-10-23
 ### Fixed
 - Bug fixes

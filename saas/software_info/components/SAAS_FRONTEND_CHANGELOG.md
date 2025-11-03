@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.1 - 2025-11-03
+### Fixed
+- Fix issue with thread creation
+
 ## v2.5.0 - 2025-10-30
 ### Added
 - Add copy markdown functionality
