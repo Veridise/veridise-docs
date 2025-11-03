@@ -43,7 +43,7 @@ vars: MyVToken token
 spec: []!finished(token.*, token.totalSupply() != 100 + fsum{token.mint(acc, amt)}(amt) - fsum{token.burn(acc, amt)}(amt))
 ```
 
-As you can see in the implementation of `MyVToken`, the constrcutor adds the tokens to the balance directly, without inrementing the total supply. This means that the returned value from `totalSupply()` will always be off by 100.
+As you can see in the implementation of `MyVToken`, the constructor adds the tokens to the balance directly, without inrementing the total supply. This means that the returned value from `totalSupply()` will always be off by 100.
 
 ## Understanding the Spec
 
