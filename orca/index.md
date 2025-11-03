@@ -18,4 +18,4 @@ Want to hit the ground running? Checkout [the guide here](getting_started/introd
 
 ## User Guide
 
-Need more detailed information about OrCa and all of its bells and whistles? Check [the user guide](user_guide/) which documents how to configure OrCa, the [V] and hint lanaguages, common tips and tricks for effective fuzzing with OrCa, and much more!
+Need more detailed information about OrCa and all of its bells and whistles? Check the user guide which documents how to configure OrCa, the [V] and hint lanaguages, common tips and tricks for effective fuzzing with OrCa, and much more!
