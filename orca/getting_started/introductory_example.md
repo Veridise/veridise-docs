@@ -16,7 +16,7 @@ In order to fuzz a Solidity project, OrCa requires the following things:
 2. A deployment script that deploys the desired smart contracts.
 3. At least one [V] specification that will be checked by OrCa.
 
-In the following sections, we will examine each of these requirements via a simple example. For a more detailed breakdowns of the requirements, particularly with respect to build system and deployment scripts, please see [Build System and Deployment Requirements]().
+In the following sections, we will examine each of these requirements via a simple example. For a more detailed breakdowns of the requirements, particularly with respect to build system and deployment scripts, please see [our documentation on build systems and deployment scripts](../user_guide/orca_configuration/build_system_and_deployment/build_system_and_deployment.md).
 
 ## A Running Example
 
@@ -91,7 +91,7 @@ contract OrCaDeploymentScript is Script {
 }
 ```
 
-For more information on setup and deployment, see [Build System Integration]() and [Writing a Deployment Script]().
+For more information on setup and deployment, see [our documentation on build systems and deployment scripts](../user_guide/orca_configuration/build_system_and_deployment/build_system_and_deployment.md).
 
 ## Writing a [V] Specification
 
@@ -104,15 +104,13 @@ vars: Vault v
 spec: []!finished(v.deposit, v.closed)
 ```
 
-In English, this specification can be read as "it is never the case that we finish a call to deposit where the vault is closed." A more detailed introduction to the [V] specification language can be found in [this guide](user_guide/v/by_example/hello_bugs).
+In English, this specification can be read as "it is never the case that we finish a call to deposit where the vault is closed." A more detailed introduction to the [V] specification language can be found in [this guide](../user_guide/v/by_example/hello_bugs).
 
 The [V] specification can be added as part of the AuditHub project, embedded in the project itself as a file with the extension `.spec`, or added during the configuration phase of OrCa as an "ad-hoc" specification.
 
 ## Running OrCa
 
-Now that we have all of our inputs, it is as easy as running an OrCa task (see [instructions on running an AuditHub task]()).
-
-When running OrCa, there are a number of configurable options, including the amount of time to fuzz, contracts to ignore during fuzzing, and others (see [OrCa Configuration Options]() for more on these). Good news here is we can run with all of the default options. Just make sure to select/add the [V] specification above when this option is presented.
+When running OrCa, there are a number of configurable options, including the amount of time to fuzz, contracts to ignore during fuzzing, and others (see [OrCa Configuration Options](../user_guide/orca_configuration/advanced_settings.md) for more on these). Good news here is we can run with all of the default options. Just make sure to select/add the [V] specification above when this option is presented.
 
 ## Interpretting OrCa Results
 
@@ -127,4 +125,4 @@ test: finished(v.deposit(), sender = __user0__ && value = 100)
 
 This "counter-example" shows how the specification can be violated -- in this case, someone can violate the specification by simply calling deposit with `msg.value` of `100` (this is because the `closed` value is not used to constrain when deposits happen).
 
-In addition to the counter-example, OrCa also reports information about coverage achieved during fuzzing (as an LCOV file that can be downloaded) as well as information about how OrCa was able to fuzz the contracts/functions in the protocol. Reported information includes which functions were called, how many times they were called, and what percentage of those calls reverted. This information can be helpful in understanding how well OrCa explored the protocol and hints/updates that may be useful for more effective fuzzing. See [Triaging OrCa Results]() for more notes on how to interpret and use OrCa results.
+In addition to the counter-example, OrCa also reports information about coverage achieved during fuzzing (as an LCOV file that can be downloaded) as well as information about how OrCa was able to fuzz the contracts/functions in the protocol. Reported information includes which functions were called, how many times they were called, and what percentage of those calls reverted. This information can be helpful in understanding how well OrCa explored the protocol and hints/updates that may be useful for more effective fuzzing. See [Triaging OrCa Results](../user_guide/advanced_usage/triaging_orca_results.md) for more notes on how to interpret and use OrCa results.
