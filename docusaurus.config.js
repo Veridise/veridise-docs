@@ -82,6 +82,7 @@ const config = {
         routeBasePath: "saas",
         sidebarPath: require.resolve("./sidebars.js"),
         lastVersion: "current",
+        exclude: ["**/guide/**", "**/reference/**"],
         remarkPlugins: [dashes],
       },
     ],
