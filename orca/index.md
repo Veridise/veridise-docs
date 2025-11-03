@@ -14,8 +14,8 @@ Like other smart contract fuzzers, OrCa discovers bugs in DeFi applications by g
 
 ## Quickstart
 
-Want to hit the ground running? Checkout [the guide here](getting_started/running_orca_through_saas.md) for an example-based introduction to OrCa.
+Want to hit the ground running? Checkout [the guide here](getting_started/introductory_example.md) for an example-based introduction to OrCa.
 
 ## User Guide
 
-Need more detailed information about OrCa and all of its bells and whistles? Check [the user guide](user_guide/) which documents how to configure OrCa, the [V] and hint lanaguages, common tips and tricks for effective fuzzing with OrCa, and much more!
+Need more detailed information about OrCa and all of its bells and whistles? Check the user guide which documents how to configure OrCa, the [V] and hint lanaguages, common tips and tricks for effective fuzzing with OrCa, and much more!
