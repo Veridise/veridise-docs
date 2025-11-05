@@ -1,5 +1,5 @@
 
-# Running Picus V2 Through AuditHub
+# Running Picus Through AuditHub
 
 As a working example we will use Picus to prove the following Picus module is underconstrained. For a detailed description about the syntax and semantics of Picus circuit descriptions please see the following [document](../picus_constraint_language/picus_constraint_language.md):
 
