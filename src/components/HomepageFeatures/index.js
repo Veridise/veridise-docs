@@ -58,8 +58,9 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        <a href="picus-v2">Picus</a> is the state-of-the-art determinism verifier
-        for ZK circuits which can both verify that a circuit is deterministic or prove it is underconstrained.
+        <a href="picus-v2">Picus</a> is the state-of-the-art determinism
+        verifier for ZK circuits which can both verify that a circuit is
+        deterministic or prove it is underconstrained.
       </>
     ),
   },
@@ -68,13 +69,12 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        <a href="picus">Picus (Circom)</a> is a legacy Veridise tool to prove that a Circom circuit
-        is deterministic, or find a counterexample if it is
-        underconstrained.
+        <a href="picus">Picus (Circom)</a> is a legacy Veridise tool to prove
+        that a Circom circuit is deterministic, or find a counterexample if it
+        is underconstrained.
       </>
     ),
   },
-  
 ];
 
 function Feature({ Svg, title, description }) {
