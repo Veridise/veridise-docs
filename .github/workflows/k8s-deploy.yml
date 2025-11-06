@@ -11,7 +11,7 @@ on:
   
 jobs:
   deploy-docs:
-    runs-on: ${{ inputs.environment }}
+    runs-on: ${{ inputs.environment == 'production' && 'prod-saas-docs' || inputs.environment }}
     environment:
       name: ${{ inputs.environment }}
       url: ${{ vars.ROOT_URL }}
