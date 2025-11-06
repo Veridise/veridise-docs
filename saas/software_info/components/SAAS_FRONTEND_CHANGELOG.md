@@ -6,6 +6,23 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.2 - 2025-11-06
+### Added
+- Ability to create new issue types
+- Maintaining position when going through threads
+
+### Changed
+- Drafts are now stored per session
+
+### Deprecated
+- Auto selection of hints is deprecated
+
+### Fixed
+- Color of findings text is changed to be more readable
+
+### Removed
+- Some text for removed functionality
+
 ## v2.5.1 - 2025-11-03
 ### Fixed
 - Fix issue with thread creation
