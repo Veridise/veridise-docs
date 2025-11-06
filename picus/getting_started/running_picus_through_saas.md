@@ -1,6 +1,6 @@
 # Running Picus Through SAAS
 
-For this introduction, we will consider using Picus to check that the following simple `Decoder.circom` circuit is underconstrained or not.
+For this introduction, we will consider using Picus (Circom) to check that the following simple `Decoder.circom` circuit is underconstrained or not.
 
 ```circom
 pragma circom 2.0.7;
@@ -26,7 +26,7 @@ component main = Decoder(3);
 
 ## Onboarding process
 
-To start using Picus visit the [SaaS page](https://saas.veridise.com/). 
+To start using Picus (Circom) visit the [SaaS page](https://saas.veridise.com/). 
 When you access the platform, you will be redirected to our SSO. 
 
 ### Registration 
@@ -67,7 +67,7 @@ Instead of creating a project, you can also select an existing project by simply
 
 ### Creating a Task
 
-A "task" is an actual run of one of Veridise's tool against a given project (e.g., running Picus on a given project to find an underconstraining issue).
+A "task" is an actual run of one of Veridise's tool against a given project (e.g., running Picus (Circom) on a given project to find an underconstraining issue).
 
 After creating or selecting a project, you can create a new task by clicking `New Task`
 
@@ -87,13 +87,13 @@ After proving the source code, a user must select the platform and language desi
 
 #### Select a Tool
 
-After selecting a language, you will be asked to choose a tool. To run Picus, choose Picus.
+After selecting a language, you will be asked to choose a tool. To run Picus (Circom), choose Picus.
 
 ![image](img/select-tool.png)
 
-#### Picus Configuration
+#### Picus (Circom) Configuration
 
-Next, you will be asked to configure Picus. The most important setting is Path to Circom file. 
+Next, you will be asked to configure Picus (Circom). The most important setting is Path to Circom file. 
 The query timeout can also be useful to customize, but the default setting of 5 seconds should work well for most tasks.
 In this case, we select `./Decoder.circom` file as the path and click `Next`.
 
@@ -111,4 +111,4 @@ After launching the task, you will be redirected to the Task Details page. This 
 
 ![image](img/job-output.png)
 
-In this case, we can see the Picus successfully found a counterexample. You can additionally download the counterexample witness files under the Artifacts section.
+In this case, we can see the Picus (Circom) successfully found a counterexample. You can additionally download the counterexample witness files under the Artifacts section.

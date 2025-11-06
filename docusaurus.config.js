@@ -221,17 +221,16 @@ const config = {
           {
             // TODO: replace with dropdown when versions are available.
             type: "docsVersion",
-            docsPluginId: "picus",
+            docsPluginId: "picus-v2",
             position: "left",
             label: "Picus",
           },
-
           {
             // TODO: replace with dropdown when versions are available.
             type: "docsVersion",
-            docsPluginId: "picus-v2",
+            docsPluginId: "picus",
             position: "left",
-            label: "Picus-v2",
+            label: "Picus (Circom)",
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
