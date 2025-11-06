@@ -1,91 +1,109 @@
 ---
-title: Custom Detectors
-sidebar_position: 4
+title: Program Analysis Query Language (PAQL)
+sidebar_position: 2
 ---
-
-:::info
-
-This documentation page is a work-in-progress.
-
-:::
-
-Vanguard provides a feature to allow users to create _custom detectors_ to
-identify vulnerable code patterns using a concise query language.
-Custom detectors utilize Vanguard's advanced static analysis engine and are
-treated similarly to the built-in Vanguard detectors.
-
-AuditHub includes a pre-defined "library" of custom detectors which catch simple
-vulnerabilities involving popular smart contract types, such as ERC20 tokens and
-ERC4626 vaults.
-You can also create your own custom detector if you want to catch specific
-vulnerability patterns in your project.
-
-## Using the Custom Detectors Library
-
-:::info
-
-Coming soon
-
-:::
-
-## Creating Your Own Custom Detector
-
-:::info
-
-Coming soon
-
-:::
-
-## Program Analysis Query Language (PAQL)
 
 Search patterns are written in a language named _Program Analysis Query
 Language_, or _PAQL_ for short.
 PAQL is similar in style to SQL and CodeQL, but Veridise engineers have designed
 it to be specialized for solving static analysis problems in DeFi and ZK
 applications.
+This page will provide examples of PAQL queries and a tutorial on how to write
+your own.
 
-### Examples
+Throughout this page and other parts of the documentation, we will use the terms
+(PAQL) _query_ and search pattern interchangeably.
 
-The examples below demonstrate different aspects of PAQL's Solidity dialect.
+## Examples
+
+The examples below will briefly demonstrate different aspects of PAQL using
+simple and moderately complex queries in the Solidity dialect.
 
 #### Identify unsafe ERC20 transfers and approves
+
+The following query identifies all calls made directly to ERC20 `transfer`,
+`transferFrom`, and `approve` functions.
+Specifically, it reports the contract affected, the name of the function that is
+called, and the location of the call.
+Such calls often neglect to check the success status returned by those
+functions, hence why it is useful to report all three pieces of information.
+
 ```paql
-FIND ExternalCall c IN Function f WHERE
-  f.name != "safeTransfer" && f.name != "safeApprove",
-  c.signature == "transfer(address,uint256)" || c.name == "approve(address,uint256)",
+FIND ExternalCall call IN Contract c WHERE
+  /* selectors correspond to:
+   *   transfer(address,uint256)
+   *   transferFrom(address,address,uint256)
+   *   approve(address,uint256)
+   */
+  regexMatch(call.selector, "0x(a9059cbb|23b872dd|095ea7b3)")
 AS
-  c
+  contract = c,
+  target = call.name,
+  call,
 ```
+
+Note that this is a simplified version of a query available in the custom
+detectors Standard Library on AuditHub.
 
 #### Detect simple reentrancy vulnerabilities
 
 A _simple reentrancy vulnerability_ is defined as a location where a storage
-write can occur after an external call in the same contract.
+write can occur after an external call in the same contract, such that the
+target contract of the call could invoke the same function (where the external
+call was launched) before returning control flow back to the original call.
+An example of this is the
+[well-known MakerDAO hack](https://blog.chain.link/reentrancy-attacks-and-the-dao-hack/).
+
+The following query can be used to note pairs of external calls and writes that
+may be vulnerable to simple reentrancy attacks:
 
 ```paql
 FIND
-  ExternalCall call IN Function f,
-  StorageWrite w IN call.after
+  Function f IN Contract ct,
+  ExternalCall call IN f,
+  Expression e IN call.after,
+  StorageWrite w IN e
 WHERE
-  call.mayHaveUnknownTarget
+  call.isCall,  -- Only ordinary calls are indicative of reentrancy
+  !call.isSend  -- Ignore native currency .send/.transfer
+AS
+  contract = ct,
+  function = f,
+  target = call.signature,
+  call,
+  writeLoc = e,
+  variable = w.location,
 ```
 
-The above query will also identify simple reentrancies where the call and the
-storage write occur in different functions, reporting both the call and involved
-write.
+The main feature used in this query is the `.after` property of `Expression`s in
+the Solidity dialect, which allows iterating over all `Expression`s that may be
+executed after the given one, including those in other functions as well.
 
 #### List state-modifying functions that may not be restricted to the owner
 
+In some cases, it is useful to check that a certain bad behavior does _not_
+occur.
+For example, it may be intended for the state-modifying functions of a specific
+contract to be restricted to the contract's `owner`; if anyone who has not been
+checked to be the owner is able to change a storage variable, then this would be
+an access control violation.
+PAQL provides the ability to check that such restrictions are correctly enforced
+using an `EXISTS` expression, as shown in the following query.
+
 ```paql
 FIND
-  Function f,
+  Contract c,
+  Function f IN c,
 WHERE
+  -- Only check the specific contract
+  c.name == "MyContract",
+
   f.isExternallyCallable,
   (EXISTS StorageWrite w IN f.reachable),
   !EXISTS
     RequireLike r IN f.reachable,
     StorageRead owner IN r.backwardSlice
-  WHERE { owner.location == "owner" }
+  WHERE { owner.location == "owner" },
 ```
 
 The above query finds functions that (1) are externally callable; (2) modify at
@@ -96,7 +114,7 @@ Vanguard considers a "require-like" statement to be any statement of the form
 `require(condition)` or `if (!condition) revert()` or `if (!condition) throw
 Error()`.
 
-### Tutorial
+## Tutorial
 
 In this section, we will explain how to write a PAQL search pattern using
 several examples.
@@ -176,7 +194,7 @@ Executing our example query on the project will yield the following results:
 }
 ```
 
-#### Notes on Syntax
+### Notes on Syntax
 
 The `WHERE <clauses>` part can be omitted if no conditions are needed.
 For example, to simply list _all_ functions in _all_ contracts, the following
@@ -197,7 +215,6 @@ FIND Function f IN Contract c
 Various types of code comments are supported in a search pattern:
 
 ```paql
-// This is a single line comment.
 -- This is also a single line comment.
 /*
   This is a
@@ -205,13 +222,7 @@ Various types of code comments are supported in a search pattern:
 */
 ```
 
-#### Expressions
-
-:::info
-
-Documentation is a work-in-progress
-
-:::
+### Expressions
 
 Both source expressions and `WHERE` clauses use _expressions_, each of which
 represents some sort of computation of a _value_.
@@ -241,9 +252,14 @@ A list of some basic expressions is shown below.
 | `e.f`                            | `func.name`                    | Get object property                |
 | `f(e1, ..., en)`                 | `regexMatch(func.name, "_.*")` | Invoke named operator              |
 
-<!-- Can't list e1 || e2 due to a bug in mdx. Need a docusaurus update. -->
+:::info
 
-#### EXISTS expressions
+Currently, named operators can only be used directly under a `WHERE` clause.
+A future update will make them available to be used anywhere in an expression.
+
+:::
+
+### `EXISTS` expressions
 
 An `EXISTS <var declaration list> WHERE { <clauses> }` expression is similar
 to a `FIND` statement, but evaluates to a boolean value indicating whether at
@@ -266,7 +282,7 @@ FIND Contract c WHERE
   !(EXISTS StorageVar v IN c),
 ```
 
-#### FIND projection
+### `FIND` projection (`AS` section)
 
 In some cases, it may be useful to exclude variables from the search results,
 rename the resulting variables, or to include extra expressions in the results.
@@ -312,16 +328,10 @@ FIND Function function WHERE
   function.visibility == "external" || function.visibility == "public",
 AS
   contract = f.contract
-  function,  // equivalent to function = function
+  function,  -- equivalent to function = function
 ```
 
-#### Types and Objects {#types}
-
-:::info
-
-Documentation is a work-in-progress
-
-:::
+### Types and Objects {#types}
 
 PAQL is a _strongly-typed_ language in that every value and expression is typed,
 with strict rules on what operations can be performed based on type.
@@ -348,20 +358,27 @@ contract:
 FIND
   Contract c,
 
-  // Contract object supports Function as an iterable type
+  -- Contract object supports Function as an iterable type
   Function f IN c,
 
-  // f.reachable returns an object that supports Function as an iterable type
+  -- f.reachable returns an object that supports Function as an iterable type
   Function g IN f.reachable,
   ...
 ```
 
-## Solidity Dialect Reference
+There are also expressions that can be used with object types, mainly the
+`<expr> IS <class>` operator that can be used to check whether a specific
+expression `<expr>` can be converted to the given class `<class>`.
+For example, the following query for Solidity finds all Solidity `Expression`s
+that are external calls or internal calls:
 
-:::info
+```paql
+FIND Expression e IN Contract c WHERE
+  e IS InternalCall || e IS ExternalCall
+```
 
-Documentation coming soon
+To see more detailed information about object types and properties for the
+specific dialect you are working with, see the related reference documentation:
 
-:::
-
+* [Solidity dialect reference](./solidity-dialect.md)
 

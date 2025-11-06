@@ -20,7 +20,7 @@ You can get started with Vanguard by following [this guide](./getting-started.md
 * Produces detailed findings that can be triaged directly in the AuditHub
   interface.
 * For projects or protocols that require custom analysis, the [custom
-  detectors](./custom-detectors.md) feature provides the ability to catch
+  detectors](./custom-detectors/index.md) feature provides the ability to catch
   protocol/library-specific vulnerabilities, including those involving integrations with
   ERC20 tokens, ERC4626 vaults, and Uniswap.
 * Supports Solidity versions 0.8.4 and newer.
