@@ -1,6 +1,7 @@
 import React from "react";
-import { useDoc, useDocsSidebar } from "@docusaurus/theme-common/internal";
 import {
+  useDoc,
+  useDocsSidebar,
   useAllDocsData,
   useActivePlugin,
 } from "@docusaurus/plugin-content-docs/client";

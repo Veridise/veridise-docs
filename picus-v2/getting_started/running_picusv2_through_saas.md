@@ -1,7 +1,7 @@
 
-# Running Picus V2 Through AuditHub
+# Running Picus Through AuditHub
 
-As a working example we will use Picus-v2 to prove the following Picus module is underconstrained. For a detailed description about the syntax and semantics of Picus circuit descriptions please see the following [document](../picus_constraint_language/picus_constraint_language.md):
+As a working example we will use Picus to prove the following Picus module is underconstrained. For a detailed description about the syntax and semantics of Picus circuit descriptions please see the following [document](../picus_constraint_language/picus_constraint_language.md):
 
 ```lisp
 (prime-number 2013265921)
@@ -34,7 +34,7 @@ As a working example we will use Picus-v2 to prove the following Picus module is
 This document assumes you have access to AuditHub. To learn more on how to get access to AuditHub go [here](https://docs.veridise.com/saas/guide/on_boarding).
 
 ## Using the UI
-The following section describes how one can run Picus v2 through AuditHub's UI.
+The following section describes how one can run Picus through AuditHub's UI.
 
 ## Creating a Project
 1. Login to AuditHub. The landing page should look like: ![audithub-img](../img/audithub_landing.png)
@@ -48,7 +48,7 @@ The following section describes how one can run Picus v2 through AuditHub's UI.
 
 If everything is successful you should see a project page: ![project-page](../img/project-page.png)
 
-## Running Picus-V2 Task
+## Running Picus Task
 
 After the project is successfully setup, we can run Picus on the example. 
 

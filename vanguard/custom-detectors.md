@@ -236,6 +236,7 @@ A list of some basic expressions is shown below.
 | `e1 == e2`                       | `"hello" == "goodbye"`         | Check if `e1` is equal to `e2`     |
 | `e1 != e2`                       | `"hello" != "goodbye"`         | Check if `e1` is not equal to `e2` |
 | `e1 && e2`                       | `a == b && c == d`             | Logical conjunction (and)          |
+| `e1 \|\| e2`                     | `a == b \|\| c == d`           | Logical disjunction (or)           |
 | `!e`                             | `!(true && false)`             | Logical negation (not)             |
 | `e.f`                            | `func.name`                    | Get object property                |
 | `f(e1, ..., en)`                 | `regexMatch(func.name, "_.*")` | Invoke named operator              |

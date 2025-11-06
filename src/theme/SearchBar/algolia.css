@@ -483,8 +483,8 @@
   color: #222222;
   background-color: #ebebeb;
   border-radius: 3px;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .algolia-autocomplete

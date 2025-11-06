@@ -1,18 +1,18 @@
 # Veridise Documentation
 
 This repository hosts the documenstation site to be used for all Veridise
-tools. The website is built using [Docusaurus 2](https://docusaurus.io/).
+tools. The website is built using [Docusaurus 3](https://docusaurus.io/).
 
 ## Prerequisites
 
-Ensure you have a supported LTS version of Node.js (like v18 or v20).
-Alternatively, install Nix, as this repository provides a Nix shell definition
+Ensure you have a supported LTS version of Node.js (like v20 or newer).
+Alternatively, install Nix, as this repository provides a Nix flake definition
 that will install the correct version of Node.js and other dependencies
 
 ## Building the site for development
 
 ```
-nix-shell # optional, if using Nix
+nix develop # optional, if using Nix
 npm ci
 npm run start
 ```

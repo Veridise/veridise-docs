@@ -58,20 +58,20 @@ const FeatureList = [
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        <a href="picus">Picus</a> is a Veridise tool to prove that a ZK circuit
-        is not underconstrained, or find a counterexample if it is
-        underconstrained.
+        <a href="picus-v2">Picus</a> is the state-of-the-art determinism
+        verifier for ZK circuits which can both verify that a circuit is
+        deterministic or prove it is underconstrained.
       </>
     ),
   },
   {
-    title: "Picus-V2",
+    title: "Picus (Circom)",
     // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        <a href="picus-v2">Picus-V2</a> is a successor to Picus which proves
-        that a ZK-circuit is deterministic, or finds a counterexample if it is
-        underconstrained.
+        <a href="picus">Picus (Circom)</a> is a legacy Veridise tool to prove
+        that a Circom circuit is deterministic, or find a counterexample if it
+        is underconstrained.
       </>
     ),
   },

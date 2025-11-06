@@ -1,4 +1,4 @@
-const visit = require("unist-util-visit");
+import { visit } from "unist-util-visit";
 
 // Perform the LaTeX-esk transformation of:
 // - 2 hyphens => 1 en-dash
@@ -14,4 +14,4 @@ const plugin = (options) => {
   return transformer;
 };
 
-module.exports = plugin;
+export default plugin;
