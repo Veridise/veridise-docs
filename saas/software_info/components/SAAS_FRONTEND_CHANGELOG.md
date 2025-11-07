@@ -6,6 +6,18 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.3 - 2025-11-07
+### Added
+- Added user control functionality to the settings modal
+- Input limit now supports directories
+
+### Changed
+- Fix timeout input validation by rounding up instead of rounding down
+- Rename vanguard detectors to DeFi Vanguard and DeFi Vanguard (Legacy)
+
+### Fixed
+- Fix Vanguard v2 detector name display
+
 ## v2.5.2 - 2025-11-06
 ### Added
 - Ability to create new issue types
