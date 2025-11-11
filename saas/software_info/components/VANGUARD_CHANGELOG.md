@@ -6,6 +6,43 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.0 - 2025-11-11
+### Added
+- Initial release of a production-ready version of Vanguard, supporting Solidity and LLZK.
+- Solidity detectors:
+  - Cross-Contract Reentrancy
+  - Divide Before Multiply
+  - Unchecked Return
+  - Use-Before-Def
+- ZK detectors:
+  - Out-Of-Range Signals
+  - Underconstrained Signals
+  - Underconstrained Outputs
+  - Unused Fields
+- Custom detectors feature, which provides the ability to write user-defined Vanguard detectors using a language called the Program Analysis Query Language (PAQL). Initially only supports Solidity, with more languages in the future.
+- Support for Solidity 0.8.29 when no build system is selected
+### Changed
+- Reimplemented all of Vanguard's systems to be compatible with LLZK and a new Solidity frontend.
+- Improve error reporting when a detector fails or is not configured correctly
+
+### Removed
+- Solidity detectors:
+  - Simple Reentrancy - this can be replaced with a custom detector
+  - Flashloan - this can be replaced with a custom detector
+  - Locked Funds - to be added back in a future release
+
+### Fixed
+- Unchecked Return:
+  - Fixed false alarms when call return values are storage pointers or are used to compute storage array indices/mapping keys.
+- Divide Before Multiply:
+  - Fixed issues where the detector would hang on large projects.
+  - Fixed some instances of missed vulnerabilities
+- Solidity:
+  - Fixed vulnerabilities in or involving top-level functions not being reported
+  - Fixed build failures when building Foundry projects that override the `out` setting in `foundry.toml`.
+  - Fixed build failures when building Foundry projects that use large integers in `foundry.toml`
+  - Fixed build failures that could occur when build system support is used with Hardhat projects with complex dependencies
+
 ## v0.3.11 - 2025-09-11
 ### Fixed
 - Solidity:
@@ -317,4 +354,3 @@ slug: vanguard-changelog
 - Fix a memory leak in taint analysis-based detectors, which includes most detectors currently available
 - Fix handling of string storage reads/writes
 - Fix memory leaks that could occur when running multiple detectors.
-
