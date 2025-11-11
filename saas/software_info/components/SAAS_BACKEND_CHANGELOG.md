@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.17 - 2025-11-11
+### Changed
+- Infrastructure improvements
+
 ## v2.5.16 - 2025-11-06
 ### Changed
 - Improve error reporting

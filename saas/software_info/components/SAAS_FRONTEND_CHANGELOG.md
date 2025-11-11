@@ -6,6 +6,16 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.4 - 2025-11-11
+### Changed
+- Remove navigation to tasks dashboard from project details page
+- Remove tasks dashboard from project menu
+- Remove tool side bar from project details page
+- Update layout and constraints for the Code View page
+
+### Fixed
+- Resubmit OrCa v1 tasks
+
 ## v2.5.3 - 2025-11-07
 ### Added
 - Added user control functionality to the settings modal
