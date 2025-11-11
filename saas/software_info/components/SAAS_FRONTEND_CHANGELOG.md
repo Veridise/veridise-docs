@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.5 - 2025-11-11
+### Changed
+- ZK Vanguard v2 is now available on production
+
 ## v2.5.4 - 2025-11-11
 ### Changed
 - Remove navigation to tasks dashboard from project details page
