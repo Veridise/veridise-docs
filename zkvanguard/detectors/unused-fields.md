@@ -21,9 +21,12 @@ potentially allowing malicious actors to exploit the circuit.
 
 ### Usage
 
-:::info
+Select "Unused Fields" in the "Required Detector Selection" section
+of the ZK Vanguard V2 Task Wizard.
 
-Coming soon.
+:::info[TODO]
+
+Add screenshot from production.
 
 :::
 

@@ -27,19 +27,24 @@ introducing bugs or vulnerabilities.
 
 ### Usage
 
+Select "Out-Of-Range Signals" in the "Required Detector Selection" section
+of the ZK Vanguard V2 Task Wizard.
+
+:::info[TODO]
+
+Add screenshot from production.
+
+:::
+
+
+<!-- TODO: Populate when configuration options are available -->
+<!-- #### Configuration Options
+
 :::info
 
 Coming soon.
 
-:::
-
-#### Configuration Options
-
-:::info
-
-Coming soon.
-
-:::
+::: -->
 
 ## Example and Explanation
 
@@ -132,6 +137,8 @@ Coming soon.
 - This detector only recognizes a specific set of patterns to infer likely intervals.
   It will not detect out-of-range errors for computation patterns that are highly
   circuit- or application-specific.
+- The analysis currently assumes the circuit operates over the BN254 field.
+  We plan to enable the prime field to be configurable in an upcoming AuditHub release.
 
 ## How to Assess Severity
 

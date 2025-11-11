@@ -14,11 +14,12 @@ These detectors operate on both witness-generation operations and constrain oper
 
 <DisplayDetectorCards docIds={["detectors/compute-constrain-difference", "detectors/out-of-range-signals", "detectors/private-input-leakage", "detectors/unused-fields"]}/>
 
-## Compute-Only Detectors {#compute-only}
+<!-- TODO: Re-enable after DSS. -->
+<!-- ## Compute-Only Detectors {#compute-only}
 
 These detectors identify issues specific to witness generation.
 
-<DisplayDetectorCards docIds={["detectors/divide-by-zero", "detectors/signal-dependent-control-flow"]}/>
+<DisplayDetectorCards docIds={["detectors/divide-by-zero", "detectors/signal-dependent-control-flow"]}/> -->
 
 ## Constrain-Only Detectors {#constrain-only}
 

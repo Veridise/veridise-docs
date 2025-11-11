@@ -22,11 +22,15 @@ of the unconstrained signal.
 
 ### Usage
 
-:::info
+Select "Unconstrained Signals" in the "Required Detector Selection" section
+of the ZK Vanguard V2 Task Wizard.
 
-Coming soon.
+:::info[TODO]
+
+Add screenshot from production.
 
 :::
+
 
 ## Example and Explanation
 
