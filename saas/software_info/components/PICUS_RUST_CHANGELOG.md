@@ -6,6 +6,26 @@ slug: picus-v2-changelog
 ---
 # Software Changes
 
+## v1.1.0 - 2025-10-16
+### Added
+- Added the ability to reason about conditionals without else branches.
+- Allowing conditional guards to be expressed using = and != predicates.
+- Picus findings are now visible on the findings table.
+- Picus now emits informational findings when the analysis contains unknown results.
+- Support for conditionals in the Picus Constraint Language and updated the verification logic and range analysis to handle conditionals in a limited fashion for now.
+- Support for specifying and verifying postconditions for modules. Currently those postconditions are not used in the parent modules.
+- Utilize postconditions during verification.
+
+### Changed
+- Conditionals of the form (if `poly` (A) (B)) have the semantics `poly` != 0 => A /\ `poly` = 0 => B. This is the more natural semantics in ZK circuits since these statements are lowered to constraints by multiplying the constraints by `poly` in the then branch.
+- Update existing functionality
+
+### Fixed
+- Adding back two functional tests.
+- Fix issue where Picus skips over intermediate signals during solver loop
+- Fixed an unreported issue where module assumptions were not given to the solver.
+- Picus terminates gracefully when the input encoding does not have any valid assignments.
+
 ## v1.0.0 - 2025-04-17
 ### Added
 - Add a multi-solver option which runs both cvc5-int and cvc5-ff on every SMT query.
@@ -26,3 +46,4 @@ slug: picus-v2-changelog
 
 ### Removed
 - Disable linear propagator for now
+
