@@ -47,12 +47,12 @@ detectors Standard Library on AuditHub.
 
 #### Detect simple reentrancy vulnerabilities
 
-A _simple reentrancy vulnerability_ is defined as a location where a storage
+We define a _simple reentrancy vulnerability_ as a location where a storage
 write can occur after an external call in the same contract, such that the
 target contract of the call could invoke the same function (where the external
 call was launched) before returning control flow back to the original call.
 An example of this is the
-[well-known MakerDAO hack](https://blog.chain.link/reentrancy-attacks-and-the-dao-hack/).
+[infamous DAO hack](https://blog.chain.link/reentrancy-attacks-and-the-dao-hack/).
 
 The following query can be used to note pairs of external calls and writes that
 may be vulnerable to simple reentrancy attacks:
@@ -83,10 +83,32 @@ executed after the given one, including those in other functions as well.
 
 In some cases, it is useful to check that a certain bad behavior does _not_
 occur.
-For example, it may be intended for the state-modifying functions of a specific
+For instance, it may be intended for the state-modifying functions of a specific
 contract to be restricted to the contract's `owner`; if anyone who has not been
 checked to be the owner is able to change a storage variable, then this would be
 an access control violation.
+An example of such a contract is shown below:
+
+```solidity
+contract Example {
+    address owner;
+    uint256 x;
+    constructor(address _owner) { owner = _owner; }
+
+    // x is modified but there is no require(...) involving owner, so reported.
+    function reported(uint256 _x) external { _setX(_x); }
+
+    function _setX(uint256 value) internal { x = value; }
+
+    function _checkOwner() { require(msg.sender == owner); }
+
+    // x is modified but there is a require(...) involving owner, so not reported.
+    function notReported(uint256 _x) external {
+      _checkOwner(); _setX(_x);
+    }
+}
+```
+
 PAQL provides the ability to check that such restrictions are correctly enforced
 using an `EXISTS` expression, as shown in the following query.
 
@@ -108,18 +130,19 @@ WHERE
 
 The above query finds functions that (1) are externally callable; (2) modify at
 least one storage location in its contract (including in _other_ functions that
-are called); and (3) may not end up executing at least one "require-like"
-statement that checks some expression involving the `owner` storage variable.
+are called from the function); and (3) may not end up executing at least one
+"require-like" statement that checks some expression involving the `owner`
+storage variable.
 Vanguard considers a "require-like" statement to be any statement of the form
 `require(condition)` or `if (!condition) revert()` or `if (!condition) throw
 Error()`.
 
-## Tutorial
+## Language Guide
 
 In this section, we will explain how to write a PAQL search pattern using
 several examples.
 
-#### Basic Search Patterns
+### `FIND` statements
 
 A PAQL search pattern consists of a _find statement_ of the form:
 
@@ -215,7 +238,7 @@ FIND Function f IN Contract c
 Various types of code comments are supported in a search pattern:
 
 ```paql
--- This is also a single line comment.
+-- This is a single line comment.
 /*
   This is a
   multiline comment
@@ -252,7 +275,16 @@ A list of some basic expressions is shown below.
 | `e.f`                            | `func.name`                    | Get object property                |
 | `f(e1, ..., en)`                 | `regexMatch(func.name, "_.*")` | Invoke named operator              |
 
-:::info
+The list of named operators is:
+
+* `regexMatch(value, regex)`: Given two strings `value` and `regex`, return a
+  boolean value indicating whether the regex `regex` matches the string `value`.
+
+:::warning
+
+Integer and boolean literals are not supported by the syntax now, but they can
+be returned by properties.
+A future update will make them available in the syntax.
 
 Currently, named operators can only be used directly under a `WHERE` clause.
 A future update will make them available to be used anywhere in an expression.

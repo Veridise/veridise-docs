@@ -11,8 +11,8 @@ This documentation page is still a work-in-progress and may be subject to change
 
 
 This page contains reference documentation for the Solidity dialect of PAQL,
-describing every Object type available, and the properties and iterators of each
-Object type.
+describing every object type available, and the properties and iterators of each
+object type.
 
 ## Contracts and Functions
 
@@ -61,27 +61,37 @@ Represents a function.
 
 #### Properties
 
-* `name`: The name of the function, such as `transfer`.
-* `signature`: The full name and type signature of the function, such as
-  `transfer(address,uint256)`.
-* `selector`: The selector of this function as a string without a `0x` prefix,
-  such as `1234abcd`.
+* `name` (string): The name of the function, such as `transfer`.
+* `signature` (string): The full name and type signature of the function used in
+  the Solidity ABI, such as `transfer(address,uint256)`.
+  This is an empty string for functions that are not externally callable.
+
+  :::warning
+  There is currently a bug where the signature is not the ABI one.
+  This bug will be fixed in an upcoming update.
+  :::
+
+* `selector` (string): The selector of this function as a string without a `0x`
+  prefix, such as `1234abcd`.
   Empty string if the function is not externally callable, or if it is a
   fallback, receive, or constructor function.
-* `isExternallyCallable`: a boolean value indicating whether this function may
-  be invoked directly using an external call.
-* `visibility`: the visibility of this function, such as `external`, `public`,
-  `internal`, and `private`.
-* `mutability`: the mutability of this function, such as `nonpayable`,
+* `isExternallyCallable` (bool): a boolean value indicating whether this
+  function may be invoked directly using an external call.
+* `visibility` (string): the visibility of this function, such as `external`,
+  `public`, `internal`, and `private`.
+* `mutability` (string): the mutability of this function, such as `nonpayable`,
   `payable`, `view`, and `pure`.
-* `contract`: the [Contract](#contract) that has this function.
+* `contract` (`Contract`): the `Contract` that has this function.
   Note that this is not necessarily the same as the contract that defined this
   function; for example, if `A` inherits `f` from `B`, then the `Function` object
   for `A.f` will have `A` as its `contract` property, not `B`.
-* `reachable`: an object that may be iterated to get "reachable" objects.
+* `reachable`: an object that may be iterated to get objects that are
+  "reachable" from this function.
   Supports iteration over `Function`s, expressions, and statements, to get all
   functions/expressions/statements (respectively) that are reachable from this
   `Function`.
+  For example, if `f()` calls `g()` and `g()` calls `h()`, then when iterating
+  `Function x IN f.reachable`, `x` will iterate over both `g` and `h`.
 
 #### Iterators
 
@@ -92,13 +102,10 @@ Represents a function.
   function (i.e., does not include those in nested internal calls).
 * `StorageWrite`: the storage writes that may occur specifically within this
   function (i.e., does not include those in nested internal calls).
-* Every `Expression` and `Statement`
-
-:::info
-
-Documentation coming soon
-
-:::
+* Every `Expression` and `Statement`: all of the expressions/statements of the
+  specified type that are directly in the function.
+  Note that if you also want to get the expressions/statements in nested calls,
+  you should iterate through the `.reachable` property instead.
 
 #### Examples
 
@@ -113,7 +120,9 @@ WHERE
   c.callee.name == "_updateInterest",
 ```
 
-Find all storage writes that may be performed as a result of calling an external function:
+Find all storage writes that may be performed as a result of calling an external
+function (i.e., in the external function itself and any internal functions that
+are reachable from that external function):
 
 ```paql
 FIND
@@ -130,13 +139,15 @@ This does not include immutable variables or constants.
 
 #### Properties
 
-* `name`: The name of this storage variable.
-* `contract`: The `Contract` that this storage variable has been inherited into.
-* `declaringContract`: The `Contract` that declared this storage variable.
-* `getterSignature`: The signature of the getter function of this variable as a
-  string, or empty string if this has no getter function.
-* `slot`: The (base) storage slot of this varible.
-* `offset`: The (base) offset of this variable.
+* `name` (string): The name of this storage variable.
+* `contract` (`Contract`): The `Contract` that this storage variable has been
+  inherited into.
+* `declaringContract` (`Contract`): The `Contract` that declared this storage
+  variable.
+* `getterSignature` (string): The signature of the getter function of this
+  variable as a string, or empty string if this has no getter function.
+* `slot` (integer): The (base) storage slot of this varible.
+* `offset` (integer): The (base) offset of this variable.
 
 ## Expressions and Statements
 
@@ -177,7 +188,8 @@ Represents an external call.
   that may be targets of this call.
 * `isLowLevelCall`: whether this is a low-level call, such as in the Solidity
   code `msg.sender.call("")`.
-* `isSend`, (bool)
+* `isSend`, (bool): whether this is a Solidity `.send/.transfer` of native
+  currency.
 * `kind` (string): indicates the type of EVM call opcode of this call, one of
   `call`, `staticcall`, or `delegatecall`.
 * `isCall`, `isStaticcall`, `isDelegatecall` (bool): indicates whether the call
@@ -198,6 +210,16 @@ These expressions represent arithmetic operations, and they include:
 
 * `DivideExpression`
 * `MultiplyExpression`
+
+### Generic Expressions
+
+The following Solidity expressions are considered to be `Expression` objects,
+but currently do not have any special object types:
+
+* `+`, `-`, `%`, `**` operators (checked and unchecked)
+* `<`, `>`, `==` operators
+* assignment to storage variable
+* use of a storage variable
 
 ### Statement: RequireLike
 
@@ -221,6 +243,14 @@ Represents any statement that is similar to a revert, including the following:
 * `revert("withOrWithoutmessage")` in Solidity
 * `revert Error(...)` in Solidity
 * Any `revert`s or panics automatically inserted by the Solidity compiler
+
+### Generic Statements
+
+The following Solidity statements are considered to be `Statement` objects,
+but currently do not have any special object types:
+
+* `return`
+* some instances of `if (condition) { ... }`
 
 ## Storage Accesses
 
