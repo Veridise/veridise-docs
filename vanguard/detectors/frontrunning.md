@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Frontrunning
 description: Detects external functions that may be vulnerable to frontrunning attacks.
+draft: true
 ---
 
 :::info

@@ -8,11 +8,14 @@ description: Detects when the return value of a non-void call isn't used by the 
 
 ## Summary and Usage
 
-The Unchecked Return detector alerts the user when a function makes a call to
-a non-void function and doesn't check the result of the call. Checking the
-result means that the result is used to influence the control flow of the calling function,
-affects the value of a storage or memory variable, is passed into another call, or is
-returned from the calling function.
+The Unchecked Return detector alerts the user when a function makes a call to a
+function and doesn't check the return values of the call.
+By "check the return
+values", we refer to the result being used in a meaningful way, like by
+influencing the control flow, being written to a storage or memory variable,
+being passed as an argument to a call, etc.
+In particular, this detector is useful for flagging calls that return values
+that must be validated but are actually not in practice.
 
 ### Usage
 
@@ -41,7 +44,7 @@ contract UncheckedReturnContract{
 This function sends native currency using a low-level call. This call will return a
 result indicating whether the call was successful. Since the function doesn't check
 this success result, the function's assumption that the transfer has succeeeded isn't
-guaranteed to be true which could lead to vulnerabilities later in the function.
+guaranteed to be true, which could lead to vulnerabilities later in the function.
 
 ### Vanguard Output
 

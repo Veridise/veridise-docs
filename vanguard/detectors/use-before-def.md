@@ -18,6 +18,17 @@ assigned a nonzero value. Users should carefully consider these alerts to determ
 each uninitialized value is currently a vulnerability or if it may become a
 vulnerability in the future due to insufficient documentation of assumptions.
 
+:::warning
+
+The current version of Use Before Definition in DeFi Vanguard only supports
+storage variables.
+Support for stack and memory variables will come in a later update.
+
+If you need to check for stack and memory variables, you can run this detector
+using "DeFi Vanguard (Legacy)".
+
+:::
+
 ### Usage
 
 The Use Before Definition detector is invoked by selecting "Use Before Definition"
