@@ -6,6 +6,19 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.6 - 2025-11-12
+### Added
+- Custom detector syntax validation
+- Restriction for project, tools, and versions.
+- Tooltip for task id
+- View option for detectors, vspecs and hints
+
+### Changed
+- Update maximum timeout to 720 minutes
+
+### Fixed
+- Fix file location overflow
+
 ## v2.5.5 - 2025-11-11
 ### Changed
 - ZK Vanguard v2 is now available on production

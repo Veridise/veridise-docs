@@ -6,6 +6,15 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.1 - 2025-11-12
+### Added
+- Custom Detectors:
+  - Add a title field to query definitions to allow customization of finding titles
+
+### Changed
+- Custom Detectors:
+  - Each result of a custom detector is now reported in a separate finding, rather than all results of that custom detector reported in one finding
+
 ## v1.0.0 - 2025-11-11
 ### Added
 - Initial release of a production-ready version of Vanguard, supporting Solidity and LLZK.
