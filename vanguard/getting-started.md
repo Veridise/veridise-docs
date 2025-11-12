@@ -20,6 +20,7 @@ You should ensure the following parameters are set:
 | Project Root     | Project root        | Set to the folder containing the "root" of your project. Typically, this is the folder with `package.json`, `foundry.toml`, `hardhat.config.ts`, etc. |
 | Source Location  | Submodules          | Check the box "Repository includes submodules" if the project uses Foundry (if you forgot to check this, you need to upload a new version archive).   |
 | Project Contents | Solidity contracts  | Enable it.                                                                                                                                            |
+| Project Paths    | Source path         | See below sections                                                                                                                                    |
 | Dependencies     | Uses NPM-style deps | If a `package.json` is present, enable this setting and choose the appropriate package manager.                                                       |
 | Build            | Uses build system   | Enable if you are using Hardhat (either one) or Foundry. See below section.                                                                           |
 
@@ -31,16 +32,10 @@ If your project uses Hardhat or Foundry, you should enable the `Uses build
 system` setting on the `Build` page.
 This will ensure that your project is compiled using its configured build
 system.
+
 In some cases, your project will not compile with the build system; you can
 either adjust your build system configuration or switch to manual Solidity
 compiler settings, as described below.
-
-:::note
-   Projects that use multiple versions of the Solidity compiler in the same
-   project are supported, but only experimentally.
-   Vanguard may report duplicate results or exhibit other strange behavior on
-   such projects.
-:::
 
 
 ### Manual Solidity Compiler Build
@@ -64,9 +59,12 @@ launch Vanguard.
 
 1. Select your version archive, and then choose "DeFi Vanguard".
 2. On the configuration page, you'll need to select the
-   [detector(s)](./detectors/index.md) you want to run.
+   [built-in detectors](./detectors/index.md) and/or [custom
+   detectors](./custom-detectors/index.md) you want to run.
+   <!-- TODO: Vanguard doesn't support this yet.
    You can optionally set the `Input Limits` setting if you only want to run
    Vanguard on a subset of the files in your project.
+   -->
 3. Review the settings.
    Note that the include path will automatically include `node_modules` if you
    have enabled `Uses NPM-style deps` in the project setup.
@@ -75,7 +73,7 @@ launch Vanguard.
 ## Step 3: View and Manage Findings
 
 When the task is complete, the number of findings (categorized by severity
-levels) will be reported under the "Findings" panel.
+levels) will be reported under the "Tool Findings" panel.
 Click on one of the severities to go to the code view, where you can see the
 details of each finding.
 
