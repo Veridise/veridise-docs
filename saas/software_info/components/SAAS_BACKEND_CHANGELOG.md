@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.19 - 2025-11-13
+### Changed
+- Improve authorization
+
 ## v2.5.18 - 2025-11-12
 ### Fixed
 - Bug fixes

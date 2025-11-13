@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-sidebar_label: Vanguard
+sidebar_label: Vanguard (Legacy)
 title: Software Changes
 slug: vanguard-legacy-changelog
 ---
