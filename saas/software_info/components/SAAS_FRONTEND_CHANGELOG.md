@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.7 - 2025-11-13
+### Fixed
+- Fixes for tools
+
 ## v2.5.6 - 2025-11-12
 ### Added
 - Custom detector syntax validation

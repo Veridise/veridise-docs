@@ -1,10 +1,23 @@
 ---
 sidebar_position: 5
-sidebar_label: Vanguard v2
+sidebar_label: Vanguard 
 title: Software Changes
 slug: vanguard-changelog
 ---
 # Software Changes
+
+## v1.0.2 - 2025-11-13
+### Changed
+- Out-of-Range Signals:
+  - Improved interval analysis for struct field dereferences
+
+### Fixed
+- Custom Detectors:
+  - Fixed `Function` iterator of `Function.reachable` property not including itself
+- Divide Before Multiply:
+  - Fixed out-of-memory issue on large projects
+- Solidity:
+  - Fixed a bug affecting functions with modifiers, where expressions inside them would be reported with the line number set to the modifier instead of the expression itself
 
 ## v1.0.1 - 2025-11-12
 ### Added

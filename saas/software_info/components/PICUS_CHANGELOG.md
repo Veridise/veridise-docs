@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-sidebar_label: Picus
+sidebar_label: Picus (Circom)
 title: Software Changes
 slug: picus-changelog
 ---
