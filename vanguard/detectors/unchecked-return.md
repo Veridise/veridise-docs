@@ -27,17 +27,17 @@ in the Detector selection during the tool configuration step.
 The following contract contains a function with an Unchecked Return
 vulnerability.
 
-```solidity title=unchecked-return.sol showLineNumbers
+```solidity title="UncheckedReturnContract.sol" showLineNumbers
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-contract UncheckedReturnContract{
-  address dst;
-  function vulnerable(uint256 amount) {
-    payable(dst).call{value: amount}();
-    
-    // Assumes the transfer succeeded
-  }
+contract UncheckedReturnContract {
+    address dst;
+    function vulnerable(uint256 amount) external {
+        payable(dst).call{value: amount}("");
+
+        // Assumes the transfer succeeded
+    }
 }
 ```
 
@@ -52,16 +52,16 @@ When run on the above contract, the Unchecked Return detector will make
 the following report:
 
 ```text showLineNumbers
-[Medium] Unchecked result of a call in UncheckedReturnContract.vulnerable
-Reported By: vanguard:unchecked-return
-Location: UncheckedReturnContract.vulnerable @ UncheckedReturn.sol:6:3-10:3
-Confidence: 0.9
+[Medium] Function an unknown target has some unchecked return values.
+Reported By: vanguard:hiyul/unchecked-return
+Location: UncheckedReturnContract.vulnerable @ UncheckedReturnContract.sol:6:5
+Confidence: 0.92
 More Info: placeholder
 Details:
-Unchecked return value found in UncheckedReturnContract.vulnerable
-  * The return value of an external call to an unknown target is never used
-    * ⚠️ @ UncheckedReturnContract.vulnerable @ UncheckedReturn.sol:7:5
-  * Affected contracts:  UncheckedReturnContract
+Function an unknown target is called but one or more of its return values are never used.
+  * The success status is never used in UncheckedReturnContract.vulnerable
+    * ⚠️ @ UncheckedReturnContract.vulnerable @ UncheckedReturnContract.sol:7:9
+  * Affected contracts: UncheckedReturnContract
 ```
 
 First, the detector reports which function contains the vulnerability. It then indicates
@@ -130,7 +130,7 @@ target (e.g., `IVoidCallTarget.foo`), it is safe to mark alerts like these as fa
 </details>
 :::
 
-## Assessing Severity
+## How to Assess Severity
 
 The severity of a finding reported by the Unchecked Return detector depends on the meaning
 of the result and what assumptions are made about the call in the caller function.
