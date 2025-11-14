@@ -6,6 +6,10 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.3 - 2025-11-14
+### Fixed
+- ZK Vanguard: fix instability when running llzk/out-of-signals in tandem with llzk/divide-by-zero
+
 ## v1.0.2 - 2025-11-13
 ### Changed
 - Out-of-Range Signals:
