@@ -17,8 +17,8 @@ You can get started with Vanguard by following [this guide](./getting-started.md
   catch common vulnerabilities such as [unchecked return
   values](./detectors/unchecked-return.md) and
   [cross-contract reentrancy attacks](./detectors/cross-contract-reentrancy.md).
-* Produces detailed findings that can be triaged directly in the AuditHub
-  interface.
+* Produces detailed findings that can be [triaged directly in the AuditHub
+  interface](./triage/index.md).
 * For projects or protocols that require custom analysis, the [custom
   detectors](./custom-detectors/index.md) feature provides the ability to catch
   protocol/library-specific vulnerabilities, including those involving integrations with
