@@ -79,7 +79,7 @@ contract Market {
         // (2) reentrancy occurs here
         payable(msg.sender).call{value: amount}("");
 
-        vault.updateAssets(amount);
+        vault.updateAssets(amount); // (4) Vault's totalCredit is increased
     }
 }
 
@@ -129,7 +129,11 @@ Specifically, this attack occurs in three steps:
    As a result, the exchange rate calculation in `Vault.deposit()` will
    use the _decreased_ `Vault` asset balance and _unchanged_ `totalCredit` amount.
    This will cause the computed exchange rate to be _lower_ than is intended,
-   allowing the attacker to get more shares than they should.
+   allowing the attacker to get more shares than they should (note that the
+   exchange rate is used as the denominator of a division).
+4. After control flow returns to `Market.trade()`, the call to
+   `Vault.updateAssets()` will increase the exchange rate to its intended higher
+   value.
 
 To complete the attack, the attacker can immediately sell the shares after the
 transaction, at an exchange rate that is higher than what they obtained the
@@ -162,17 +166,17 @@ The contract Market may be vulnerable to reentrancy attacks
         * Vault.updateAssets @ DocsExample.sol:75:9
 ```
 
-The report indicates the following key points about the attack:
+The report indicates the following key aspects of the attack:
 * The external call that makes the reentrancy attack possible (the call in
   `Market.trade` in the example) is emphasized at the top.
-* Each external function that could execute the call that triggers the attack
-  (such as `Market.trade`) is reported.
+* Each external function that could execute (reach) the call that triggers the
+  attack (such as `Market.trade`) is reported.
 * The report will indicate which variables are read or updated before the call,
   as well as variables that are read or updated after the call.
   These indicate the impact of an attack, if one is possible.
-* In between the variables, a list of external functions that can be used to
-  interfere with the listed variables by reading or modifying them will be
-  reported.
+* In between the variables, the report includes a list of external functions
+  that can be used to interfere with the listed variables by reading or
+  modifying them.
   Here, `Vault.deposit` is reported because it will read the token balance and
   `Vault.totalCredit`.
 
@@ -183,8 +187,8 @@ The report indicates the following key points about the attack:
   For example, if project being analyzed only has an `IERC20` interface, but no
   actual `ERC20` contract is compiled, then the detector will be unable to
   report any reentrancy vulnerabilities related to the `ERC20` contract's
-  balance and total supply variables, even if such vulnerabilities may actually
-  exist.
+  `balance` and `totalSupply` variables, even when such vulnerabilities
+  _actually_ exist.
 * When a call with an unknown target is encountered, such as a low-level call or
   a native currency `.send/.transfer`, the call is assumed to be able to reach
   any function of any concrete contract defined in the project.
@@ -199,8 +203,8 @@ The severity of a finding reported by the Cross-Contract Reentrancy detector dep
 two aspects:
 
 1. **The conditions under which a reentry point can be exploited.**
-   The detector conservatively assumes that every external call may allow an
-   attacker to reenter.
+   The detector conservatively assumes that every external call with an unknown
+   call target may allow an attacker to reenter.
    However, several factors may restrict reentry, such as the presence of
    reentry guards, checks on storage variables/mappings, and assumptions on what
    contracts will be called.
