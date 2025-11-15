@@ -97,6 +97,6 @@ your project to use only 0.8.28 or newer, as [recent versions of
 Solidity use RAM much more efficiently][solc-0828-announcement].
 
 [audithub-guide]: ../saas
-[triage]: ./triage.md
+[triage]: ./triage/index.md
 
 [solc-0828-announcement]: https://soliditylang.org/blog/2024/10/09/solidity-0.8.28-release-announcement
