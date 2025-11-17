@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.8 - 2025-11-17
+### Changed
+- Switched combox to select component for tools
+
 ## v2.5.7 - 2025-11-13
 ### Fixed
 - Fixes for tools

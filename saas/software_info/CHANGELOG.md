@@ -5,6 +5,11 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.17 - 2025-11-17
+### Changed
+- Component PicusV2 upgraded to version *v1.1.1*.
+- Component SaaS Frontend upgraded to version *v2.5.8*.
+
 ## v2.8.16 - 2025-11-14
 ### Changed
 - Component Vanguard upgraded to version *v1.0.3*.
