@@ -1,10 +1,14 @@
 ---
 sidebar_position: 4
-sidebar_label: Picus
+sidebar_label: Picus 
 title: Software Changes
 slug: picus-v2-changelog
 ---
 # Software Changes
+
+## v1.1.1 - 2025-11-17
+### Added
+- Extended PCL to support a `det` predicate which asserts that an expression is deterministic
 
 ## v1.1.0 - 2025-10-16
 ### Added
@@ -46,4 +50,3 @@ slug: picus-v2-changelog
 
 ### Removed
 - Disable linear propagator for now
-

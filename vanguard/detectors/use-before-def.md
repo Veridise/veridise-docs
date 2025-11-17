@@ -9,14 +9,16 @@ description: Detects the usage of uninitialized variables
 ## Summary and Usage
 
 The Use Before Definition detector alerts the user about uses of a variable before
-that variable has been assigned a value. This includes contract storage variables
-as well as stack variables. Since Solidity will automatically initialize variables
-to a zero value for their type if they aren't explicitly assigned a value, these
-alerts may not necessarily correspond to a vulnerability. However, such patterns
-can easily lead to vulnerabilities if developers assume that the variable has been
-assigned a nonzero value. Users should carefully consider these alerts to determine if
-each uninitialized value is currently a vulnerability or if it may become a
-vulnerability in the future due to insufficient documentation of assumptions.
+that variable has been assigned a value.
+This includes contract storage variables as well as stack variables.
+Since Solidity will automatically zero-initialize variables that are not
+explicitly assigned a value, these alerts may not necessarily correspond to a
+vulnerability.
+However, such patterns can easily lead to vulnerabilities if developers
+incorrectly assume that the variable has been assigned a nonzero value.
+Users should carefully consider these alerts to determine if each uninitialized
+value is currently a vulnerability, or if it may become a vulnerability in the
+future due to insufficient documentation of assumptions.
 
 :::warning
 
@@ -80,7 +82,7 @@ Confidence: 0.75
 More Info: placeholder
 Details:
 Contract storage variable fee used before definition in the following location(s)
-  * ⚠️ @ Bank.mintToken @ test/use-before-def-tests/UseBeforeDefERC.sol:18:5
+  * ⚠️ @ Bank.mintToken @ Bank.sol:18:5
   * Affected contracts:  Bank
 ```
 
@@ -234,21 +236,20 @@ necessary initializer functions are called before the contract is enabled for us
 
 * This detector will not detect if individual fields of a struct are used before
   definition if the struct itself is initialized.
-* This detector will not generate alerts for mappings, arrays, or variables that
-  are declared as memory variables.
+* This detector will not generate alerts for mappings or arrays.
 * This detector will generate false positives when variables are left to be zero
   initialized intentionally.
 
-## Assessing Severity
+## How to Assess Severity
 
 The severity of a finding reported by the Use Before Definition detector depends on
 two aspects:
 
 1. **Whether it is safe for that variable to be zero initialized.**
     If the variable is, e.g.,  a counter or a user balance, it _should_ start at 0 and is safe
-    to be zero initialized. If the variable corresponds to something like an address
-    or a fee it could be a very severe vulnerability depending on how the variable
-    is used.
+    to be zero initialized.
+    If the variable corresponds to something like an address or a fee, it could
+    be a very severe vulnerability depending on how the variable is used.
 
 2. **Whether assumptions are properly documented.**
     A zero-initialized variable may be perfectly safe in the current implementation,
