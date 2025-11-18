@@ -24,7 +24,7 @@ This legacy version only supports detecting bugs in ZK circuits written in [circ
 
 If you're not familiar with AuditHub, first read the [AuditHub guide](/saas/).
 
-To use ZK Vanguard (legacy) on AuditHub, upload a project source archive that contains Ccrcom circuit code.
+To use ZK Vanguard (legacy) on AuditHub, upload a project source archive that contains Circom circuit code.
 AuditHub will automatically detect that the project contains ZK circuits and present Veridise's
 ZK tools for selection on the tool selection screen.
 To use ZK Vanguard, select it from the tool selection screen.

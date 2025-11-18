@@ -40,9 +40,11 @@ export function DisplayDetectorTypes(typeNameMap, rootUrl) {
 }
 
 const zkVanguardTypeNameMap = {
-  "compute-constrain": "Compute and Constrain",
+  "compute-and-constrain": "Compute and Constrain",
+  "compute-or-constrain": "Compute or Constrain",
   "compute-only": "Compute Only",
   "constrain-only": "Constrain Only",
+  "main-entry": "Requires Main Entry",
 };
 
 // Displays the badges for ZK Vanguard detector types.

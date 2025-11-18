@@ -24,13 +24,7 @@ that may allow malicious actors to generate valid proofs for bogus statements.
 ### Usage
 
 Select "Underconstrained Outputs" in the "Required Detector Selection" section
-of the ZK Vanguard V2 Task Wizard.
-
-:::info[TODO]
-
-Add screenshot from production.
-
-:::
+of the ZK Vanguard Task Wizard.
 
 ## Example and Explanation
 

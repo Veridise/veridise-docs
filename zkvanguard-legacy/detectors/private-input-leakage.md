@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Private Input Leakage
 description: Detects leakages of private inputs via public signals.
 detectorTypes:
-- compute-constrain
+- compute-or-constrain
 ---
 
 import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';

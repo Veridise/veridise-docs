@@ -3,7 +3,7 @@ sidebar_position: 7
 title: Unused Fields
 description: Finds unused fields within structures/circuit components.
 detectorTypes:
-- compute-constrain
+- compute-or-constrain
 ---
 
 import Tabs from '@theme/Tabs';
@@ -22,13 +22,7 @@ potentially allowing malicious actors to exploit the circuit.
 ### Usage
 
 Select "Unused Fields" in the "Required Detector Selection" section
-of the ZK Vanguard V2 Task Wizard.
-
-:::info[TODO]
-
-Add screenshot from production.
-
-:::
+of the ZK Vanguard Task Wizard.
 
 ## Example and Explanation
 

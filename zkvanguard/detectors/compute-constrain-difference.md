@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Compute-Constrain Difference
 description: Detects discrepancies between witness computation and constraint generation.
 detectorTypes:
-- compute-constrain
+- compute-and-constrain
 ---
 
 import Tabs from '@theme/Tabs';
@@ -27,9 +27,14 @@ and bypass application-level security checks.
 
 ### Usage
 
+Select "Compute-Constrain Difference" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
+
 :::info
 
-Coming soon.
+This detector will report an error if run on an LLZK file where the witness generation
+functions are empty, as this detector analyzes witness generation code in tandem
+with the circuit's constraints.
 
 :::
 

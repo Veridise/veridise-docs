@@ -3,7 +3,7 @@ sidebar_position: 2
 title:  Out-Of-Range Signals
 description: Finds signals that may be assigned a value outside of their desired range.
 detectorTypes:
-- compute-constrain
+- compute-or-constrain
 ---
 
 import Tabs from '@theme/Tabs';
@@ -29,13 +29,6 @@ introducing bugs or vulnerabilities.
 
 Select "Out-Of-Range Signals" in the "Required Detector Selection" section
 of the ZK Vanguard V2 Task Wizard.
-
-:::info[TODO]
-
-Add screenshot from production.
-
-:::
-
 
 <!-- TODO: Populate when configuration options are available -->
 <!-- #### Configuration Options

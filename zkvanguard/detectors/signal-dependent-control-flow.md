@@ -23,9 +23,13 @@ unconstrained values could enable the construction of bogus proofs.
 
 ### Usage
 
+Select "Signal-Dependent Control Flow" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
+
 :::info
 
-Coming soon.
+This detector will report an error if run on an LLZK file where the witness generation
+functions are empty, as this detector analyzes witness generation code only.
 
 :::
 

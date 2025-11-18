@@ -20,9 +20,13 @@ actors may be able to generate valid proofs for bogus statements.
 
 ### Usage
 
+Select "Divide By Zero" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
+
 :::info
 
-Coming soon.
+This detector will report an error if run on an LLZK file where the witness generation
+functions are empty, as this detector analyzes witness generation code only.
 
 :::
 
