@@ -6,6 +6,17 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.9.0 - 2025-11-18
+### Changed
+- Added logging functionality for [V] and Hints — static and runtime errors are now logged for [V] and Hints but do not crash OrCa.
+- Updated [V] semantic checking to check contract free variables.
+- Improved counterexample finding through comprehensive specification checking.
+
+### Fixed
+- Fixed a bug with Pydantic errors breaking OrCa's file generation reporting errors.
+- Fixed a bug with default users when choosing to fork networks.
+- Replaced deprecated OpenJDK Docker image.
+
 ## v2.8.0 - 2025-10-23
 ### Changed
 - Updated OrCa dependencies to improve performance.
