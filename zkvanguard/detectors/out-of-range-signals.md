@@ -28,21 +28,11 @@ introducing bugs or vulnerabilities.
 ### Usage
 
 Select "Out-Of-Range Signals" in the "Required Detector Selection" section
-of the ZK Vanguard V2 Task Wizard.
-
-<!-- TODO: Populate when configuration options are available -->
-<!-- #### Configuration Options
-
-:::info
-
-Coming soon.
-
-::: -->
+of the ZK Vanguard Task Wizard.
 
 ## Example and Explanation
 
 <Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following example circom file contains the implementation of the `U16` component,
@@ -81,43 +71,6 @@ For example:
 - `lowByte = 0, highByte = 1, shortVal = 256`
 - `lowByte = 256, highByte = 0, shortVal = 256`
 Both satisfy the constraints, even though only the first reflects the intended design.
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
-
-
-
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
 
 </TabItem>
 </Tabs>

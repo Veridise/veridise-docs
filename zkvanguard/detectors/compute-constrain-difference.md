@@ -44,10 +44,6 @@ The `LessThanPower` circuit (from the [ed25519-circom][ed25519-link] repo) is de
 less than or equal to $$2^{base}$$.
 The circuit therefore sets `out = 1` if `in` $$\le 2^{base}$$ and `out = 0` otherwise.
 
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
 ```circom title="compute_constrain_difference_bug.circom" showLineNumbers
 pragma circom 2.0.0;
 
@@ -62,6 +58,9 @@ template LessThanPower(base) {
 
 component main = LessThanPower(2);
 ```
+
+<Tabs groupId="example">
+<TabItem value="circom" label="Circom">
 
 However, this code has a bug: `out` is only constrained to be binary (line 8) and is not
 constrained by `in` or the `base` constant in any way.
@@ -81,7 +80,6 @@ These challenges demonstrate why the CCD detector can be a useful tool in flaggi
 between separate constraints and assignments.
 
 </TabItem>
-*/}
 <TabItem value="zirgen" label="Zirgen">
 
 We've translated this example into Zirgen below.
@@ -123,30 +121,6 @@ between separate constraints and assignments that may otherwise go unnoticed.
 </TabItem>
 </Tabs>
 
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
 
 ## Limitations
 
