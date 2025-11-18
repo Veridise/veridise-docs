@@ -28,7 +28,7 @@ ZK Vanguard is equipped with the following set of detectors:
 <!-- These header links are required so backlinks redirect to the correct header. -->
 ## Compute or Constrain Detectors {#compute-or-constrain}
 
-These detectors independently operate on both witness-generation operations and constrains in the circuit.
+These detectors independently operate on both witness-generation operations and constraints in the circuit.
 These detectors will operate on LLZK files that contain only constraints as well.
 
 <!-- TODO: Add back "detectors/private-input-leakage" after DSS -->
@@ -36,14 +36,14 @@ These detectors will operate on LLZK files that contain only constraints as well
 
 ## Compute and Constrain Detectors {#compute-and-constrain}
 
-These detectors require witness-generation operations and constrains in the circuit to function.
+These detectors require witness-generation operations and constraints in the circuit to function.
 
 <DisplayDetectorCards docIds={["detectors/compute-constrain-difference"]}/>
 
 <!-- TODO: Add in after DSS -->
 <!-- ## Main-Entry Detectors {#main-entry}
 
-<DisplayDetectorCards docIds={[""detectors/private-input-leakage"]}/> -->
+<DisplayDetectorCards docIds={["detectors/private-input-leakage"]}/> -->
 
 ## Compute-Only Detectors {#compute-only}
 
