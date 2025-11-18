@@ -3,7 +3,8 @@ sidebar_position: 3
 title: Private Input Leakage
 description: Detects leakages of private inputs via public signals.
 detectorTypes:
-- compute-constrain
+- compute-or-constrain
+- main-entry
 ---
 
 import Tabs from '@theme/Tabs';
@@ -22,9 +23,14 @@ protecting the privacy of private inputs.
 
 ### Usage
 
+Select "Private Input Leakage" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
+
 :::info
 
-Coming soon.
+This detector will report an error if run on an LLZK file where a "Main" entry
+component is not defined, as this detector requires an entry component to define
+the circuit's external interface (i.e., what inputs are public or private).
 
 :::
 

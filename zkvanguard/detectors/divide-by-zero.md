@@ -20,20 +20,24 @@ actors may be able to generate valid proofs for bogus statements.
 
 ### Usage
 
+Select "Divide By Zero" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
+
 :::info
 
-Coming soon.
+This detector will report an error if run on an LLZK file where the witness generation
+functions are empty, as this detector analyzes witness generation code only.
 
 :::
 
 ## Example and Explanation
 
-In the following example, the `Divide` circuit has been developed to compute the
-`quotient` of `dividend` divided by `divisor`.
 
 <Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
+
+In the following example, the `Divide` circuit has been developed to compute the
+`quotient` of `dividend` divided by `divisor`.
 
 ```circom title="division_bug.circom"
 pragma circom 2.1.8;
@@ -61,41 +65,6 @@ As a result, the constraints can be satisfied by an assignment such as
 `dividend = 0, divisor = 0, quotient = 5`, since `5 * 0 === 0`.
 This clearly violates the developer's intent: `quotient` should represent `dividend / divisor`
 and `divisor` should never be zero.
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
-
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
 
 </TabItem>
 </Tabs>

@@ -6,16 +6,32 @@ sidebar_position: 1
 ## What is ZK Vanguard?
 
 ZK Vanguard is a static analysis tool used to discover common vulnerabilities in zero-knowledge (ZK) circuits.
-ZK Vanguard is able to analyze any ZK language that supports [LLZK compilation][llzk-docs], such as [Zirgen], [halo2], and [Plonky3].
-Currently, ZK Vanguard is able to provide analysis for [Zirgen] circuits,
-with support for [circom][circom], [halo2][halo2], and [Plonky3][Plonky3] coming soon to AuditHub.
+ZK Vanguard is able to analyze any ZK language that can be translated into
+[the LLZK intermediate circuit representation][llzk-docs], such as [Zirgen], [halo2], and [Plonky3].
+Currently, ZK circuits must be compiled into LLZK before being uploaded to AuditHub.
 An older version of ZK Vanguard which supports circom is available through the [ZK Vanguard (Circom)](/zkvanguard-legacy/) version.
 
-:::info
+## General Usage Instructions
 
-This section of the documentation is currently a work-in-progress.
+If you're not familiar with AuditHub, first read the [AuditHub guide](/saas/).
 
-:::
+To use ZK Vanguard on AuditHub, upload or import a project that contains LLZK IR files.
+Then, during project setup, check the box that says "LLZK files."
+
+![image](./screenshots/project-contents.png)
+
+If LLZK files are added in a new version of an existing project, you can edit the
+project definition to indicate that LLZK files are now included.
+
+Once LLZK files are made available, ZK Vanguard will be accessible from the
+Audit Tools side panel.
+
+<!-- TODO: add wizard screenshow once private-input-leakage is disabled on prod -->
+
+Currently, ZK Vanguard analyzes a single LLZK file at a time.
+Multiple detectors may be run simultaneously, but not all LLZK files can be analyzed
+by all detectors, depending on what features are present in the LLZK file.
+This is discussed in further detail on the next page.
 
 [llzk-docs]: https://veridise.github.io/llzk-lib/main/
 [Zirgen]: https://github.com/risc0/zirgen

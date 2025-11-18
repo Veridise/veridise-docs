@@ -3,7 +3,7 @@ sidebar_position: 2
 title:  Out-Of-Range Signals
 description: Finds signals that may be assigned a value outside of their desired range.
 detectorTypes:
-- compute-constrain
+- compute-or-constrain
 ---
 
 import Tabs from '@theme/Tabs';
@@ -27,24 +27,12 @@ introducing bugs or vulnerabilities.
 
 ### Usage
 
-:::info
-
-Coming soon.
-
-:::
-
-#### Configuration Options
-
-:::info
-
-Coming soon.
-
-:::
+Select "Out-Of-Range Signals" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
 
 ## Example and Explanation
 
 <Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following example circom file contains the implementation of the `U16` component,
@@ -85,43 +73,6 @@ For example:
 Both satisfy the constraints, even though only the first reflects the intended design.
 
 </TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
-
-
-
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
 </Tabs>
 
 ## Limitations
@@ -132,6 +83,8 @@ Coming soon.
 - This detector only recognizes a specific set of patterns to infer likely intervals.
   It will not detect out-of-range errors for computation patterns that are highly
   circuit- or application-specific.
+- The analysis currently assumes the circuit operates over the BN254 field.
+  We plan to enable the prime field to be configurable in an upcoming AuditHub release.
 
 ## How to Assess Severity
 

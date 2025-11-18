@@ -129,6 +129,10 @@ const config = {
         sidebarCollapsed: false,
         remarkPlugins: [math, dashes],
         rehypePlugins: [katex],
+        // TODO: Re-enable after DSS.
+        exclude: [
+          "detectors/private-input-leakage.md",
+        ]
       },
     ],
     [

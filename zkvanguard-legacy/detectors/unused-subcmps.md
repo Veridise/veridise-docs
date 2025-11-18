@@ -3,7 +3,7 @@ sidebar_position: 7
 title: Unused Subcomponents
 description: Finds unused subcomponents in subcomponent arrays.
 detectorTypes:
-- compute-constrain
+- compute-or-constrain
 ---
 
 import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';

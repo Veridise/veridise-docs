@@ -23,16 +23,12 @@ that may allow malicious actors to generate valid proofs for bogus statements.
 
 ### Usage
 
-:::info
-
-Coming soon.
-
-:::
+Select "Underconstrained Outputs" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
 
 ## Example and Explanation
 
 <Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following toy example is designed to determine if the lowest bit of the
@@ -60,41 +56,6 @@ This is why the detector flags it as a UCO issue.
 While the constraint `outp * (outp - 1) === 0` ensures that `outp` is boolean,
 it can be satisfied by either `outp = 0` or `outp = 1` regardless of the actual value of `inp`.
 This allows an attacker to forge arbitrary proofs of the form `{inp = <any value>, outp = <0 or 1>}`.
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
-
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
 
 </TabItem>
 </Tabs>
