@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.20 - 2025-11-18
+### Changed
+- Update solver options for tool Picus
+
 ## v2.5.19 - 2025-11-13
 ### Changed
 - Improve authorization
