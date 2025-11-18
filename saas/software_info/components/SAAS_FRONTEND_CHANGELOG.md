@@ -6,6 +6,19 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.5.9 - 2025-11-18
+### Added
+- Add line number validation
+- Redirect to 403 when organization is forbidden
+- Redirect to 404 when organization is not found
+
+### Changed
+- Rename 'cvc5-int' to 'cvc5-ff-int'
+
+### Fixed
+- Fix files not opening when threads are present
+- Fixed scrolling not working when browser is safari
+
 ## v2.5.8 - 2025-11-17
 ### Changed
 - Switched combox to select component for tools
