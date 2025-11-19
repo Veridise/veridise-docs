@@ -1,0 +1,10 @@
+---
+title: About
+sidebar_position: 5
+---
+
+The **About** page can be accessed by clicking the **info** button located in the left sidebar. This page provides a direct link to the AuditHub documentation, along with a detailed list of all available tools, their current versions, and links to their corresponding changelogs.
+
+![image](../new_screenshots/about_button.png)
+
+![image](../new_screenshots/about_page.png)
