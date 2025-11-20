@@ -3,7 +3,7 @@ sidebar_position: 7
 title: Unused Fields
 description: Finds unused fields within structures/circuit components.
 detectorTypes:
-- compute-constrain
+- compute-or-constrain
 ---
 
 import Tabs from '@theme/Tabs';
@@ -21,16 +21,12 @@ potentially allowing malicious actors to exploit the circuit.
 
 ### Usage
 
-:::info
-
-Coming soon.
-
-:::
+Select "Unused Fields" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
 
 ## Example and Explanation
 
 <Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 In the following example, the developer intends to compute the positive difference
@@ -118,41 +114,6 @@ This violates the intended invariant that if `inp_small[0] < inp_large[0]`,
 then `outp[0] < inp_small[0]` and `outp[0] < inp_large[0]`.
 
 </TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
-
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
 </Tabs>
 
 ## How to Assess Severity
@@ -166,4 +127,3 @@ if the unused fields are translated into circuit signals.
 
 Manual analysis is required to determine whether a field is intentionally unused.
 If it is intentional, the field should be removed; otherwise, the underlying bug should be fixed.
-

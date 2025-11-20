@@ -3,7 +3,7 @@ sidebar_position: 8
 title: Witness-Constraints Difference
 description: Detects discrepancies between witness computation and constraint generation.
 detectorTypes:
-- compute-constrain
+- compute-and-constrain
 ---
 
 import {DisplayZKVanguardDetectorTypes} from '@site/src/components/vanguard/DetectorTypeUtils';

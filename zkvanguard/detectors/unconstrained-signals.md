@@ -22,16 +22,12 @@ of the unconstrained signal.
 
 ### Usage
 
-:::info
-
-Coming soon.
-
-:::
+Select "Unconstrained Signals" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
 
 ## Example and Explanation
 
 <Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following example circuit is designed to compute a cryptographic commitment
@@ -71,41 +67,6 @@ of the `commitment` hash and is not referenced in any constraints at all.
 As a result, the commitment depends only on the committer’s `private_key`.
 A malicious actor could therefore reuse an existing proof, substitute a different
 public `operation`, and present a valid proof for an unintended operation.
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
-
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
 
 </TabItem>
 </Tabs>

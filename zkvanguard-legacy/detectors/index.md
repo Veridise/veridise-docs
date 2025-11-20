@@ -8,7 +8,7 @@ import {DisplayDetectorCards} from '@site/src/components/vanguard/DetectorTypeUt
 ZK Vanguard is equipped with the following set of detectors and general analysis tools:
 
 <!-- These header links are required so backlinks redirect to the correct header. -->
-## Compute and Constrain Detectors {#compute-constrain}
+## Compute and Constrain Detectors {#compute-and-constrain}
 
 These detectors operate both on witness-generation and constrain operations in the circuit.
 

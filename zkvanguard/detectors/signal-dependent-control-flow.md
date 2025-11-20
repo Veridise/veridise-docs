@@ -23,16 +23,19 @@ unconstrained values could enable the construction of bogus proofs.
 
 ### Usage
 
+Select "Signal-Dependent Control Flow" in the "Required Detector Selection" section
+of the ZK Vanguard Task Wizard.
+
 :::info
 
-Coming soon.
+This detector will report an error if run on an LLZK file where the witness generation
+functions are empty, as this detector analyzes witness generation code only.
 
 :::
 
 ## Example and Explanation
 
 <Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
 <TabItem value="circom" label="Circom">
 
 The following circuit is designed to determine whether the input `in` is 0 or not.
@@ -104,41 +107,6 @@ template IsZero() {
 
 The addition of the `in*out === 0` constraint on line 13 fixes the issue pointed out in
 our example, as it forces one of `in` and `out` to be 0.
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-</Tabs>
-
-## Usage Example
-
-<Tabs groupId="example">
-{/* Commented out until Circom frontend is available for V2.
-<TabItem value="circom" label="Circom">
-
-:::info
-
-Coming soon.
-
-:::
-
-</TabItem>
-*/}
-<TabItem value="zirgen" label="Zirgen">
-
-:::info
-
-Coming soon.
-
 :::
 
 </TabItem>
