@@ -3,7 +3,7 @@ title: User Management
 sidebar_position: 1
 ---
 
-In the **User Management** section, users can manage their organization members. Here, they can view the current active and pending members, as well as send invitations for new users to join. 
+In the **User Management** section, you can manage the organization members. Here, you can view the current active and pending members, as well as send invitations for new users to join. 
 
 ![image](../../new_screenshots/organization_settings_user_management.png)
 
