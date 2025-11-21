@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.22 - 2025-11-21
+### Changed
+- Infrastructure improvements
+
 ## v2.5.21 - 2025-11-20
 ### Changed
 - Improved access restrictions enforcement
