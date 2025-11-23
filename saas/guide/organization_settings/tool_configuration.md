@@ -5,7 +5,7 @@ sidebar_position: 2
 
 In the **Tool Configuration** section, you can manage your organization’s libraries. 
 :::info
-An organization library is a collection of either [V] specs, hints, or custom detectors (collectively referred to as **items** for simplicity). These items can be referenced by all members of the organization when configuring [OrCa](/orca) or DeFi [Vanguard](/vanguard) tasks.
+An organization library is a collection of either [V] specs, hints, or custom detectors (collectively referred to as **items** for simplicity). These items can be referenced by all members of the organization when configuring [OrCa](/orca) or [DeFi Vanguard](/vanguard) tasks.
 :::
 
 ![image](../../new_screenshots/organization_settings_button.png)

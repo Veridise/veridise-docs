@@ -13,7 +13,7 @@ Please keep in mind the following information regarding invitations:
 
 2. **If the user is not yet onboarded in AuditHub**, they will receive an email with instructions to complete their registration. After confirming their email address, they will be automatically added to the organization without needing to request access, as described in the [Onboarding](/saas/guide/on_boarding#access-request) section.
 
-3. **There is a user limit for each organization** (set by an administrator when the organization was created). Users with admin or support roles do not count toward this limit. This ensures that administrators and support personnel can be added freely for assistance. If you need to increase the user limit, please contact an administrator.
+3. **There is a user limit for each organization** (set by an administrator when the organization was created). If you need to increase the user limit, please contact an administrator. Users with admin or support roles do not count toward this limit. This ensures that administrators and support personnel can be added freely for assistance. 
 
 4. **Only administrators can cancel invitations or remove users from the organization.**
 
