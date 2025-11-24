@@ -12,6 +12,10 @@ An organization library is a collection of either [V] specs, hints, or custom de
 
 In this section, you can add, view, edit, or delete organization library items.
 
+:::warning
+The items on this page are **organization-wide**. Please be careful when editing or deleting them.
+:::
+
 ![image](../../new_screenshots/view_edit_delete_tool_configuration_entries.png)
 
 To add a new [V] spec, click the `+ Add [V] Spec` button. This opens a form where you can name your spec and add its content. Please note that [V] specs follow a specific syntax. More information about the `[V] Specification Language` can be found [here](/orca/user_guide/v/language_description).
