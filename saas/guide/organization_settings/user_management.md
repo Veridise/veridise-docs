@@ -5,7 +5,7 @@ sidebar_position: 1
 
 In the **User Management** section, you can manage the organization members. Here, you can view the current active and pending members, as well as send invitations for new users to join. 
 
-![image](../../new_screenshots/organization_settings_user_management.png)
+![image](../../screenshots/organization_settings_user_management.png)
 
 Please keep in mind the following information regarding invitations:
 
@@ -17,4 +17,4 @@ Please keep in mind the following information regarding invitations:
 
 4. **Only administrators can cancel invitations or remove users from the organization.**
 
-![image](../../new_screenshots/organization_settings_user_management_add_user.png)
+![image](../../screenshots/organization_settings_user_management_add_user.png)

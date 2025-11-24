@@ -13,4 +13,4 @@ There are two types of notifications (received via email):
 
 These notifications are especially helpful when multiple users are part of the same organization and need to stay up to date with each other’s activity.
 
-![image](../../new_screenshots/account_settings_profile.png)
+![image](../../screenshots/account_settings_profile.png)

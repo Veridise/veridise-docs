@@ -14,12 +14,12 @@ A project may contain multiple versions of its source code. However, it is impor
 
 You can view the **Projects** page in two modes: grid view and table view. In table view, you can also sort projects by name, version, active status, and creation date. Additionally, a search bar is available to filter projects by name.
 
-![image](../../new_screenshots/projects_grid_view.png)
-![image](../../new_screenshots/projects_table_view.png)
+![image](../../screenshots/projects_grid_view.png)
+![image](../../screenshots/projects_table_view.png)
 
 You can also star projects to mark them as favorites. Starred projects will appear in the **Favorite Projects** section in the left sidebar, allowing you to access them quickly and conveniently.
 
-![image](../../new_screenshots/projects_page_favourite_projects.png)
+![image](../../screenshots/projects_page_favourite_projects.png)
 
 Each project card includes a set of available actions, accessible from the dropdown menu by clicking the three dots in the corner of the card:
 
@@ -29,5 +29,5 @@ Each project card includes a set of available actions, accessible from the dropd
 
 * **Delete project**: permanently deletes the project (please note that this action cannot be undone, so use it with caution).
 
-![image](../../new_screenshots/project_actions_grid_view.png)
-![image](../../new_screenshots/project_actions_table_view.png)
+![image](../../screenshots/project_actions_grid_view.png)
+![image](../../screenshots/project_actions_table_view.png)

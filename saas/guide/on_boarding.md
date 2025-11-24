@@ -13,11 +13,11 @@ As shown in the following image, you have three log in options:
 2. Log in using your GitHub account
 3. Create a new local user
 
-![image](../new_screenshots/login.png)
+![image](../screenshots/login.png)
 
 Please note that even if you use the first two options, you will still need to provide additional required information during the registration process, as shown below.
 
-![image](../new_screenshots/registration_form.png)
+![image](../screenshots/registration_form.png)
 
 In the case of local user registration, you will also have to verify your email address.
 
