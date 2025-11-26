@@ -5,6 +5,11 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.21 - 2025-11-26
+### Changed
+- Component SaaS Backend upgraded to version *v2.5.23*.
+- Component SaaS Frontend upgraded to version *v2.6.0*.
+
 ## v2.8.20 - 2025-11-21
 ### Changed
 - Component SaaS Backend upgraded to version *v2.5.22*.
