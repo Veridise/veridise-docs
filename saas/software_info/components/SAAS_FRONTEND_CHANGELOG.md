@@ -6,6 +6,17 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.0 - 2025-11-26
+### Added
+- Add findings status filter
+- Changed message to "Run *tool name*" instead of just *tool name* in the side bar
+- Improved error message styling in Task Results widget
+- Limit project name length in sidebar and breadcrumbs to 30 characters
+- New History button in Task Results widget
+- Only show error messages in Task Results widget
+- Steps have a different design now in Task Results widget and Full analysis page
+- Update version name instantly
+
 ## v2.5.9 - 2025-11-18
 ### Added
 - Add line number validation
