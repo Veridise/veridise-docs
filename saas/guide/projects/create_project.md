@@ -15,26 +15,30 @@ The following sections are related to the project's source code (initial version
 
 Enter a name for your project. Please be aware that the name must be unique.
 
+:::note
+Navigation through the form steps is performed using the `Previous` and `Next` buttons.
+:::
+
 ![image](../../screenshots/project_creation_wizard_project_name.png)
 
 ## Source Location
 
 There are three ways to provide a project's source code: a local archive, a remote archive accessible via a URL, or a GitHub repository.
 
-### Local archive
+### Local Archive
 
 By selecting this option, you can upload an archive from your local machine. Currently, only the `.zip` archive format is supported. Please note that the archive size must not exceed `200 MB`.
 
 ![image](../../screenshots/project_creation_wizard_file_option.png)
 ![image](../../screenshots/project_creation_wizard_upload_file.png)
 
-### Remote archive
+### Remote Archive
 
 By selecting this option, you must provide a public URL pointing to your archive. AuditHub will then retrieve the corresponding data.
 
 ![image](../../screenshots/project_creation_wizard_archive_option.png)
 
-### GitHub repository
+### GitHub Repository
 
 By selecting this option, you must provide the URL of a GitHub repository. Please note that the repository must be public, as AuditHub currently does not support accessing private repositories. In addition to the URL, you may also specify the revision (i.e., the branch to be used when fetching the repository data).
 
@@ -105,4 +109,4 @@ In this final section, you can review the project configuration options you have
 
 ![image](../../screenshots/project_creation_wizard_review.png)
 
-After submitting the project, you will be redirected to the project viewer page.
+After submitting the project, you will be redirected to the [Project Viewer](/saas/guide/projects/project_viewer) page.
