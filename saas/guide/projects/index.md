@@ -12,7 +12,7 @@ Conceptually, a project is defined by its source code and its configuration. The
 A project may contain multiple versions of its source code. However, it is important to note that the same configuration applies to all versions. More information on project creation can be found in the [Create Project](/saas/guide/projects/create_project) section.
 :::
 
-You can view the **Projects** page in two modes: grid view and table view. In table view, you can also sort projects by name, version, active status, and creation date. Additionally, a search bar is available to filter projects by name.
+You can view the **Projects** page in two modes: grid view and table view. In table view, you can also sort projects by name, active status, and creation date. Additionally, a search bar is available to filter projects by name.
 
 ![image](../../screenshots/projects_grid_view.png)
 ![image](../../screenshots/projects_table_view.png)
