@@ -23,7 +23,7 @@ The bottom panel containing the **Tool Findings** and **Issues** tables can be r
 
 ## Issues
 
-During an audit, auditors need a structured way to communicate the issues they identify in the developers’ source code. These issues serve as a method for documenting and conveying the results of the manual audit.
+During an audit, auditors need a structured way to communicate the issues they identify in the developers’ source code. These issues serve as a method for documenting and conveying the results of an audit, either for issues detected manually or automatically (via tool executions).
 
 ### Create Issue
 
