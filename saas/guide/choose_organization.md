@@ -7,7 +7,7 @@ sidebar_position: 2
 An organization represents a dedicated workspace for a group of users. It provides a structured environment where members can manage their projects, tasks, and audits.
 :::
 
-After logging in, you will be taken to a page that displays all the organizations you have access to. By selecting one of them, you will be redirected to the home page. Please note that if you belong to only one organization, you will be taken directly to the home page. You can also log out from this page.
+After logging in, you will be taken to a page that displays all the organizations you have access to. By selecting one of them, you will be redirected to the organization home page. Please note that if you belong to only one organization, you will be taken directly to the organization home page. You can also log out from this page.
 
 ![image](../screenshots/choose_organization.png)
 

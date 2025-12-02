@@ -33,7 +33,7 @@ To add a new custom detector, click the `+ Add Detector` button. This opens a fo
 ![image](../../screenshots/organization_settings_tool_configuration_add_detector_1.png)
 ![image](../../screenshots/organization_settings_tool_configuration_add_detector_2.png)
 
-A few things to keep in mind:
+Please keep in mind the following:
+
 * Any deviation from the required syntax will trigger a warning and you cannot proceed with the item creation unless all syntax issues are addressed.
 * All items are automatically saved with the `.spec`, `.hint`, or `.luau` file extension, so you do not need to include the extension when naming them.
-* Each item has a unique identifier that can be used for debugging purposes (you can find it under the item's name).

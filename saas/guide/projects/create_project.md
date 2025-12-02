@@ -3,17 +3,16 @@ title: Create Project
 sidebar_position: 1
 ---
 
-You can create a new project by clicking either of the two highlighted options below. This will open a wizard that guides you through several setup steps for the project.
+You can create a new project by clicking either of the two highlighted options below. This will open a wizard that guides you through setup steps for the project.
+Please note that during project creation we also create the first version of the project, which is called `initial`. Thus through the project creation:
+1. We define the project attributes
+2. We create the first project source code version
 
 ![image](../../screenshots/projects_page_create_new_project.png)
 
-:::info
-The following sections are related to the project's source code (initial version).
-:::
-
 ## Project Name
 
-Enter a name for your project. Please be aware that the name must be unique.
+Enter a name for your project. Please be aware that the name must be unique across an organization.
 
 :::note
 Navigation through the form steps is performed using the `Previous` and `Next` buttons.
@@ -57,7 +56,7 @@ In this section, you need to select the root directory for your project. This di
 
 ## Project Paths
 
-Here, you must select the paths relevant to your project:
+Here, you must select the paths relevant to your project, which must be bellow project root selected in previous step:
 
 * **Source path**: the folder containing the project’s source files
 * **Include path**: the folder containing the project’s dependencies, if any
@@ -98,14 +97,15 @@ Here you can select the build system supported by your project, as well as any e
 
 * **Hardhat - Ignition** (the latest Hardhat offering)
 
-Providing the deployment script path is optional when using DeFi Vanguard or DeFi Vanguard (Legacy). However, if you intend to use OrCa on this project, specifying the deployment script path is mandatory.
+Providing the deployment script path is optional when using DeFi Vanguard or DeFi Vanguard (Legacy). However, if you intend to use OrCa on this project the deployment script path is required.
+In any case you are able to overwrite this setting on OrCa task execution wizard. 
 
 ![image](../../screenshots/project_creation_wizard_build_system.png)
 ![image](../../screenshots/project_creation_wizard_environment_vars.png)
 
 ## Review
 
-In this final section, you can review the project configuration options you have selected. If you are satisfied with your choices, you may proceed with submitting the project. Otherwise, you can return to previous steps in the wizard and make any necessary changes. Please also note that the project configuration can be edited and new versions of the source code can be uploaded at any time after submission.
+In this final section, you can review the project configuration options you have selected. If you are satisfied with your choices, you may proceed with submitting the project. Otherwise, you can return to previous steps in the wizard and make any necessary changes. Please also note that the project configuration can be edited and new versions of the source code can be added at any time after submission.
 
 ![image](../../screenshots/project_creation_wizard_review.png)
 

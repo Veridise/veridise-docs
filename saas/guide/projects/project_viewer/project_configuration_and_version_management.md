@@ -15,7 +15,7 @@ To create a new version, click the area located next to the project name. The or
 
 ![image](../../../screenshots/project_viewer_add_new_version_1.png)
 
-Selecting this option launches a wizard that allows a new source code version to be uploaded using one of three methods: a local archive, a remote archive accessible via URL, or a GitHub repository.
+Selecting this option launches a wizard that allows a new source code version to be added using one of three methods: a local archive, a remote archive accessible via URL, or a GitHub repository.
 
 ![image](../../../screenshots/project_viewer_add_new_version_2.png)
 
@@ -59,4 +59,4 @@ Leo: .aleo, .leo
 Hint Language: .hint
 ```
 
-For additional or custom syntax highlighting support, please contact an administrator.
+For additional or custom syntax highlighting support, please contact us.

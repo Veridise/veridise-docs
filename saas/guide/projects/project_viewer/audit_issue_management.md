@@ -4,6 +4,7 @@ sidebar_position: 3
 ---
 
 The following features were designed to support manual auditing and to create a synergy between automated findings and manual review.
+For the rest of this section we refer to users that posses the auditor role as auditors, and to all other users as developers.
 
 ## Findings
 

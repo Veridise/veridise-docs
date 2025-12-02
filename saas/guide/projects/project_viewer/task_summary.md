@@ -5,7 +5,7 @@ sidebar_position: 2
 
 ## Veridise Audit Tools
 
-On the right sidebar, the **Veridise Audit Tools** section provides access to all tools available in AuditHub and allows them to be executed against the selected source code.
+On the right sidebar, the **Veridise Audit Tools** section provides access to all tools available for your plan and your project definition, and allows them to be executed against the selected source code version.
 
 Tools can be selected in two ways:
 * By clicking the tool icons directly, or
@@ -53,13 +53,13 @@ Three actions are available for tasks:
 * `Run Again`
 * `Delete Task`
 
-A running task can be canceled at any time. When canceled, its status changes to `Canceled`, and its progress stops immediately.
+A running task can be canceled at any time. When canceled, its status changes to `Canceled`, and its progress stops.
 
 ![image](../../../screenshots/project_viewer_task_summary_cancel_task.png)
 ![image](../../../screenshots/project_viewer_task_summary_task_result_canceled.png)
 
 After a task finishes its execution (whether `Canceled`, `Completed`, or `Error`ed), it can be run again. Selecting `Run again` opens the task wizard with all configuration options preloaded from the previous run.
-A task can also be deleted at any time after it has finished by clicking `Delete Task`. Deletion is permanent, so caution is advised.
+A task can also be deleted at any time after it has finished by clicking `Delete Task`.
 
 ![image](../../../screenshots/project_viewer_task_summary_run_again_and_delete_task.png)
 ![image](../../../screenshots/project_viewer_task_summary_task_result_completed.png)
@@ -67,7 +67,7 @@ A task can also be deleted at any time after it has finished by clicking `Delete
 
 #### Task Steps
 
-Depending on the tool being executed, a task may consist of multiple steps that run either sequentially or in parallel. As shown below, each step provides a set of logs that can be inspected, including the executed command and its results. Logs can be searched, navigated by line number, copied, or downloaded. These options are available from the three-dot menu in the step box.
+Depending on the tool being executed, a task may consist of multiple steps that run either sequentially or in parallel. As shown below, each step provides its logs. Logs can be searched, navigated by line number, copied, or downloaded. These options are available from the three-dot menu in the step box.
 
 ![image](../../../screenshots/project_viewer_task_summary_task_steps.png)
 
@@ -102,7 +102,7 @@ Findings can also be filtered to help narrow down specific categories or areas o
 
 #### Task Artifacts
 
-Depending on the tool, task steps may produce artifacts that can be downloaded and inspected afterward. These artifacts represent additional outputs generated during execution and may be useful for debugging or support purposes.
+Depending on the tool, task steps may produce artifacts that can be downloaded and inspected afterward. These artifacts represent additional outputs generated during execution and may be useful for support purposes.
 
 ![image](../../../screenshots/project_viewer_task_summary_task_artifacts.png)
 
