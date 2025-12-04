@@ -6,6 +6,27 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.4 - 2025-12-04
+### Added
+- Custom Detectors:
+  - Added a `Function.definingContract` property to get the original contract that defined the function
+  - Added ability for `StorageVar` to be iterated from `StorageRead` and `StorageWrite`
+
+### Changed
+- Custom Detectors:
+  - Changed the `StorageVar.location` property string to indicate any mapping, array, or struct indices/fields that are accessed. This also fixes a crash that occurs if the storage location's variable cannot be determined.
+  - Improved performance of the `.interprocForwardSlices` and `.interprocBackwardSlices` properties
+- Solidity:
+  - Added back end line/column when reporting source locations (originally implemented in DeFi Vanguard (Legacy))
+- Added a timeout on Vanguard detectors to guard against bugs and abuse
+
+### Fixed
+- Divide Before Multiply:
+  - Fixed a bug resulting in out-of-memory issues on large projects
+- Unchecked Return:
+  - Fixed false alarms when call results are used in reverts, custom errors, events, and abi.encode.
+  - Fixed a bug where the detector would take a long time to run on large projects with many function calls.
+
 ## v1.0.3 - 2025-11-14
 ### Fixed
 - ZK Vanguard: fix instability when running llzk/out-of-signals in tandem with llzk/divide-by-zero
