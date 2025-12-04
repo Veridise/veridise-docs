@@ -6,6 +6,11 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.1 - 2025-12-04
+### Added
+- Add download version button to version selector
+- All comments dialog
+
 ## v2.6.0 - 2025-11-26
 ### Added
 - Add findings status filter
