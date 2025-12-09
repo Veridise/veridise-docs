@@ -6,6 +6,12 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.5 - 2025-12-09
+### Fixed
+- Divide Before Multiply:
+  - Fixed timeout / hanging when running on large projects
+  - Fixed redundant multiplication operations being reported for each divide.
+
 ## v1.0.4 - 2025-12-04
 ### Added
 - Custom Detectors:
