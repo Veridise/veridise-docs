@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.2 - 2025-12-10
+### Added
+- Add dropdown to range glyphs for quick thread access
+
+### Fixed
+- Correctly pass file path to New Thread dialog
+- Mentions are now preserved when converting HTML to Markdown
+
 ## v2.6.1 - 2025-12-04
 ### Added
 - Add download version button to version selector

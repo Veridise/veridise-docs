@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.25 - 2025-12-10
+### Fixed
+- Bug fixes
+
 ## v2.5.24 - 2025-12-04
 ### Added
 - DeFi Vanguard timeout
