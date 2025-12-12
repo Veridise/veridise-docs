@@ -120,11 +120,13 @@ These two threads serve as channels for communicating important updates, such as
 ### Create Threads
 
 A thread can be created in two ways:
-* By clicking the `+ New Thread` button in the **Threads** section, or
-* By selecting the file, highlighting the relevant line or lines, and right-clicking to open a dropdown menu with the `New Thread from Selection` option.
+* By clicking the `+ New Thread` button in the **Threads** section
+* By selecting the file, highlighting the relevant line or lines, and right-clicking to open a dropdown menu with the `New Thread from Selection` option, or
+* By hovering over the line of interest in the code editor and clicking the **plus (+)** icon in the left sidebar.
 
 ![image](../../../screenshots/create_thread_threads_view.png)
 ![image](../../../screenshots/create_thread_code_editor.png)
+![image](../../../screenshots/create_threads.png)
 
 Selecting either method opens a thread creation form where the required information must be provided. There are two types of threads: **notes** and **questions**. Notes are intended for general observations or documentation, while questions are used to request clarification or assistance.
 
@@ -135,6 +137,20 @@ All fields in the thread creation form are mandatory. A title, a description, an
 ![image](../../../screenshots/create_thread_form.png)
 
 To access the full view of a thread, click any entry in the **Threads** section. When a thread is opened, the referenced file automatically opens at the specified line number. If you navigate to other files afterward, you can return to the referenced location by clicking the **Go to line** button in the thread header.
+
+There is also a filtering feature for threads. Below are the most relevant details:
+
+* A `dialog` icon is used for both single-line and multi-line threads. For multi-line threads, the icon appears only on the first line.
+* Clicking the `dialog` icon automatically filters the thread list to show only threads that either begin on that line or reference it within a multi-line range.
+
+When hovering over lines, contextual actions are displayed:
+
+* If the line is not referenced by any existing thread, a **plus (+)** icon appears, indicating that clicking it will create a new thread starting at that line.
+* If the line is referenced by one or more threads, a **filter** icon appears, indicating that clicking it will filter the thread list to those threads.
+
+When threads are filtered by line (either by clicking the `dialog` icon or the `filter` icon), clicking the **+ New Thread** button opens the thread creation form with the start line pre-filled based on the currently selected line.
+
+![image](../../../screenshots/filter_threads.png)
 
 Within a thread, messages can be posted. This example illustrates two features:
 
