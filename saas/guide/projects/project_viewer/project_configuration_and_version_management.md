@@ -19,7 +19,7 @@ Selecting this option launches a wizard that allows a new source code version to
 
 ![image](../../../screenshots/project_viewer_add_new_version_2.png)
 
-Project versions can be renamed or deleted, but at least one version must always exist therefore, the last remaining version cannot be deleted. When switching to a different version, a blue check mark indicates the currently active one.
+Project versions can be downloaded, renamed or deleted, but at least one version must always exist therefore, the last remaining version cannot be deleted. When switching to a different version, a blue check mark indicates the currently active one.
 
 ![image](../../../screenshots/project_viewer_add_new_version_3.png)
 
