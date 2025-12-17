@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.3 - 2025-12-17
+### Added
+- Model tool wizard
+
+### Changed
+- New thread layout
+
 ## v2.6.2 - 2025-12-10
 ### Added
 - Add dropdown to range glyphs for quick thread access
