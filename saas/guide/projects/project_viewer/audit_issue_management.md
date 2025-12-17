@@ -124,19 +124,38 @@ A thread can be created in two ways:
 * By selecting the file, highlighting the relevant line or lines, and right-clicking to open a dropdown menu with the `New Thread from Selection` option, or
 * By hovering over the line of interest in the code editor and clicking the **plus (+)** icon in the left sidebar.
 
+:::note
+It is important to note that **all created threads are visible to everyone**.
+:::
+
 ![image](../../../screenshots/create_thread_threads_view.png)
 ![image](../../../screenshots/create_thread_code_editor.png)
 ![image](../../../screenshots/create_threads.png)
 
 Selecting either method opens a thread creation form where the required information must be provided. There are two types of threads: **notes** and **questions**. Notes are intended for general observations or documentation, while questions are used to request clarification or assistance.
 
-It is important to note that **all created threads are visible to everyone**.
-
-All fields in the thread creation form are mandatory. A title, a description, and a source code location (file and line number) must all be provided. To proceed with the thread creation, please click the `Create Thread` button.
+All fields in the thread creation form are mandatory. A title, a description, and a source code location (file and line number) must all be provided. To proceed with the thread creation, please click the `Create Thread` button. 
 
 ![image](../../../screenshots/create_thread_form.png)
 
-To access the full view of a thread, click any entry in the **Threads** section. When a thread is opened, the referenced file automatically opens at the specified line number. If you navigate to other files afterward, you can return to the referenced location by clicking the **Go to line** button in the thread header.
+:::warning
+Please note that we don’t preserve a cache of the `Create Thread` form in the following situations:
+* When you refresh the page
+* When you navigate to another page
+:::
+
+However, if you click `Back` or try to [filter threads](/saas/guide/projects/project_viewer/audit_issue_management.md#filter-threads) (by clicking the `dialog` or `filter` icons) while the form contains unsaved content, you’ll be prompted with one of the following dialogs:
+
+![image](../../../screenshots/create_thread_form_unsaved_changes_1.png)
+![image](../../../screenshots/create_thread_form_unsaved_changes_2.png)
+
+Once the thread is created, you’ll be redirected to the full thread view shown below.
+
+![image](../../../screenshots/thread_full_view.png)
+
+To return to the thread list, click the **back arrow**. To open a thread’s full view again, click any entry of your choice in the **Threads** section. When you open a thread, the referenced file automatically opens at the specified line number. If you navigate to other files afterward, you can return to the referenced location by clicking the **Go to line** button in the thread header.
+
+### Filter Threads
 
 There is also a filtering feature for threads. Below are the most relevant details:
 
@@ -145,12 +164,14 @@ There is also a filtering feature for threads. Below are the most relevant detai
 
 When hovering over lines, contextual actions are displayed:
 
-* If the line is not referenced by any existing thread, a **plus (+)** icon appears, indicating that clicking it will create a new thread starting at that line.
+* If the line is not referenced by any existing thread, a **plus (+)** icon appears, indicating that clicking it will [create a new thread](/saas/guide/projects/project_viewer/audit_issue_management.md#create-threads) starting at that line.
 * If the line is referenced by one or more threads, a **filter** icon appears, indicating that clicking it will filter the thread list to those threads.
 
 When threads are filtered by line (either by clicking the `dialog` icon or the `filter` icon), clicking the **+ New Thread** button opens the thread creation form with the start line pre-filled based on the currently selected line.
 
 ![image](../../../screenshots/filter_threads.png)
+
+### Thread Messages
 
 Within a thread, messages can be posted. This example illustrates two features:
 
@@ -159,10 +180,18 @@ Within a thread, messages can be posted. This example illustrates two features:
 
 ![image](../../../screenshots/full_thread_view.png)
 
+### Thread Notifications
+
 There is also an option to customize notification preferences for messages posted in threads. These notifications are included in the digest email. By default, all notification types are enabled.
 
 ![image](../../../screenshots/subscribe_to_thread_notifications.png)
 
-You can also copy a direct link to a thread for use elsewhere. Additionally, a thread can be marked as resolved when it is no longer needed. Resolved threads are automatically moved to the end of the list.
+### Resolve Threads
 
-![image](../../../screenshots/resolve_thread.png)
+You can also copy a direct link to a thread for use elsewhere. Additionally, a thread can be marked as resolved when it is no longer needed. 
+
+![image](../../../screenshots/resolve_threads_1.png)
+
+Resolved threads are automatically moved to the end of the list and their status colour switches to **red**.
+
+![image](../../../screenshots/resolve_threads_2.png)
