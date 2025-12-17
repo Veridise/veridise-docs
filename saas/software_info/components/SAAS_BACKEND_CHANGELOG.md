@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.27 - 2025-12-17
+### Fixed
+- Bug fixes
+
 ## v2.5.26 - 2025-12-16
 ### Changed
 - Allow checkout from private GitHub repos via the HTTPS protocol
