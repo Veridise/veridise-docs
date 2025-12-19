@@ -6,6 +6,10 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.10.0 - 2025-12-19
+### Fixed
+- Made enum information optional in AST to avoid issues when only ABIs provided for on-chain fuzzing
+- Changed integer fuzzing for more efficient coverage
 ## v2.9.0 - 2025-11-18
 ### Changed
 - Added logging functionality for [V] and Hints — static and runtime errors are now logged for [V] and Hints but do not crash OrCa.
