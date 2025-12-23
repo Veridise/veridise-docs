@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.5 - 2025-12-23
+### Added
+- Update submodules
+
 ## v2.6.4 - 2025-12-23
 ### Added
 - UI captures task results state in URL
