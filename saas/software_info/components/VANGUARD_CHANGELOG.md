@@ -6,6 +6,22 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.6 - 2025-12-23
+### Added
+- custom-detectors:
+  - Added "source" property to the SolidityValueClassImpl PAQL class
+  - Added incomingPaths and outgoingPaths property that returns all paths coming into or going out from expressions and statements
+
+### Changed
+- custom-detectors:
+  - The "address" property of ExternalCall PAQL class now returns a value instead of an expression
+- cross-contract-reentrancy
+  - Updated findings formatting and collected calltraces that reach external calls
+
+### Fixed
+- cross-contract-reentrancy
+  - Fixed crashes while handling send statements
+
 ## v1.0.5 - 2025-12-09
 ### Fixed
 - Divide Before Multiply:
