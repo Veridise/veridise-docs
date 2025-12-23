@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.28 - 2025-12-23
+### Fixed
+- Bug fixes
+
 ## v2.5.27 - 2025-12-17
 ### Fixed
 - Bug fixes

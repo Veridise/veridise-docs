@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.4 - 2025-12-23
+### Added
+- UI captures task results state in URL
+
+### Changed
+- Updated fms submodule to latest version
+
 ## v2.6.3 - 2025-12-17
 ### Added
 - Model tool wizard
