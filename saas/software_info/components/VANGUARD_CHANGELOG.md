@@ -6,6 +6,15 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.7 - 2025-12-29
+### Changed
+- custom-detectors:
+  - Backwards path exploration does not stop at revert ops any more
+
+### Fixed
+- custom-detectors:
+  - Fixed an infinite loop bug in incomingPaths and outgoingPaths iterator
+
 ## v1.0.6 - 2025-12-23
 ### Added
 - custom-detectors:
