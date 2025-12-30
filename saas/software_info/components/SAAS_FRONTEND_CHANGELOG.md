@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.6 - 2025-12-30
+### Changed
+- Non-admin users can now reinvite expired invitations
+
 ## v2.6.5 - 2025-12-23
 ### Added
 - Update submodules
