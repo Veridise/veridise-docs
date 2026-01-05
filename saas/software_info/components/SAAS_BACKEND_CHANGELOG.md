@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.29 - 2026-01-05
+### Added
+- Resource cleanup
+
+### Changed
+- Digest notifications now point to the new UI
+
 ## v2.5.28 - 2025-12-23
 ### Fixed
 - Bug fixes
