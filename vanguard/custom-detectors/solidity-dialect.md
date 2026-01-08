@@ -40,6 +40,8 @@ Represents a smart contract of any kind (contract, interface, or library).
   Expressions that occur in the functions of this contract.
 * `StorageVar`: the storage variables that this contract has. Note that this
   includes inherited storage variables.
+* `StorageRead`, `StorageWrite`: the storage reads/writes that occur in this
+  contract.
 
 #### Examples
 
@@ -146,6 +148,8 @@ This does not include immutable variables or constants.
   variable.
 * `getterSignature` (string): The signature of the getter function of this
   variable as a string, or empty string if this has no getter function.
+* `visibility` (string): the declared visibility of this variable (either
+  `public` or `private`).
 * `slot` (integer): The (base) storage slot of this varible.
 * `offset` (integer): The (base) offset of this variable.
 
@@ -156,6 +160,8 @@ cover Solidity expressions and control structures, respectively.
 
 ### Common Properties
 
+The following properties are available on all `Expression`s and `Statement`s.
+
 * `after`: an object that may be iterated to get all `Expression` or
   `Statement` that may be executed after this one.
 * `before`: an object that may be iterated to get all `Expression` or
@@ -164,13 +170,25 @@ cover Solidity expressions and control structures, respectively.
   `Statement` that are influenced by the results of this
   `Expression`/`Statement`.
 * `backwardSlices`: an object that may be iterated to get all `Expression` or
-  `Statement` that are influenced by the operands of this
-  `Expression`/`Statement`.
+  `Statement` that influence the operands of this `Expression`/`Statement`.
+* `incomingPaths`: an object that may be iterated to get all `Path`s from the
+  external function entries to this `Expression` or `Statement`.
+* `outgoingPaths`: an object that may be iterated to get all `Path`s from
+  this `Expression` or `Statement` to the function return/revert.
 
 ### Common Iterators
 
+The following iterators are available on all `Expression`s and `Statement`s.
+
 * `StorageRead`, `StorageWrite`: the storage accesses that are performed by this
   `Expression`/`Statement`.
+
+### Expression Properties
+
+The following properties are available on all `Expression`s.
+
+* `results`: an object that may be iterated to get the `Results` of this
+  `Expression`.
 
 ### Expression: ExternalCall
 
@@ -193,7 +211,8 @@ Represents an external call.
 * `kind` (string): indicates the type of EVM call opcode of this call, one of
   `call`, `staticcall`, or `delegatecall`.
 * `isCall`, `isStaticcall`, `isDelegatecall` (bool): indicates whether the call
-  is the corresponding kind
+  is the corresponding kind.
+* `address`: the `Value` corresponding to the address to which this call is made.
 
 ### Expression: InternalCall
 
@@ -203,6 +222,14 @@ Represents an internal call (within the same contract).
 
 * `callee` (`Function`): the function that is called.
 
+### Expression: PrecompileCall
+
+Represents a call to a precompiled contract.
+
+#### Properties
+
+* `address` (string): the address of the precompiled contract.
+* `name` (string): the name of the precompiled contract.
 
 ### Arithmetic Expressions
 
@@ -264,12 +291,105 @@ specific read from or write to (respectively) a specific storage variable.
   written, or empty string if unknown.
   For scalar variables, this is just the name of the variable. For aggregate
   data structures, such as `struct` or `mapping`s, this may also include fields
-  or indexes.
-* `variable`: the `StorageVar` that was read or written.
+  or array/mapping indexes.
+  Unknown fields or indices will be represented using `*` characters.
+  For example, the location of a write to a struct field in a mapping may be
+  represented with a string like `myMapping[*].myField`.
 
-:::warning
+### Common Iterators
 
-The `.variable` property will currently cause Vanguard to crash for reads/writes
-whose target locations are not known to Vanguard.
+* `StorageVar`: the storage variable(s) that may be directly involved in this
+  storage access.
 
-:::
+
+## Values
+
+Arguments to various operands and function parameters are represented using the
+`Value` classes.
+Three types of `Value`s are supported:
+
+* The `Argument` class, representing function parameters.
+* The `Result` class, representing results of an operation.
+* The generic `Value` class, representing all values.
+  This includes the above two classes as well as other generic values that
+  currently do not have a specialized class.
+
+### Common Properties
+
+* `source`: returns an object that may be iterated to obtain the `Expression`
+  that created this `Value`.
+  The object will have an empty iterator if this was not created by an
+  expression, such as when this `Value` is a function parameter.
+* `forwardSlices`: an object that may be iterated to get all `Expression` or
+  `Statement` that are influenced by the results of this
+  `Expression`/`Statement`.
+* `backwardSlices`: an object that may be iterated to get all `Expression` or
+  `Statement` that influence the operands of this `Expression`/`Statement`.
+
+### Common Iterators
+
+* `Use`: represents the "uses" of this value (see below section).
+
+### Use
+
+The `Use` class contains information about how a particular value is used in an
+`Expression`/`Statement`.
+
+#### Properties
+
+* `user`: the `Expression` that uses the value.
+* `argIndex` (int): the index in the `user`'s argument list.
+
+
+## Paths
+
+A `Path` represents a single possible control-flow path through a function,
+where a path is a sequence of `Expression`s and `Statements`.
+
+### Properties
+
+### Iterators
+
+* Every `Expression` / `Statement`: the `Expression`/`Statement`s that may be
+  executed along this path.
+
+#### Examples
+
+The following query finds all of the functions that write to the `balances`
+storage variable but may not always be guarded by a require statement involving
+the `owner` storage variable:
+
+```paql
+FIND
+  Contract contract,
+  Function function IN contract,
+  StorageWrite w IN function,
+  Path p IN w.incomingPaths,
+WHERE
+  w.location == "balances[*]",
+  !EXISTS
+    RequireLike req IN p,
+    Expression e IN req.backwardSlices,
+    StorageRead rd IN e,
+  WHERE {
+    rd.location == "owner",
+  }
+```
+
+This would report results for code such as:
+
+```solidity
+pragma solidity ^0.8.10;
+contract Example {
+  address owner;
+  mapping(address => uint256) balances;
+  function f(bool a) external {
+    if (a) {
+      require(msg.sender == owner); // okay: access control
+    } else {
+      // not okay: msg.sender is not checked to be owner
+    }
+    balances[msg.sender] += 1;
+  }
+}
+```
