@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.7 - 2026-01-08
+### Fixed
+- Task run again button
+
 ## v2.6.6 - 2025-12-30
 ### Changed
 - Non-admin users can now reinvite expired invitations

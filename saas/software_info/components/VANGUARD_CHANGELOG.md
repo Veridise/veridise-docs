@@ -6,6 +6,13 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.8 - 2026-01-08
+### Added
+- Cross-Contract Reentrancy
+  - Fixed a bug causing the AuditHub UI to crash on cross-contract reentrancy findings reported by Vanguard versions 1.0.6 and 1.0.7
+- Custom Detectors
+  - Support for integer and boolean literals
+
 ## v1.0.7 - 2025-12-29
 ### Changed
 - custom-detectors:
