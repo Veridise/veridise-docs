@@ -7,7 +7,7 @@ sidebar_position: 30
 
 One common category of issues is access controls, which is especially important
 for large protocols such as the one in an
-[example project](https://github.com/Veridise/DSS-Buggy-DeFi-Code-November-2025) that we have
+[example project](https://github.com/Veridise/DSS2025-AuditHub-Solidity-Workshop) that we have
 prepared for this exercise.
 In particular, this project uses a combination of OpenZeppelin ownable contracts
 as well as custom ownership logic (see `CoreOwnable`).
