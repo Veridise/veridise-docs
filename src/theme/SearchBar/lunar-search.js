@@ -2,10 +2,11 @@ import lunr from "@generated/lunr.client";
 lunr.tokenizer.separator = /[\s\-/]+/;
 
 class LunrSearchAdapter {
-  constructor(searchDocs, searchIndex, baseUrl = "/") {
+  constructor(searchDocs, searchIndex, baseUrl = "/", maxHits) {
     this.searchDocs = searchDocs;
     this.lunrIndex = lunr.Index.load(searchIndex);
     this.baseUrl = baseUrl;
+    this.maxHits = maxHits;
   }
 
   getLunrResult(input) {
@@ -27,6 +28,7 @@ class LunrSearchAdapter {
         lvl1: doc.type === 0 ? null : doc.title,
       },
       url: doc.url,
+      version: doc.version,
       _snippetResult: formattedContent
         ? {
             content: {
@@ -132,7 +134,7 @@ class LunrSearchAdapter {
     return new Promise((resolve, rej) => {
       const results = this.getLunrResult(input);
       const hits = [];
-      results.length > 5 && (results.length = 5);
+      results.length > this.maxHits && (results.length = this.maxHits);
       this.titleHitsRes = [];
       this.contentHitsRes = [];
       results.forEach((result) => {
@@ -155,7 +157,7 @@ class LunrSearchAdapter {
           }
         }
       });
-      hits.length > 5 && (hits.length = 5);
+      hits.length > this.maxHits && (hits.length = this.maxHits);
       resolve(hits);
     });
   }
