@@ -13,4 +13,4 @@ There are two types of notifications (received via email):
 
 These notifications help the users stay up to date with each other’s activity.
 
-![image](../../screenshots/account_settings_profile.png)
+![image](../../../screenshots/account_settings_profile.png)
