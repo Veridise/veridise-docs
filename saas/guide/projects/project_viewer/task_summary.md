@@ -1,5 +1,5 @@
 ---
-title: Security tools and Tasks
+title: Security Tools and Tasks
 sidebar_position: 2
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Onboarding process
+title: Onboarding Process
 sidebar_position: 2
 ---
 
