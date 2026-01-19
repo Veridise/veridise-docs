@@ -1,6 +1,6 @@
 ---
 title: Onboarding process
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 To start using our tools visit the [AuditHub page](https://app.audithub.dev/).
