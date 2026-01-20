@@ -11,7 +11,7 @@ Please keep in mind the following:
 
 1. **If the invited user is already an active AuditHub user**, they will be automatically added to the organization.
 
-2. **If the user is not yet onboarded in AuditHub**, they will receive an invitation email to complete registration. After they register, they will be automatically added to the organization, as described in the [Onboarding](/saas/guide/on_boarding#invitation-based-access-to-audithub) section.
+2. **If the user is not yet onboarded in AuditHub**, they will receive an invitation email to complete registration. After they register, they will be automatically added to the organization, as described in the [Onboarding Process](/saas/guide/on_boarding#invitation-based-access-to-audithub) section.
 
 3. **There is a user limit for each organization**. If you need to increase the user limit, please contact us. Veridise support personnel do not count toward this limit.
 
