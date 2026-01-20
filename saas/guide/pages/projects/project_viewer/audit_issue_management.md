@@ -41,7 +41,7 @@ An issue can be created in two ways:
 Selecting either method opens an issue creation form, where the required information must be provided.
 
 ![image](../../../../screenshots/project_viewer_create_issue_1.png)
-![image](../../../../screenshots/project_viewer_create_issue_1.png)
+![image](../../../../screenshots/project_viewer_create_issue_2.png)
 
 The issue form is divided into three sections: `Base Properties`, `Internal Properties`, and `Resolution` (the `Resolution` section is only available when editing an existing issue).
 
