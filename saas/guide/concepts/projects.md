@@ -28,6 +28,10 @@ AuditHub is designed around common ecosystems and build tooling (for example, `n
 
 AuditHub requires an `initial` version when you create a project. This allows the UI to validate and assist with path selection (e.g., ensuring `src_path` is under `project_root`).
 
+:::warning Deleting a project is destructive
+Deleting a project permanently removes the project and everything stored within it, including its versions, tasks, findings, issues, and threads.
+:::
+
 ## Project model
 
 The project model is defined by what AuditHub currently uses. Key attributes include:
