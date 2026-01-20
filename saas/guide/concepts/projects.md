@@ -3,7 +3,7 @@ title: Projects
 sidebar_position: 2
 ---
 
-In AuditHub, a `project` is the unit of work. It typically represents a real-world DeFi or ZK codebase you want to analyze (for example, a protocol implementation, a set of smart contracts, or circuits). A project combines a codebase (tracked as one or more immutable [versions](/saas/guide/concepts/versions)) with the configuration AuditHub needs to run [tools](/saas/guide/concepts/tools) and create [tasks](/saas/guide/concepts/tasks) against that code.
+In AuditHub, a `project` is the unit of work. It typically represents a real-world DeFi or ZK codebase you want to analyze (e.g., a protocol implementation, a set of smart contracts, or circuits). A project combines a codebase (tracked as one or more immutable [versions](/saas/guide/concepts/versions)) with the configuration AuditHub needs to run [tools](/saas/guide/concepts/tools) and create [tasks](/saas/guide/concepts/tasks) against that code.
 
 Projects live inside [organizations](/saas/guide/concepts/organizations). A single project can have many versions over time, but its project-level configuration remains stable across versions unless you explicitly edit it.
 
@@ -24,7 +24,7 @@ Conceptually, a project represents:
 - Dependency and build settings that tasks and tools may use to prepare the code for analysis.
 - An "audit workspace" boundary: a project hosts its versions, tasks, findings, issues, and threads.
 
-AuditHub is designed around common ecosystems and build tooling (for example, `npm`-based workflows and `Foundry`/`Hardhat`-style projects). Project configuration captures the information tools need to operate reliably within those structures.
+AuditHub is designed around common ecosystems and build tooling (e.g., `npm`-based workflows and `Foundry`/`Hardhat`-style projects). Project configuration captures the information tools need to operate reliably within those structures.
 
 AuditHub requires an `initial` version when you create a project. This allows the UI to validate and assist with path selection (e.g., ensuring `src_path` is under `project_root`).
 

@@ -23,7 +23,7 @@ A version:
 
 Conceptually, a version represents:
 - The source code snapshot itself (as uploaded or fetched).
-- Provenance information about how AuditHub obtained it (for example, from git or from an archive).
+- Provenance information about how AuditHub obtained it (e.g., from git or from an archive).
 - Derived metadata created during ingestion to support browsing and analysis (e.g., a directory catalog and other extracted data used by tools).
 
 ## Version model
@@ -32,7 +32,7 @@ The version model is defined by what AuditHub currently uses. Key attributes inc
 
 ### Identity
 
-- `name`: A human-friendly label for the version (for example, the initial version is often named `initial`).
+- `name`: A human-friendly label for the version (e.g., the initial version is often named `initial`).
 
 ### Source provenance
 
@@ -41,7 +41,7 @@ The version model is defined by what AuditHub currently uses. Key attributes inc
     - `input_type`: `git`
     - `url`: Repository URL
     - `includes_submodules` (default: off): If enabled, include git submodules
-    - `revision` (optional): Revision to check out (for example, a commit hash, branch, or tag)
+    - `revision` (optional): Revision to check out (e.g., a commit hash, branch, or tag)
   - **Archive input**
     - `input_type`: `archive`
     - `url` (optional): URL to download a `.zip` archive from (if omitted, the archive is uploaded manually)

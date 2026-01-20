@@ -17,7 +17,7 @@ An organization:
 
 ## What an organization represents
 
-Conceptually, an organization represents a real team or entity working on one or more codebases (e.g., an audit firm, a protocol team, or a client team). It is the "container" for all work in AuditHub:
+Conceptually, an organization can be associated with a real team or entity working on one or more codebases (e.g., an audit firm, a protocol team, or a client team). It is the "container" for all work in AuditHub:
 - [Projects](/saas/guide/concepts/projects)
 - [Versions](/saas/guide/concepts/versions)
 - [Tasks](/saas/guide/concepts/tasks)
