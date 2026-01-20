@@ -4,7 +4,7 @@ sidebar_position: 3
 ---
 
 The following features were designed to support manual auditing and to create a synergy between automated findings and manual review.
-For the rest of this section we refer to users that posses the auditor role as auditors, and to all other users as developers.
+For the rest of this section we refer to users that have the auditor role as auditors, and to all other users as developers.
 
 ## Findings
 
@@ -12,7 +12,7 @@ For the rest of this section we refer to users that posses the auditor role as a
 For more background on findings, see [Findings](/saas/guide/concepts/findings). This section focuses on the **Tool Findings** table and related actions.
 :::
 
-The findings are also available in the **Tool Findings** table shown below. Unlike the task-level view, this table aggregates findings from **all** tasks. Findings can be filtered by tool, severity, and other criteria, and all functionalities available on the **Task Summary** page apply here as well (i.e., trige, jump to line, etc.).
+The findings are also available in the **Tool Findings** table shown below. Unlike the task-level view, this table aggregates findings from **all** tasks. Findings can be filtered by tool, severity, and other criteria, and all functionalities available on the **Task Summary** page apply here as well (i.e., triage, jump to line, etc.).
 
 This view also introduces two additional features:
 

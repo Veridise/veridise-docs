@@ -56,7 +56,7 @@ In this section, you need to select the root directory for your project. This di
 
 ## Project Paths
 
-Here, you must select the paths relevant to your project, which must be bellow project root selected in previous step:
+Here, you must select the paths relevant to your project, which must be below project root selected in previous step:
 
 * **Source path**: the folder containing the project’s source files
 * **Include path**: the folder containing the project’s dependencies, if any
