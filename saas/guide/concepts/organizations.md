@@ -31,13 +31,20 @@ The organization model is defined by what AuditHub currently uses. Key attribute
 
 ### Identity
 
-- `name`: The organization name.
+- **Organization name**: The name of the organization.
 
 ### Limits
 
-- `user_limit` (optional): The maximum number of users allowed in the organization (support users may not count toward this limit).
+- **User limit** (optional): The maximum number of users allowed in the organization (support users may not count toward this limit).
 
-For managing members and invitations, see [User Management](/saas/guide/pages/organization_settings/user_management).
+### Members and access
+
+The organization model captures who can access the organization and what role they have (e.g., auditor vs. developer). Members can be active or pending (invited but not yet onboarded).
+
+See:
+- [Organizations](/saas/guide/pages/organizations) to select or switch your active organization.
+- [Account Settings](/saas/guide/pages/account_settings/organizations) to view your organizations and roles.
+- [User Management](/saas/guide/pages/organization_settings/user_management) to invite new members.
 
 ### Shared tool configuration
 
