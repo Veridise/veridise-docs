@@ -67,12 +67,6 @@ Represents a function.
 * `signature` (string): The full name and type signature of the function used in
   the Solidity ABI, such as `transfer(address,uint256)`.
   This is an empty string for functions that are not externally callable.
-
-  :::warning
-  There is currently a bug where the signature is not the ABI one.
-  This bug will be fixed in an upcoming update.
-  :::
-
 * `selector` (string): The selector of this function as a string without a `0x`
   prefix, such as `1234abcd`.
   Empty string if the function is not externally callable, or if it is a

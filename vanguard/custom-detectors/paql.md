@@ -282,10 +282,6 @@ The list of named operators is:
 
 :::warning
 
-Integer and boolean literals are not supported by the syntax now, but they can
-be returned by properties.
-A future update will make them available in the syntax.
-
 Currently, named operators can only be used directly under a `WHERE` clause.
 A future update will make them available to be used anywhere in an expression.
 

@@ -10,8 +10,8 @@ description: Detects potential reentrancy attacks affecting one contract.
 
 This detector is only available when selecting "DeFi Vanguard (Legacy)" in AuditHub.
 
-Consider using the new Cross-Contract Reentrancy detector instead, which
-provides more accurate findings.
+Consider using the new [Cross-Contract Reentrancy](./cross-contract-reentrancy.md)
+detector instead, which catches a broader set of reentrancy vulnerabilities.
 
 :::
 
