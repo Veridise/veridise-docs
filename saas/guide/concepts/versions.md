@@ -23,7 +23,7 @@ A version:
 
 Conceptually, a version represents:
 - The source code snapshot itself (as uploaded or fetched).
-- Provenance information about how AuditHub obtained it (e.g., from git or from an archive).
+- Provenance information about how AuditHub obtained it (e.g., from a GitHub repository, a URL, or an uploaded file).
 - Derived metadata created during ingestion to support browsing and analysis (e.g., a directory catalog and other extracted data used by tools).
 
 ## Version model
@@ -32,16 +32,28 @@ The version model is defined by what AuditHub currently uses. Key attributes inc
 
 ### Identity
 
-- `name`: A human-friendly label for the version (e.g., the initial version is often named `initial`).
+- **Name**: A human-friendly label for the version (e.g., the first version created during project setup is named `initial`). Renaming a version changes only its label, not its underlying snapshot.
 
-### Source provenance
+### Source
 
-- `input_info`: How AuditHub loaded this version’s sources. This is one of:
-  - **Git input**
-    - `input_type`: `git`
-    - `url`: Repository URL
-    - `includes_submodules` (default: off): If enabled, include git submodules
-    - `revision` (optional): Revision to check out (e.g., a commit hash, branch, or tag)
-  - **Archive input**
-    - `input_type`: `archive`
-    - `url` (optional): URL to download a `.zip` archive from (if omitted, the archive is uploaded manually)
+Versions capture where the snapshot came from. In the UI, this is the **Access method** you choose when creating a new version:
+
+- **Git repository**
+  - **URL**: The URL of your Git repository.
+  - **Revision** (optional): A branch, tag, or commit hash.
+  - **Repository includes submodules**: Enable if the repository uses git submodules that should be fetched.
+- **URL**
+  - **URL**: A public URL to a `.zip` archive that AuditHub can download.
+  - **Commit hash** (optional): An identifier you can use to label the uploaded snapshot.
+- **File**
+  - Upload a local `.zip` archive.
+  - **Commit hash** (optional): An identifier you can use to label the uploaded snapshot.
+
+## Where to manage versions
+
+Versions are selected and managed from the version dropdown in the **Project Viewer** page. From there you can:
+- Create a new version.
+- Switch the active version.
+- Rename, download, or delete an existing version (at least one version must always exist).
+
+For the full UI walkthrough, see [Project Configuration and Version Management](/saas/guide/pages/projects/project_viewer/project_configuration_and_version_management).
