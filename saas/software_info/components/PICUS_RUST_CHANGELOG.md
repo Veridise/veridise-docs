@@ -6,6 +6,16 @@ slug: picus-v2-changelog
 ---
 # Software Changes
 
+## v1.1.2 - 2026-01-21
+### Changed
+- Disabling rewrites by default
+- Internal refactor.
+
+### Fixed
+- Fix mistake where we record modules as verified multiple times
+- Fixed a particular class of spurious counterexamples which showed calls to submodules as nondeterministic when they were actually deterministic.
+- Fixed a range analysis bug which was causing Picus to incorrectly report circuits as overconstrained.
+
 ## v1.1.1 - 2025-11-17
 ### Added
 - Extended PCL to support a `det` predicate which asserts that an expression is deterministic
