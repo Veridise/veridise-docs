@@ -15,7 +15,7 @@ A task:
 - Is the "unit of execution" in AuditHub: it is how tools are actually run.
 - Preserves the run context (tool, version, and configuration) so results are traceable and reviewable.
 - Provides transparency through steps and statuses, making it easier to understand what happened when something fails.
-- Produces structured outputs (findings counters and artifacts) used in reviews and reporting.
+- Produces structured outputs (findings summaries and artifacts) used in reviews and reporting.
 
 ## What a task represents
 
@@ -28,62 +28,74 @@ Conceptually, a task represents:
 
 The task model is defined by what AuditHub currently uses. Key attributes include:
 
-### Target and tool identity
+### Target and identity
 
-- `tool_name`: Which tool was run (e.g., OrCa, Vanguard, Picus).
-- `tool_version`: The tool version used for this run.
-- `version_id`: Which project version the task ran against.
-- `name` (optional): A user-friendly label for the task.
-- `id`: AuditHub’s internal identifier for the task.
+- **Tool**: Which tool was run (e.g., OrCa, Vanguard, Picus).
+- **Tool version**: The tool version used for this run.
+- **Version**: Which project version the task ran against.
+- **Task name** (optional): A user-friendly label for the task.
 
 ### Tool configuration
 
-- `tool_parameters` (optional): The tool configuration captured for this run (as entered in the UI wizard).
-- `tool_extra` (optional): Additional tool-specific information stored alongside the task.
+- **Task wizard settings**: The configuration selected when the task was submitted.
+- **Tool configuration**: The saved configuration shown alongside the task in the UI, so reviewers can see exactly what options were used.
 
 ### Status and timing
 
-- `status`: The task’s current state. Common states include:
+- **Status**: The task’s current state. Common states include:
   - `Queued` / `Pending`: Scheduled but not yet running
   - `Running`: Currently executing
-  - `Succeeded` / `Finished`: Completed successfully
-  - `Failed` / `Error`: Completed unsuccessfully
+  - `Completed`: Completed successfully
+  - `Error`: Completed unsuccessfully
   - `Canceled`: Stopped by the user/system
-  - `Skipped` / `Omitted`: Not executed (e.g., because it was not applicable)
-- `created_at`: When the task was created.
-- `started_at` (optional): When execution started.
-- `finished_at` (optional): When execution finished.
+  - `Skipped`: Not executed (e.g., because it was not applicable)
+- **Created at**: When the task was created.
+- **Started at** (optional): When execution started.
+- **Finished at** (optional): When execution finished.
+
+### Actions
+
+Tasks support a few common actions:
+- **Cancel**: Stop a running task.
+- **Run Again**: Re-run the task with the previous wizard settings pre-filled.
+- **Delete Task**: Remove a finished task from the project history.
 
 ### Steps
 
 Tasks are broken into steps so you can see progress and diagnose failures.
 
-- `steps` (optional): The list of steps in the task. Each step includes:
-  - `code`: A stable identifier for the step (used to associate artifacts with it).
-  - `definition`:
-    - `caption`: Human-readable step title shown in the UI.
-    - `short_name`: A short label used in compact views.
-    - `is_tool`: Whether this step is actually running the tool (`true`) or is a preparation step (`false`).
-  - `status`: Step status (same style of lifecycle states as the task).
-  - `started_at` (optional) / `finished_at` (optional): When the step started/finished.
-  - `exit_code` (optional): The step’s process exit code, when available.
-  - `error_message` (optional): Human-readable error details, when the step fails.
-  - `completed_without_timeout` (optional): Indicates whether the step finished before hitting a timeout.
-  - `info_text` (optional): Additional context shown in the UI (e.g., what the step is currently doing).
-  - `findings_counters` (optional): A summary of findings produced during that step, grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
+- **Step list**: A task consists of one or more steps that may run sequentially or in parallel.
+- Each step captures:
+  - **Title**: The step name shown in the UI.
+  - **Status**: The step lifecycle state (same style as the task status).
+  - **Timing**: When the step started and finished.
+  - **Logs**: Output for that step. Logs can be searched, navigated by line number, copied, or downloaded from the step menu.
+  - **Error details** (optional): A human-readable error message when the step fails.
+  - **Findings summary** (optional): A per-step summary grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
 
 ### Findings summary
 
-- `findings_counters` (optional): Task-level findings summary, grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
+- **Findings summary** (optional): Task-level findings grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
 
 ### Artifacts
 
 Tasks can produce artifacts that can be downloaded and inspected during review.
 
-- `artifacts` (optional): A list of artifacts produced by the task. Each artifact includes:
-  - `name`: Artifact name displayed in the UI.
-  - `step_code`: Which step produced the artifact.
-  - `mime_type`: Content type for correct handling on download.
-  - `is_fio`: Whether the artifact is stored as a file artifact in AuditHub storage.
-  - `id`: AuditHub’s internal identifier for the artifact.
-  - `presigned_url` (optional): A temporary download link, when available.
+- **Artifact list** (optional): A list of downloadable outputs produced during task execution (e.g., logs, reports, or other tool outputs).
+- Each artifact is associated with the step that produced it.
+
+### Version download
+
+After a task runs, you can download:
+- The **original** version snapshot, or
+- The **augmented** version snapshot, which includes task-generated artifacts.
+
+## Where to view and manage tasks
+
+Tasks are launched and reviewed from the **Veridise Audit Tools** panel in the **Project Viewer**:
+- Run a tool to create a new task.
+- Use **History** to view all tasks for a tool.
+- Open a task to see its **Task Summary** (status, steps, logs, findings, and artifacts).
+
+See:
+- [Task Summary](/saas/guide/pages/projects/project_viewer/task_summary)
