@@ -6,6 +6,32 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.8 - 2026-01-21
+### Added
+- Centralized error handling architecture with ErrorParser utility
+- File navigation from findings table opens in new tab when in FullAnalysisPage context
+- Finding ID parameter in file navigation URLs for direct finding highlighting
+- Real API integration for wizard submissions (Vanguard V1/V2, Orca, Picus)
+- Restriction for tools across the app
+- Task rerun toast notifications with "View Task" links in FullAnalysisPage
+- useErrorHandler hook for consistent error handling with toast integration
+
+### Changed
+- All modern task wizards (Vanguard, Orca, Picus) now keep configuration on errors
+- Copy URL to be inside the issue details
+- Issue API error messages now extract backend details without status code prefixes
+- Position of "copy thread" to outside of the dropdown menu
+- Project creation and editing forms now preserve user data on API failures
+- Thread operations now use toast notifications instead of blocking dialogs
+
+### Fixed
+- Configuration loss in task wizards when backend validation fails
+- Form data loss in project creation/editing wizards when API calls fail
+- Generic "Failed to..." error messages replaced with actual backend messages
+- Silent failures in thread operations now show user notifications
+- Submit buttons in CreateIssueDialog now disabled when validation errors exist
+- Thread copy functionality to only copy the thread URL
+
 ## v2.6.7 - 2026-01-08
 ### Fixed
 - Task run again button
