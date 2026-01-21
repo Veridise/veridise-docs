@@ -37,9 +37,21 @@ The thread model is defined by what AuditHub currently uses. Key attributes incl
 
 ### Messages and collaboration
 
-- Threads support follow-up messages to continue the conversation.
+- Threads support follow-up messages to continue the conversation. Messages appear in chronological order.
 - Participants can tag groups in messages (e.g., **@auditors** and **@developers**).
 - Threads can reference issues by linking to them in messages.
+- Thread links can be copied and shared.
+- Message content can be copied for use elsewhere.
+
+#### Message model
+
+Each thread message captures:
+- **Author**: The user who posted the message.
+- **Timestamp**: When the message was posted.
+- **Text**: The message content.
+
+Messages may be edited or deleted, and AuditHub keeps the thread conversation anchored to the same source location.
+AuditHub also preserves the message timeline (comments history) for each project version.
 
 ### Filtering and navigation
 
