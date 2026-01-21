@@ -24,9 +24,9 @@ Conceptually, a project represents:
 - Dependency and build settings that tasks and tools may use to prepare the code for analysis.
 - An "audit workspace" boundary: a project hosts its versions, tasks, findings, issues, and threads.
 
-AuditHub is designed around common ecosystems and build tooling (e.g., `npm`-based workflows and `Foundry`/`Hardhat`-style projects). Project configuration captures the information tools need to operate reliably within those structures.
+AuditHub is designed around common ecosystems and build tooling (e.g., Node.js package manager workflows like `npm`, `yarn`, and `pnpm`, and `Foundry`/`Hardhat`-style projects). Project configuration captures the information tools need to operate reliably within those structures.
 
-AuditHub requires an `initial` version when you create a project. This allows the UI to validate and assist with path selection (e.g., ensuring `src_path` is under `project_root`).
+AuditHub requires an `initial` version when you create a project. This allows the UI to validate and assist with path selection (e.g., ensuring the **Source path** is under the **Project Root**).
 
 :::warning Deleting a project is destructive
 Deleting a project permanently removes the project and everything stored within it, including its versions, tasks, findings, issues, and threads.
@@ -38,56 +38,63 @@ The project model is defined by what AuditHub currently uses. Key attributes inc
 
 ### Identity
 
-- `name`: The project name (unique within your organization).
+- **Project name**: The project name (unique within your organization).
 
-### Source input
+### Source Location
 
-- `input_info`: How AuditHub loads the initial source code for the project. Choose one of:
-  - **Git input**
-    - `input_type`: `git`
-    - `url`: GitHub repository URL
-    - `includes_submodules` (default: off): If enabled, include git submodules
-    - `revision` (optional): GitHub revision to check out (e.g., a commit hash, branch, or tag)
-  - **Archive input**
-    - `input_type`: `archive`
-    - `url` (optional): URL to download a `.zip` archive from (if omitted, the archive is uploaded manually)
+This section tells AuditHub how to access the `initial` project sources.
 
-### Directory layout (inside a version)
+- **Access method**: Choose one of **File**, **Git repository**, or **URL**.
+- If you choose **Git repository**:
+  - **Git repository URL**: The repository to fetch.
+  - **Revision** (optional): Branch, tag, or commit hash to fetch.
+  - **Repository includes submodules or Foundry deps**: Enable if your repository uses submodules and/or has `Foundry` dependencies that should be fetched.
+- If you choose **URL**:
+  - **Archive URL**: Public URL to a `.zip` archive that AuditHub can download.
+  - **Commit hash** (optional): An identifier you can use to label the archive version you uploaded.
+- If you choose **File**:
+  - **Archive**: Upload a local `.zip` archive.
+  - **Commit hash** (optional): An identifier you can use to label the archive version you uploaded.
 
-All paths are *relative paths inside the uploaded/fetched version*:
+### Project Root
 
-- `project_root`: Working directory where project scripts run (e.g., `npm ci`, `npx hardhat compile`).
-- `src_path`: Where AuditHub finds source files to process (must be under `project_root`).
-- `include_path` (optional): Where AuditHub finds include files / dependencies to resolve (if set, must be under `project_root`).
-- `specs_path` (optional): Where AuditHub finds embedded [[V] specs](/orca/user_guide/v/language_description), if present.
-- `hints_path` (optional): Where AuditHub finds embedded [OrCa hints](/orca/user_guide/hints/hint_language_description), if present.
+The **Project Root** is the folder AuditHub uses as the working directory when running build system commands (e.g., `Foundry`/`Hardhat` commands).
+
+### Project Paths
+
+These paths tell AuditHub where to find relevant code and related files. All paths are relative to the uploaded/fetched version, and are typically under the **Project Root**.
+
+- **Source path**: The folder containing the project’s source files.
+- **Include path** (optional): The folder containing dependencies/includes, if any.
+- **[V] Specs path** (optional): Where AuditHub finds embedded [[V] specs](/orca/user_guide/v/language_description), if present.
+- **Hints path** (optional): Where AuditHub finds embedded [OrCa hints](/orca/user_guide/hints/hint_language_description), if present.
 
 ### Contents
 
-- `contents` (default: empty): Declares what the project contains, to determine what tools can run.
-  - Current values include: `solidity`, `circom`, `picus`, `llzk`.
-  - You can select multiple content types for a single project, depending on what source files are present (e.g., a project that contains both Solidity contracts and Circom circuits).
+Your selection here determines which tools AuditHub will offer for this project. You can select multiple options if your project contains more than one type of code (e.g., a project that includes both Solidity contracts and Circom circuits).
 
-### Dependencies and build
+- **Solidity contracts**
+- **Circom circuits**
+- **Picus files**
+- **LLZK files**
 
-Some tasks may need dependencies installed and/or builds performed before analysis. Project configuration captures what AuditHub should do during task preparation and what the selected tools should do during their initial execution steps (e.g., which environment variables to set and which build system to use):
+### Dependencies
 
-- `env_vars` (optional): Environment variables set while executing project scripts.
-  - Each entry includes a variable `name` and `value`.
+If your project uses a JavaScript package manager, the project model captures:
 
-- `dependencies` (optional): Dependency setup options.
-  - `npm` (optional):
-    - `tool`: Which package manager to use (`npm`, `yarn`, or `pnpm`)
-    - `lockfile`: Whether the project has a lockfile, so installs can be deterministic
-    - `node_version` (default: `lts`): `Node.js` version used when installing `npm` dependencies
-  - `foundry` (default: off): Whether `Foundry` dependencies should be installed
+- **Uses NPM-style deps**: Enable if the project uses Node.js package manager dependencies (`npm`/`yarn`/`pnpm`).
+- Choose a package manager: `npm`, `yarn`, or `pnpm`.
+- **Lockfile is committed**: Enable if a lockfile (e.g., `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`) is present in the repository/archive.
+- **Node version**: Choose the Node.js version AuditHub should use when installing dependencies.
 
-- `build_system` (optional): Which build system the selected tools should use during task preparation (`hardhat`, `hardhat-ignition`, or `foundry`).
-- `deployment_script_path` (optional): Deployment script path used by tools that need a deployment entrypoint, and it must be under `project_root`.
+### Build
 
-At a high level:
-- For `npm`-based dependencies, AuditHub uses the selected package manager and prefers lockfile-based, deterministic installs when a lockfile is present.
-- For Foundry-based dependencies, AuditHub can run `forge install` during task preparation when enabled.
+Some tools need a build step before they can run. The project model captures build system settings such as:
+
+- **Uses build system**: Enable if your project requires a build step.
+- Choose a build system: `Foundry`, `Hardhat - Legacy`, or `Hardhat - Ignition`.
+- **Deployment script path** (optional): Script path used by tools that need a deployment entrypoint.
+- **Environment variables** (optional): Name/value pairs to set while running the build and tool commands.
 
 :::warning Tool-specific configuration
 Make sure that the project configuration matches the tools you plan to run. Some tools require specific options to be set (e.g., [OrCa](/orca) requires dependency settings, a build system, and a deployment script path). If a task cannot be executed because required configuration is missing, AuditHub will raise a warning and prevent the task from running until the configuration is fixed.
