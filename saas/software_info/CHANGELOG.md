@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.36 - 2026-01-23
+### Changed
+- Component OrCa upgraded to version *v2.11.0*.
+
 ## v2.8.35 - 2026-01-21
 ### Changed
 - Component PicusV2 upgraded to version *v1.1.2*.
