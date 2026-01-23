@@ -6,6 +6,10 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.11.0 - 2026-01-23
+
+### Added
+- Added support for multiple struct definitions with the same name and different field names
 ## v2.10.0 - 2025-12-19
 ### Fixed
 - Made enum information optional in AST to avoid issues when only ABIs provided for on-chain fuzzing
