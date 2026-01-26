@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.37 - 2026-01-26
+### Changed
+- Component Vanguard upgraded to version *v1.0.9*.
+
 ## v2.8.36 - 2026-01-23
 ### Changed
 - Component OrCa upgraded to version *v2.11.0*.
