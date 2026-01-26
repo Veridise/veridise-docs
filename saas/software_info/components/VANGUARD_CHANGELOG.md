@@ -6,6 +6,17 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.9 - 2026-01-26
+### Added
+- Custom Detectors
+    - Added a new `CallArgument` PAQL class representing arguments of function calls, which can be obtained by iterating calls (e.g. FIND ExternalCall c, CallArgument a IN c)
+    - Added `.isConcrete`, `isAbstract` properties to `Contract` PAQL class which can be used to filter concrete contract implementations
+
+### Fixed
+- Unchecked Return
+    - Fixed false alarms involving call return values used as array indices or are written to memory
+- Cross Contract Reentrancy
+    - Fixed a bug that caused the detector to miss some vulnerability instances
 ## v1.0.8 - 2026-01-08
 ### Added
 - Cross-Contract Reentrancy
