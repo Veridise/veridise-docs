@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: Extended Examples
 sidebar_position: 30
 ---
 
