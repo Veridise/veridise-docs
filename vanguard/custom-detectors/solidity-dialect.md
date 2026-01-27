@@ -30,6 +30,10 @@ Represents a smart contract of any kind (contract, interface, or library).
   the contract is of the specific kind, respectively.
 * `superClasses`: an object that may be iterated over to obtain the superclasses
   (as `Contract` objects) of this contract.
+* `isConcrete`: whether this contract has been compiled to bytecode. Usually,
+  this includes non-abstract contracts and libraries.
+* `isAbstract`: opposite of `isConcrete`. Typically, this includes interfaces
+  and abstract contracts.
 
 #### Iterators
 
@@ -81,11 +85,14 @@ Represents a function.
   Note that this is not necessarily the same as the contract that defined this
   function; for example, if `A` inherits `f` from `B`, then the `Function` object
   for `A.f` will have `A` as its `contract` property, not `B`.
+* `definingContractName` (string): The name of the contract that defined this
+  function. For example, if `A` inherits `f` from `B`, then
+  `f.definingContractName` is `B`.
 * `reachable`: an object that may be iterated to get objects that are
   "reachable" from this function.
-  Supports iteration over `Function`s, expressions, and statements, to get all
+  Supports iteration over `Function`s, expressions, statements, to get all
   functions/expressions/statements (respectively) that are reachable from this
-  `Function`.
+  `Function`. Also supports `StorageRead` and `StorageWrite`, for convenience.
   For example, if `f()` calls `g()` and `g()` calls `h()`, then when iterating
   `Function x IN f.reachable`, `x` will iterate over both `g` and `h`.
 
@@ -165,9 +172,9 @@ The following properties are available on all `Expression`s and `Statement`s.
   `Expression`/`Statement`.
 * `backwardSlices`: an object that may be iterated to get all `Expression` or
   `Statement` that influence the operands of this `Expression`/`Statement`.
-* `incomingPaths`: an object that may be iterated to get all `Path`s from the
+* `incomingPaths`: (Experimental) an object that may be iterated to get all `Path`s from the
   external function entries to this `Expression` or `Statement`.
-* `outgoingPaths`: an object that may be iterated to get all `Path`s from
+* `outgoingPaths`: (Experimental) an object that may be iterated to get all `Path`s from
   this `Expression` or `Statement` to the function return/revert.
 
 ### Common Iterators
@@ -208,6 +215,14 @@ Represents an external call.
   is the corresponding kind.
 * `address`: the `Value` corresponding to the address to which this call is made.
 
+#### Iterators
+
+* `CallArgument`: objects representing the arguments to this call, excluding
+  values such as address, call value, etc.
+  Each of these objects provides a `.argIndex` property indicating the index of
+  the argument, as well as a `.value` property that has the actual `Value`
+  provided as the argument.
+
 ### Expression: InternalCall
 
 Represents an internal call (within the same contract).
@@ -215,6 +230,10 @@ Represents an internal call (within the same contract).
 #### Properties
 
 * `callee` (`Function`): the function that is called.
+
+#### Iterators
+
+* `CallArgument`: same behavior as iterating over `CallArgument` in `ExternalCall`.
 
 ### Expression: PrecompileCall
 
@@ -289,6 +308,8 @@ specific read from or write to (respectively) a specific storage variable.
   Unknown fields or indices will be represented using `*` characters.
   For example, the location of a write to a struct field in a mapping may be
   represented with a string like `myMapping[*].myField`.
+* `after`, `before`, `incomingPaths`, `outgoingPaths`: similar to their
+  corresponding properties on `Expression`/`Statement`.
 
 ### Common Iterators
 
@@ -326,16 +347,42 @@ Three types of `Value`s are supported:
 
 ### Use
 
+:::warning
+   This feature is experimental and subject to change. Use at your own risk.
+:::
+
 The `Use` class contains information about how a particular value is used in an
 `Expression`/`Statement`.
+It is not a `Value` itself.
 
 #### Properties
 
 * `user`: the `Expression` that uses the value.
 * `argIndex` (int): the index in the `user`'s argument list.
 
+### CallArgument
+
+:::warning
+   This feature is experimental and subject to change. Use at your own risk.
+:::
+
+The `CallArgument` class represents an argument of a function call.
+Note that this is currently unrelated to `Use`; it will be combined with `Use`
+in the future.
+
+#### Properties
+
+* `value`: the `Value` used as the argument.
+* `argIndex`: the zero-indexed index of the value in the call's argument list.
+  For example, in the call `f(a, b)`, the call argument `a` has `argIndex` 0.
+* `forwardSlices`, `backwardSlices`: similar to the corresponding properties on
+  `Value`.
 
 ## Paths
+
+:::warning
+   This feature is experimental and subject to change. Use at your own risk.
+:::
 
 A `Path` represents a single possible control-flow path through a function,
 where a path is a sequence of `Expression`s and `Statements`.
