@@ -6,6 +6,15 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.10 - 2026-01-28
+### Added
+- Custom Detectors:
+  - Added SliceValueIterator, allowing queries such as `Argument a IN call.backwardSlices`
+  - Added `value` property to the `CallArgument` class, which returns the underlying value
+
+### Changed
+- ZK Vanguard:
+  - Updated llzk-lib version
 ## v1.0.9 - 2026-01-26
 ### Added
 - Custom Detectors
