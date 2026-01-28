@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.6.9 - 2026-01-28
+### Added
+- Free Audithub Demo
+- Guided tour for onboarding users to the platform
+
+### Changed
+- Restriction changes and the way we handle them
+
 ## v2.6.8 - 2026-01-21
 ### Added
 - Centralized error handling architecture with ErrorParser utility

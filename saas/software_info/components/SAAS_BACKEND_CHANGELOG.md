@@ -6,6 +6,19 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.31 - 2026-01-28
+### Added
+- Free AuditHub demo feature
+- Organization subscriptions
+- Quota enforcement based on subscriptions
+## v2.5.30 - 2026-01-13
+### Changed
+- Improved cache management
+- Source management now supports fault tolerant service
+
+### Removed
+- Callback endpoints for status updates
+
 ## v2.5.29 - 2026-01-05
 ### Added
 - Resource cleanup
