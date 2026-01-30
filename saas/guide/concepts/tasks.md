@@ -30,7 +30,7 @@ The task model is defined by what AuditHub currently uses. Key attributes includ
 
 ### Target and identity
 
-- **Tool**: Which tool was run (e.g., OrCa, Vanguard, Picus).
+- **Tool**: Which tool was run (e.g., OrCa, DeFi Vanguard, ZK Vanguard, Picus).
 - **Tool version**: The tool version used for this run.
 - **Version**: Which project version the task ran against.
 - **Task name** (optional): A user-friendly label for the task.
@@ -50,8 +50,8 @@ The task model is defined by what AuditHub currently uses. Key attributes includ
   - `Canceled`: Stopped by the user/system
   - `Skipped`: Not executed (e.g., because it was not applicable)
 - **Created at**: When the task was created.
-- **Started at** (optional): When execution started.
-- **Finished at** (optional): When execution finished.
+- **Started at**: When execution started.
+- **Finished at**: When execution finished.
 
 ### Actions
 
@@ -70,18 +70,18 @@ Tasks are broken into steps so you can see progress and diagnose failures.
   - **Status**: The step lifecycle state (same style as the task status).
   - **Timing**: When the step started and finished.
   - **Logs**: Output for that step. Logs can be searched, navigated by line number, copied, or downloaded from the step menu.
-  - **Error details** (optional): A human-readable error message when the step fails.
-  - **Findings summary** (optional): A per-step summary grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
+  - **Error details**: A human-readable error message when the step fails.
+  - **Findings summary**: A per-step summary grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
 
 ### Findings summary
 
-- **Findings summary** (optional): Task-level findings grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
+- **Findings summary**: Task-level findings grouped by severity (`info`, `warning`, `low`, `medium`, `high`, `critical`).
 
 ### Artifacts
 
 Tasks can produce artifacts that can be downloaded and inspected during review.
 
-- **Artifact list** (optional): A list of downloadable outputs produced during task execution (e.g., logs, reports, or other tool outputs).
+- **Artifact list**: A list of downloadable outputs produced during task execution (e.g., logs, reports, or other tool outputs).
 - Each artifact is associated with the step that produced it.
 
 ### Version download
