@@ -146,10 +146,11 @@ For example:
 
 ```paql
 FIND
+  -- actors
   Function f,
-  StorageWrite w IN f.reachable,
+  StorageWrite w IN f.reachable,  -- assumption
 WHERE
-  f.isExternallyCallable,
+  f.isExternallyCallable,  -- assumption
 ```
 
 This updated query has two changes.
@@ -180,6 +181,96 @@ declarations can instead be organized as
 :::
 
 
+### Example: Listing all token transfers that can be executed
+
+In large code bases, it is often difficult to understand what external calls may
+actually be executed for contracts with complicated inheritence hierarchies or
+call stacks. Consider the following Solidity code:
+
+<details>
+<summary>Example Solidity code (expand me)</summary>
+
+```solidity
+pragma solidity >= 0.8.0;
+
+interface IERC20 {
+    function transfer(address to, uint256 amount) external;
+}
+
+contract Grandparent {
+    IERC20 tokenA;
+    function _doThingCallback() virtual internal {
+        tokenA.transfer(msg.sender, 100);
+    }
+
+    function doThing() virtual public {
+        _doThingCallback();
+    }
+}
+
+contract Parent is Grandparent {
+    IERC20 tokenB;
+    function _doThingCallback() internal virtual override {
+        tokenB.transfer(msg.sender, 50);
+        super._doThingCallback();
+    }
+}
+
+contract Child is Parent {
+    IERC20 tokenC;
+    function _doThingCallback() internal virtual override {
+        tokenC.transfer(msg.sender, 75);
+    }
+    function doThing() public virtual override {
+        _doThingCallback();
+        Grandparent.doThing();
+    }
+}
+```
+</details>
+
+A question such as "What ERC20 token `transfer`s does each contract's
+`toThing()` function perform?" may be difficult to answer correctly by only
+looking at the code, but it can be answered effectively using a PAQL query:
+
+* **Actors**: a contract `contract`, a function `f`, external call `call`
+* **Assumptions**:
+    * `contract` contains `f`, which can execute `call`
+    * `f`'s name is `doThing`
+* **Target behavior**: `call` invokes `transfer`.
+
+```paql
+FIND
+  -- actors
+  Contract contract,
+  Function f IN contract,  -- assumption
+  ExternalCall call IN f.reachable,  -- assumption
+WHERE
+  -- assumptions
+  f.name == "doThing",
+  -- target behavior
+  call.name == "transfer",
+```
+
+Executing this query gives the following information:
+* `Grandparent.doThing()` executes the transfer to `tokenA` in
+  `Grandparent._doThingCallback()`.
+* `Parent.doThing()` executes (1) the transfer to `tokenB` in
+  `Parent._doThingCallback()` and (2) the transfer to `tokenA` in
+  `Grandparent._doThingCallback()`.
+* `Child.doThing()` executes only the transfer to `tokenC` in
+  `Child._doThingCallback()`.
+  Note that it is reported twice, because the assumptions on `f` are too
+  lenient: when searching `Child`, the query finds `f = Child.doThing()`
+  (externally visible) as well as the inherited `f = Grandparent.doThing()`
+  (internally visible), both of which will invoke the virtual
+  `Child._doThingCallback()`.
+
+:::tip
+It's also possible to retrieve the token storage variables involved in the
+transfer; see the [value flow example](#value-flow) for how to do this.
+:::
+
 ## Checking For Errors
 
 Custom detectors are particularly useful for searching for vulnerabilities in
@@ -205,7 +296,7 @@ behavior is missing.
 
 Examples of these patterns are described below.
 
-### Example (positive): Using the `EXISTS` operator to check for missing access controls
+### Example (positive): Using the `EXISTS` operator to check for missing access controls {#missing-access-controls}
 
 Access controls on functions are typically implemented using require statements like
 `require(msg.sender == owner)`.
@@ -307,7 +398,7 @@ that are not influenced by the `owner` storage variable.
 For example, flagging `require(amount > 0)` would not make sense!
 :::
 
-### Example (negative): Using value flow to detect arbitrary transferFroms
+### Example (negative): Using value flow to detect arbitrary transferFroms {#value-flow}
 
 In many cases involving function calls, we also care about what _values_ are
 used as arguments to those calls.
