@@ -43,6 +43,10 @@ By selecting this option, you must provide the URL of a GitHub repository. Pleas
 
 ![image](../../../screenshots/project_creation_wizard_git_option.png)
 
+:::note
+If a commit hash or revision is provided, auditors can trace the exact GitHub commit associated with the source code and ensure that the correct scope is being reviewed. This information is linked to the version and can be viewed or edited in the [Project Viewer](/saas/guide/pages/projects/project_viewer/project_configuration_and_version_management.md#version-actions) page.
+:::
+
 :::info
 The following sections are related to the project's configuration.
 This configuration is primarily relevant for the AuditHub tools that will be applied to the project’s source code and that rely on this configuration during execution.
