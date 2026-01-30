@@ -4,14 +4,17 @@ sidebar_position: 3
 ---
 
 This page provides examples on how to accomplish common tasks using Vanguard
-custom detectors and [PAQL][paql] queries.
+custom detectors and [PAQL][paql] queries:
+
+* [Answering questions such as "Which contracts can I call to transfer ERC20 tokens?"](#informational-queries)
+* [Scanning your code base for vulnerabilities specific to your project.](#checking-for-errors)
 
 While the mechanics of and interactions between various PAQL features will be
 explained, the details such as the classes and properties will not.
 Thus, we recommend that you consult the [Solidity dialect reference](./solidity-dialect.md)
 as you go through each example.
 
-## Code Intelligence {#code-intelligence}
+## Discovering Behavior With Informational Queries {#informational-queries}
 
 PAQL queries can be used to provide specific, detailed information about the
 behavior of a given codebase.
@@ -77,24 +80,24 @@ contract Example {
 ```
 
 The above query would return the following results:
-1. The `extFun` and the write `a = 10`.
-2. The `extFun` and the write `b = 11`.
-3. The `foo` and the write `b = b + 5`
-4. The `bar` and the write `m[msg.sender] = arg`
+1. The function `extFun` and the write `a = 10`.
+2. The function `extFun` and the write `b = 11`.
+3. The function `foo` and the write `b = b + 5`
+4. The function `bar` and the write `m[msg.sender] = arg`
 
 :::tip
 A few other useful variations of this query:
 
 * To only retrieve the writes to specific variables, add a `WHERE` clause that
   uses the `StorageWrite.location` property.
-  For example, to obtain just the writes to the `m` mapping:
+  For example, this will restrict the writes to those involving the `m` mapping:
 
   ```paql
   FIND
     Function f,
     StorageWrite w IN f,
   WHERE
-    w.location == "m[*]",
+    w.location == "m[*]",  -- an additional assumption
   ```
 
 * To only retrieve the writes inside of a specific contract, add a `Contract`
@@ -106,7 +109,7 @@ A few other useful variations of this query:
     Function f IN c,
     StorageWrite w IN f,
   WHERE
-    c.name == "Example",
+    c.name == "Example",  -- an additional assumption
   ```
 
 * The `StorageWrite` class can iterate over other constructs like contracts,
@@ -118,11 +121,11 @@ A few other useful variations of this query:
     Contract c,
     StorageWrite w IN c,
   WHERE
-    c.name == "Example",
+    c.name == "Example",  -- an additional assumption
   ```
 :::
 
-### Example: Listing external call side effects
+### Example: Listing external function side effects
 
 In the previous example, the query retrieved pairs of functions and storage
 writes that occured _directly_ in that function.
@@ -182,7 +185,7 @@ declarations can instead be organized as
 Custom detectors are particularly useful for searching for vulnerabilities in
 code.
 This is generally achieved by writing informational queries, which were
-demonstrated in [previous section](#code-intelligence).
+demonstrated in [previous section](#informational-queries).
 
 Queries that search for vulnerabilities are typically structured using one of
 two patterns:
@@ -233,7 +236,7 @@ FIND
   -- actors
   Function f,
   RequireLike req IN f.reachable,
-  StorageRead rd IN r.backwardSlices,
+  StorageRead rd IN req.backwardSlices,
 WHERE
   -- assumptions
   f.isExternallyCallable,
@@ -263,7 +266,7 @@ WHERE
   -- target behavior
   EXISTS
     RequireLike req IN f.reachable,
-    StorageRead rd IN r.backwardSlices
+    StorageRead rd IN req.backwardSlices
   WHERE {
     rd.location == "owner",
   }
@@ -272,7 +275,11 @@ WHERE
 Note that this version searches for functions where the require is _present_,
 rather than searching for all occurrences.
 
-Finally, we just need to insert a `!` operator in front of the `EXISTS`.
+Finally, we will insert a `!` operator in front of the `EXISTS`, which results
+in a query that is equivalent to the problem statement:
+
+> Which `mint` functions will not execute a require statement involving the
+> `owner`? Provide a list of such functions.
 
 ```paql
 FIND
@@ -286,16 +293,11 @@ WHERE
   -- target behavior
   !EXISTS
     RequireLike req IN f.reachable,
-    StorageRead rd IN r.backwardSlices
+    StorageRead rd IN req.backwardSlices
   WHERE {
     rd.location == "owner",
   }
 ```
-
-The final query is equivalent to the problem statement:
-
-> Which `mint` functions will not execute a require statement involving the
-> `owner`? Provide a list of such functions.
 
 :::warning
 The `RequireLike req` declaration also has to be moved into the `EXISTS`,
@@ -343,7 +345,7 @@ WHERE
   -- assumptions
   f.isExternallyCallable,
   callArg.index == 0,
-  c.signature == "transferFrom(address,uint256)",
+  c.signature == "transferFrom(address,address,uint256)",
 
   -- target behavior
   EXISTS
