@@ -9,7 +9,7 @@ AuditHub supports two onboarding paths:
 - [Free demo of AuditHub](#free-demo-of-audithub)
 - [Invitation-based access to AuditHub](#invitation-based-access-to-audithub)
 
-In both cases, you complete the same registration steps; what happens next depends on how you got started.
+In both cases, you complete the same registration steps, and what happens next depends on how you got started.
 
 ## Registration
 
@@ -24,7 +24,18 @@ Please note that even if you use the first two options, you will still need to p
 
 ![image](../screenshots/registration_form.png)
 
-If you create a local user account, you also need to verify your email address.
+If you create a local user account, you also need to verify your email address as depicted below.
+
+![image](../screenshots/verify_email.png)
+
+
+If you haven’t received the email, please click the resend email link.
+
+![image](../screenshots/resend_verify_email.png)
+
+:::note
+If the 5-minute expiration period has passed and you haven’t confirmed your email, log in using your newly created credentials, and you’ll receive a new email containing an account activation link.
+:::
 
 ## Free demo of AuditHub
 
@@ -38,10 +49,10 @@ If you start from an invitation email:
 - Click the invitation link and complete the registration.
 - After registration, you are automatically added to the organization you were invited to join, so you can open projects, run tools, and explore AuditHub features.
 
-![image](../screenshots/email_audithub_invitation.png)
+![image](../screenshots/invitation_email.png)
 
 ## Guided tour
 
-AuditHub will provide an optional guided tour to help you explore the main AuditHub flows and key features.
+AuditHub will provide an optional guided tour to help you explore the main AuditHub flows and key features. To proceed, please click the `Take Tour` button.
 
-![image](../screenshots/guided_tour.png)
+![image](../screenshots/free_demo.png)
