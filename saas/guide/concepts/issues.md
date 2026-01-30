@@ -30,6 +30,7 @@ The issue model is defined by what AuditHub currently uses. Key attributes inclu
 
 - **Title**: A concise summary of the issue.
 - **Description**: Detailed write-up of the problem, impact, and recommendations (the UI supports both WYSIWYG and raw Markdown editing).
+- **Issue Properties**: Key metadata shown in the issue details view, including **Severity**, **Status**, **Created**, **Updated**, **Reporter**, and **Last Updated By**.
 
 ### Markers
 
@@ -38,7 +39,7 @@ Issues include markers to help prioritize and categorize work, such as:
 - **Impact**
 - **Severity**
 - **Type** (supports both predefined and custom values)
-- **Raised by** (the auditor who identified the issue)
+- **Raised By** (the auditor who identified the issue)
 
 ### Affected files
 
@@ -46,19 +47,46 @@ An issue can reference one or more affected file paths. For each file, AuditHub 
 - A specific line range, or
 - The entire file (when the issue applies broadly)
 
+Affected file links include the version context (e.g., `[initial] path/to/file:1-11`) so reviewers can open the referenced location in the correct snapshot.
+
 ### Promoted findings
 
 If a tool produced findings that were confirmed as relevant, they can be promoted and attached to an issue to preserve the tool evidence and reduce duplication in write-ups.
 
-### Collaboration and visibility
+### Collaboration
 
 Issues support collaboration between auditors and developers:
 - Issues can be shared with developers when ready.
 - Issues can be updated with resolution information, such as pull request and commit references, to document where and how the issue was addressed.
 
+### Visibility
+
+Issues can have different visibility:
+- **Not visible to developers** (not shared yet)
+- **Visible to developers**
+
+In the UI, this is reflected in the **Visibility** column (eye icon) in the issues table.
+
+### Actions
+
+Common issue actions include:
+- **Create**, **Edit**, and **Delete**
+- **Copy issue link** for sharing
+- **Copy description markdown** for exporting the write-up
+- Workflow actions that may appear depending on role and status (e.g., **Abandon**, **Notify auditors**)
+
 ### Issue discussions
 
-Issues include a discussion area where participants can post messages, share context, and record decisions. Issue discussions are typically split into **Private** and **Public** threads so internal auditor notes can be separated from shared discussion. Issues can also be referenced elsewhere in AuditHub by sharing or copying a direct issue link.
+Issues include a discussion area where participants can post messages, share context, and record decisions. Issue discussions are typically split into **Public** and **Private** threads so internal auditor notes can be separated from shared discussion.
+
+#### Discussion message model
+
+Each discussion message captures:
+- **Author**
+- **Timestamp**
+- **Text**
+
+Messages can be copied (as Markdown), edited, or deleted.
 
 ### Issue states
 
