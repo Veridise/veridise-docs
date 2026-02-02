@@ -6,6 +6,14 @@ slug: picus-v2-changelog
 ---
 # Software Changes
 
+## v1.1.3 - 2026-02-02
+### Added
+- Added SMT optimization for call encodings
+- print statements to show Picus results when analyzing sub-modules
+
+### Fixed
+- Fix Picus stalling when using z3 on large files.
+
 ## v1.1.2 - 2026-01-21
 ### Changed
 - Disabling rewrites by default
