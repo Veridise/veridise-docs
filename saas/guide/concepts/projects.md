@@ -78,6 +78,10 @@ Your selection here determines which tools AuditHub will offer for this project.
 - **Picus files**
 - **LLZK files**
 
+:::info Auditing Features
+If you’re using AuditHub only for manual review, you can leave this section blank. Contents selection is only needed when you want AuditHub to enable the tools for this project. For more details about the tools available for each language, check out [Create Project](/saas/guide/pages/projects/create_project.md#project-contents).
+:::
+
 ### Dependencies
 
 If your project uses a JavaScript package manager, the project model captures:
