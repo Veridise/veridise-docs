@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Simple Reentrancy (Legacy)
 description: Detects potential reentrancy attacks affecting one contract.
+draft: true
 ---
 
 # Simple Reentrancy (`reentrancy`)

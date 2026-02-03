@@ -25,18 +25,10 @@ You can get started with Vanguard by following [this guide](./getting-started.md
   ERC20 tokens, ERC4626 vaults, and Uniswap.
 * Supports Solidity versions 0.8.4 and newer.
 * Integrates with build systems such as Hardhat and Foundry.
+
+<!--
+TODO: support visualizations again
 * Collects useful information such as call graphs, currency value flow, and
   access controls and emits them in tabular and [visual](./visualizations.md)
   form.
-
-## Note on Stability
-
-The current documentation reflects a Vanguard version 1.0 that will be
-included with the official release of AuditHub.
-Compared to the previous 0.x versions of Vanguard, the 1.0 version is
-significantly more stable (i.e., fewer crashes) and accurate, and it also
-includes the custom detectors feature.
-However, we are still working on moving some of the detectors to the 1.0
-version.
-These detectors are marked as with a "(Legacy)" in the documentation and can be
-run by selecting "DeFi Vanguard (Legacy)" on AuditHub.
+-->

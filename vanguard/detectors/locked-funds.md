@@ -1,16 +1,10 @@
 ---
 sidebar_position: 2
-title: Locked Funds (Legacy)
+title: Locked Funds
 description: Detects when funds may be locked within a contract
 ---
 
 # Locked Funds (`locked-funds`)
-
-:::info
-
-This detector is only available when selecting "DeFi Vanguard (Legacy)" in AuditHub.
-
-:::
 
 ## Summary and Usage
 

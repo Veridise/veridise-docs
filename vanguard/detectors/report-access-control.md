@@ -2,6 +2,7 @@
 sidebar_position: 3
 title: Report Access Control (Legacy)
 description: Lists inferred access controls in a contract.
+draft: true
 ---
 
 # Report Access Control (`report-access-control`)

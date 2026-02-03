@@ -1,6 +1,7 @@
 ---
 title: Visualizing Vanguard Analyses
 sidebar_position: 6
+draft: true
 ---
 
 :::warning
