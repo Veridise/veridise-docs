@@ -3,6 +3,7 @@ title: Issues
 sidebar_position: 8
 ---
 
+<!-- AUDITING-FEATURES: start -->
 In AuditHub, an `issue` is a tracked security concern identified during an audit or review. Issues are created and managed inside a [project](/saas/guide/concepts/projects) so auditors and developers can collaborate on remediation with a shared source of truth.
 
 Issues can be created from manual review (e.g., from a code selection) or by promoting a [finding](/saas/guide/concepts/findings). In many workflows, the final set of issues becomes the basis for the audit report.
@@ -103,3 +104,4 @@ Issues move through a lifecycle as they are verified, shared, discussed, and res
 
 Issues are managed in the **Audit Issue Management** view of the project viewer. See:
 - [Audit Issue Management](/saas/guide/pages/projects/project_viewer/audit_issue_management)
+<!-- AUDITING-FEATURES: end -->

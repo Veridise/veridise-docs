@@ -3,6 +3,7 @@ title: Audit Issue Management
 sidebar_position: 3
 ---
 
+<!-- AUDITING-FEATURES: start -->
 The following features were designed to support manual auditing and to create a synergy between automated findings and manual review.
 For the rest of this section we refer to users that have the auditor role as auditors, and to all other users as developers.
 
@@ -201,3 +202,4 @@ You can also copy a direct link to a thread for use elsewhere. Additionally, a t
 Resolved threads are automatically moved to the end of the list and their status colour switches to **red**.
 
 ![image](../../../../screenshots/resolve_threads_2.png)
+<!-- AUDITING-FEATURES: end -->

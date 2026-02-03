@@ -69,6 +69,8 @@ Here, you must select the paths relevant to your project, which must be below pr
 
 ![image](../../../screenshots/project_creation_wizard_project_paths.png)
 
+
+<!-- AUDITING-FEATURES: start -->
 ## Project Contents
 
 Select the types of code included in your project. Your selection determines which AuditHub tools will be available to analyze the project’s source code. If none of the options below are selected, AuditHub will not display any tools. This is the default setting, particularly for projects intended for manual review only.
@@ -79,6 +81,7 @@ Select the types of code included in your project. Your selection determines whi
 * **LLZK files** will enable ZK Vanguard.
 
 ![image](../../../screenshots/project_creation_wizard_project_contents.png)
+<!-- AUDITING-FEATURES: end -->
 
 ## Dependencies
 

@@ -10,4 +10,6 @@ Each finding is a potential security vulnerability, that the user can manage and
 
 AuditHub organizes projects inside [organizations](/saas/guide/concepts/organizations). Users are granted access to an organization, and can work with the projects within. A user may have access to multiple organizations, but can only have one of them active at any time.
 
+<!-- AUDITING-FEATURES: start -->
 Moreover, for security companies, AuditHub is a comprehensive audit facilitation platform. Besides the offered security tools, AuditHub allows users to collaborate while reviewing the source code of a project, and define and manage security [issues](/saas/guide/concepts/issues). These issues are reported by the auditors to the project's developers from within AuditHub, which allows the two parties to further collaborate on addressing these issues. Collaboration is captured in [threads](/saas/guide/concepts/threads), which keep the audit discussion and decisions in one place. The final list of issues is attached to the audit report.
+<!-- AUDITING-FEATURES: end -->

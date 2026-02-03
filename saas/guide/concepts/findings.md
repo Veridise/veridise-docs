@@ -3,6 +3,7 @@ title: Findings
 sidebar_position: 7
 ---
 
+<!-- AUDITING-FEATURES: start -->
 In AuditHub, a `finding` is a result produced by an automated security tool run. Findings are created by [tasks](/saas/guide/concepts/tasks) and are always tied back to the exact [version](/saas/guide/concepts/versions) and tool run that produced them.
 
 Findings represent potential security issues. They are meant to be reviewed, discussed, and triaged so teams can decide what needs follow-up.
@@ -61,3 +62,4 @@ Findings can have dedicated discussion threads tied directly to the finding itse
 
 - Task-level findings and triage: [Task Summary](/saas/guide/pages/projects/project_viewer/task_summary)
 - Aggregated findings across tool runs: [Audit Issue Management](/saas/guide/pages/projects/project_viewer/audit_issue_management)
+<!-- AUDITING-FEATURES: end -->

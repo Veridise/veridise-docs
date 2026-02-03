@@ -3,6 +3,7 @@ title: Threads
 sidebar_position: 9
 ---
 
+<!-- AUDITING-FEATURES: start -->
 In AuditHub, a `thread` is a discussion anchored to a specific place in the codebase. Threads help auditors and developers collaborate while reviewing a project by capturing questions, notes, and decisions directly next to the relevant source context.
 
 Threads are tied back to the project and version you are reviewing, and they provide a lightweight way to discuss code without turning every comment into a tracked [issue](/saas/guide/concepts/issues).
@@ -67,3 +68,4 @@ AuditHub also preserves the message timeline (comments history) for each project
 
 Threads are managed in the **Audit Issue Management** view of the project viewer. See:
 - [Audit Issue Management](/saas/guide/pages/projects/project_viewer/audit_issue_management)
+<!-- AUDITING-FEATURES: end -->

@@ -69,6 +69,7 @@ These paths tell AuditHub where to find relevant code and related files. All pat
 - **[V] Specs path** (optional): Where AuditHub finds embedded [[V] specs](/orca/user_guide/v/language_description), if present.
 - **Hints path** (optional): Where AuditHub finds embedded [OrCa hints](/orca/user_guide/hints/hint_language_description), if present.
 
+<!-- AUDITING-FEATURES: start -->
 ### Contents
 
 Your selection here determines which tools AuditHub will offer for this project. You can select multiple options if your project contains more than one type of code (e.g., a project that includes both Solidity contracts and Circom circuits).
@@ -81,6 +82,7 @@ Your selection here determines which tools AuditHub will offer for this project.
 :::info Auditing Features
 If you’re using AuditHub only for manual review, you can leave this section blank. Contents selection is only needed when you want AuditHub to enable the tools for this project. For more details about the tools available for each language, check out [Create Project](/saas/guide/pages/projects/create_project.md#project-contents).
 :::
+<!-- AUDITING-FEATURES: end -->
 
 ### Dependencies
 
