@@ -435,7 +435,7 @@ FIND
 WHERE
   -- assumptions
   f.isExternallyCallable,
-  callArg.index == 0,
+  callArg.argIndex == 0,
   c.signature == "transferFrom(address,address,uint256)",
 
   -- target behavior
@@ -448,7 +448,7 @@ WHERE
 
 The above query works by recursively searching the "dependencies"
 (`callArg.backwardSlices`) of the first argument of the `transferFrom` call
-(`callArg.index == 0`).
+(`callArg.argIndex == 0`).
 In particular, the values searched in the query are restricted only to function
 parameters (`Argument arg`).
 Lastly, the query restricts `arg.function == f` to ensure that the `from` indeed
@@ -456,8 +456,8 @@ comes from the external function, not just in the function containing the
 external call.
 
 :::tip
-To also list the parameters are involved (rather than only checking that there is one),
-combine the `EXISTS` into the overall `FIND`.
+To also output the function parameters that are involved (rather than only
+checking that there is one), combine the `EXISTS` into the overall `FIND`.
 ```paql
 FIND
   ...,
@@ -466,6 +466,9 @@ WHERE
   ...,
   param.function == f,
 ```
+Note that we say "function parameters" in plural form because it is possible
+that the `from` address may be computed conditionally, and we would want to
+catch all such parameters that may be involved!
 :::
 
 
