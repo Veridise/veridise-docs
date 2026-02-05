@@ -146,6 +146,7 @@ Putting everything together, here is the grammar for the PCL.
 <assertions> ::= {<assertion>}*
 
 <condition> ::= "(=" <expression> <expression> ")"
+                | "(!=" <expression> <expression> ")"
                 | "(<" <expression> ")"
                 | "(<=" <expression> ")"
                 | "(>" <expression> ")"
