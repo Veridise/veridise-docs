@@ -52,7 +52,7 @@ The finding model is defined by what AuditHub currently uses. Key attributes inc
 
 ### Action history
 
-AuditHub records an action history for each finding. Actions capture key review events (e.g., triage decisions) along with who performed them, when they happened, and an optional comment. This provides an audit trail for how a finding was handled over time.
+AuditHub records an action history for each finding. Actions capture key review events (e.g., [triage](/vanguard/triage) decisions) along with who performed them, when they happened, and an optional comment. This provides an audit trail for how a finding was handled over time.
 
 ### Finding discussions
 
