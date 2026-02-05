@@ -203,3 +203,27 @@ Resolved threads are automatically moved to the end of the list and their status
 
 ![image](../../../../screenshots/resolve_threads_2.png)
 <!-- AUDITING-FEATURES: end -->
+
+<!-- 
+ALL-COMMENTS: start
+
+### All Comments
+
+The `All Comments` view brings together comments from all threads tied to the current version, enabling efficient review and triage.
+
+It allows you to:
+* **View all comments in the current version**
+  * Displays every comment/thread associated with the version you’re viewing.
+* **Search comments**
+  * Filter comments by keyword to quickly find relevant discussions.
+* **Sort comments**
+  * Change the ordering of comments (e.g., showing newest activity first).
+* **Filter by user**
+  * Narrow the list to comments created by a specific user or view comments from everyone.
+* **Navigate to the originating thread**
+  * Selecting a comment entry opens the corresponding thread.
+
+![image](../../../../screenshots/all_comments.png)
+
+ALL-COMMENTS: end 
+-->
