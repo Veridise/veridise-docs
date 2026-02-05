@@ -43,6 +43,21 @@ If you start from the [AuditHub page](https://app.audithub.dev/) and complete th
 - You land in a dedicated demo organization.
 - The demo organization is pre-populated with example projects so you can explore the AuditHub features and run the security tools right away.
 
+<!--
+FREE-DEMO-RESTRICTIONS: start
+
+Please note that the free demo environment does come with a few restrictions and limitations.
+At a high level, they apply to:
+* Projects: you can’t create, edit, or delete projects (you can only view and inspect the project configurations).
+* Versions: you can’t create, edit, or delete versions (you can only download versions).
+* User management: you can invite 2 more users to join your organization (there's a limit of 3 users per free demo organization).
+* CPU usage quota: CPU consumption is limited to one hour. Once the quota is reached, you will receive an error when you attempt to run the security tools.
+* Legacy tools: all legacy tools are disabled (i.e, `DeFi Vanguard (Legacy)`, `ZK Vanguard (Circom)` and `Picus (Circom)`).
+* There’s a 1-year expiration period for the free demo.
+
+FREE-DEMO-RESTRICTIONS: end
+-->
+
 ## Invitation-based access to AuditHub
 
 If you start from an invitation email:
