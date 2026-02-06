@@ -90,7 +90,6 @@ const config = {
         routeBasePath: "saas",
         sidebarPath,
         lastVersion: "current",
-        exclude: ["**/guide/other.md", "**/guide/usage.md", "**/reference/**"],
         remarkPlugins: [dashes],
       },
     ],

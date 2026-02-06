@@ -17,6 +17,7 @@ The Picus Constraint Language (PCL) is intended to express constraints used in z
 - **Assertions**: Establish the constraints over signals.
 - **Lookups**: Asserts that a set of signals $v_1, ..., v_n$ belong to a set of lookup tables $t_1, ..., t_n$.
 - **Calls**: A call $(o_1,  \dots, o_n) = M(i_1, \dots i_m)$ declares signals $o_1, \dots, o_n$ are the outputs of a module $M$ when instantiated with inputs $i_1, \dots, i_m$. This is a useful construct because if Picus can prove that 1) $M$ is deterministic, 2) can  determine that $i_1, \ldots, i_m$ are also deterministic, 3) Can prove the inputs satisfy any determinism assumptions made in $M$,  then it can safely assume all $o_1, \ldots, o_n$ are also deterministic.
+- **Post conditions**: Formulas over input and output variables that should be entailed by the constraints.
 
 
 ### Syntax Overview
@@ -29,7 +30,7 @@ Constructs in the Picus language are expressed as [S-Expressions](https://en.wik
 - Assumptions use `(assume (<condition>))` to define assumptions
 - Calls are expressed as `(call [outvar_1, ..., outvar_n] <call-name> [invar_1, ..., invar_m])`
 - Lookups are expressed as `(lookup [v_1, .., v_n] [t_1, ..., t_n])` to assert that each `v_i` belongs to table `t_i`.
-
+- Postconditions use `(post-condition (<condition>))`
 
 ## 3. Declaring a Module
 
@@ -71,7 +72,20 @@ Each assertion represents a constraint defined by the module. For example:
 (assert (= (* var1 (- 1 var1)) 0))
 ```
 
-expresses a constraint that `var` is either 1 or 0.
+expresses a constraint that `var` is either 1 or 0. Constraints are not limited to polynomial equalities as Picus supports comparisons like:
+
+```lisp
+(assert (< var1 var2))
+```
+
+The meaning of such comparisons are that $var1 \mod p < var2 \mod p$ where $p$ is the prime specified in the module.
+
+Picus additionally supports boolean combinations of predicates with operators like `&&` (conjunction), `||` (disjunction), `=>` (implication), and `<=>` (if and only if).
+
+## 7. Builtin Predicates
+In addition to standard predicates `=`, `<`, etc., Picus has custom builtin predicates for proving determinism. 
+
+- The `det` predicate takes as input an expression and returns true if it is deterministic. 
 
 ## 7. Detailed Example: BuggyExample Module
 
@@ -131,16 +145,27 @@ Putting everything together, here is the grammar for the PCL.
 
 <assertions> ::= {<assertion>}*
 
-<assertion> ::= "(assert" <expression> ")" | <call-assertion>
+<condition> ::= "(=" <expression> <expression> ")"
+                | "(!=" <expression> <expression> ")"
+                | "(<" <expression> <expression> ")"
+                | "(<=" <expression> <expression> ")"
+                | "(>" <expression> <expression> ")"
+                | "(>=" <expression> <expression> ")"
+                | "(det <expression> ")"
+                | "(<=>" <condition> <condition> ")"
+                | "(=>" <condition> <condition> ")"
+                | "(&&" <condition> <condition> ")"
+                | "(||" <condition> <condition> ")"
 
-<assumption> ::= "(assume" <expression> ")"
+<assertion> ::= "(assert" <condition> ")" | <call-assertion>
+
+<assumption> ::= "(assume" <condition> ")"
 
 <call-assertion> ::= "(call [" <identifiers> "]" <identifier> "(" <identifiers> ")"
 
 <lookup-assertion> ::= "(lookup" "[" <identifiers> "]" "[" <constants> "])"
 
 <expression> ::= <term>
-               | "(=" <expression> <expression> ")"
                | "(*" <expression> <expression> ")"
                | "(+" <expression> <expression> ")"
                | "(-" <expression> <expression> ")"

@@ -3,6 +3,7 @@ title: AuditHub
 sidebar_position: 1
 ---
 
-AuditHub allows instant access to Veridise code review and security analysis tools.
+AuditHub is a comprehensive security and auditing platform. 
+It is designed to enhance your project's security practices and provide transparency during audits.
 
-<!-- Check our [User Guide](./guide/usage) to start using our tools. -->
+Check our [User Guide](/saas/guide/on_boarding.md) to start using AuditHub.

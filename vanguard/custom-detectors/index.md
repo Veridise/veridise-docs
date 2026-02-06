@@ -14,6 +14,14 @@ ERC20 tokens and ERC4626 vaults.
 You can also create your own custom detector if you have specific security
 concerns about your project.
 
+* **Want to use the detectors in the standard library?** See below.
+* **Want to learn how to write your own?**
+  Learn [the PAQL language](./paql.md).
+* **Not sure how to do something in PAQL?**
+  Check out our [how-to guides](./howto.md).
+* **Need to look up something?**
+  Consult the [Solidity dialect reference](./solidity-dialect.md).
+
 ## Using the Custom Detectors Library
 
 To use custom detectors, select them from the Task Wizard when launching a

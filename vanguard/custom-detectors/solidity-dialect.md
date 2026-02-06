@@ -14,6 +14,34 @@ This page contains reference documentation for the Solidity dialect of PAQL,
 describing every object type available, and the properties and iterators of each
 object type.
 
+## Overview
+
+Queries in the Solidity dialect typically center around the
+[Contract](#contract) and [Function](#function) classes and the various
+constructs contained in them, such as
+[Expressions, Statements](#expressions-and-statements),
+and [Storage Accesses](#storage-accesses).
+
+For example, the following query checks for external functions of the
+`ExampleVault` contract that perform an ERC20
+`transferFrom(address,address,uint256)` with the `from` address set to the
+`token` storage variable.
+
+```paql
+FIND
+  Contract vault,
+  Function extFun IN vault,
+  ExternalCall extCall IN extFun.reachable,
+  StorageRead rd IN extCall.backwardSlices,
+WHERE
+  vault.name == "ExampleVault",
+  extFun.isExternallyCallable,
+  extCall.signature == "transferFrom(address,address,uint256)",
+  rd.location == "token",
+```
+
+For additional examples on how to use the Solidity dialect, consult the [how-to guide](./howto.md).
+
 ## Contracts and Functions
 
 ### Contract

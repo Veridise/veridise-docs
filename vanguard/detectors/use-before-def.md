@@ -26,9 +26,6 @@ The current version of Use Before Definition in DeFi Vanguard only supports
 storage variables.
 Support for stack and memory variables will come in a later update.
 
-If you need to check for stack and memory variables, you can run this detector
-using "DeFi Vanguard (Legacy)".
-
 :::
 
 ### Usage

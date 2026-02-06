@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Flashloan (Legacy)
 description: Detects potential vulnerabilities that can be exploited through the use of a flash loan.
+draft: true
 ---
 
 # Flashloan (`flashloan`)
