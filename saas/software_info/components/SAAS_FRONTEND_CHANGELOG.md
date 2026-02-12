@@ -6,6 +6,20 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.0 - 2026-02-12
+### Added
+- Add links to threads for comments in AllCommentsDialog
+- Commit hash field to version update modal
+- Library version is now included in the selected hints array
+- New field that tells Picus to assume deterministic modules.
+
+### Fixed
+- Only create lists when * or - is at the beginning of a line
+
+### Removed
+- Minimize thread panel and thread history while in thread creation mode
+- Remove deprecated tool from the UI
+
 ## v2.6.9 - 2026-01-28
 ### Added
 - Free Audithub Demo
