@@ -6,6 +6,22 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.11 - 2026-02-12
+### Added
+- Locked Funds: new detector for finding contracts that may lock ERC20 tokens or native currency
+
+### Changed
+- Custom Detectors
+  - Improved the presentation of the `Path` objects that are output
+  - The `.location` property on `StorageRead` and `StorageWrite` classes can now return a string indicating multiple memory accesses
+  - Updated PAQL grammar to support use of named operations in arbitrary expressions
+
+### Fixed
+- Custom Detectors
+  - Fixed a bug that caused missed elements in forward slicing
+  - Fixed a bug where `ExternalCall.signature` incorrectly contained spaces
+  - Fixed crash when WHERE clause is a boolean literal
+- Unchecked Return: fixed false alarms related to assert statements
 ## v1.0.10 - 2026-01-28
 ### Added
 - Custom Detectors:

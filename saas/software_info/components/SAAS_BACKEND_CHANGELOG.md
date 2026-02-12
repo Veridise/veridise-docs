@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.32 - 2026-02-12
+### Added
+- "Argument `\u2014apply-rewrites` for picus"
+
 ## v2.5.31 - 2026-01-28
 ### Added
 - Free AuditHub demo feature
