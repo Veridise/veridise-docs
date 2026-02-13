@@ -204,9 +204,6 @@ Resolved threads are automatically moved to the end of the list and their status
 ![image](../../../../screenshots/resolve_threads_2.png)
 <!-- AUDITING-FEATURES: end -->
 
-<!-- 
-ALL-COMMENTS: start
-
 ### All Comments
 
 The `All Comments` view brings together comments from all threads tied to the current version, enabling efficient review and triage.
@@ -224,6 +221,3 @@ It allows you to:
   * Selecting a comment entry opens the corresponding thread.
 
 ![image](../../../../screenshots/all_comments.png)
-
-ALL-COMMENTS: end 
--->
