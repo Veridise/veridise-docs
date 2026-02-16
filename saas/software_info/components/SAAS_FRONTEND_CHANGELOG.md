@@ -6,6 +6,17 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.1 - 2026-02-16
+### Added
+- Github integration with AuditHub
+
+### Changed
+- Reduced onboarding steps
+- Tour notification is now a toast notification
+
+### Fixed
+- Fix OrCa Wizard fork network selection
+
 ## v2.7.0 - 2026-02-12
 ### Added
 - Add links to threads for comments in AllCommentsDialog
