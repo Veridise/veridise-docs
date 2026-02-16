@@ -6,6 +6,11 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.33 - 2026-02-16
+### Added
+- Allow pushing issues and security advisories to GitHub
+- OrCa on chain fuzzing support
+
 ## v2.5.32 - 2026-02-12
 ### Added
 - "Argument `\u2014apply-rewrites` for picus"
