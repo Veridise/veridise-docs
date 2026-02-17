@@ -118,6 +118,75 @@ For each message, options are available to **copy the raw Markdown**, **edit**, 
 ![image](../../../../screenshots/issue_discussion_private_thread.png)
 
 
+## Push Issues to GitHub
+
+AuditHub’s GitHub integration connects the audit workflow with the place where most engineering teams already track work: GitHub. It enables auditors to publish issues directly to a client-owned repository as **GitHub Issues** or **GitHub Security Advisories**, so remediation happens in the team’s normal development process. Once published, issues can be tied to a pull request, discussed in-context, and reviewed through the client’s existing code review and CI practices. This creates a shared source of truth for both auditors and clients, improves visibility and accountability, and makes it easier to track progress from discovery to fix.
+
+:::warning
+Because this feature relies on GitHub APIs and availability, **GitHub incidents or downtime may impact connecting accounts, linking repositories, and exporting issues/ security advisories**.
+:::
+
+### Connect AuditHub to GitHub
+
+1. Go to the **Projects** page.
+2. Click the **Connect with GitHub** button.
+3. You’ll be prompted to choose where to install the GitHub application for AuditHub:
+   * a **personal account**, or
+   * a **GitHub organization** you belong to.
+4. Complete the installation and grant access to one or more repositories.
+
+![image](../../../../screenshots/connect_with_github.png)
+![image](../../../../screenshots/install_audithub_application.png)
+
+After this step, AuditHub can interact with the repositories you authorized.
+
+### Link a repository to a project
+
+Once GitHub is connected:
+1. Open any project in AuditHub.
+2. Click the **Link GitHub repository** button.
+3. Select the repository you want to associate with that project.
+
+![image](../../../../screenshots/link_github_repository_1.png)
+![image](../../../../screenshots/link_github_repository_2.png)
+
+A GitHub repository can be unlinked and linked again at any time.
+
+![image](../../../../screenshots/unlink_github_repository.png)
+
+### Export AuditHub issues to GitHub
+
+After a GitHub repository is linked:
+
+1. Go to the project’s **Issues** table.
+2. Select an issue.
+3. Choose one of the export options:
+   * **Create GitHub Issue**, or
+   * **Create Security Advisory**.
+
+![image](../../../../screenshots/create_github_issue_and_security_advisory.png)
+
+When the export finishes, AuditHub displays a success notification. From the original AuditHub issue, you can open the published GitHub **issue** or **security advisory** at any time.
+
+![image](../../../../screenshots/view_github_issue_and_security_advisory.png)
+
+### Reconnect GitHub
+
+If you need to change where AuditHub is installed or switch GitHub identities:
+
+1. Go to the **Projects** page.
+2. Click the **Reconnect GitHub** button.
+3. Choose to:
+   * install the GitHub application in **another organization** you are part of, or
+   * **log in with a different GitHub account**.
+  
+![image](../../../../screenshots/reconnect_with_github.png)
+
+:::note
+If any projects already have repositories linked, you must **unlink those repositories first**, then **relink** repositories after reconnecting GitHub, so AuditHub uses the newly connected GitHub installation/account.
+:::
+
+
 ## Threads
 
 :::info
