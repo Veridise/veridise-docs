@@ -120,17 +120,22 @@ For each message, options are available to **copy the raw Markdown**, **edit**, 
 
 ## Push Issues to GitHub
 
-AuditHub’s GitHub integration connects the audit workflow with the place where most engineering teams already track work: GitHub. It enables auditors to publish issues directly to a client-owned repository as **GitHub Issues** or **GitHub Security Advisories**, so remediation happens in the team’s normal development process. Once published, issues can be tied to a pull request, discussed in-context, and reviewed through the client’s existing code review and CI practices. This creates a shared source of truth for both auditors and clients, improves visibility and accountability, and makes it easier to track progress from discovery to fix.
-
+AuditHub offers a GitHub application named `AuditHub.dev`, that allows interoperability between AuditHub and GitHub. It enables AuditHub users to publish audit issues directly to a GitHub repository as **GitHub Issues** or **GitHub Security Advisories**, so remediation progress can be tracked there by the developers. 
+<!-- 
+Once published, issues can be tied to a pull request, discussed in-context, and reviewed through the developers' existing code review and CI practices. 
+This creates a shared source of truth for both auditors and clients, improves visibility and accountability, and makes it easier to track progress from discovery to fix.
+-->
 :::warning
 Because this feature relies on GitHub APIs and availability, **GitHub incidents or downtime may impact connecting accounts, linking repositories, and exporting issues/ security advisories**.
 :::
 
-### Connect AuditHub to GitHub
+### Connect an AuditHub organization to a GitHub account {#github-connect}
+To connect an AuditHub organization with a specific GitHub account, you need to install the `AuditHub.dev` GitHub application to said account. 
+You can achieve this from within AuditHub, by following these steps:
 
-1. Go to the **Projects** page.
+1. Go to the **Projects** page of your AuditHub organization.
 2. Click the **Connect with GitHub** button.
-3. You’ll be prompted to choose where to install the GitHub application for AuditHub:
+3. You’ll be prompted to choose where to install the `AuditHub.dev` GitHub application:
    * a **personal account**, or
    * a **GitHub organization** you belong to.
 4. Complete the installation and grant access to one or more repositories.
@@ -138,14 +143,14 @@ Because this feature relies on GitHub APIs and availability, **GitHub incidents 
 ![image](../../../../screenshots/connect_with_github.png)
 ![image](../../../../screenshots/install_audithub_application.png)
 
-After this step, AuditHub can interact with the repositories you authorized.
+After this step, the selected AuditHub organization can interact with the repositories you authorized.
 
 ### Link a repository to a project
 
-Once GitHub is connected:
-1. Open any project in AuditHub.
+Once an AuditHub organization is connected to a GitHub account:
+1. Open any project of this organization in AuditHub.
 2. Click the **Link GitHub repository** button.
-3. Select the repository you want to associate with that project.
+3. Select the GitHUb repository you want to associate with this project.
 
 ![image](../../../../screenshots/link_github_repository_1.png)
 ![image](../../../../screenshots/link_github_repository_2.png)
@@ -172,18 +177,12 @@ When the export finishes, AuditHub displays a success notification. From the ori
 
 ### Reconnect GitHub
 
-If you need to change where AuditHub is installed or switch GitHub identities:
-
-1. Go to the **Projects** page.
-2. Click the **Reconnect GitHub** button.
-3. Choose to:
-   * install the GitHub application in **another organization** you are part of, or
-   * **log in with a different GitHub account**.
+If you uninstall the `AuditHub.dev` GitHub application from your GitHub account and need to reinstall it, you can go to the **Projects** page of your organization and click the **Reconnect GitHub** button. This will launch the same [process](#github-connect) as the original Connect feature, which you can follow from step 3.
   
 ![image](../../../../screenshots/reconnect_with_github.png)
 
 :::note
-If any projects already have repositories linked, you must **unlink those repositories first**, then **relink** repositories after reconnecting GitHub, so AuditHub uses the newly connected GitHub installation/account.
+Project links remain intact. If you decide to switch to a different GitHub account, and you have already linked projects, please **relink** these project to repositories of the new account.
 :::
 
 
