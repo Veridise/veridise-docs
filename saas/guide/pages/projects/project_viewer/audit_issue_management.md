@@ -118,6 +118,74 @@ For each message, options are available to **copy the raw Markdown**, **edit**, 
 ![image](../../../../screenshots/issue_discussion_private_thread.png)
 
 
+## Push Issues to GitHub
+
+AuditHub offers a GitHub application named `AuditHub.dev`, that allows interoperability between AuditHub and GitHub. It enables AuditHub users to publish audit issues directly to a GitHub repository as **GitHub Issues** or **GitHub Security Advisories**, so remediation progress can be tracked there by the developers. 
+<!-- 
+Once published, issues can be tied to a pull request, discussed in-context, and reviewed through the developers' existing code review and CI practices. 
+This creates a shared source of truth for both auditors and clients, improves visibility and accountability, and makes it easier to track progress from discovery to fix.
+-->
+:::warning
+Because this feature relies on GitHub APIs and availability, **GitHub incidents or downtime may impact connecting accounts, linking repositories, and exporting issues/ security advisories**.
+:::
+
+### Connect an AuditHub organization to a GitHub account {#github-connect}
+To connect an AuditHub organization with a specific GitHub account, you need to install the `AuditHub.dev` GitHub application to said account. 
+You can achieve this from within AuditHub, by following these steps:
+
+1. Go to the **Projects** page of your AuditHub organization.
+2. Click the **Connect with GitHub** button.
+3. You’ll be prompted to choose where to install the `AuditHub.dev` GitHub application:
+   * a **personal account**, or
+   * a **GitHub organization** you belong to.
+4. Complete the installation and grant access to one or more repositories.
+
+![image](../../../../screenshots/connect_with_github.png)
+![image](../../../../screenshots/install_audithub_application.png)
+
+After this step, the selected AuditHub organization can interact with the repositories you authorized.
+
+### Link a repository to a project
+
+Once an AuditHub organization is connected to a GitHub account:
+1. Open any project of this organization in AuditHub.
+2. Click the **Link GitHub repository** button.
+3. Select the GitHUb repository you want to associate with this project.
+
+![image](../../../../screenshots/link_github_repository_1.png)
+![image](../../../../screenshots/link_github_repository_2.png)
+
+A GitHub repository can be unlinked and linked again at any time.
+
+![image](../../../../screenshots/unlink_github_repository.png)
+
+### Export AuditHub issues to GitHub
+
+After a GitHub repository is linked:
+
+1. Go to the project’s **Issues** table.
+2. Select an issue.
+3. Choose one of the export options:
+   * **Create GitHub Issue**, or
+   * **Create Security Advisory**.
+
+![image](../../../../screenshots/create_github_issue_and_security_advisory.png)
+
+When the export finishes, AuditHub displays a success notification. From the original AuditHub issue, you can open the published GitHub **issue** or **security advisory** at any time.
+
+![image](../../../../screenshots/view_github_issue_and_security_advisory.png)
+
+### Reconnect GitHub
+
+If you uninstall the `AuditHub.dev` GitHub application from your GitHub account and need to reinstall it, you can go to the **Projects** page of your organization and click the **Reconnect GitHub** button. This will launch the same [process](#github-connect) as the original Connect feature, which you can follow from step 3.
+  
+![image](../../../../screenshots/reconnect_with_github.png)
+
+:::note
+Project links remain intact. If you decide to switch to a different GitHub account, and you have already linked projects, please **relink** these project to repositories of the new account.
+:::
+
+
 ## Threads
 
 :::info
@@ -204,9 +272,6 @@ Resolved threads are automatically moved to the end of the list and their status
 ![image](../../../../screenshots/resolve_threads_2.png)
 <!-- AUDITING-FEATURES: end -->
 
-<!-- 
-ALL-COMMENTS: start
-
 ### All Comments
 
 The `All Comments` view brings together comments from all threads tied to the current version, enabling efficient review and triage.
@@ -224,6 +289,3 @@ It allows you to:
   * Selecting a comment entry opens the corresponding thread.
 
 ![image](../../../../screenshots/all_comments.png)
-
-ALL-COMMENTS: end 
--->

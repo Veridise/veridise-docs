@@ -70,6 +70,7 @@ Circom: .circom
 Leo: .aleo, .leo
 [V] Specification Language: .spec
 Hint Language: .hint
+Sui Move: .move
 ```
 
 For additional or custom syntax highlighting support, please contact us.
