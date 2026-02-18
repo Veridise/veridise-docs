@@ -10,4 +10,4 @@ images:
     newTag: git-latest
 
 resources:
-  - ingress.yaml
+  - httproute.yaml
