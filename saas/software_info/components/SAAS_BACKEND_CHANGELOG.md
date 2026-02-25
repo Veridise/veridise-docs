@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.34 - 2026-02-25
+### Fixed
+- Bug fixes
+
 ## v2.5.33 - 2026-02-16
 ### Added
 - Allow pushing issues and security advisories to GitHub
