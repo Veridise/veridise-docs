@@ -6,6 +6,15 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.2 - 2026-02-25
+### Added
+- Add on-chain fuzzing support to OrCa
+- Batch announcement feature
+- Orca fuzzing metrics visualization
+
+### Changed
+- Increase call Github API timeout to 60 seconds
+
 ## v2.7.1 - 2026-02-16
 ### Added
 - Github integration with AuditHub
