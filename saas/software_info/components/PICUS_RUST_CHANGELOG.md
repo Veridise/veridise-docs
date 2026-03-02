@@ -6,6 +6,15 @@ slug: picus-v2-changelog
 ---
 # Software Changes
 
+## v1.1.4 - 2026-03-02
+### Added
+- Configuration:
+  - bitwuzla solver
+  - z3bv solver
+  - cvc5-bv solver
+- bitvector solver encoding
+- bitwuzla solver
+
 ## v1.1.3 - 2026-02-02
 ### Added
 - Added SMT optimization for call encodings

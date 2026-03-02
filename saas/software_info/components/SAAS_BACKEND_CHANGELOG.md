@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.36 - 2026-03-02
+### Changed
+- Update picus solvers
+
 ## v2.5.35 - 2026-02-27
 ### Changed
 - Improve task output
