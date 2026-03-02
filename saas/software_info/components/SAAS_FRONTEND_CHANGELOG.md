@@ -6,6 +6,16 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.3 - 2026-03-02
+### Changed
+- Improved code block syntax highlighting in Markdown viewer
+- Update account settings URL to /app/account
+
+### Fixed
+- Fix math equation rendering in markdown editor
+- Fixed code block insertion to properly handle selected text
+- Fixed code block insertion to properly handle selected text
+
 ## v2.7.2 - 2026-02-25
 ### Added
 - Add on-chain fuzzing support to OrCa
