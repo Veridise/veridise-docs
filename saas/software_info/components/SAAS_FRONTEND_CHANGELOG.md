@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.4 - 2026-03-02
+### Changed
+- Changed Picus solver options
+
+### Fixed
+- Fix side menu organization switching
+
 ## v2.7.3 - 2026-03-02
 ### Changed
 - Improved code block syntax highlighting in Markdown viewer
