@@ -117,11 +117,13 @@ For each message, options are available to **copy the raw Markdown**, **edit**, 
 
 ![image](../../../../screenshots/issue_discussion_private_thread.png)
 
-#### Batch Announce & Export
+#### Batch Announce
 
 If multiple issues are in the `Ready to share` status, you can announce them to developers at once using the batch announcement feature. Filter to `Ready to share` if needed, select the issues, and click the `Batch Announce` button to send a single announcement for the selection.
 
 ![image](../../../../screenshots/batch_announce.png)
+
+#### Export
 
 Clicking the `Export` button downloads a comma-separated values (`.csv`) file containing the issues, along with their Markdown descriptions and relevant AuditHub configuration.
 
