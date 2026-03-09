@@ -6,6 +6,24 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.12 - 2026-03-09
+### Added
+- DeFi Vanguard:
+  - Custom detectors:
+    - Added "calldata" property to SolidityExternalCallClassImpl
+    - Addded "call-hijacking" detector to find low-level calls where the call data is potentially controlled by the attacker
+  - Locked-funds detector:
+    - Proxy patterns are now detected and appropriate warnings are displayed to users
+
+### Fixed
+- Solidity:
+  - Fixed crash when handling a storage pointer assigned conditionally
+  - Fixed crash when handling a mapping index with a string literal
+  - Fixed a crash involving code that copies bytes calldata slices to memory or storage
+
+### Changed
+- ZK Vanguard:
+  - Update LLZK-lib version and update lit tests and class naming accordingly
 ## v1.0.11 - 2026-02-12
 ### Added
 - Locked Funds: new detector for finding contracts that may lock ERC20 tokens or native currency
