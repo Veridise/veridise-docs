@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.46 - 2026-03-09
+### Changed
+- Component Vanguard upgraded to version *v1.0.12*.
+
 ## v2.8.45 - 2026-03-02
 ### Changed
 - Component PicusV2 upgraded to version *v1.1.4*.
