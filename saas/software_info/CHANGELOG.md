@@ -5,6 +5,11 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.47 - 2026-03-12
+### Changed
+- Component SaaS Backend upgraded to version *v2.5.37*.
+- Component SaaS Frontend upgraded to version *v2.7.5*.
+
 ## v2.8.46 - 2026-03-09
 ### Changed
 - Component Vanguard upgraded to version *v1.0.12*.

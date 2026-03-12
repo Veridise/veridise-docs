@@ -6,6 +6,14 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.37 - 2026-03-12
+### Added
+- Include is_deployed field on versions and projects.
+- Support vanguard cross version finding triage
+
+### Removed
+- Legacy DeFi Vanguard
+
 ## v2.5.36 - 2026-03-02
 ### Changed
 - Update picus solvers
