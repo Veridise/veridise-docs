@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.5 - 2026-03-12
+### Added
+- Add analytics tracking to onboarding page
+- Add copy line url option in code editor
+- Add raw mode to thread comments field.
+- Allow reordering of organizations
+
 ## v2.7.4 - 2026-03-02
 ### Changed
 - Changed Picus solver options
