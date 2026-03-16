@@ -38,11 +38,23 @@ When switching to a different version, a blue check mark indicates the currently
 
 ## Source code navigation
 
-### File Browser & Code Editor
+### File Browser
 
 On the left side of the page, the **File Browser** displays all files included in the selected archive, along with a search bar to help locate items quickly. Any file can be opened to view its contents in the **Code Editor**. 
 
 ![image](../../../../screenshots/project_viewer_source_code_navigation.png)
+
+### Code Editor
+
+Right-clicking inside the code editor opens a context menu with several commands, including:
+
+* `Copy`: copies the selected line or lines of code.
+* `Copy Line URL`: copies the URL of the selected line or lines of code.
+* `New Issue from Selection`: creates an issue based on the selected code (described in detail [here](/saas/guide/pages/projects/project_viewer/audit_issue_management.md#create-issue)).
+* `New Thread from Selection`: creates a thread based on the selected code (described in detail [here](/saas/guide/pages/projects/project_viewer/audit_issue_management.md#create-threads)).
+* `Command Palette`: provides access to additional commands.
+
+![image](../../../../screenshots/context_menu_code_editor.png)
 
 The **Code Editor** currently supports syntax highlighting for the following languages:
 
@@ -71,6 +83,8 @@ Leo: .aleo, .leo
 [V] Specification Language: .spec
 Hint Language: .hint
 Sui Move: .move
+Noir: .nr
 ```
 
 For additional or custom syntax highlighting support, please contact us.
+
