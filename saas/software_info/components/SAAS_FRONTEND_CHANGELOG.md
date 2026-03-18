@@ -6,6 +6,19 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.6 - 2026-03-18
+### Added
+- AIM under review state
+- Add copy user ID button to organization users tab
+- Add organization notifications button
+- Added edge case handling for onboarded user with no organization
+
+### Changed
+- Hide "Ignore buid system" option when the project has no build system and allow selecting the Solc version directly
+
+### Removed
+- Removed calls for latest version for projects page
+
 ## v2.7.5 - 2026-03-12
 ### Added
 - Add analytics tracking to onboarding page
