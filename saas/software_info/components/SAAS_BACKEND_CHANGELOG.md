@@ -6,6 +6,12 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.38 - 2026-03-18
+### Added
+- Add new issue status "Under review"
+- Allow user to define notification settings per organization
+- Endpoint for public service announcements
+
 ## v2.5.37 - 2026-03-12
 ### Added
 - Include is_deployed field on versions and projects.
