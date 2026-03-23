@@ -6,6 +6,18 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.7.7 - 2026-03-23
+### Added
+- Add PSA banner
+- Add visual cue for deployed version
+- Error message now displayed in Full Analysis Page when task fails
+
+### Changed
+- Code viewer page spacing
+
+### Fixed
+- Add send to thread name
+
 ## v2.7.6 - 2026-03-18
 ### Added
 - AIM under review state
