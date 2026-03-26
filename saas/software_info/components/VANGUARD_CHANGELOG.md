@@ -6,6 +6,32 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.13 - 2026-03-26
+### Added
+- DeFi Vanguard:
+  - Custom detectors:
+    - Added AddressThis PAQL class for Solidity dialect (`address(this)`)
+    - Added MsgSender PAQL class
+- ZK Vanguard:
+  - Include new circom-to-llzk frontend
+  - Update driver script to accept circom files
+
+### Changed
+- DeFi Vanguard:
+  - Custom detectors
+    - StorageRead and StorageWrite have improved debug string and are handled in solidity symbolizer
+- ZK Vanguard:
+  - Automatically detect prime field from LLZK, if possible
+  - Update LLZK dependency to update detector analyses
+
+### Fixed
+- DeFi Vanguard:
+  - Solidity:
+    - Fixed crash when handling a storage pointer assigned conditionally
+    - Fixed crash when handling a mapping index with a string literal
+    - Fixed a crash involving code that copies bytes calldata slices to memory or storage.
+  - Custom detectors:
+    - UnrealizedConversionCastOp is now decoded as Expression, preventing a crash on some benchmarks
 ## v1.0.12 - 2026-03-09
 ### Added
 - DeFi Vanguard:
