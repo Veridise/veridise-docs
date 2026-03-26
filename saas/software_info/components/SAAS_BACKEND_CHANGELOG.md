@@ -6,6 +6,11 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.39 - 2026-03-26
+### Added
+- Add user favorite organizations
+- User facing resource consumption information
+
 ## v2.5.38 - 2026-03-18
 ### Added
 - Add new issue status "Under review"
