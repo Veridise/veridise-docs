@@ -1,0 +1,46 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: saas-docs
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "docs.audithub.dev"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+spec:
+  parentRefs:
+    - name: gateway-external
+      namespace: gateway-api
+      sectionName: https-audithub-dev
+  hostnames:
+    - docs.audithub.dev
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: saas-docs
+          port: 80
+
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: old-docs
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "docs.veridise.com"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+spec:
+  parentRefs:
+    - name: gateway-external
+      namespace: gateway-api
+      sectionName: https
+  hostnames:
+    - docs.veridise.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: saas-docs
+          port: 80
