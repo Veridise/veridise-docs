@@ -6,6 +6,13 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.12.0 - 2026-04-01
+### Added
+- Added input sanitization to user addresses provided by the user.
+- Added instruction coverage information to call metrics.
+
+### Changed
+- Updated dependencies to latest compatible versions.
 ## v2.11.0 - 2026-01-23
 
 ### Added
