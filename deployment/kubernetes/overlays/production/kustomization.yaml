@@ -10,5 +10,4 @@ images:
     newTag: production
 
 resources:
-  - ingress.yaml
   - httproute.yaml
