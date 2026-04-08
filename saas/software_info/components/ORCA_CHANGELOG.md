@@ -6,6 +6,24 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.12.1 - 2026-04-08
+### Added
+- Added a helper `bytes` function in Hints.
+- Added an absolute value function for [V] and Hints.
+
+### Changed
+- Updated OrCa's printed logs to include number of spec violations found.
+
+### Fixed
+- Fixed parsing issue from strict decoding of EVM revert data.
+
+## v2.12.0 - 2026-04-01
+### Added
+- Added input sanitization to user addresses provided by the user.
+- Added instruction coverage information to call metrics.
+
+### Changed
+- Updated dependencies to latest compatible versions.
 ## v2.11.0 - 2026-01-23
 
 ### Added

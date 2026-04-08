@@ -6,6 +6,17 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.41 - 2026-04-08
+### Fixed
+- Allow empty string for resolution_pr and resolution_commit, and treat them as None
+
+## v2.5.40 - 2026-04-01
+### Added
+- Add optional message count to thread messages, on get comment threads endpoints
+
+### Changed
+- Improve response data on errors
+
 ## v2.5.39 - 2026-03-26
 ### Added
 - Add user favorite organizations
