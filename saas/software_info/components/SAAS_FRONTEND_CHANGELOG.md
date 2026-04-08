@@ -6,6 +6,23 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.0 - 2026-04-08
+### Changed
+- Changed findings panel to match issues panel
+
+### Fixed
+- Fixed issue where copying an issue URL and navigating to it would not open the issue panel or select the issue
+- Fixed markdown editing in issues
+
+## v2.7.9 - 2026-04-01
+### Added
+- Add favorite organizations support with star toggle on the organizations page and profile dropdown, favorites sorted first
+- Fixed version not loading in project viewer
+
+### Fixed
+- Fix issue with jumping to file from issue details
+- Fixed unresponsive page when switching between issues
+
 ## v2.7.8 - 2026-03-26
 ### Added
 - Add error handling for sent messages
