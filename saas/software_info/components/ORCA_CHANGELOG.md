@@ -6,6 +6,10 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.12.2 - 2026-04-15
+### Added
+- Updated PyREVM to latest version.
+
 ## v2.12.1 - 2026-04-08
 ### Added
 - Added a helper `bytes` function in Hints.
