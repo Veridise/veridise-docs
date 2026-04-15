@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.1 - 2026-04-15
+### Added
+- Aux onchain fuzzing integration
+
 ## v2.8.0 - 2026-04-08
 ### Changed
 - Changed findings panel to match issues panel

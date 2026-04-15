@@ -6,6 +6,11 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.42 - 2026-04-15
+### Added
+- Add auxiliary deployment script support to OrCa on-chain fuzzing
+- Add version resource metrics endpoints
+
 ## v2.5.41 - 2026-04-08
 ### Fixed
 - Allow empty string for resolution_pr and resolution_commit, and treat them as None
