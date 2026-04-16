@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.2 - 2026-04-16
+### Added
+- Overview page
+
+### Fixed
+- Fixed project viewer URL parameters preservation
+
 ## v2.8.1 - 2026-04-15
 ### Added
 - Aux onchain fuzzing integration
