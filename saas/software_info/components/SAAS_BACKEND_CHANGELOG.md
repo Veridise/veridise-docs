@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.43 - 2026-04-16
+### Fixed
+- Bug fixes
+
 ## v2.5.42 - 2026-04-15
 ### Added
 - Add auxiliary deployment script support to OrCa on-chain fuzzing
