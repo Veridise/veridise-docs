@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.54 - 2026-04-16
+### Changed
+- Component OrCa upgraded to version *v2.12.3*.
+
 ## v2.8.53 - 2026-04-15
 ### Changed
 - Component OrCa upgraded to version *v2.12.2*.
