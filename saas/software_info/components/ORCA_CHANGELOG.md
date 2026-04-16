@@ -6,6 +6,10 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.12.3 - 2026-04-16
+### Changed
+- Updated code to improve memory usage.
+
 ## v2.12.2 - 2026-04-15
 ### Added
 - Updated PyREVM to latest version.
