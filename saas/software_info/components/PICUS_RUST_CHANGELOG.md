@@ -6,6 +6,15 @@ slug: picus-v2-changelog
 ---
 # Software Changes
 
+## v1.1.5 - 2026-04-20
+### Added
+- Configuration:
+  - bitwuzla solver
+  - z3bv solver
+  - cvc5-bv solver
+- Early terminate on a cex or unknown
+- bitvector solver encoding
+
 ## v1.1.4 - 2026-03-02
 ### Added
 - Configuration:
