@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.3 - 2026-04-20
+### Changed
+- Change default picus timeout to 30 minutes
+
 ## v2.8.2 - 2026-04-16
 ### Added
 - Overview page
