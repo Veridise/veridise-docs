@@ -9,3 +9,4 @@ In this portion of the documentation, we will cover:
 1. [How to Set Up a Foundry Project for OrCa](foundry.md)
 2. [How to Set Up a Hardhat Project for OrCa](hardhat.md)
 3. [Debugging Build and Deployment Issues](debug.md)
+4. [On-Chain Fuzzing](on_chain_fuzzing.md)
