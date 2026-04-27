@@ -6,6 +6,33 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.14 - 2026-04-27
+### Added
+- ZK Vanguard
+  - Added a new detector, Unconstrained Inputs
+- Solidity Custom Detectors
+  - Added Function.isEntrypoint, Function.isConstructor properties
+
+### Changed
+- ZK Vanguard
+  - Out of Range Signals detector: now report findings if compute interval is narrower than constrain interval
+  - Underconstrained Outputs detector: reduce false positives caused by constant-constrained signals
+- Solidity Custom Detectors
+  - The .incomingPaths and .outgoingPaths properties now also trace instructions in the callers of the function containing the Expression that started the path
+  - The .before and .after properties now also iterate over statements and expressions before/after in the callers of functions containing starting function
+
+### Fixed
+- ZK Vanguard
+  - Updated signal-specific detectors to operate only over values annotated as `signal`
+  - Out of Range Signals detector: fix false negatives when using compute interval inference
+- Solidity
+  - Fixed a bug which caused compilation errors when enums are present in a struct
+  - Fixed a crash that could occur when processing calls with unknown targets
+  - Fixed a crash that occurs when an enum is used in a storage struct
+  - Fixed a crash that occurs when function pointers are used
+  - Locked Funds detector: fixed a crash that occurs in projects that use type aliases with external library functions
+- Solidity Custom Detectors
+  - Fixed the .backwardSlices property crashing in some scenarios
 ## v1.0.13 - 2026-03-26
 ### Added
 - DeFi Vanguard:
