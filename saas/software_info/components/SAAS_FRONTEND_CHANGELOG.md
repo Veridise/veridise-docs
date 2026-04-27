@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.4 - 2026-04-27
+### Added
+- Fixed lag issue in big projects and scrolling for files in create issue dialog
+
+### Fixed
+- Fix notification settings error
+
 ## v2.8.3 - 2026-04-20
 ### Changed
 - Change default picus timeout to 30 minutes

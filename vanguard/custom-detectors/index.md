@@ -8,7 +8,7 @@ library-specific vulnerability patterns using a concise query language.
 Custom detectors utilize Vanguard's advanced static analysis engine and are
 treated similarly to the built-in Vanguard detectors by AuditHub.
 
-AuditHub includes a "standard library" of custom detectors which can be used to
+AuditHub includes a ["standard library"](../standard-library/index.md) of custom detectors which can be used to
 catch simple vulnerabilities involving popular smart contract types, such as
 ERC20 tokens and ERC4626 vaults.
 You can also create your own custom detector if you have specific security
@@ -22,7 +22,7 @@ concerns about your project.
 * **Need to look up something?**
   Consult the [Solidity dialect reference](./solidity-dialect.md).
 
-## Using the Custom Detectors Library
+## Using Custom Detectors with Vanguard
 
 To use custom detectors, select them from the Task Wizard when launching a
 Vanguard task.
