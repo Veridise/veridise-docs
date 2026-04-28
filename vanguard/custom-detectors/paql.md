@@ -278,7 +278,12 @@ A list of some basic expressions is shown below.
 The list of named operators is:
 
 * `regexMatch(value, regex)`: Given two strings `value` and `regex`, return a
-  boolean value indicating whether the regex `regex` matches the string `value`.
+  boolean value indicating whether the regex `regex` matches the entire string
+  `value`.
+  The `regex` will be interpreted in the POSIX extended regular expression (ERE)
+  format.
+  For example, `regexMatch("asdf", "a")` returns `false`, and
+  `regexMatch("asdf", "a[st].*")` returns true.
 
 :::warning
 
