@@ -3,6 +3,8 @@ title: Custom Detectors
 sidebar_position: 4
 ---
 
+import { CustomDetectorGenerator } from '@site/src/components/vanguard/CustomDetectorGenerator.jsx';
+
 Vanguard supports _custom detectors_ that can be used to identify project- or
 library-specific vulnerability patterns using a concise query language.
 Custom detectors utilize Vanguard's advanced static analysis engine and are
@@ -107,6 +109,24 @@ template for how each result of the custom detector should be reported within a
 finding, and `title` is a template for how that finding should be titled.
 Both `message` and `title` allow substituting variables declared in the `FIND`
 (or `AS` section, if it exists) using the format `$variableName`.
+
+### Online Form for Custom Detector Definitions
+
+For most custom detectors, it's easier to fill out a visual form instead of
+writing a custom detector definition manually. You can use the below form to do
+so.
+
+<hr />
+<CustomDetectorGenerator />
+<hr />
+
+:::note
+   This form does not check the syntax of queries or validate the custom
+   detector definition.
+
+   In the future, we plan on integrating a more user-friendly version of this
+   form directly into AuditHub.
+:::
 
 ### Creating an Organization Level Custom Detector
 
