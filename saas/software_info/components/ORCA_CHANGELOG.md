@@ -6,6 +6,11 @@ slug: orca-changelog
 ---
 # Software Changes
 
+## v2.12.4 - 2026-04-30
+### Fixed
+- Fix issue with RPC downtime by adding retries to EVM construction and transaction issuing.
+- Fixed an issue with gathering call metrics over fuzzing corpus.
+
 ## v2.12.3 - 2026-04-16
 ### Changed
 - Updated code to improve memory usage.
