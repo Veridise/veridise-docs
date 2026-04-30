@@ -6,6 +6,11 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.5 - 2026-04-30
+### Added
+- Better search experience
+- Tools-only organizations now display a "Tools Only" badge in the organization switcher
+
 ## v2.8.4 - 2026-04-27
 ### Added
 - Fixed lag issue in big projects and scrolling for files in create issue dialog

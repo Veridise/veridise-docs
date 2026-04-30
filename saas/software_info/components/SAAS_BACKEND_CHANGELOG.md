@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.45 - 2026-04-30
+### Added
+- Add non-interactive flag for forge command on OrCa pipeline
+
+### Changed
+- Support tool only organizations
+
 ## v2.5.44 - 2026-04-20
 ### Fixed
 - Bug fixes
