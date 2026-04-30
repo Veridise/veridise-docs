@@ -5,6 +5,12 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.8.58 - 2026-04-30
+### Changed
+- Component OrCa upgraded to version *v2.12.4*.
+- Component SaaS Backend upgraded to version *v2.5.45*.
+- Component SaaS Frontend upgraded to version *v2.8.5*.
+
 ## v2.8.57 - 2026-04-27
 ### Changed
 - Component SaaS Frontend upgraded to version *v2.8.4*.
