@@ -42,6 +42,23 @@ WHERE
 
 For additional examples on how to use the Solidity dialect, consult the [how-to guide](./howto.md).
 
+## Implicit Iteration
+
+When a variable does not have a source expression, it must be declared with one
+of the following types which support _implicit iteration_.
+This will cause the variable to be scanned from all known objects of its type.
+
+* `Function`: all known functions.
+* `Contract`: all known contracts.
+* Any `Statement` or `Expression`: all of the corresponding Statements or
+  Expressions that occur across all functions.
+
+For example, the following query lists all known contracts in the project:
+
+```paql
+FIND Contract c
+```
+
 ## Contracts and Functions
 
 ### Contract
@@ -105,6 +122,9 @@ Represents a function.
   fallback, receive, or constructor function.
 * `isExternallyCallable` (bool): a boolean value indicating whether this
   function may be invoked directly using an external call.
+* `isConstructor` (bool): whether this function is a constructor.
+* `isEntrypoint` (bool): whether this function is an entry point (constructor or
+  externally callable function).
 * `visibility` (string): the visibility of this function, such as `external`,
   `public`, `internal`, and `private`.
 * `mutability` (string): the mutability of this function, such as `nonpayable`,
@@ -216,7 +236,7 @@ The following iterators are available on all `Expression`s and `Statement`s.
 
 The following properties are available on all `Expression`s.
 
-* `results`: an object that may be iterated to get the `Results` of this
+* `results`: an object that may be iterated to get the `Result`s of this
   `Expression`.
 
 ### Expression: ExternalCall
@@ -242,6 +262,10 @@ Represents an external call.
 * `isCall`, `isStaticcall`, `isDelegatecall` (bool): indicates whether the call
   is the corresponding kind.
 * `address`: the `Value` corresponding to the address to which this call is made.
+* `calldata`: an object that may be iterated to get the `Value` representing the
+  calldata payload of the call.
+  It has to be iterated since this `Value` is only available for low-level
+  calls.
 
 #### Iterators
 
@@ -258,6 +282,7 @@ Represents an internal call (within the same contract).
 #### Properties
 
 * `callee` (`Function`): the function that is called.
+* `contract` (`Contract`): the contract associated with this internal call.
 
 #### Iterators
 
@@ -278,6 +303,13 @@ These expressions represent arithmetic operations, and they include:
 
 * `DivideExpression`
 * `MultiplyExpression`
+
+### Expression: Miscellaneous
+
+These expressions represent miscellaneous Solidity expressions:
+
+* `AddressThis`: represents the Solidity expression `address(this)`
+* `MsgSender`: represents Solidity expression `msg.sender`
 
 ### Generic Expressions
 
@@ -373,6 +405,32 @@ Three types of `Value`s are supported:
 
 * `Use`: represents the "uses" of this value (see below section).
 
+### Argument
+
+A `Value` representing a function parameter.
+
+:::warning
+   This feature is experimental and subject to change. Use at your own risk.
+:::
+
+#### Properties
+
+* `argIndex` (int): the zero-indexed index of this function parameter.
+* `function` (`Function`): the function that this parameter belongs to.
+
+### Result
+
+:::warning
+   This feature is experimental and subject to change. Use at your own risk.
+:::
+
+A `Value` representing a result of an `Expression`.
+
+#### Properties
+
+* `resultIndex` (int): the zero-indexed index of this result within the
+  defining expression.
+* `definingExpression` (`Expression`): the expression that produced this value.
 ### Use
 
 :::warning

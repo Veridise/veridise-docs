@@ -6,12 +6,19 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.46 - 2026-05-04
+
+### Fixed
+
+- Fix issue with DeFi-Vanguard positional args for Foundry build
 ## v2.5.45 - 2026-04-30
 ### Added
 - Add non-interactive flag for forge command on OrCa pipeline
 
 ### Changed
 - Support tool only organizations
+- Allow specifying input limit when using Forge as a build system with DeFi-Vanguard
+- Use tool_minutes instead of cpu_minutes on resource metrics and quota enforcement
 
 ## v2.5.44 - 2026-04-20
 ### Fixed
