@@ -6,6 +6,17 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.6 - 2026-05-11
+### Added
+- Add app inner navigation
+- Add list parameter for orca task
+- Clear all button for fuzz targets and blacklist
+- Separate input fields for PR URL and Commit Hash in ActionDialog
+- Tooltip for contract and function names
+
+### Changed
+- "Switching away from CPU minutes as a measure, towards \u201CTool minutes\u201D."
+
 ## v2.8.5 - 2026-04-30
 ### Added
 - Better search experience
