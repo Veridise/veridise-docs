@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.7 - 2026-05-13
+### Changed
+- Updated subscription and consumption display
+
 ## v2.8.6 - 2026-05-11
 ### Added
 - Add app inner navigation
