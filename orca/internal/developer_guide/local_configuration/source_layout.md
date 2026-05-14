@@ -1,3 +1,0 @@
-# Source Layout
-
-The source code should be contained in a folder. The relative path from the configuration file to this folder should be set as the configuration argument `src_path`. OrCa can support arbitrary folder structures for projects. Any Solidity file in the `src_path` will be considered a source for fuzzing -- all other files (e.g. Typescript deployment scripts) will be ignored. For projects with external dependencies (e.g. OpenZeppelin) these contracts can be included in the `node_modules` path (which should be a folder to all dependencies -- called node modules as this is a common convention for build systems like Hardhat).
