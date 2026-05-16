@@ -40,13 +40,18 @@ Flags low-level calls where the calldata is arbitrary, i.e. 1) it is
 user-supplied via an external function argument and 2) it is not used in a
 require statement.
 
-### Missing Access Control Checks
+### Missing or Incorrect Access Control Checks
 
-Flags externally callable functions that 1) might perform some side-effect
-(e.g. update state, transfer etc.) and 2) are not guarded by a
-require/revert involving msg.sender.
+Flags externally callable functions that might perform some side-effect
+(e.g. update state, transfer etc.) and are not guarded by a
+"correct looking" require/revert involving msg.sender, that is a require/revert
+with the following property: for all clauses involving msg.sender, the clause must be in the
+form msg.sender == x, and there must exist at least one such clause.
 
 This custom detector is mainly useful for identifying gaps in a protocol's
-access controls.
+access controls or common mistakes such as using `msg.sender != x` instead of `msg.sender == x`.
+It can also flag unnecessarily complicated require/revert conditions which could be simplified
+into a `msg.sender == A || msg.sender == B || ...` form.
+
 It may produce many false alarms, particularly on functions that are
 intended to allow arbitrary users to modify the contract's state.
