@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.8 - 2026-05-20
+### Added
+- Improved overview page for auditing organizations
+
+### Changed
+- Revamped project creation flow
+
 ## v2.8.7 - 2026-05-13
 ### Changed
 - Updated subscription and consumption display
