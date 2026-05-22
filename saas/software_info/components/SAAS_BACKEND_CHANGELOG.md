@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.49 - 2026-05-22
+### Fixed
+- Bug fixes
+
 ## v2.5.48 - 2026-05-13
 ### Changed
 - Support expired subscription on get organization quota
