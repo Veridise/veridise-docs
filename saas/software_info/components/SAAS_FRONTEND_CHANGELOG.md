@@ -6,6 +6,22 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.8.9 - 2026-05-28
+### Added
+- Added icon for versions to show a version's hash if applicable
+- Vanguard now supports finding triage
+
+### Changed
+- Fixed Command+K keyboard shortcut not working in certain contexts
+- Improved link detection in markdown editors
+- Updated endpoint for fetching projects and their version
+
+### Fixed
+- Fixed markdown viewer not rendering issue links after update
+
+### Removed
+- Removed language autodetection from codeblocks
+
 ## v2.8.8 - 2026-05-20
 ### Added
 - Improved overview page for auditing organizations

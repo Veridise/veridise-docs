@@ -6,6 +6,26 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.15 - 2026-05-28
+
+### Added
+- Added integration with AuditHub's findings deduplication feature
+- Custom Detectors:
+  - Added MemoryRead and MemoryWrite classes to detect reads and writes to local variables
+  - RequireLike now has a .clauses property that returns a RequireLikeCondition object which can be iterated to get the individual clauses contained in the condition
+  - Added a MemoryAllocation class that can identify local variable declarations
+
+### Changed
+- Custom detectors
+  - The `Argument` class is now called `Parameter`. For backwards compatibility, the old `Argument` can still be used, but it is deprecated and will be removed in a future update.
+
+### Fixed
+- Solidity:
+  - Added support for value flow through memory in slicing operations, fixing some cases where vulnerabilities were missed
+- Custom Detectors
+  - Call hijacking custom detector can now handle case where calldata function argument is passed directly to a low-level call
+  - Fixed wrong type required for `Use.argIndex` property
+  - Fixed a crash that occurs when declaring a variable in a FIND that does not have a source expression, instead of rejecting it at type checking time
 ## v1.0.14 - 2026-04-27
 ### Added
 - ZK Vanguard

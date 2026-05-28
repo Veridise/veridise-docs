@@ -6,6 +6,15 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.50 - 2026-05-28
+### Added
+- Endpoint GET /organizations/{organization_id}/projects. It returns all projects of a organization including latest version id.
+- Endpoint POST ui/my-organizations. It allow users with role create-org to create organizations and assign themselves
+- UI router
+
+### Changed
+- Use storage constrained volumes to extract version input archives
+
 ## v2.5.49 - 2026-05-22
 ### Fixed
 - Bug fixes
