@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.51 - 2026-05-29
+### Fixed
+- Bug fixes
+
 ## v2.5.50 - 2026-05-28
 ### Added
 - Endpoint GET /organizations/{organization_id}/projects. It returns all projects of a organization including latest version id.
