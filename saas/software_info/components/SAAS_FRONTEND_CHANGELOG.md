@@ -6,6 +6,22 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.0 - 2026-06-03
+### Added
+- Allow auditors to create organizations
+
+### Changed
+- Issue type has a max width now
+- Select type automatically when creating a new issue
+
+### Fixed
+- Fix Notify auditors action reordering the issues list
+- Fixed issue with not-found versions not redirecting to the 404 page
+- Handle deleted project redirecting to not found page
+
+### Removed
+- Picus timeout clear button
+
 ## v2.8.9 - 2026-05-28
 ### Added
 - Added icon for versions to show a version's hash if applicable
