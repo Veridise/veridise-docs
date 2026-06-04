@@ -12,7 +12,7 @@ slug: backend-changelog
 
 ## v2.5.50 - 2026-05-28
 ### Added
-- Endpoint GET /organizations/{organization_id}/projects. It returns all projects of a organization including latest version id.
+- Endpoint GET /organizations/organization_id/projects. It returns all projects of a organization including latest version id.
 - Endpoint POST ui/my-organizations. It allow users with role create-org to create organizations and assign themselves
 - UI router
 
