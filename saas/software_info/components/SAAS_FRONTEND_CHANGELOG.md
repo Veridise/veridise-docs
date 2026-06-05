@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.1 - 2026-06-05
+### Fixed
+- Fix version redirect issue
+
 ## v2.9.0 - 2026-06-03
 ### Added
 - Allow auditors to create organizations
