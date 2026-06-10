@@ -6,6 +6,24 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.2 - 2026-06-10
+### Added
+- Add new Agent v1 wizard
+
+### Changed
+- Changed issue table sorting and behavior
+- Improved time formatting to show "Today" for same-day dates
+
+### Fixed
+- Improved wizard validation logic to properly detect changes in upload version field
+
+### Removed
+- Removed augmented archive download option for non-support users
+
+## v2.9.1 - 2026-06-05
+### Fixed
+- Fix version redirect issue
+
 ## v2.9.0 - 2026-06-03
 ### Added
 - Allow auditors to create organizations
