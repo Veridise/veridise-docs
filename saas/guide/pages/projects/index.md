@@ -30,3 +30,7 @@ Each project card includes a set of available actions, accessible from the dropd
 
 ![image](../../../screenshots/project_actions_grid_view.png)
 ![image](../../../screenshots/project_actions_table_view.png)
+
+On the **Projects** page, you can also set organization notification preferences by clicking the bell button in the top-left corner. This opens a menu with all available notification options. By default, all notifications are enabled.
+
+![image](../../../screenshots/projects_page_notifications.png)
