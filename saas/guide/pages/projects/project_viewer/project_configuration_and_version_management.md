@@ -25,11 +25,18 @@ Selecting this option launches a wizard that allows a new source code version to
 
 ### Version Actions
 
-Project versions can be edited, downloaded, or deleted, but at least one version must always exist therefore, the last remaining version cannot be deleted. 
+Project versions can be marked as deployed, edited, downloaded, or deleted. Please note that at least one version must always exist, therefore, the last remaining version cannot be deleted.
 
-Only the name and the revision (commit hash) are editable for project versions. If provided, the revision (commit hash) allows auditors to track the GitHub commit associated with the source code, helping ensure the correct scope is being reviewed.
+![image](../../../../screenshots/project_viewer_version_actions_menu.png)
+
+Only the name and the revision (commit hash) are editable for project versions. 
 
 ![image](../../../../screenshots/edit_version.png)
+
+If provided, the revision (commit hash) allows auditors to track the GitHub commit associated with the source code, helping ensure the correct scope is being reviewed. It can be inspected by hovering over the hashtag icon next to the version name, as shown below.
+
+![image](../../../../screenshots/version_commit_hash.png)
+
 
 When switching to a different version, a blue check mark indicates the currently active one.
 

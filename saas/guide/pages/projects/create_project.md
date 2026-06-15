@@ -54,7 +54,7 @@ This configuration is primarily relevant for the AuditHub tools that will be app
 
 Please note that once the source is uploaded, AuditHub automatically detects the project attributes. As you move through the wizard, you will notice that these fields are prefilled.
 
-Because uploaded sources can vary, auto-detection may not always produce the expected values. In these cases, you can manually adjust the detected information. For completeness, this section walks through the extended setup options so you can understand what is available and update the auto-detected values when needed. 
+Because uploaded sources can vary, auto-detection may not always produce the expected values. In these cases, you can manually adjust the detected information. For completeness, this section walks you through the extended setup options so you can understand what is available and update the auto-detected values when needed. 
 :::
 
 
