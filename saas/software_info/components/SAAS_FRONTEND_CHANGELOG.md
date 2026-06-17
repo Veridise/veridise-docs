@@ -6,6 +6,15 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.3 - 2026-06-17
+### Added
+- Add ability to delete invitations from the settings page for create-org users
+- Add flexible collaboration socket connection
+- FIO update
+
+### Fixed
+- Fixed all comments dialog not redirecting to the correct issue or finding when clicking on comments
+
 ## v2.9.2 - 2026-06-10
 ### Added
 - Add new Agent v1 wizard

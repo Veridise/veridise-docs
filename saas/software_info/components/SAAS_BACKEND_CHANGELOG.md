@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.52 - 2026-06-17
+### Added
+- AI Integration work
+
+### Changed
+- Update auth permissions for deleting invitations.
+
 ## v2.5.51 - 2026-05-29
 ### Fixed
 - Bug fixes
