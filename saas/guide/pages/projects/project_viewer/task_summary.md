@@ -124,3 +124,14 @@ Users can download either the original source code version or the augmented vers
 The **Full Analysis** page includes all previously described sections, with the added ability to expand or collapse them for easier large-scale review. This page also provides a **Tool Configuration** section, which lists all the options used when the task was submitted, allowing users to reference the selected configuration settings during their analysis.
 
 ![image](../../../../screenshots/full_analysis_page.png)
+
+
+### Overview Page
+
+The `Overview` page can be accessed from the `Project Viewer` page (top right corner, as depicted below) and it summarizes the current state of the project. 
+
+![image](../../../../screenshots/project_overview_versions_1.png)
+
+It displays breakdowns for issues, findings, task runs, triaging statuses, conversations and resource consumption for each of the available project versions (see the left-side bar that allows you to switch the version).
+
+![image](../../../../screenshots/project_overview_versions_2.png)
