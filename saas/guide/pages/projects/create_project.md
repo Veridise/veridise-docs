@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 You can create a new project by clicking either of the two highlighted options below. This will open a wizard that guides you through the setup steps for the project.
-Please note that during the project creation we also create the first version of the project, which is called `initial`. Thus, through the project creation:
+Please note that during project creation we also create the first version of the project, which is called `initial`. Thus, through the project creation:
 1. We define the project attributes
 2. We create the first project source code version
 
