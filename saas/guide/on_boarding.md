@@ -52,7 +52,7 @@ At a high level, they apply to:
 * Versions: you can’t create, edit, or delete versions (you can only download versions).
 * User management: you can invite 2 more users to join your organization (there's a limit of 3 users per free demo organization).
 * CPU usage quota: CPU consumption is limited to one hour. Once the quota is reached, you will receive an error when you attempt to run the security tools.
-* Legacy tools: all legacy tools are disabled (i.e, `DeFi Vanguard (Legacy)`, `ZK Vanguard (Circom)` and `Picus (Circom)`).
+* Legacy tools: all legacy tools are disabled (i.e., `ZK Vanguard (Circom)` and `Picus (Circom)`).
 * There’s a 1-year expiration period for the free demo.
 
 FREE-DEMO-RESTRICTIONS: end
