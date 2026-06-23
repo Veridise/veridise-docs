@@ -112,3 +112,12 @@ docker run -d -p 3000:8080 veridise/docs:latest
 
 When changes are merged to main branch, the docs deployment is auto-updated in the dev cluster.
 The endpoint to access it is: https://docs.veridise.tools
+
+## Markdown source extension
+
+To support LLM agents, the site uses the
+[`markdown_docusaurus_plugin`](https://github.com/FlyNumber/markdown_docusaurus_plugin)
+to automatically expose the markdown source of each page at an additional `.md` URL.
+
+This requires some web server configuration to avoid SEO issues; see:
+https://github.com/FlyNumber/markdown_docusaurus_plugin#deployment-configuration

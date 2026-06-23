@@ -65,3 +65,9 @@ html[data-theme="dark"] .doc-tag {
   background: var(--ifm-color-primary-darkest);
   color: var(--ifm-font-color-base);
 }
+
+/* for markdown_docusaurus_plugin */
+
+.markdown-actions-container {
+  margin-bottom: 2em; /* too close to article text, so add some margin. */
+}

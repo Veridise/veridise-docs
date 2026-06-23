@@ -177,6 +177,12 @@ const config = {
         excludeRoutes: ["**/internal/*"],
       },
     ],
+    [
+      "docusaurus-markdown-source-plugin",
+      {
+        docsPath: "/"
+      }
+    ]
   ],
 
   themeConfig:
