@@ -46,6 +46,22 @@ html[data-theme="dark"] .ds-cursor .algolia-docsearch-suggestion--wrapper {
   background: var(--ifm-background-surface-color);
 }
 
+/* PAQL syntax highlighting */
+code.language-paql .token.keyword,
+pre.language-paql .token.keyword {
+  color: #8ab4ff;
+}
+
+code.language-paql .token.class-name,
+pre.language-paql .token.class-name {
+  color: #f4d35e;
+}
+
+code.language-paql .token.alias-name,
+pre.language-paql .token.alias-name {
+  color: #ff7ac6;
+}
+
 /* for doc tags */
 
 /* .doc-tags {
