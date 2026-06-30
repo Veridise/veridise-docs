@@ -8,9 +8,23 @@ data:
       listen            8080;
       server_name       localhost;
       absolute_redirect off;
+      root              /usr/share/nginx/html;
+
+      location ~* \.md$ {
+        add_header Content-Type "text/plain; charset=utf-8" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header X-Robots-Tag "googlebot: noindex, nofollow, bingbot: noindex, nofollow" always;
+        add_header Cache-Control "public, max-age=3600, must-revalidate" always;
+        try_files $uri =404;
+      }
+
+      location ~* ^/.*/img/.* {
+        add_header X-Robots-Tag "googlebot: noindex, nofollow, bingbot: noindex, nofollow" always;
+        add_header Cache-Control "public, max-age=86400, immutable" always;
+        try_files $uri =404;
+      }
 
       location / {
-        root   /usr/share/nginx/html;
         index  index.html;
         try_files $uri $uri/index.html $uri/ =404;
       }
