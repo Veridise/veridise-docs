@@ -360,7 +360,7 @@ FIND Function function WHERE
   function.name == "mint",
   function.visibility == "external" || function.visibility == "public",
 AS
-  contract = f.contract
+  contract = f.contract,
   function,  -- equivalent to function = function
 ```
 

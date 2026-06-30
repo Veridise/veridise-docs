@@ -177,6 +177,12 @@ const config = {
         excludeRoutes: ["**/internal/*"],
       },
     ],
+    [
+      "docusaurus-markdown-source-plugin",
+      {
+        docsPath: "/"
+      }
+    ]
   ],
 
   themeConfig:
@@ -321,7 +327,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ["solidity"],
+        additionalLanguages: ["solidity", "lua"],
       },
     }),
 };
