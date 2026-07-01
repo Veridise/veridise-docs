@@ -6,6 +6,12 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.4 - 2026-07-01
+### Added
+- Add PIL language support to Monaco editor
+- Add new issues overview page
+- Picus Visualization
+
 ## v2.9.3 - 2026-06-17
 ### Added
 - Add ability to delete invitations from the settings page for create-org users
