@@ -6,6 +6,19 @@ slug: picus-v2-changelog
 ---
 # Software Changes
 
+## v1.1.6 - 2026-07-01
+### Added
+- Add initial support for proof strategies in Picus
+- Added detailed analysis results for audithub visualizations.
+
+### Changed
+- Internal refactor
+- Performance improvements
+
+### Fixed
+- Fixed issue where Picus didn't report the variables proven deterministic when verification status was unknown
+- model parsing bug with z3 and also adding a cache for expression pushing and popping after checking postconditions.
+
 ## v1.1.5 - 2026-04-20
 ### Added
 - Configuration:
