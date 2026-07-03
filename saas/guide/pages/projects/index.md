@@ -56,6 +56,8 @@ You can also perform common project actions directly from this tab. Use **Add ve
 
 ### Issues
 
+The `Issues` tab provides a dedicated view of all project issues. At the top of the page, you can find general statistics, including the total number of issues, how many are critical or high priority, and their distribution across open and resolved statuses. Moreover, all actions available on the `Project Viewer` page can also be taken here.
+
 ![image](../../../screenshots/project_statistics_issues.png)
 
 ### Conversations
