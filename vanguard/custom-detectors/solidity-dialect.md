@@ -297,6 +297,26 @@ Represents a call to a precompiled contract.
 * `address` (string): the address of the precompiled contract.
 * `name` (string): the name of the precompiled contract.
 
+### Expression: Sha256
+
+Represents a call to the `sha256` builtin function.
+
+### Expression: Keccak256
+
+Represents a call to the `keccak256` builtin function.
+
+### Expression: Ripemd160
+
+Represents a call to the `ripemd160` builtin function.
+
+### Expression: HashOp
+
+Represents a call to any of Solidity's builtin hash functions, namely
+`sha256`, `keccak256` and `ripemd160`.
+
+This can be useful if you want to find places where some data has been hashed,
+without necessarily needing to know exactly which function was used.
+
 ### Arithmetic Expressions
 
 These expressions represent arithmetic operations, and they include:
@@ -352,15 +372,15 @@ but currently do not have any special object types:
 * `return`
 * some instances of `if (condition) { ... }`
 
-## Storage Accesses
+## Storage and Memory Accesses
 
-To allow reasoning about `storage` variable reads and writes, the Solidity
-dialect provides two classes `StorageRead` and `StorageWrite`, which represent a
-specific read from or write to (respectively) a specific storage variable.
+To allow reasoning about both `storage` and `memory` variable reads and writes, the Solidity
+dialect provides classes `StorageRead`, `StorageWrite`, `MemoryRead` and `MemoryWrite`,
+which represent specific read from or write to a specific storage or memory variable, respectively.
 
 ### Common Properties
 
-* `location`: a string representation of the storage variable location that was
+* `location`: a string representation of the variable location that was
   written, or empty string if unknown.
   For scalar variables, this is just the name of the variable. For aggregate
   data structures, such as `struct` or `mapping`s, this may also include fields
