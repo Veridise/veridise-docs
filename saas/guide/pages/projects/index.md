@@ -54,6 +54,12 @@ You can also perform common project actions directly from this tab. Use **Add ve
 ![image](../../../screenshots/project_statistics_overview_1.png)
 ![image](../../../screenshots/project_statistics_overview_2.png)
 
+### Issues
+
+The `Issues` tab provides a dedicated view of all project issues. At the top of the page, you can find general statistics, including the total number of issues, how many are critical or high priority, and their distribution across open and resolved statuses. Moreover, all actions available on the `Project Viewer` page can also be taken here.
+
+![image](../../../screenshots/project_statistics_issues.png)
+
 ### Conversations
 
 The **Conversations** tab provides a project-level view of all conversation threads associated with the project, including code threads and issue threads. The summary area shows the total number of threads, the number of open and resolved threads, and the number of threads matching the current filters.
