@@ -17,8 +17,9 @@ The findings are also available in the **Tool Findings** table shown below. Unli
 
 This view also introduces two additional features:
 
-* **Finding expansion**: each finding can be expanded to display the full description and the associated discussion
-* **Jump to discussion**: a dedicated button allows quick navigation directly to the discussion for that finding.
+* **Finding expansion**: each finding can be expanded to display the full description and the associated discussion (there are 3 options available: side peek, center peek and strech mode)
+* **Jump to discussion**: a dedicated button allows quick navigation directly to the discussion for that finding
+* **Jump to file**: the file where the finding originates from will be opened inside the code viewer.
 
 ![image](../../../../screenshots/project_viewer_findings_table_and_finding_details.png)
 ![image](../../../../screenshots/project_viewer_finding_details_expanded.png)
