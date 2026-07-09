@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.5 - 2026-07-09
+### Added
+- Inline editing for issues
+- Markdown support for findings and different color schemes
+
+### Removed
+- Removed dead code
+
 ## v2.9.4 - 2026-07-01
 ### Added
 - Add PIL language support to Monaco editor
