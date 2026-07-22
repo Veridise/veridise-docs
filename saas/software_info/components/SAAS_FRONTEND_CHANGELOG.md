@@ -6,6 +6,16 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.6 - 2026-07-22
+### Added
+- Issue creation inline
+
+### Changed
+- PR field required when submitting a fix.
+
+### Fixed
+- Fix issue with action dialog not pre-populating data
+
 ## v2.9.5 - 2026-07-09
 ### Added
 - Inline editing for issues
