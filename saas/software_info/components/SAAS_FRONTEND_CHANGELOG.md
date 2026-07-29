@@ -6,6 +6,18 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.7 - 2026-07-29
+### Changed
+- Added markdown shortcut for code blocks: typing ``` followed by space now creates a code block in MarkdownEditorMini.
+- Replaced consumption modal with version overview page redirect
+
+### Fixed
+- Fix Mini Markdown border radius
+- Fix issue with filters resetting when issue is selected
+- Fix system message display issue
+- Fixed 422 validation error when accessing organizations with very large ID numbers.
+- Improve responsiveness of the overview pages
+
 ## v2.9.6 - 2026-07-22
 ### Added
 - Issue creation inline
