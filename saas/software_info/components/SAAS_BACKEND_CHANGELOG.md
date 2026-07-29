@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.53 - 2026-07-29
+### Changed
+- Restructure cloud abstraction layer
+
+### Security
+- Limit permissions required by tool tasks
+
 ## v2.5.52 - 2026-06-17
 ### Added
 - AI Integration work
