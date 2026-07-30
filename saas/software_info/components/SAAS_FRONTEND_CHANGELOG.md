@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.8 - 2026-07-30
+### Added
+- Add AI agent to prod
+
 ## v2.9.7 - 2026-07-29
 ### Changed
 - Added markdown shortcut for code blocks: typing ``` followed by space now creates a code block in MarkdownEditorMini.
