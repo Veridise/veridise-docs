@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.54 - 2026-07-30
+### Added
+- Introduce new AI Agent tool
+
 ## v2.5.53 - 2026-07-29
 ### Changed
 - Restructure cloud abstraction layer
