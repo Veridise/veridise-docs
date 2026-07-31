@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.55 - 2026-07-31
+### Changed
+- Enable AuditHub Agent tool json logging
+
 ## v2.5.54 - 2026-07-30
 ### Added
 - Introduce new AI Agent tool
