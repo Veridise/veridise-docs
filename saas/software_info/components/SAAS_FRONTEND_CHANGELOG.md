@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v2.9.9 - 2026-07-31
+### Added
+- Enable debug output for task steps
+
 ## v2.9.8 - 2026-07-30
 ### Added
 - Add AI agent to prod
