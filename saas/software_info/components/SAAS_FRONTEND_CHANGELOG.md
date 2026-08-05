@@ -6,6 +6,10 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.0.0 - 2026-08-05
+### Changed
+- Updated the issues overview table
+
 ## v2.9.9 - 2026-07-31
 ### Added
 - Enable debug output for task steps
