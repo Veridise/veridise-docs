@@ -3,65 +3,18 @@ kind: HTTPRoute
 metadata:
   name: saas-docs
   namespace: saas-docs
-  annotations:
-    external-dns.alpha.kubernetes.io/ttl: "120"
 spec:
   parentRefs:
-    # Handles docs.veridise.tools with its exact certificate.
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: gateway-external
+    - name: gateway-external
       namespace: gateway-api
-      sectionName: additional-https
-
-    # Handles docs.dev.veridise.tools and allows ExternalDNS to publish it.
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: gateway-external
-      namespace: gateway-api
-      sectionName: https
-
+      sectionName: https-docs-veridise-tools
   hostnames:
     - docs.veridise.tools
-    - docs.dev.veridise.tools
-
   rules:
     - matches:
         - path:
             type: PathPrefix
             value: /
       backendRefs:
-        - group: ""
-          kind: Service
-          name: saas-docs
+        - name: saas-docs
           port: 80
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: saas-docs-https-redirect
-  namespace: saas-docs
-spec:
-  parentRefs:
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: gateway-external
-      namespace: gateway-api
-      sectionName: additional-http
-
-    - group: gateway.networking.k8s.io
-      kind: Gateway
-      name: gateway-external
-      namespace: gateway-api
-      sectionName: http
-
-  hostnames:
-    - docs.veridise.tools
-    - docs.dev.veridise.tools
-
-  rules:
-    - filters:
-        - type: RequestRedirect
-          requestRedirect:
-            scheme: https
-            statusCode: 301
