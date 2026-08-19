@@ -6,6 +6,14 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.57 - 2026-08-19
+### Changed
+- Api users cannot manage API keys
+- Error message improvements
+
+### Fixed
+- Bug fixes
+
 ## v2.5.56 - 2026-08-10
 ### Fixed
 - Bug fixes
