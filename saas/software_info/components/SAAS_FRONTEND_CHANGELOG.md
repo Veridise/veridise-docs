@@ -6,6 +6,20 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.0.1 - 2026-08-19
+### Added
+- Add new findings tab in overview pages
+- Add task progress banner to show task status
+
+### Changed
+- All discussions now smoothly scroll the sender's newly posted reply into view.
+- CHanged findings action dropdown to be directly in the status area
+- Truncate the titles so we can see more of the table at once.
+
+### Fixed
+- Fix GCP deployment failures
+- Issue links now stay on the current domain and update the selected issue when clicked, even if another issue is already open.
+
 ## v3.0.0 - 2026-08-05
 ### Changed
 - Updated the issues overview table
