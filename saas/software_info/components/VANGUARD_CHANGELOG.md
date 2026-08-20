@@ -6,6 +6,23 @@ slug: vanguard-changelog
 ---
 # Software Changes
 
+## v1.0.16 - 2026-08-20
+### Added
+- Custom Detectors:
+  - Added support for iterating StorageRead, StorageWrite, MemoryRead, MemoryWrite directly from backwardSlices, forwardSlices, interprocBackwardSlices, interprocForwardSlices
+- Custom detectors - Added AbiEncode PAQL class
+- Custom detectors - Added `variable` property for storage read/write effects (this gives direct access to the variable)
+- Custom detectors - Added new classes for Sha256, Keccak256 and Ripemd160 - Added new class HashOp to represent any of the hash functions provided by solidity
+- Forward/backward slicing now tracks storage effects too. This is also visible in PAQL queries.
+
+### Changed
+- ZK Vanguard:
+  - Updated llzk-lib dependency
+  - Update circom frontend dependency
+
+### Fixed
+- Custom detectors - Memory read/writes were printed as "Storage read/write"; this is now fixed
+
 ## v1.0.15 - 2026-05-28
 
 ### Added
