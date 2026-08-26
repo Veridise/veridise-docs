@@ -6,6 +6,18 @@ slug: audithub-agent-changelog
 ---
 # Software Changes
 
+## v1.0.2 - 2026-08-26
+### Added
+- Added additional tools to the agent's runtime image.
+- The agent now produces a markdown report that summarizes its runs.
+
+### Changed
+- Emitted findings no longer include recommendations.
+
+### Fixed
+- Fixed bug were the agent was executing a step twice
+- Fixed an issue where findings titles were not displaying correctly in the UI.
+
 ## v1.0.1 - 2026-08-05
 ### Changed
 - Increased the default budget given to the agent.
