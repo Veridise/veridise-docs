@@ -8,10 +8,10 @@ on:
         description: "Environment to use"
         required: true
         type: string
-  
+
 jobs:
   deploy-docs:
-    runs-on: ${{ inputs.environment == 'production' && 'prod-saas-docs' || inputs.environment }}
+    runs-on: ${{ inputs.environment }}
     environment:
       name: ${{ inputs.environment }}
       url: ${{ vars.ROOT_URL }}
@@ -24,5 +24,6 @@ jobs:
         uses: azure/setup-kubectl@v3.1
 
       - name: Deploy
-        run: kubectl apply -k deployment/kubernetes/overlays/${{ inputs.environment }}/ &&
+        run: |
+          kubectl apply -k deployment/kubernetes/overlays/${{ inputs.environment }}/ &&
           kubectl rollout restart deployment saas-docs -n saas-docs
