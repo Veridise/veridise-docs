@@ -31,7 +31,7 @@ As a working example we will use Picus to prove the following Picus module is un
 1. Save this description in a file with a `.picus` extension. In this working example, we will save it inside `buggy-example.picus`. 
 2. Compress `buggy-example.picus` as a `.zip` file `buggy-example.zip`
 ## Accessing AuditHub
-This document assumes you have access to AuditHub. To learn more on how to get access to AuditHub go [here](https://docs.veridise.com/saas/guide/on_boarding).
+This document assumes you have access to AuditHub. To learn more on how to get access to AuditHub go [here](https://docs.audithub.dev/saas/guide/on_boarding).
 
 ## Using the UI
 The following section describes how one can run Picus through AuditHub's UI.

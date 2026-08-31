@@ -18,7 +18,7 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://docs.veridise.com",
+  url: "https://docs.audithub.dev",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -298,22 +298,16 @@ const config = {
               // },
               {
                 label: "Twitter",
-                href: "https://twitter.com/VeridiseInc",
+                href: "https://x.com/AuditHubDev",
               },
             ],
           },
           {
             title: "More",
             items: [
-              /*
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              */
               {
                 label: "Homepage",
-                href: "https://veridise.com/",
+                href: "https://www.audithub.dev/",
               },
               {
                 label: "Blog",
