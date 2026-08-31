@@ -26,7 +26,7 @@ component main = Decoder(3);
 
 ## Onboarding process
 
-To start using Picus (Circom) visit the [SaaS page](https://saas.veridise.com/). 
+To start using Picus (Circom) visit the [SaaS page](https://app.audithub.dev/). 
 When you access the platform, you will be redirected to our SSO. 
 
 ### Registration 
