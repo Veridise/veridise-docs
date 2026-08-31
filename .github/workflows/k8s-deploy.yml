@@ -24,6 +24,6 @@ jobs:
         uses: azure/setup-kubectl@v3.1
 
       - name: Deploy
-        run:
+        run: |
           kubectl apply -k deployment/kubernetes/overlays/${{ inputs.environment }}/ &&
           kubectl rollout restart deployment saas-docs -n saas-docs
