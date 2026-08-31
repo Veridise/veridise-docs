@@ -9,10 +9,10 @@ Let's review how you can access the **Veridise SaaS** in less than 5 minutes.
 ## Getting Started
 
 1. Follow the [On-boarding Guide](../saas/guide/on_boarding) to set up an
-   account on the [SaaS](https://saas.veridise.com).
+   account on the [SaaS](https://app.audithub.dev).
 2. Wait until you receive a welcoming email from Veridise.
 3. Click on the link in the welcome email to confirm the creation of your
-   account, and then revisit the [SaaS home page](https://saas.veridise.com).
+   account, and then revisit the [SaaS home page](https://app.audithub.dev).
 
 ### Create your project
 
