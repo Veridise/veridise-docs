@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.9.7 - 2026-09-01
+### Changed
+- Component SaaS Frontend upgraded to version *v3.0.2*.
+
 ## v2.9.6 - 2026-08-26
 ### Changed
 - Component AuditHub Agent upgraded to version *v1.0.2*.
