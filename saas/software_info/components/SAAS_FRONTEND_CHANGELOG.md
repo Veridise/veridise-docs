@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.0.2 - 2026-09-01
+### Changed
+- AI agent findings now display in a bigger space in the Full analysis page
+- Improved design for Audithub pages
+- Rename AI Agent to scout
+- We now have a copy URL button for findings in the Full analysis page
+
 ## v3.0.1 - 2026-08-19
 ### Added
 - Add new findings tab in overview pages
