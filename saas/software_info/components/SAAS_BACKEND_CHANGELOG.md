@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.59 - 2026-09-03
+### Changed
+- Support latest scout requirements
+
+### Fixed
+- Bug fixes
+
 ## v2.5.58 - 2026-08-26
 ### Changed
 - Internal dependency updates
