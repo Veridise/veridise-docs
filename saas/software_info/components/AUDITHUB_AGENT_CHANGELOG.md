@@ -6,6 +6,13 @@ slug: audithub-agent-changelog
 ---
 # Software Changes
 
+## v1.0.3 - 2026-09-09
+### Added
+- Added Vanguard workflow to Scout's engineer personality.
+
+### Changed
+- Improved the findings write-up to provide clearer explanations and more detailed analysis of the results.
+
 ## v1.0.2 - 2026-08-26
 ### Added
 - Added additional tools to the agent's runtime image.

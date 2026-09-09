@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.5.60 - 2026-09-09
+### Changed
+- Rename AI agent to Scout
+
+### Fixed
+- Bug fixes
+
 ## v2.5.59 - 2026-09-03
 ### Changed
 - Support latest scout requirements
