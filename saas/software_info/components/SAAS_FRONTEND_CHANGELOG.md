@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.0.3 - 2026-09-09
+### Added
+- Add Scout report visualization in the full analysis page
+
+### Changed
+- Updated the report visualization to show the findings in a more user-friendly way
+
 ## v3.0.2 - 2026-09-01
 ### Changed
 - AI agent findings now display in a bigger space in the Full analysis page
