@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.6.0 - 2026-09-16
+### Changed
+- Switch to credit based subscription model
+
 ## v2.5.60 - 2026-09-09
 ### Changed
 - Rename AI agent to Scout
