@@ -6,6 +6,13 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.1.0 - 2026-09-16
+### Added
+- Scout budget option
+
+### Changed
+- Support new credit based subscriptions
+
 ## v3.0.3 - 2026-09-09
 ### Added
 - Add Scout report visualization in the full analysis page
