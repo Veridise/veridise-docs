@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.6.1 - 2026-09-17
+### Changed
+- Update library version
+
 ## v2.6.0 - 2026-09-16
 ### Changed
 - Switch to credit based subscription model

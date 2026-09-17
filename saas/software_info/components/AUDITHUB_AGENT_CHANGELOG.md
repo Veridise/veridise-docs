@@ -6,6 +6,13 @@ slug: audithub-agent-changelog
 ---
 # Software Changes
 
+## v1.0.4 - 2026-09-17
+### Changed
+- Improved Scout's default configuration. Scout now does deeper analysis on the scan's scope while maintaining cost efficiency.
+- Scout is less aggressive in dismissing issues when it cannot validate assumptions.
+
+### Fixed
+- Fixed an issue where the a single step of the pipeline was over-calculating the consumed budget.
 ## v1.0.3 - 2026-09-09
 ### Added
 - Added Vanguard workflow to Scout's engineer personality.
