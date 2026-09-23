@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.10.2 - 2026-09-23
+### Changed
+- Component AuditHub Agent upgraded to version *v1.0.5*.
+
 ## v2.10.1 - 2026-09-17
 ### Changed
 - Component AuditHub Agent upgraded to version *v1.0.4*.
