@@ -6,6 +6,10 @@ slug: audithub-agent-changelog
 ---
 # Software Changes
 
+## v1.0.5 - 2026-09-23
+### Changed
+- Improved finding write-ups. Finding write-ups are more detailed and provide more context for the user.
+
 ## v1.0.4 - 2026-09-17
 ### Changed
 - Improved Scout's default configuration. Scout now does deeper analysis on the scan's scope while maintaining cost efficiency.
