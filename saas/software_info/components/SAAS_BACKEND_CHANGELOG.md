@@ -6,6 +6,14 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.6.2 - 2026-09-24
+### Added
+- Display credit consumption for organization with no subscriptions
+
+### Changed
+- Removed steps-tracing arg from anvil, for OrCa invocation
+- Updated Scout budget descriptions with credits values
+
 ## v2.6.1 - 2026-09-17
 ### Changed
 - Update library version
