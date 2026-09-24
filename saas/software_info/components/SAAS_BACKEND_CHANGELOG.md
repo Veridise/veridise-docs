@@ -6,6 +6,13 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.6.3 - 2026-09-24
+### Added
+- Support AuditHub mcp along with Scout
+
+### Fixed
+- Bug fixes
+
 ## v2.6.2 - 2026-09-24
 ### Added
 - Display credit consumption for organization with no subscriptions
