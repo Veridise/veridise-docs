@@ -6,6 +6,10 @@ slug: picus-v2-changelog
 ---
 # Software Changes
 
+## v1.1.7 - 2026-10-02
+### Added
+- Internal performance improvement.
+
 ## v1.1.6 - 2026-07-01
 ### Added
 - Add initial support for proof strategies in Picus

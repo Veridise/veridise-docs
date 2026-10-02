@@ -5,6 +5,10 @@ title: Software Changes
 slug: changelog
 ---
 # Software Changes
+## v2.10.5 - 2026-10-02
+### Changed
+- Component PicusV2 upgraded to version *v1.1.7*.
+
 ## v2.10.4 - 2026-09-24
 ### Changed
 - Component SaaS Backend upgraded to version *v2.6.3*.
