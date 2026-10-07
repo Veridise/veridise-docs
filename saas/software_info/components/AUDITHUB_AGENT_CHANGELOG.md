@@ -6,6 +6,12 @@ slug: audithub-agent-changelog
 ---
 # Software Changes
 
+## v1.0.6 - 2026-10-07
+### Added
+- Scout now provides an option to generate POCs for findings that are emitted during its scan. This is optional and can be enabled at task creation (off by default).
+
+### Fixed
+- Limit Scout's ability to compress finding write ups during internal triage.
 ## v1.0.5 - 2026-09-23
 ### Changed
 - Improved finding write-ups. Finding write-ups are more detailed and provide more context for the user.
@@ -47,4 +53,3 @@ slug: audithub-agent-changelog
 
 ## v1.0.0 - 2026-07-30
 ### Initial release
-
