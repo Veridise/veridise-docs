@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.6.4 - 2026-10-07
+### Changed
+- Update OrCa workflow to clean anvil state
+
 ## v2.6.3 - 2026-09-24
 ### Fixed
 - Bug fixes

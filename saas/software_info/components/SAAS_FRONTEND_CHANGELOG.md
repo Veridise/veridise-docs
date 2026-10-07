@@ -6,6 +6,15 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.1.1 - 2026-10-07
+### Added
+- Add markdown preview for .md files
+- Add virtual subscription with ID -1
+
+### Fixed
+- Fixed an issue where the issue details page was not being activated when navigating to the version overview page with deep-link parameters
+- Show task creation tiles in the version overview when Scout is available without any language-specific security tools.
+
 ## v3.1.0 - 2026-09-16
 ### Added
 - Scout budget option
