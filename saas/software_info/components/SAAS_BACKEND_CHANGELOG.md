@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.7.0 - 2026-10-21
+### Added
+- Stripe integration for subscription management and payment processing
+
 ## v2.6.5 - 2026-10-14
 ### Changed
 - Internal system updates
