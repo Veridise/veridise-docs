@@ -6,6 +6,27 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.1.2 - 2026-10-21
+### Added
+- Add Stripe integration for subscription management
+- Allow free-demo users and extra-credit purchasers to manage their Stripe account without an active subscription
+- Enforce organization project limits in project creation with clear limit messages
+
+### Changed
+- Display subscription plans in one row with backend plan descriptions and monthly credits, including Enterprise
+- Present Picus and ZK Vanguard as one supported tool each, without versioned captions
+- Require a fresh active real subscription before extras requests, including focus and cache revalidation
+- Show plan and extra-credit option names in purchase and consumption tables instead of internal identifiers
+- Sort consumption sources by newest purchase first to match the Credits section
+- Support configured Scout AI budgets, including Light, Medium, High, Extra Max, and Ultra
+- Temporarily disable the guided tour
+- Use a compact task wizard result layout only on smaller viewports, preserving the original layout on larger screens and keeping the starter bubble visible
+- Use backend names and descriptions for onboarding bonuses and extra-credit purchases in credits and consumption views
+- Use the public extra-credit options catalog for bonus metadata and purchases, excluding options without Stripe prices from checkout
+
+### Removed
+- Legacy Picus and ZK Vanguard launchers, configurations, and ZK findings formatters
+
 ## v3.1.1 - 2026-10-07
 ### Added
 - Add markdown preview for .md files
