@@ -6,6 +6,14 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.7.1 - 2026-11-04
+### Added
+- Add option `generate_pocs` on Scout input
+- Internal notifications on important errors
+
+### Fixed
+- Bug fixes and improvements
+
 ## v2.7.0 - 2026-10-21
 ### Added
 - Stripe integration for subscription management and payment processing
