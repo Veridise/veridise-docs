@@ -6,6 +6,19 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.1.3 - 2026-11-04
+### Added
+- Add subscription section to account settings
+- At project update time, ask the user to update all past versions to point to the latest project definition, as part of the wizard.
+- Locked project name and source settings after upload starts.
+
+### Changed
+- Changed UI for admin dashboard.
+- Scout budget slider into an actual slider.
+
+### Fixed
+- Fix issue where deleting a single character does not update a comment
+
 ## v3.1.2 - 2026-10-21
 ### Added
 - Add Stripe integration for subscription management
