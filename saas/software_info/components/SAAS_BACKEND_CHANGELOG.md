@@ -6,6 +6,11 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.7.2 - 2026-11-09
+### Added
+- Notification on user self-onboarding
+- Option to disable stripe
+
 ## v2.7.1 - 2026-11-04
 ### Added
 - Add option `generate_pocs` on Scout input

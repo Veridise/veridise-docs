@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.1.4 - 2026-11-09
+### Added
+- Add a new option during task launch that will instruct Scout to generate PoCs during its operation.
+- Disable stripe payment method for now
+
+### Changed
+- Admin tasks open in new tab.
+
 ## v3.1.3 - 2026-11-04
 ### Added
 - Add subscription section to account settings
