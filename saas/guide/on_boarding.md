@@ -66,8 +66,10 @@ If you start from an invitation email:
 
 ![image](../screenshots/invitation_email.png)
 
+<!--
 ## Guided tour
 
 AuditHub will provide an optional guided tour to help you explore the main AuditHub flows and key features. To proceed, please click the `Take Tour` button.
 
 ![image](../screenshots/free_demo.png)
+-->
