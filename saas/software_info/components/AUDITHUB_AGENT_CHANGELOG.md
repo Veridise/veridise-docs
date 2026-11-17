@@ -6,6 +6,19 @@ slug: audithub-agent-changelog
 ---
 # Software Changes
 
+## v1.1.0 - 2026-11-17
+### Added
+- Specific reporting in report.md for budget exhaustion
+
+### Changed
+- Reporter text to clearly identify untriaged vs. triaged findings
+
+### Fixed
+- Communicate non-recoverable errors to AuditHub.
+- Fix issue where the pipeline could get stuck in a loop that would exhaust the budget.
+- Fix issue with AI accounting entries not being reported correctly.
+- Improved error reporting for internal failures and exceptions.
+
 ## v1.0.6 - 2026-10-07
 ### Added
 - Scout now provides an option to generate POCs for findings that are emitted during its scan. This is optional and can be enabled at task creation (off by default).
