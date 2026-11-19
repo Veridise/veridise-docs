@@ -6,6 +6,14 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.1.5 - 2026-11-19
+### Changed
+- Make the app responsive
+
+### Fixed
+- Both findings displays now use the backend's findings_counters
+- Fix Markdwon Editor's Header toolbar option.
+
 ## v3.1.4 - 2026-11-09
 ### Added
 - Add a new option during task launch that will instruct Scout to generate PoCs during its operation.
