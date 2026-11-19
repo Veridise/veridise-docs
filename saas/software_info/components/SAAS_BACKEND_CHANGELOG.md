@@ -6,6 +6,14 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.7.3 - 2026-11-19
+### Added
+- Support for seat management
+- Support project level documents
+
+### Changed
+- Improve error handling when following pod logs
+
 ## v2.7.2 - 2026-11-09
 ### Added
 - Notification on user self-onboarding
