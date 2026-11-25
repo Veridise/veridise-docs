@@ -6,6 +6,10 @@ slug: backend-changelog
 ---
 # Software Changes
 
+## v2.7.4 - 2026-11-25
+### Fixed
+- Internal monitoring
+
 ## v2.7.3 - 2026-11-19
 ### Added
 - Support for seat management
