@@ -6,6 +6,12 @@ slug: frontend-changelog
 ---
 # Software Changes
 
+## v3.1.6 - 2026-11-25
+### Added
+- Scout context project level documents.
+- Seat management feature
+- option through admin panel to promote org to entreprise subscription
+
 ## v3.1.5 - 2026-11-19
 ### Changed
 - Make the app responsive
